@@ -2,10 +2,10 @@
   "name": "banking",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
