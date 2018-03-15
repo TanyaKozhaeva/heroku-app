@@ -1,0 +1,32 @@
+<form (ngSubmit)="addCardForm.form.valid && addCard()" class="addCardForm" #addCardForm="ngForm">
+    <label for="cardName">Card name *</label>
+    <input type="text" class="form-control" name="cardName" [(ngModel)]="cardModel.name" #cardName="ngModel" required>
+    <div *ngIf="addCardForm.submitted && !cardName.valid">Card name is required</div>
+
+    <label for="cardNumber">Card number *</label>
+    <input type="number" class="form-control" name="cardNumber" 
+    [(ngModel)]="cardModel.number" 
+    #cardNumber="ngModel" 
+    required>
+    <div *ngIf="addCardForm.submitted && !cardNumber.valid">Card number is required</div>
+
+    <label for="cardExpiration">Expiration term *</label>
+    <input type="date" class="form-control" name="cardExpiration" [(ngModel)]="cardModel.expiration" #cardExpiration="ngModel" required>
+    <div *ngIf="addCardForm.submitted && !cardExpiration.valid">Expiration term is required</div>
+
+    <label for="cardVerification">CVV2-code *</label>
+    <input type="number" class="form-control" name="cardVerification" 
+    [(ngModel)]="cardModel.verification" 
+    #cardVerification="ngModel"
+    required>
+    <div *ngIf="addCardForm.submitted && !cardVerification.valid">CVV2-code is required</div>
+
+    <label for="cardBalance">Card balance</label>
+    <input type="number" class="form-control" name="cardBalance" [(ngModel)]="cardModel.balance" #cardBalance="ngModel"/>
+
+    <button (click)="addCard()"
+    type="submit"
+    class="addCardForm__btn"
+    [disabled]="!addCardForm.form.valid">
+    </button>
+</form>

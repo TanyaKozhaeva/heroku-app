@@ -1,0 +1,16 @@
+<form name="form" (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm" novalidate>
+        <label for="phone">Phone</label>
+        <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required />
+        <div *ngIf="loginForm.submitted && !phone.valid" class="help-block">Phone is required</div>
+
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+        <div *ngIf="loginForm.submitted && !password.valid" class="help-block">Password is required</div>
+
+
+        <button  class="btn btn-primary">Login</button>
+        <button  class="btn btn-primary" (click)="login()"> Fake Login</button>
+        <button  class="btn btn-primary" (click)="logout()">Log out</button>
+        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+
+</form>
