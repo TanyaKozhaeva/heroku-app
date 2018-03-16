@@ -16,7 +16,7 @@ export class UserService {
   };
 
   getUsers(){
-    return this.http.get('http://apihonestbank.herokuapp.com/users', {headers: this.headers})
+    return this.http.get('https://apihonestbank.herokuapp.com/users', {headers: this.headers})
     .map(res =>
       res.json());
   }
