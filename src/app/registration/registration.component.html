@@ -1,16 +1,23 @@
-<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <label for="lastName">User Name</label>
-        <input type="text" class="form-control" name="userName" [(ngModel)]="model.username" #userName="ngModel" required />
-        <div *ngIf="f.submitted && !userName.valid" class="help-block">First Name is required</div>
+<div class="formBox">
 
-        <label for="phone">Phone</label>
-        <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #userphone="ngModel" required />
-        <div *ngIf="f.submitted && !userphone.valid">Phone is required</div>
+<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate class="form registration__form">
+        <h2 class="title">Registration</h2>
+        <div class="form__group">
+                <input type="text" class="form-control" name="userName" [(ngModel)]="model.username" #userName="ngModel" required placeholder="Name" class="form__input"/>
+                <div *ngIf="f.submitted && !userName.valid" class="help-block">First Name is required</div>
+        </div>
+        <div class="form__group">
+                <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #userphone="ngModel" required placeholder="Phone" class="form__input"/>
+                <div *ngIf="f.submitted && !userphone.valid">Phone is required</div>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-        <div *ngIf="f.submitted && !password.valid">Password is required</div>
-
-        <button class="btn">Register</button>
-        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+        <div class="form__group">              
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password" class="form__input"/>
+                <div *ngIf="f.submitted && !password.valid">Password is required</div>
+        </div>
+                        
+        <button class="link">Register</button>
+        <a [routerLink]="['/login']" class="form__link link">Cancel</a>
 </form>
+</div>
+

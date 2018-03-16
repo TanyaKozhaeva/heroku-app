@@ -7,6 +7,7 @@ import { CardsComponent } from '../admin/cards/cards.component';
 
 import { AdminRouting } from '../admin/admin-routing';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { UsersItemComponent } from './users/users-item/users-item.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
     AdminComponent,
     UsersComponent,
     CardsComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    UsersItemComponent
   ]
 })
 export class AdminModule {}

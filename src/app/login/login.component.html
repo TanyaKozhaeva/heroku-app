@@ -1,16 +1,17 @@
-<form name="form" (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm" novalidate>
-        <label for="phone">Phone</label>
-        <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required />
-        <div *ngIf="loginForm.submitted && !phone.valid" class="help-block">Phone is required</div>
+<div class="formBox">
+        <form name="form" (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm" novalidate class="form login__form">
+                <h2 class="title">Login</h2>
+                <div class="form__group">
+                        <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required placeholder="Phone" class="form__input"/>
+                        <div *ngIf="loginForm.submitted && !phone.valid" class="help-block">Phone is required</div>
+                </div>
+                <div class="form__group">
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password" class="form__input"/>
+                        <div *ngIf="loginForm.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
 
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-        <div *ngIf="loginForm.submitted && !password.valid" class="help-block">Password is required</div>
-
-
-        <button  class="btn btn-primary">Login</button>
-        <button  class="btn btn-primary" (click)="login()"> Fake Login</button>
-        <button  class="btn btn-primary" (click)="logout()">Log out</button>
-        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-
-</form>
+                <button  class="link">Login</button>
+                <button  class="link" (click)="logout()">Log out</button>
+                <a [routerLink]="['/register']" class="link">Register</a>
+        </form>
+</div>

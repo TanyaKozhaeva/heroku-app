@@ -6,9 +6,9 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  //selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.sass'],
   providers: [ 
     UserService,
     AuthService
@@ -16,12 +16,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+//currentUser: User;
 model = new User();
 
 
 
 
   constructor(
+    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
@@ -29,6 +31,7 @@ model = new User();
   ) { }
 
   ngOnInit() {
+    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   login(){
@@ -37,7 +40,7 @@ model = new User();
   .subscribe(() => {
      // if (this.authService.isLoggedIn){
        // console.log(this.authService.isLoggedIn)
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'admin';//2
+        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
  
         this.router.navigate([redirect]);
       //}

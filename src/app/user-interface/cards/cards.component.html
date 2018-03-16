@@ -9,7 +9,7 @@
       
   </app-card-item>
 </div>
-<button (click) = "displayForm()">Add a card</button>
+<button (click) = "displayForm()" class="link">Add a card</button>
 <app-add-card *ngIf="addCardForm"
 [currentUser] = "currentUser"
 (addingCard)="addCard($event)"> 

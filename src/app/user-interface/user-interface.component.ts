@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-interface',
+  //selector: 'app-user-interface',
   templateUrl: './user-interface.component.html',
-  styleUrls: ['./user-interface.component.css']
+  styleUrls: ['./user-interface.component.sass']
 })
 export class UserInterfaceComponent implements OnInit {
 

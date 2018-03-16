@@ -10,7 +10,7 @@ export class CardsService {
   constructor( private http: Http) { }
 
   getCards(currentUser){
-    return this.http.get('http://jsonplaceholder.typicode.com/todos/?userId=' + currentUser.id)
+    return this.http.get('http://jsonplaceholder.typicode.com/todos/?userId=' + 1)
     .map(res =>
       res.json());
   }

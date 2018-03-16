@@ -21,7 +21,7 @@ const adminRoutes: Routes = [
               //{ path: '', component: DashComponent, canActivate: [AuthGuard] },
               { path: 'users', component: UsersComponent },
               { path: 'cards', component: CardsComponent },
-              { path: '', component: AdminDashComponent }
+              { path: '', component: UsersComponent }
              // { path: '**', redirectTo: '' }
           ]
         }

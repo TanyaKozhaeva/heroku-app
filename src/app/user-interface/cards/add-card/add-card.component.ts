@@ -5,21 +5,21 @@ import { CardsService } from '../../../services/cards.service';
 @Component({
   selector: 'app-add-card',
   templateUrl: './add-card.component.html',
-  styleUrls: ['./add-card.component.css'],
+  styleUrls: ['./add-card.component.sass'],
   providers: [CardsService]
 })
 export class AddCardComponent implements OnInit {
 @Input() currentUser;
 @Output() addingCard = new EventEmitter;////
-
+cardModel = new Card();
 
 /*cardModel = {
   userId: 'number'
 };*/
 
-//cardModel = new Card(this.currentUser.id);
 
-cardModel;
+
+
   constructor( private cardsService: CardsService) { }
 
   ngOnInit() {
@@ -28,6 +28,7 @@ cardModel;
 
 
    addCard(){
+     console.log(this.cardModel)
      this.cardsService.addCard(this.cardModel)
      .subscribe(res => {
       this.addingCard.emit(res);////

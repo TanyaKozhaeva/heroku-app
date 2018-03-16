@@ -13,5 +13,13 @@ export class UserService {
     return this.http.post('http://jsonplaceholder.typicode.com/users', model, {headers: this.headers})
     .map(res =>
      res.json());
+  };
+
+  getUsers(){
+    return this.http.get('http://apihonestbank.herokuapp.com/users', {headers: this.headers})
+    .map(res =>
+      res.json());
   }
 }
+
+  

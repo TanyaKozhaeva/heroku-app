@@ -4,7 +4,7 @@ import { CardsService } from '../../services/cards.service';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css'],
+  styleUrls: ['./transactions.component.sass'],
   providers: [CardsService]
 })
 export class TransactionsComponent implements OnInit {

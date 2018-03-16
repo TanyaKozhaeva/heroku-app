@@ -1,13 +1,13 @@
-<form>
-  <select class="cardFrom" #from>
+<form class="form">
+  <select class="cardFrom" class="form__input" #from>
     <option *ngFor="let c of cards" value="{{ c.id }}">{{c.id}}</option>
   </select>
-  <select class="cardTo" #to>
+  <select class="cardTo" class="form__input" #to>
       <option *ngFor="let c of cards" value="{{ c.id }}">{{c.id}}</option>
   </select>
-  <label for="transactionAmount">SUM</label>
-  <input type="number" name="transactionAmount" #transactionAmount>
+
+  <input type="number" name="transactionAmount" class="form__input" placeholder="Amount" #transactionAmount>
   <button type="submit"
-  (click)="pay(from, to, transactionAmount)"></button>
+  (click)="pay(from, to, transactionAmount)" class="link"></button>
 
 </form>

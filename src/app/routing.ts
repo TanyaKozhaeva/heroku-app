@@ -11,8 +11,8 @@ import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
    // { path: '', component: DashComponent },  //{ path: '', component: DashComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
-    //{ path: '', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
+    { path: '', component: LoginComponent, pathMatch: 'full' },
     { path: '**', redirectTo: '' }
   ];
 

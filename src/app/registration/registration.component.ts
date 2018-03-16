@@ -4,9 +4,9 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registration',
+  //selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
+  styleUrls: ['./registration.component.sass'],
   providers: [ UserService ]
 })
 export class RegistrationComponent implements OnInit {
