@@ -1,3 +1,4 @@
-<p>
-  admin-dash works!
-</p>
+<app-users-item *ngFor="let user of users"
+  [user] = "user"
+  (delete)="deleteUser($event)">
+</app-users-item>

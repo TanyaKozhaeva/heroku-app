@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashComponent implements OnInit {
 currentUser = {
-  id: 1
+  id: 2
 }
 
   constructor() { }

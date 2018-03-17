@@ -2,10 +2,10 @@
 
 <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate class="form registration__form">
         <h2 class="title">Registration</h2>
-        <div class="form__group">
+        <!-- <div class="form__group">
                 <input type="text" class="form-control" name="userName" [(ngModel)]="model.username" #userName="ngModel" required placeholder="Name" class="form__input"/>
                 <div *ngIf="f.submitted && !userName.valid" class="help-block">First Name is required</div>
-        </div>
+        </div> -->
         <div class="form__group">
                 <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #userphone="ngModel" required placeholder="Phone" class="form__input"/>
                 <div *ngIf="f.submitted && !userphone.valid">Phone is required</div>

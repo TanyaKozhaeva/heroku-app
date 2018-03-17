@@ -6,13 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card-item.component.sass']
 })
 export class CardItemComponent implements OnInit {
-
   @Input() card;
 
   constructor() { }
 
   ngOnInit() {
-
   }
 
 }

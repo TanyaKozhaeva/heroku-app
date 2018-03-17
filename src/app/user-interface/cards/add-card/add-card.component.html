@@ -18,7 +18,8 @@
 </div>
 
 <div class="form__group">
-    <input type="date" class="form__input" name="cardExpiration" 
+    <input type="tel" class="form__input" name="cardExpiration" 
+    maxlength="3"
     [(ngModel)]="cardModel.expiration" #cardExpiration="ngModel" 
     placeholder="Expiration term" required>
     <div *ngIf="addCardForm.submitted && !cardExpiration.valid">Expiration term is required</div>

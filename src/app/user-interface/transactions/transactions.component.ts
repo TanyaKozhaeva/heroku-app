@@ -8,7 +8,11 @@ import { CardsService } from '../../services/cards.service';
   providers: [CardsService]
 })
 export class TransactionsComponent implements OnInit {
-@Input() currentUser;
+//@Input() currentUser;
+//currentUser = JSON.parse(localStorage.getItem('currentUser'));
+currentUser = {
+  id: 2
+}
 cards = [];
 
   constructor(private cardsService: CardsService) { }
@@ -18,7 +22,7 @@ cards = [];
   }
 
   private getCards(){
-    this.cardsService.getCards(this.currentUser)
+    this.cardsService.getCards(this.currentUser.id)
     .subscribe (res =>{
       this.cards = res;
     })

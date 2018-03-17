@@ -23,7 +23,6 @@ model = new User();
   register() {
     this.userService.create(this.model)
     .subscribe(res => {
-      console.log(res);
     this.router.navigate(['login']); 
       //Catch error
     })

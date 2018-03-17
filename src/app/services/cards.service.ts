@@ -9,15 +9,16 @@ export class CardsService {
 
   constructor( private http: Http) { }
 
-  getCards(currentUser){
-    return this.http.get('http://jsonplaceholder.typicode.com/todos/?userId=' + 1)
+  getCards(userId){
+    console.log(userId)
+    return this.http.get('https://apihonestbank.herokuapp.com/wallets/account/' + userId, {headers: this.headers})
     .map(res =>
       res.json());
   }
 
   addCard(card) {
     console.log(card);
-    return this.http.post('http://jsonplaceholder.typicode.com/todos', card, {headers: this.headers})
+    return this.http.post('http://apihonestbank.herokuapp.com/wallets', card, {headers: this.headers})
     .map(res =>
       res.json());
   }

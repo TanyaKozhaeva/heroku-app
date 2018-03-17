@@ -16,14 +16,15 @@ const adminRoutes: Routes = [
         children:[
           {
             path: '',
+            component: AdminDashComponent,
             //canActivateChild: [AuthGuard],
-            children: [
-              //{ path: '', component: DashComponent, canActivate: [AuthGuard] },
-              { path: 'users', component: UsersComponent },
-              { path: 'cards', component: CardsComponent },
-              { path: '', component: UsersComponent }
+            //children: [
+              //{ path: '', component: AdminDashComponent },
+              //{ path: 'users', component: UsersComponent },
+              //{ path: 'cards', component: CardsComponent },
+              //{ path: '', component: UsersComponent }
              // { path: '**', redirectTo: '' }
-          ]
+          //]
         }
       ]
     }

@@ -8,20 +8,21 @@ import { UserService } from '../../services/user.service';
   providers: [UserService]
 })
 export class UsersComponent implements OnInit {
-users = [];
+//users = [];
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getUsers()
+    //this.getUsers()
   }
 
-
+/*
   private getUsers() {
     this.userService.getUsers()
     .subscribe(res => {
-      this.users = res.cards;
+      this.users = res.users;
     });
   }
+  */
 
 }

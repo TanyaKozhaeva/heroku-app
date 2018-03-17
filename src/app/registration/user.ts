@@ -1,5 +1,6 @@
 export class User {
     phone: string;
-    username: string;
+    //username: string;
     password: string;
+    //role: 'USER';//
 }

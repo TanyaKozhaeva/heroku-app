@@ -1,11 +1,13 @@
-<div class="cardItem">
-  <div>
-    Phone
-    <span class="cardName">{{user.phone}}</span>
-  </div>
+<div class="userdItem">
+    <span class="userName">Phone {{user.phone}}</span>
+    <span class="userName">ID {{user.id}}</span>
+
   <div>
     Cards
-    <span class="cardNumber">{{user.cards}}</span>
+    <app-card-item *ngFor="let card of cards"
+    [card] = "card">
+    </app-card-item>
   </div>
+  <button class="link" (click)="deleteUser()">Delete User</button>
   
 </div>

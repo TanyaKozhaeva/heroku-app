@@ -10,13 +10,21 @@ export class UserService {
   constructor( private http: Http) { }
 
   create(model){
-    return this.http.post('http://jsonplaceholder.typicode.com/users', model, {headers: this.headers})
+    console.log(model)
+    return this.http.post('https://apihonestbank.herokuapp.com/users', model)
+    //.map(res =>
+     //res.json());
+  };
+
+  deleteUser(userId){
+    return this.http.delete('https://apihonestbank.herokuapp.com/users/'+ userId)
     .map(res =>
-     res.json());
+      res.json());
   };
 
   getUsers(){
     return this.http.get('https://apihonestbank.herokuapp.com/users', {headers: this.headers})
+    //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
     .map(res =>
       res.json());
   }

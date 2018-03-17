@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { CardsService } from '../../services/cards.service';
 
 
@@ -9,31 +9,39 @@ import { CardsService } from '../../services/cards.service';
   styleUrls: ['./cards.component.sass'],
   providers: [CardsService]
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, OnChanges {
 cards = [];
 addCardForm = false;
 
-@Input() currentUser;
 
+//@Input() currentUser;
 
+currentUser = {
+  id: 2
+}
+
+//currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private cardsService: CardsService) { }
 
   ngOnInit() {
-    //this.getCards();
+    this.getCards();
+  }
+  ngOnChanges() {
+    this.getCards();
   }
   displayForm() {
     this.addCardForm ? this.addCardForm = false : this.addCardForm = true;
   }
-/*
-Удалила, пока нет данных
+
   private getCards() {
+    console.log(this.currentUser)
     this.cardsService.getCards(this.currentUser.id)
     .subscribe(res => {
       this.cards = res.cards;
     });
   }
-  */
+  
   addCard(card){
     this.cards.push(card);
     console.log(this.cards);

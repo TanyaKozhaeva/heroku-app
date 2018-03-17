@@ -10,6 +10,7 @@ import { CardsService } from '../../../services/cards.service';
 })
 export class AddCardComponent implements OnInit {
 @Input() currentUser;
+//currentUser = JSON.parse(localStorage.getItem('currentUser'));
 @Output() addingCard = new EventEmitter;////
 cardModel = new Card();
 
@@ -28,11 +29,10 @@ cardModel = new Card();
 
 
    addCard(){
-     console.log(this.cardModel)
+     this.cardModel.userId = this.currentUser.id
      this.cardsService.addCard(this.cardModel)
      .subscribe(res => {
-      this.addingCard.emit(res);////
-      //this.cardModel = new Card(this.currentUser.id);
+     this.addingCard.emit(res);////
      })
      }
 

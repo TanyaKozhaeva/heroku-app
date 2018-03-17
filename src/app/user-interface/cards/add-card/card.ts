@@ -9,7 +9,7 @@
     ){}
 }*/
 export class Card {
-        //public userId: number,
+        userId: number;
         name: string;
         number: number;
         expiration: number;

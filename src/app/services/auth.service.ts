@@ -9,6 +9,7 @@ import * as moment from "moment";
 
 @Injectable ()
 export class AuthService{
+  private headers = new Headers({'Content-Type': 'application/json'});
     constructor(private http: HttpClient){}
    //isLoggedIn = false;
    redirectUrl: string;//2
@@ -53,16 +54,16 @@ getExpiration() {
   return moment(expiresAt);
 }  
 */ 
-login(username: string, password: string) {
-  return this.http.post('http://jsonplaceholder.typicode.com/users', { username: username, password: password })
+//{ phone: phone, password: password }
+login(model) {
+
+  return this.http.post('https://apihonestbank.herokuapp.com/login', {id: null, phone: model.phone, password: model.password})
       .map(user => {
-        console.log(user);
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (user) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));
-              console.log(localStorage)
           }
           return user;
           

@@ -35,11 +35,13 @@ model = new User();
   }
 
   login(){
-    
-    this.authService.login(this.model.phone, this.model.password)
+    console.log(this.model)
+    //this.authService.login(this.model.phone, this.model.password)
+    this.authService.login(this.model)
   .subscribe(() => {
      // if (this.authService.isLoggedIn){
        // console.log(this.authService.isLoggedIn)
+       console.log(localStorage)
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
  
         this.router.navigate([redirect]);
