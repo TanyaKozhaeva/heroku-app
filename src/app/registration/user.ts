@@ -1,6 +1,21 @@
-export class User {
-    phone: string;
-    //username: string;
-    password: string;
+//export class User {
+    //constructor(
+       // public firstName: string,
+       // public lastName: string,
+       // public phone: string,
+       // public password: string,
     //role: 'USER';//
+    ////){}
+    
+//}
+export class User {
+
+        firstName: string;
+        lastName: string;
+        phone: string;
+        password: string;
+    //role: 'USER';/
+    
 }
+
+

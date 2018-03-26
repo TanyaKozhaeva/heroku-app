@@ -5,7 +5,7 @@
     class="form__input" name="cardName" 
     [(ngModel)]="cardModel.name" #cardName="ngModel" 
     required placeholder="Card name">
-    <div *ngIf="addCardForm.submitted && !cardName.valid">Card name is required</div>
+    <!-- <app-errors [control]="cardName"></app-errors> -->
 </div>
 
 <div class="form__group">

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+//import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
@@ -10,7 +11,7 @@ import * as moment from "moment";
 @Injectable ()
 export class AuthService{
   private headers = new Headers({'Content-Type': 'application/json'});
-    constructor(private http: HttpClient){}
+    constructor(private http: Http){}
    //isLoggedIn = false;
    redirectUrl: string;//2
 
@@ -57,13 +58,14 @@ getExpiration() {
 //{ phone: phone, password: password }
 login(model) {
 
-  return this.http.post('https://apihonestbank.herokuapp.com/login', {id: null, phone: model.phone, password: model.password})
+  return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {headers: this.headers})
       .map(user => {
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (user) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));
+              console.log(localStorage)
           }
           return user;
           

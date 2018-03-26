@@ -1,22 +1,50 @@
 <div class="formBox">
 
-<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate class="form registration__form">
+<form name="registerForm" (ngSubmit)="registerForm.valid && register()" #registerForm="ngForm" novalidate class="form registration__form">
         <h2 class="title">Registration</h2>
-        <!-- <div class="form__group">
-                <input type="text" class="form-control" name="userName" [(ngModel)]="model.username" #userName="ngModel" required placeholder="Name" class="form__input"/>
-                <div *ngIf="f.submitted && !userName.valid" class="help-block">First Name is required</div>
-        </div> -->
         <div class="form__group">
-                <input type="tel" class="form-control" name="phone" [(ngModel)]="model.phone" #userphone="ngModel" required placeholder="Phone" class="form__input"/>
-                <div *ngIf="f.submitted && !userphone.valid">Phone is required</div>
+                <input type="text" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required placeholder="First name" class="form__input"/>
+                <app-errors [control]="firstName"></app-errors>
+        </div>
+        <div class="form__group">
+                <input type="text"  name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required placeholder="Last name" class="form__input"/>
+                <app-errors [control]="lastName"></app-errors>
+        </div>
+        <div class="form__group">
+                <input type="tel" class="form__input" name="userPhone" placeholder="Phone"
+                [(ngModel)]="model.phone"
+                #userPhone="ngModel"
+                ngModel
+                telephoneNumber
+                minlength="13"
+                maxlength="13"
+                required/>
+                <app-errors [control]="userPhone"></app-errors>
+                <!-- <div *ngIf="f.submitted && !userphone.valid">Phone is required</div> -->
+        </div>
+
+        <div class="form__group">
+                <input type="email" class="form__input" name="userEmail" placeholder="Email"
+                [(ngModel)]="model.email"
+                #userEmail="ngModel"
+                ngModel
+                email
+                required />
+                <app-errors [control]="userEmail"></app-errors>
         </div>
 
         <div class="form__group">              
-                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password" class="form__input"/>
-                <div *ngIf="f.submitted && !password.valid">Password is required</div>
+                <input type="password" class="form__input" name="userPassword" placeholder="Password"
+                [(ngModel)]="model.password"
+                #userPassword="ngModel"
+                ngModel
+                passwordValidation
+                minlength="6"
+                required/>
+                <app-errors [control]="userPassword"></app-errors>
         </div>
                         
-        <button class="link">Register</button>
+        <button class="link" [disabled]="!registerForm.valid">Register</button>
         <a [routerLink]="['/login']" class="form__link link">Cancel</a>
 </form>
 </div>

@@ -21,10 +21,11 @@ model = new User();
   }
 
   register() {
-    this.userService.create(this.model)
-    .subscribe(res => {
-    this.router.navigate(['login']); 
+    console.log(this.model)
+    //this.userService.create(this.model)
+    //.subscribe(res => {
+    //this.router.navigate(['login']); 
       //Catch error
-    })
+    //})
 }
 }

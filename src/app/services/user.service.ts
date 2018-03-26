@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, ResponseContentType, RequestMethod } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -26,8 +26,20 @@ export class UserService {
     return this.http.get('https://apihonestbank.herokuapp.com/users', {headers: this.headers})
     //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
     .map(res =>
-      res.json());
+     res.json());
+  }
+  getFullUsersInfo(){
+    return this.http.get('https://apihonestbank.herokuapp.com/profiles', {headers: this.headers})
+    //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
+    .map(res =>
+     res.json());
+  }
+  getReport(){
+   return this.http.get('https://apihonestbank.herokuapp.com/report', { responseType: ResponseContentType.Blob })
+    //return this.http.get('https://contactsapi.apispark.net/v1/companies/', { responseType: ResponseContentType.Blob })
+    .map(res =>
+      //console.log(res))
+        new Blob([res.blob()], { type: 'application/pdf' }))
   }
 }
-
   

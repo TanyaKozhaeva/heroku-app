@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+//import { EmailvalidatorDirective } from '../../../services/emailvalidator.directive'
 import { CardsService } from '../../../services/cards.service';
 import { UserService } from '../../../services/user.service';
 
@@ -14,12 +16,16 @@ export class UsersItemComponent implements OnInit {
 cards = [];
 
 
-  constructor(private cardsService: CardsService,
+  constructor(
+  private cardsService: CardsService,
   private userService: UserService) { }
 
   ngOnInit() {
     this.getCards(this.user);
   }
+
+ 
+
 
   private getCards(user) {
     this.cardsService.getCards(user.id)
@@ -27,6 +33,8 @@ cards = [];
       this.cards = res;
     });
   }
+
+ 
 
   deleteUser(){
     console.log(this.user.id)

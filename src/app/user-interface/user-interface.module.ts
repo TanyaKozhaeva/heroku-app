@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { UserInterfaceComponent } from './user-interface.component';
+import { AuthGuard } from '../services/auth-guard.service';
+import { JwtInterceptor } from '../services/jwt.interceptor';
 import { DashComponent } from './dash/dash.component';
 import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
