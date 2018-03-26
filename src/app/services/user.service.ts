@@ -35,11 +35,12 @@ export class UserService {
      res.json());
   }
   getReport(){
-   return this.http.get('https://apihonestbank.herokuapp.com/report', { responseType: ResponseContentType.Blob })
-    //return this.http.get('https://contactsapi.apispark.net/v1/companies/', { responseType: ResponseContentType.Blob })
-    .map(res =>
+  console.log("start request")
+   return this.http.get('https://apihonestbank.herokuapp.com/report')
+    //return this.http.get('https://apihonestbank.herokuapp.com/report', { responseType: ResponseContentType.Blob })
+    //.map(res =>
       //console.log(res))
-        new Blob([res.blob()], { type: 'application/pdf' }))
+        //new Blob([res.blob()], { type: 'application/pdf' }))
   }
 }
   
