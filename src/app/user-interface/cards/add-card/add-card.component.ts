@@ -18,7 +18,7 @@ export class AddCardComponent implements OnInit {
 @Output() addingCard = new EventEmitter;////
 numberMask: any[] = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 expiredMask: any[] = [/\d/, /\d/, '/', /\d/, /\d/]
-private currencyMask = createNumberMask({ prefix: '', suffix: 'UAH', thousandsSeparatorSymbol: '.', allowDecimal: true, decimalSymbol: ',' })
+currencyMask = createNumberMask({ prefix: '', suffix: 'UAH', thousandsSeparatorSymbol: '.', allowDecimal: true, decimalSymbol: ',' })
 
 
 
