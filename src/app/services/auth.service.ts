@@ -7,6 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map'
 import * as moment from "moment";
+import * as jwt_decode from "jwt-decode";
 
 @Injectable ()
 export class AuthService{
@@ -58,8 +59,12 @@ getExpiration() {
 //{ phone: phone, password: password }
 login(model) {
 
-  return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {headers: this.headers})
+  return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password})
       .map(user => {
+      console.log(user)
+        //console.log(user.json().body)
+       // const tokenInfo = this.getDecodedAccessToken("")
+       // console.log(tokenInfo)
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (user) {
@@ -69,7 +74,16 @@ login(model) {
           }
           return user;
           
-      });
+      })
+    }
+
+getDecodedAccessToken(token): any {
+  try{
+      return jwt_decode(token);
+  }
+  catch(Error){
+      return null;
+  }
 }
 
 logout() {

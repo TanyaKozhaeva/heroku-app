@@ -10,6 +10,9 @@ import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
 import { AddCardComponent } from './cards/add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { DirectivesModule } from '../directives/directives.module';
+import { TextMaskModule } from 'angular2-text-mask';
+
 
 import { UserRoutingModule } from './user-routing.module'
 
@@ -17,6 +20,8 @@ import { UserRoutingModule } from './user-routing.module'
   imports: [
     CommonModule,
     FormsModule,
+    DirectivesModule,
+    TextMaskModule,
     UserRoutingModule
   ],
   declarations: [

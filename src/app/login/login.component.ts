@@ -15,6 +15,7 @@ import { AuthService } from '../services/auth.service';
    ]
 })
 export class LoginComponent implements OnInit {
+mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
 
 //currentUser: User;
 model = new User();

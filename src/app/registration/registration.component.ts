@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 model = new User();
+//mask: any[] = ['+', '380', '', /[0-9]/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
 
   constructor( 
     private userService: UserService,

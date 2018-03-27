@@ -13,6 +13,7 @@ export class CardsService {
     console.log(userId)
     return this.http.get('https://apihonestbank.herokuapp.com/wallets/account/' + userId, {headers: this.headers})
     .map(res =>
+      //console.log(res))
       res.json());
   }
 

@@ -1,14 +1,14 @@
 <div class="cards">
   
-  <div *ngIf="cards.length == 0">
+  <!-- <div *ngIf="cards.length == 0">
         Add a card
-  </div>
-  <div *ngIf="cards.length > 0">
+  </div> -->
+  <!-- <div *ngIf="cards.length > 0">
   <app-card-item *ngFor="let card of cards"
   [card] = "card">
       
   </app-card-item>
-</div>
+</div> -->
 <button (click) = "displayForm()" class="link">Add a card</button>
 <app-add-card *ngIf="addCardForm"
 [currentUser] = "currentUser"

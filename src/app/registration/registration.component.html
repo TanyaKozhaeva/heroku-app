@@ -10,17 +10,16 @@
                 <input type="text"  name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required placeholder="Last name" class="form__input"/>
                 <app-errors [control]="lastName"></app-errors>
         </div>
+        
         <div class="form__group">
                 <input type="tel" class="form__input" name="userPhone" placeholder="Phone"
                 [(ngModel)]="model.phone"
                 #userPhone="ngModel"
                 ngModel
+                [textMask]="{mask: mask}"
                 telephoneNumber
-                minlength="13"
-                maxlength="13"
                 required/>
                 <app-errors [control]="userPhone"></app-errors>
-                <!-- <div *ngIf="f.submitted && !userphone.valid">Phone is required</div> -->
         </div>
 
         <div class="form__group">

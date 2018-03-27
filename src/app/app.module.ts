@@ -14,7 +14,8 @@ import { DirectivesModule } from '../app/directives/directives.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserInterfaceModule } from './user-interface/user-interface.module';
-import { ErrorsComponent } from './errors/errors.component';
+
+import { TextMaskModule } from 'angular2-text-mask';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
 //import { UserInterfaceComponent } from './user-interface/user-interface.component';
@@ -25,9 +26,8 @@ import { ErrorsComponent } from './errors/errors.component';
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent,
-    //PasswordValidationDirective,
-    ErrorsComponent
+    LoginComponent
+    //ErrorsComponent
 
     //UserInterfaceComponent
     //AdminComponent,
@@ -42,6 +42,7 @@ import { ErrorsComponent } from './errors/errors.component';
     ReactiveFormsModule,
     AdminModule,
     UserInterfaceModule,
+    TextMaskModule,
     AppRoutingModule
  
   ],

@@ -5,24 +5,30 @@
     class="form__input" name="cardName" 
     [(ngModel)]="cardModel.name" #cardName="ngModel" 
     required placeholder="Card name">
-    <!-- <app-errors [control]="cardName"></app-errors> -->
+    <app-errors [control]="cardName"></app-errors>
 </div>
 
 <div class="form__group">
-    <input type="number" class="form__input" name="cardNumber" 
+    <input type="text" class="form__input" name="cardNumber" 
     [(ngModel)]="cardModel.number" 
     #cardNumber="ngModel" 
     placeholder="Card number"
+    ngModel
+    cardValidator
+    [textMask]="{mask: numberMask}"
     required>
-    <div *ngIf="addCardForm.submitted && !cardNumber.valid">Card number is required</div>
+    <app-errors [control]="cardNumber"></app-errors>
 </div>
 
 <div class="form__group">
-    <input type="tel" class="form__input" name="cardExpiration" 
-    maxlength="3"
-    [(ngModel)]="cardModel.expiration" #cardExpiration="ngModel" 
-    placeholder="Expiration term" required>
-    <div *ngIf="addCardForm.submitted && !cardExpiration.valid">Expiration term is required</div>
+    <input type="text" class="form__input" name="cardExpiration" 
+    [(ngModel)]="cardModel.expiration" 
+    #cardExpiration="ngModel" 
+    placeholder="Expiration term" 
+    expiredValidator
+    [textMask]="{mask: expiredMask}"
+    required>
+    <app-errors [control]="cardExpiration"></app-errors>
 </div>
 
 <!-- <div class="form__group">
@@ -35,9 +41,10 @@
 </div> -->
 
 <div class="form__group">
-    <input type="number" class="form__input" name="cardBalance" 
+    <input type="text" class="form__input" name="cardBalance" 
     [(ngModel)]="cardModel.balance" #cardBalance="ngModel" 
-    placeholder="Card balance"/>
+    placeholder="Card balance"
+    [textMask]="{mask: currencyMask}"/>
 </div>
     <button (click)="addCard()"
     type="submit"
