@@ -23,11 +23,11 @@ mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\
   }
 
   register() {
-    console.log(this.model)
-    //this.userService.create(this.model)
-    //.subscribe(res => {
-    //this.router.navigate(['login']); 
+    //console.log(this.model)
+    this.userService.create(this.model)
+    .subscribe(res => {
+    this.router.navigate(['login']); 
       //Catch error
-    //})
+    })
 }
 }

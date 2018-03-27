@@ -13,6 +13,7 @@ export class UserService {
     console.log(model)
     return this.http.post('https://apihonestbank.herokuapp.com/users', model)
     //.map(res =>
+      //console.log(res))
      //res.json());
   };
 
