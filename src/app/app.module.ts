@@ -14,7 +14,8 @@ import { DirectivesModule } from '../app/directives/directives.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserInterfaceModule } from './user-interface/user-interface.module';
-
+import { AuthGuard } from './services/auth-guard.service';
+import { JwtInterceptor } from './services/jwt.interceptor';
 import { TextMaskModule } from 'angular2-text-mask';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
@@ -46,7 +47,14 @@ import { TextMaskModule } from 'angular2-text-mask';
     AppRoutingModule
  
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+      multi: true
+  },
+  AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

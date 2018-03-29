@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { UserInterfaceComponent } from './user-interface.component';
 import { AuthGuard } from '../services/auth-guard.service';
@@ -31,6 +32,14 @@ import { UserRoutingModule } from './user-routing.module'
     CardItemComponent,
     AddCardComponent,
     TransactionsComponent
-  ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+      multi: true
+  },
+  AuthGuard
+  ],
 })
 export class UserInterfaceModule { }

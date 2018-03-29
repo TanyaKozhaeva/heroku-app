@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
@@ -9,10 +9,16 @@ import 'rxjs/add/operator/map'
 import * as moment from "moment";
 import * as jwt_decode from "jwt-decode";
 
+//const httpOptions = {
+  //headers: new HttpHeaders({
+   // 'Content-Type':  'application/json'
+  //})
+//};
 @Injectable ()
 export class AuthService{
   private headers = new Headers({'Content-Type': 'application/json'});
-    constructor(private http: Http){}
+  
+    constructor(private http: HttpClient){}
    //isLoggedIn = false;
    redirectUrl: string;//2
 
@@ -58,13 +64,17 @@ getExpiration() {
 */ 
 //{ phone: phone, password: password }
 login(model) {
-
-  return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password})
+console.log("start")
+const headers = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
+};
+  return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
       .map(user => {
       console.log(user)
-        //console.log(user.json().body)
-       // const tokenInfo = this.getDecodedAccessToken("")
-       // console.log(tokenInfo)
+        
+       //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
+    const tokenInfo = this.getDecodedAccessToken(user)
+      console.log(tokenInfo)
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (user) {
@@ -82,6 +92,7 @@ getDecodedAccessToken(token): any {
       return jwt_decode(token);
   }
   catch(Error){
+    console.log(Error)
       return null;
   }
 }

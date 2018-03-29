@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //import { DashComponent } from './dash/dash.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserInterfaceComponent } from './user-interface/user-interface.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { JwtInterceptor } from './services/jwt.interceptor';
 import { LoginComponent } from './login/login.component';
 
 
@@ -27,7 +29,12 @@ const appRoutes: Routes = [
       RouterModule
     ],
     providers: [
-      AuthGuard,
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+    multi: true
+},
+  AuthGuard,
       AuthService
     ]
   })

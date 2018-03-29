@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { UserInterfaceComponent } from './user-interface.component';
@@ -10,6 +11,7 @@ import { AddCardComponent } from './cards/add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { DashComponent } from './dash/dash.component';
 import { AuthGuard } from '../services/auth-guard.service';
+import { JwtInterceptor } from '../services/jwt.interceptor';
 
 const userRoutes: Routes = [
   {
@@ -47,6 +49,14 @@ const userRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+      multi: true
+  },
+  AuthGuard
+  ],
 })
 export class UserRoutingModule { }
