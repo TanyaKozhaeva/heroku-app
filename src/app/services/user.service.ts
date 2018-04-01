@@ -12,9 +12,8 @@ export class UserService {
   constructor( private http: HttpClient) { }
 
   create(model){
-    console.log(model)
-    //return this.http.post('https://apihonestbank.herokuapp.com/users', model)
-    return this.http.post('https://apihonestbank.herokuapp.com/check', model)
+    return this.http.post('https://apihonestbank.herokuapp.com/registration', model)
+   // return this.http.post('https://apihonestbank.herokuapp.com/check', model)
     //.map(res =>
       //console.log(res))
      //res.json());
