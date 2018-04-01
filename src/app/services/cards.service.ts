@@ -24,5 +24,16 @@ export class CardsService {
     //  res.json());
   }
 
+  blockCard(card){
+    console.log(card)
+    //const headers = {
+     // headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
+    //};
+    return this.http.put('http://apihonestbank.herokuapp.com/wallets/' + card.id, card)
+    .map(res =>
+      console.log(res)
+    )
+  }
+
 }
 

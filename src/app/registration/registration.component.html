@@ -12,10 +12,9 @@
         </div>
         
         <div class="form__group">
-                <input type="tel" class="form__input" name="userPhone" placeholder="Phone"
+                <input type="text" class="form__input" name="userPhone" placeholder="Phone"
                 [(ngModel)]="model.phone"
                 #userPhone="ngModel"
-                ngModel
                 [textMask]="{mask: mask}"
                 telephoneNumber
                 required/>
@@ -26,21 +25,29 @@
                 <input type="email" class="form__input" name="userEmail" placeholder="Email"
                 [(ngModel)]="model.email"
                 #userEmail="ngModel"
-                ngModel
                 email
                 required />
                 <app-errors [control]="userEmail"></app-errors>
         </div>
 
-        <div class="form__group">              
+        <div class="form__group" ngModelGroup="passwordGroup"
+        #passwordGroup="ngModelGroup"
+        validateEqual
+        password="userPassword"
+        confirmation="passwordConfirmation">              
                 <input type="password" class="form__input" name="userPassword" placeholder="Password"
                 [(ngModel)]="model.password"
                 #userPassword="ngModel"
-                ngModel
                 passwordValidation
                 minlength="6"
                 required/>
                 <app-errors [control]="userPassword"></app-errors>
+
+                <input type="password" class="form__input" name="passwordConfirmation" placeholder="Confirm password"
+                #passwordConfirmation="ngModel"
+                ngModel
+                required/>
+                <app-errors [control]="passwordGroup"></app-errors>
         </div>
                         
         <button class="link" [disabled]="!registerForm.valid">Register</button>

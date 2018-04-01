@@ -16,6 +16,7 @@ export class ErrorsComponent {
     'pattern': (params) => 'The required pattern is: ' + params.requiredPattern,
     'telephoneNumber': (params) => params.message,
     'passwordValidation': (params) => params.message,
+    'validateEqual': (params) => params.message,
     'cardValidator': (params) => params.message,
     'expiredValidator': (params) => params.message
   };

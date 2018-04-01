@@ -4,6 +4,7 @@ import { EmailValidator } from './emailvalidator.directive';
 import { NamevalidatorDirective } from './namevalidator.directive';
 import { PhonevalidatorDirective } from './phonevalidator.directive';
 import { PasswordValidationDirective } from './password-validation.directive';
+import { ConfirmPasswordDirective } from './unique-phone.directive';//
 import { CardvalidatorDirective } from './cardvalidator.directive';
 import { ErrorsComponent } from '../errors/errors.component';
 import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
@@ -22,6 +23,7 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
     NamevalidatorDirective,
     PhonevalidatorDirective,
     PasswordValidationDirective,
+    ConfirmPasswordDirective,
     CardvalidatorDirective,
     ErrorsComponent,
     ExpiredvalidatorDirective
@@ -30,6 +32,7 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
   exports: [
     PhonevalidatorDirective,
     PasswordValidationDirective,
+    ConfirmPasswordDirective,
     CardvalidatorDirective,
     ExpiredvalidatorDirective,
     ErrorsComponent

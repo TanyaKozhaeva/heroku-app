@@ -1,36 +1,32 @@
-/*import { Directive } from '@angular/core';
-import { NG_ASYNC_VALIDATORS, Validator, FormControl, ValidationErrors } from '@angular/forms';
-import { UserService} from './../services/user.service'
+import { Directive, forwardRef, Input } from '@angular/core';
+import { NG_VALIDATORS, Validator, FormControl, ValidationErrors, FormGroup } from '@angular/forms';
 
 @Directive({
-  selector: '[uniquePhoneValidator]',
+  selector: '[validateEqual][ngModelGroup]',
   providers: [
-    {provide: NG_ASYNC_VALIDATORS, 
-      useExisting: UniquePhoneDirective, multi: true},
-    UserService
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => ConfirmPasswordDirective),
+      multi: true
+    }
   ]
 })
-export class UniquePhoneDirective implements Validator {
-  constructor(private userService:UserService) {
-  }
+export class ConfirmPasswordDirective implements Validator {
+  @Input('password') public password: string;
+  @Input('confirmation') public confirmation;
 
-  validate(c:FormControl): ValidationErrors{
+  public validate(fg: FormGroup): ValidationErrors{
+    const fieldOne = fg.value[this.password];
+    const fieldTwo = fg.value[this.confirmation];
     const message = {
-      'uniquePhoneValidator': {
-        'message': 'This phone is already exist'
+     'validateEqual': {
+       'message': 'Passwords are not the same'
       }
-    };
-    return new Promise(resolve =>
-      this.userService.getUserPhone(c.value).subscribe(res => {
-        if (res == true) {
-            resolve(null);
-        }
-        else {
-            //resolve({validateEmailTaken: {valid: false}});
-             resolve(message);
-             //Возможно нужно поменять местами, так как при наличии неуникального телефонасервер может вернуть фолс, тогда мы возвращаем мэссэдж
-        }
-    }));
+    }
+
+    if (fieldTwo != '' && fieldOne !== fieldTwo ) {
+      return message;
+    }
+    return null;
   }
 }
-*/
