@@ -3,6 +3,7 @@ import { Http, Headers, ResponseContentType, RequestMethod } from '@angular/http
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
+
 @Injectable()
 export class UserService {
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -26,10 +27,11 @@ export class UserService {
   };
 
   getUsers(){
+  
     return this.http.get('https://apihonestbank.herokuapp.com/users')
     //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
     //.map(res =>
-    // res.json());
+    // console.log(res))
   }
   getFullUsersInfo(){
     return this.http.get('https://apihonestbank.herokuapp.com/profiles')

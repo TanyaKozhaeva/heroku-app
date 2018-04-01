@@ -32,14 +32,14 @@ import { UserRoutingModule } from './user-routing.module'
     CardItemComponent,
     AddCardComponent,
     TransactionsComponent
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-      multi: true
-  },
-  AuthGuard
-  ],
+  ]
+  //providers: [
+  //  {
+  //    provide: HTTP_INTERCEPTORS,
+  //  useClass: JwtInterceptor,
+  //    multi: true
+  //},
+  //AuthGuard
+  //],
 })
 export class UserInterfaceModule { }

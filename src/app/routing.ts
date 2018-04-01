@@ -29,12 +29,12 @@ const appRoutes: Routes = [
       RouterModule
     ],
     providers: [
-      {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-    multi: true
-},
-  AuthGuard,
+     // {
+    //  provide: HTTP_INTERCEPTORS,
+     // useClass: JwtInterceptor,
+    //multi: true
+//},
+ // AuthGuard,
       AuthService
     ]
   })

@@ -13,7 +13,7 @@ import { UserService } from '../../../services/user.service';
 export class UsersItemComponent implements OnInit {
 @Input() user;
 @Output() delete = new EventEmitter();
-cards = [];
+cards;
 
 
   constructor(

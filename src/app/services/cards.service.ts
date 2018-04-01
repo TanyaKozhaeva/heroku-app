@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+//import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import 'rxjs/add/operator/map';
 
 
@@ -7,21 +9,19 @@ import 'rxjs/add/operator/map';
 export class CardsService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor( private http: Http) { }
+  constructor( private http: HttpClient) { }
 
   getCards(userId){
-    console.log(userId)
-    return this.http.get('https://apihonestbank.herokuapp.com/wallets/account/' + userId, {headers: this.headers})
-    .map(res =>
+    return this.http.get('https://apihonestbank.herokuapp.com/wallets/account/' + userId)
+    //.map(res =>
       //console.log(res))
-      res.json());
+      //res.json());
   }
 
   addCard(card) {
-    console.log(card);
-    return this.http.post('http://apihonestbank.herokuapp.com/wallets', card, {headers: this.headers})
-    .map(res =>
-      res.json());
+    return this.http.post('http://apihonestbank.herokuapp.com/wallets', card)
+    //.map(res =>
+    //  res.json());
   }
 
 }

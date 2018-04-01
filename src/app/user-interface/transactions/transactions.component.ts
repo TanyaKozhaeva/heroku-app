@@ -13,7 +13,7 @@ export class TransactionsComponent implements OnInit {
 currentUser = {
   id: 2
 }
-cards = [];
+cards;
 
   constructor(private cardsService: CardsService) { }
 

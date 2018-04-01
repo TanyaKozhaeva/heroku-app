@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
   providers: [UserService]
 })
 export class AdminDashComponent implements OnInit, OnChanges {
-users = [];
+users;
 
 
   constructor(private userService: UserService) { }

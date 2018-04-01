@@ -49,14 +49,14 @@ const userRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-      multi: true
-  },
-  AuthGuard
-  ],
+  ]
+//  providers: [
+//    {
+//      provide: HTTP_INTERCEPTORS,
+ //   useClass: JwtInterceptor,
+//      multi: true
+ // },
+ // AuthGuard
+//  ],
 })
 export class UserRoutingModule { }

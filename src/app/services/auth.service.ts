@@ -64,23 +64,19 @@ getExpiration() {
 */ 
 //{ phone: phone, password: password }
 login(model) {
-console.log("start")
 const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
 };
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
       .map(user => {
-      console.log(user)
         
        //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
     const tokenInfo = this.getDecodedAccessToken(user)
-      console.log(tokenInfo)
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (user) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));
-              console.log(localStorage)
           }
           return user;
           

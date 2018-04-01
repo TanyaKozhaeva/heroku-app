@@ -10,7 +10,7 @@ import { CardsService } from '../../services/cards.service';
   providers: [CardsService]
 })
 export class CardsComponent implements OnInit, OnChanges {
-cards = [];
+cards;
 addCardForm = false;
 
 
@@ -35,16 +35,14 @@ currentUser = {
   }
 
   private getCards() {
-    console.log(this.currentUser)
     this.cardsService.getCards(this.currentUser.id)
     .subscribe(res => {
-      this.cards = res.cards;
+      this.cards = res;
     });
   }
   
   addCard(card){
     this.cards.push(card);
-    console.log(this.cards);
   }
 
 }
