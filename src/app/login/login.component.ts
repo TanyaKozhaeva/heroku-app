@@ -50,7 +50,7 @@ model = new User();
        } else {
         this.path = 'admin';//2
        }
-       this.router.navigate([this.path]);
+       this.router.navigate([this.path, {id: this.currentUser.userInfo.userId}]);
         //this.router.navigate([redirect]);
     });
   }

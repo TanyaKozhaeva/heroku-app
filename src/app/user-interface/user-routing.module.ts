@@ -25,7 +25,7 @@ const userRoutes: Routes = [
           children: [
             { path: 'cards', component: CardsComponent },
             { path: 'transactions', component: TransactionsComponent },
-            //{ path: 'add-card', component: AddCardComponent },
+            { path: 'add-card', component: AddCardComponent },
             { path: '', component: CardsComponent }
         ]
       }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { CardsService } from '../../services/cards.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,21 +10,23 @@ import { CardsService } from '../../services/cards.service';
   providers: [CardsService]
 })
 export class CardsComponent implements OnInit, OnChanges {
+userId;
 cards;
 addCardForm = false;
 
 
 //@Input() currentUser;
 
-currentUser = {
-  id: 2
-}
 
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  constructor(private cardsService: CardsService) { }
+  constructor(
+    private cardsService: CardsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
     this.getCards();
   }
   ngOnChanges() {
@@ -35,7 +37,7 @@ currentUser = {
   }
 
   private getCards() {
-    this.cardsService.getCards(this.currentUser.id)
+    this.cardsService.getCards(this.userId)
     .subscribe(res => {
       this.cards = res;
     });

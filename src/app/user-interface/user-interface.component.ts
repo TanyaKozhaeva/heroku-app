@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   //selector: 'app-user-interface',
@@ -8,14 +9,19 @@ import { NavigationExtras } from '@angular/router';
 })
 export class UserInterfaceComponent implements OnInit {
 currentUser;
-  constructor() { }
+userId;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.userId = this.route.snapshot.paramMap.get('id');
+    console.log(this.userId)
+   // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+   // this.userId = this.currentUser.userInfo.userId
   }
-  navigationExtras: NavigationExtras = {
-    queryParams: { 'currentUser': 'this.currentUser'}
-  };
+  
+ // navigationExtras: NavigationExtras = {
+  //  queryParams: { 'currentUser': 'this.currentUser'}
+  //};
 
   
 

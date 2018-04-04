@@ -1,19 +1,21 @@
 <div class="cards">
   
   <!-- <div *ngIf="cards.length == 0">
-        Add a card
+        You have no cards
   </div> -->
-  <!-- <div *ngIf="cards.length > 0">
+  <!-- <div *ngIf="cards.length > 0"></div> -->
+  <div>
   <app-card-item *ngFor="let card of cards"
   [card] = "card">
-      
   </app-card-item>
-</div> -->
-<button (click) = "displayForm()" class="link">Add a card</button>
-<app-add-card *ngIf="addCardForm"
+</div>
+<!-- <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link">Add a card</a> -->
+<a routerLink="./add-card" routerLinkActive="active" class="link">Add a card</a>
+<!-- <button (click) = "displayForm()" class="link">Add a card</button> -->
+<!-- <app-add-card *ngIf="addCardForm"
 [currentUser] = "currentUser"
 (addingCard)="addCard($event)"> 
-</app-add-card>
+</app-add-card> -->
 </div>
 
 <!-- [currentUser] = "currentUser" -->

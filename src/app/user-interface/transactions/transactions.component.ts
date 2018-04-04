@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class TransactionsComponent implements OnInit {
 //@Input() currentUser;
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
-currentUser;
+userId;
 cards;
 
   constructor(
@@ -21,18 +21,14 @@ cards;
   ) { }
 
   ngOnInit() {
-    this.currentUser = this.route
-      .queryParamMap
-      .map(params => 
-        console.log(params)
-        //params.get('currentUser')
-      );
+    this.userId = this.route.snapshot.paramMap.get('id');
+    //console.log(this.userId)
     this.getCards()
   }
 
   private getCards(){
-    console.log(this.currentUser)
-    this.cardsService.getCards(this.currentUser.id)
+    //console.log(this.userId)
+    this.cardsService.getCards(this.userId)
     .subscribe (res =>{
       this.cards = res;
     })
