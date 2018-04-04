@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardsService } from '../../services/cards.service';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-transactions',
@@ -10,18 +12,26 @@ import { CardsService } from '../../services/cards.service';
 export class TransactionsComponent implements OnInit {
 //@Input() currentUser;
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
-currentUser = {
-  id: 2
-}
+currentUser;
 cards;
 
-  constructor(private cardsService: CardsService) { }
+  constructor(
+    private cardsService: CardsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.currentUser = this.route
+      .queryParamMap
+      .map(params => 
+        console.log(params)
+        //params.get('currentUser')
+      );
     this.getCards()
   }
 
   private getCards(){
+    console.log(this.currentUser)
     this.cardsService.getCards(this.currentUser.id)
     .subscribe (res =>{
       this.cards = res;

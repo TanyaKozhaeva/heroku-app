@@ -68,17 +68,20 @@ const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
 };
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
-      .map(user => {
+      .map(token => {
         
        //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
-    const tokenInfo = this.getDecodedAccessToken(user)
+        const userInfo = this.getDecodedAccessToken(token)
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
-            if (user) {
+            if (token && userInfo) {
+              let currentUser = {token, userInfo}
               // store user details and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem('currentUser', JSON.stringify(user));
+              localStorage.setItem('currentUser', JSON.stringify(currentUser));
+              console.log(localStorage)
+
           }
-          return user;
+          return token;
           
       })
     }

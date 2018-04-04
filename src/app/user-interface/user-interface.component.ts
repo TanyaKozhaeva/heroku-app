@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   //selector: 'app-user-interface',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-interface.component.sass']
 })
 export class UserInterfaceComponent implements OnInit {
-
+currentUser;
   constructor() { }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+  navigationExtras: NavigationExtras = {
+    queryParams: { 'currentUser': 'this.currentUser'}
+  };
+
+  
 
 }

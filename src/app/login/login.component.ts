@@ -17,7 +17,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
 
-//currentUser: User;
+currentUser;
+path;
 model = new User();
 
 
@@ -36,17 +37,21 @@ model = new User();
   }
 
   login(){
-    console.log(this.model)
     //this.authService.login(this.model.phone, this.model.password)
     this.authService.login(this.model)
   .subscribe(() => {
      // if (this.authService.isLoggedIn){
        // console.log(this.authService.isLoggedIn)
-       console.log(localStorage)
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
- 
-        this.router.navigate([redirect]);
-      //}
+       
+       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       if(this.currentUser.userInfo.role == "USER"){
+        this.path = 'user'
+        //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
+       } else {
+        this.path = 'admin';//2
+       }
+       this.router.navigate([this.path]);
+        //this.router.navigate([redirect]);
     });
   }
   

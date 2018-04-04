@@ -1,6 +1,6 @@
 <div class="nav">
     <a routerLink="./cards" routerLinkActive="active" class="link">Cards</a>
-    <a routerLink="./transactions" routerLinkActive="active" class="link">Transactions</a>
+    <a [routerLink]="['./transactions', navigationExtras]" routerLinkActive="active" class="link" >Transactions</a>
 </div>
 <router-outlet></router-outlet>
 
