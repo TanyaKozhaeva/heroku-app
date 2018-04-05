@@ -16,6 +16,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 
 import { UserRoutingModule } from './user-routing.module'
+import { AddCardService } from '../services/addcard.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,9 @@ import { UserRoutingModule } from './user-routing.module'
     CardItemComponent,
     AddCardComponent,
     TransactionsComponent
+  ],
+  providers: [
+    AddCardService
   ]
   //providers: [
   //  {

@@ -9,10 +9,14 @@
     ){}
 }*/
 export class Card {
-        userId: number;
+        id: number;
         name: string;
         number: number;
-        expiration: number;
+        limit: null;
+        expired: number;
+        isBlocked: boolean;
+        smsInform: boolean;
+        status: boolean;
         //public verification: number,
         balance?: number
 }

@@ -22,7 +22,7 @@
 
 <div class="form__group">
     <input type="text" class="form__input" name="cardExpiration" 
-    [(ngModel)]="cardModel.expiration" 
+    [(ngModel)]="cardModel.expired" 
     #cardExpiration="ngModel" 
     placeholder="Expiration term" 
     expiredValidator
@@ -51,5 +51,9 @@
     class="link"
     [disabled]="!addCardForm.form.valid">
     ADD
+    </button>
+    <button class="link"
+    (click)="cansel()">
+    Cansel
     </button>
 </form>

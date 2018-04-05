@@ -19,16 +19,32 @@ const userRoutes: Routes = [
       component: UserInterfaceComponent,
       canActivate: [AuthGuard],
       children:[
-        {
-          path: '',
+       // {
+         // path: '',
+         // component: CardsComponent
+        
          // canActivateChild: [AuthGuard],
-          children: [
-            { path: 'cards', component: CardsComponent },
-            { path: 'transactions', component: TransactionsComponent },
-            { path: 'add-card', component: AddCardComponent },
-            { path: '', component: CardsComponent }
-        ]
-      }
+          ///children: [
+            /*{ path: 'cards', 
+              component: CardsComponent,
+              children: [
+                { path: 'add-card', 
+                  component: AddCardComponent }
+              ]},*/
+            //{ path: 'cards', component: CardsComponent},
+            //{ path: 'transactions', component: TransactionsComponent },
+            
+           // { path: '', component: CardsComponent }
+        //]
+     // },
+      { path: '', 
+      component: CardsComponent,
+      children: [
+        { path: 'add-card', component: AddCardComponent }
+      ]},
+     // { path: 'cards', component: CardsComponent },
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'add-card', component: AddCardComponent }
     ]
   }
 ]

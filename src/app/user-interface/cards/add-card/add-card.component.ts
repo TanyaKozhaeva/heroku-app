@@ -3,16 +3,18 @@ import { Card } from '../add-card/card'
 import { CardsService } from '../../../services/cards.service';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { AddCardService } from '../../../services/addcard.service';
-import { AddFormService } from '../../../services/add-form.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-add-card',
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.sass'],
   providers: [
-    CardsService,
-    AddCardService,
-    AddFormService]
+    CardsService
+    //AddCardService,
+    ]
 })
 
 
@@ -32,22 +34,42 @@ cardModel = new Card();
 };*/
   constructor( 
     private cardsService: CardsService,
+    private route: ActivatedRoute,
+    private router: Router,
     private addCardService: AddCardService
   ) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
     //this.cardModel = new Card(this.currentUser.id);
    }
    
 
    addCard(){
-     this.cardModel.userId = this.userId;
+    // this.cardModel.userId = this.userId;
+    console.log(this.cardModel)
      this.cardsService.addCard(this.cardModel)
      .subscribe(res => {
+      console.log(res)
+      this.addCardService.executeAction(res);
+      
      //this.addingCard.emit(res);////
-     //this.addCardService.addingCard.emit(this.cardModel);
+     //this.addCardService.addingCard.emit("this.cardModel");
      })
      }
+
+     cansel(){
+       this.router.navigate(['/user']);
+     }
+
+  canDeactivate(): Observable<boolean> | boolean {
+
+    if(!this.cardModel){
+      return true
+    }
+    //return this.dialogService
+
+  }
 
 
 

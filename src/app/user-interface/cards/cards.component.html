@@ -9,8 +9,9 @@
   [card] = "card">
   </app-card-item>
 </div>
-<!-- <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link">Add a card</a> -->
-<a routerLink="./add-card" routerLinkActive="active" class="link">Add a card</a>
+<a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link">Add a card</a>
+<router-outlet></router-outlet>
+<!-- <a routerLink="./add-card" routerLinkActive="active" class="link">Add a card</a> -->
 <!-- <button (click) = "displayForm()" class="link">Add a card</button> -->
 <!-- <app-add-card *ngIf="addCardForm"
 [currentUser] = "currentUser"
