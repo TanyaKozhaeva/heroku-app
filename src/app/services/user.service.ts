@@ -15,8 +15,7 @@ export class UserService {
     return this.http.post('https://apihonestbank.herokuapp.com/registration', model)
    // return this.http.post('https://apihonestbank.herokuapp.com/check', model)
     //.map(res =>
-      //console.log(res))
-     //res.json());
+    //  console.log(res))
   };
 
   deleteUser(userId){

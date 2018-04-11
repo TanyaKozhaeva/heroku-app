@@ -17,6 +17,8 @@ import { UserInterfaceModule } from './user-interface/user-interface.module';
 import { AuthGuard } from './services/auth-guard.service';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert/alert.service';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
 //import { UserInterfaceComponent } from './user-interface/user-interface.component';
@@ -27,7 +29,8 @@ import { TextMaskModule } from 'angular2-text-mask';
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent
     //ErrorsComponent
 
     //UserInterfaceComponent
@@ -53,7 +56,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     useClass: JwtInterceptor,
       multi: true
   },
-  AuthGuard
+  AuthGuard,
+  AlertService
   ],
   bootstrap: [AppComponent]
 })

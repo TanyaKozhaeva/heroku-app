@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../registration/user';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   //selector: 'app-login',
@@ -29,7 +30,8 @@ model = new User();
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -37,12 +39,9 @@ model = new User();
   }
 
   login(){
-    //this.authService.login(this.model.phone, this.model.password)
     this.authService.login(this.model)
-  .subscribe(() => {
-     // if (this.authService.isLoggedIn){
-       // console.log(this.authService.isLoggedIn)
-       
+  .subscribe(
+    data => {  
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
        if(this.currentUser.userInfo.role == "USER"){
         this.path = 'user'
@@ -52,6 +51,9 @@ model = new User();
        }
        this.router.navigate([this.path, {id: this.currentUser.userInfo.userId}]);
         //this.router.navigate([redirect]);
+    },
+    error => {
+      this.alertService.error(error);
     });
   }
   

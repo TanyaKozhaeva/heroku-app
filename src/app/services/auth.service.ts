@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
@@ -8,6 +8,8 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map'
 import * as moment from "moment";
 import * as jwt_decode from "jwt-decode";
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { catchError } from 'rxjs/operators';
 
 //const httpOptions = {
   //headers: new HttpHeaders({
@@ -63,13 +65,30 @@ getExpiration() {
 }  
 */ 
 //{ phone: phone, password: password }
+/*
+private handleError(error: HttpErrorResponse){
+  if(error.error instanceof ErrorEvent){
+    console.error(error.error.message);
+  } else {
+    
+     const err = error.error
+     const err2 = JSON.stringify(err)
+      console.log(err2.message),
+      'backend ${error.status}' + 'body ${error.error}'
+  
+  }
+  return new ErrorObservable( 'Something wrong');
+}
+*/
 login(model) {
 const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
 };
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
-      .map(token => {
-        
+    /*.pipe(
+      catchError(this.handleError)
+    ) */
+    .map(token => {
        //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
         const userInfo = this.getDecodedAccessToken(token)
           // login successful if there's a jwt token in the response
