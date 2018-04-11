@@ -18,7 +18,8 @@ export class ErrorsComponent {
     'passwordValidation': (params) => params.message,
     'validateEqual': (params) => params.message,
     'cardValidator': (params) => params.message,
-    'expiredValidator': (params) => params.message
+    'expiredValidator': (params) => params.message,
+    'dateValidator': (params) => params.message
   };
 
   @Input()

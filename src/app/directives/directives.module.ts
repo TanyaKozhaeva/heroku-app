@@ -8,6 +8,7 @@ import { ConfirmPasswordDirective } from './unique-phone.directive';//
 import { CardvalidatorDirective } from './cardvalidator.directive';
 import { ErrorsComponent } from '../errors/errors.component';
 import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
+import { DateValidatorDirective } from './datevalidator.directive';
 
 //import { TextMaskModule } from 'angular2-text-mask';
 
@@ -26,7 +27,8 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
     ConfirmPasswordDirective,
     CardvalidatorDirective,
     ErrorsComponent,
-    ExpiredvalidatorDirective
+    ExpiredvalidatorDirective,
+    DateValidatorDirective
     //UniquePhoneDirective
   ],
   exports: [
@@ -35,6 +37,7 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
     ConfirmPasswordDirective,
     CardvalidatorDirective,
     ExpiredvalidatorDirective,
+    DateValidatorDirective,
     ErrorsComponent
   ]
 })

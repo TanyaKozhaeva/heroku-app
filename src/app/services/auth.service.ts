@@ -65,29 +65,25 @@ getExpiration() {
 }  
 */ 
 //{ phone: phone, password: password }
-/*
+
 private handleError(error: HttpErrorResponse){
   if(error.error instanceof ErrorEvent){
     console.error(error.error.message);
   } else {
-    
-     const err = error.error
-     const err2 = JSON.stringify(err)
-      console.log(err2.message),
-      'backend ${error.status}' + 'body ${error.error}'
-  
+    const parsed = Object.assign({}, error, {error: JSON.parse(error.error)})
+     console.error(parsed.error.message)
+     let mess = parsed.error.message
   }
-  return new ErrorObservable( 'Something wrong');
+  return new ErrorObservable( "parsed");
 }
-*/
 login(model) {
 const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
 };
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
-    /*.pipe(
+    .pipe(
       catchError(this.handleError)
-    ) */
+    )
     .map(token => {
        //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
         const userInfo = this.getDecodedAccessToken(token)

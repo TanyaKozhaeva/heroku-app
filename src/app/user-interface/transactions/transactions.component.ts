@@ -14,6 +14,7 @@ export class TransactionsComponent implements OnInit {
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
 userId;
 cards;
+transactions;
 
   constructor(
     private cardsService: CardsService,
@@ -23,15 +24,41 @@ cards;
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
-    this.getCards()
+    this.getCards();
+    this.getTransactions();
   }
 
   private getCards(){
-    //console.log(this.userId)
     this.cardsService.getCards(this.userId)
     .subscribe (res =>{
       this.cards = res;
     })
+  }
+
+  private getTransactions(){
+    this.cardsService.getTransactions()
+    .subscribe (res =>{
+      this.transactions = res;
+    })
+  }
+
+  transactionsFilter(dateFrom, dateTo){
+    let data = {
+      from: dateFrom.value,
+      to: dateTo.value
+    }
+    console.log(data)
+    this.cardsService.transactionsFilter(data)
+    .subscribe (res =>{
+      this.transactions = res;
+    })
+
+    
+
+    //this.cardsService.getTransactions(dateFrom, dateTo)
+    //.subscribe (res =>{
+    //  this.transactions = res;
+    //})
   }
 
  pay(from, to, transactionAmount){
