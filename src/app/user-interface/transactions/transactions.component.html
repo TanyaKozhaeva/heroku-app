@@ -13,23 +13,29 @@
 
 </form>
 <div class="payments-block__transactions transactions">
+<div class="payments-block__cards" *ngFor="let c of cards">
+  <span>{{c.name}}</span>
+  <span>{{c.number}}</span>
+  <!-- <button class="payments-block__cards-btn link" (click)="getTransactions()">Get transactions</button> -->
   <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)">
-  <div class="transactions__date"
-  ngModelGroup="dateGroup"
-  #dateGroup="ngModelGroup"
-  dateValidator
-  from="dateFrom"
-  to="dateTo">
-    <input type="date" name="dateFrom" #dateFrom ngModel>
-    <input type="date" name="dateTo" #dateTo ngModel>
-    <button class="transactions__btn link" [disabled]="!dateForm.valid">Filter period</button>
-    <app-errors [control]="dateGroup"></app-errors>
-  </div>
-</form>
-  <div *ngFor="let t of transactions" class="transactions">
-    <span>{{t.date}}</span>
-    <span>{{t.sourceName}}</span>
-    <span>{{t.sum}}</span>
-  </div>
+      <div class="transactions__date"
+      ngModelGroup="dateGroup"
+      #dateGroup="ngModelGroup"
+      dateValidator
+      from="dateFrom"
+      to="dateTo">
+        <input type="date" name="dateFrom" #dateFrom ngModel>
+        <input type="date" name="dateTo" #dateTo ngModel>
+        <button class="transactions__btn link" [disabled]="!dateForm.valid">Filter period</button>
+        <app-errors [control]="dateGroup"></app-errors>
+      </div>
+    </form>
+      <div *ngFor="let t of transactions" class="transactions">
+        <span>{{t.date | date: 'dd.MM.yyyy'}}</span>
+        <span>{{t.sourceName}}</span>
+        <span>{{t.sum}}</span>
+      </div>
+    </div>
+    </div>
 </div>
-</div>
+  

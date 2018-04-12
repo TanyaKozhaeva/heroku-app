@@ -1,12 +1,16 @@
 <!-- <a routerLink="/admin" routerLinkActive="active">Admin</a> -->
 <!-- <app-registration></app-registration> -->
 <!-- <app-login></app-login> -->
-<header class="header">
-    <app-alert></app-alert>
-    <a routerLink="/login" class="header__link link"routerLinkActive="active">Logout</a>
-    <a routerLink="/admin" routerLinkActive="active" class="header__link link">Admin</a>
-    <a routerLink="/user" routerLinkActive="active" class="header__link link">User</a>
-    <button class="link" (click)="getReport()" style="background-color: green">REPORT</button>
+<div class="main-screen">
+  <header class="main-screen__header header">
+      <a routerLink="/login" class="header__logout-link"routerLinkActive="active">Log Out</a>
+      <app-alert></app-alert>
+      <span class="header__logo">
+      <svg class="icon logo">
+        <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+      </svg>
+    </span>
+    <!-- <button class="link" (click)="getReport()" style="background-color: green">REPORT</button> -->
 </header>
 <router-outlet></router-outlet>
-
+</div>

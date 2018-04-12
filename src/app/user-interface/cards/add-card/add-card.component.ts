@@ -5,6 +5,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { AddCardService } from '../../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { AlertService } from '../../../alert/alert.service';
 
 
 @Component({
@@ -36,7 +37,8 @@ cardModel = new Card();
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
-    private addCardService: AddCardService
+    private addCardService: AddCardService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -50,12 +52,14 @@ cardModel = new Card();
     console.log(this.cardModel)
      this.cardsService.addCard(this.cardModel)
      .subscribe(res => {
-      console.log(res)
       this.addCardService.executeAction(res);
       
      //this.addingCard.emit(res);////
      //this.addCardService.addingCard.emit("this.cardModel");
-     })
+     },
+     error => {
+      this.alertService.error(error);
+    })
      }
 
      cansel(){

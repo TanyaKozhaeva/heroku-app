@@ -18,5 +18,5 @@ export class Card {
         smsInform: boolean;
         status: boolean;
         //public verification: number,
-        balance?: number
+        sum?: number
 }

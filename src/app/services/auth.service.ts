@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map'
 import * as moment from "moment";
 import * as jwt_decode from "jwt-decode";
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators';
+
 
 //const httpOptions = {
   //headers: new HttpHeaders({
@@ -66,30 +66,20 @@ getExpiration() {
 */ 
 //{ phone: phone, password: password }
 
-private handleError(error: HttpErrorResponse){
-  if(error.error instanceof ErrorEvent){
-    console.error(error.error.message);
-  } else {
-    const parsed = Object.assign({}, error, {error: JSON.parse(error.error)})
-     console.error(parsed.error.message)
-     let mess = parsed.error.message
-  }
-  return new ErrorObservable( "parsed");
-}
+
 login(model) {
 const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
 };
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
-    .pipe(
-      catchError(this.handleError)
-    )
     .map(token => {
+      console.log(token)
        //const tokenInfo = this.getDecodedAccessToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwidXNlcklkIjoiMiIsInJvbGUiOiJST0xFX1VTRVIifQ.AFpNDWx6lA11Ril5B9fS17YXOmBZIvAYQ0MvnpyJ_gq222hlG3xxY39svsLumAj1SbC6eobjGp5626ICsEpMaA")
         const userInfo = this.getDecodedAccessToken(token)
           // login successful if there's a jwt token in the response
           //if (user && user.token) {
             if (token && userInfo) {
+              console.log(token)
               let currentUser = {token, userInfo}
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(currentUser));

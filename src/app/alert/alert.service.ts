@@ -7,7 +7,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 @Injectable()
 export class AlertService {
-  private subject = new Subject<any>();
+  private subscription = new Subject<any>();
+  subscription$ = this.subscription.asObservable();
   private keepAfterNavigationChange = false;
   
 
@@ -17,7 +18,7 @@ export class AlertService {
         if (this.keepAfterNavigationChange){
           this.keepAfterNavigationChange = false;
         } else {
-          this.subject.next();
+          this.subscription.next();
         }
       }
     });
@@ -25,16 +26,18 @@ export class AlertService {
 
   success(message: string, keepAfterNavigationChange = false){
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({type: 'success', text: message})
+    this.subscription.next({type: 'success', text: message})
   }
 
   error(message: string, keepAfterNavigationChange = false){
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({type: 'error', text: message})
+    this.subscription.next({type: 'error', text: message})
+    console.log(this.subscription)
   }
 
   getMessage(){
-    return this.subject.asObservable();
+    console.log("get message")
+    return this.subscription$;
   }
 
   

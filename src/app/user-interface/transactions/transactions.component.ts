@@ -25,7 +25,6 @@ transactions;
     this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
     this.getCards();
-    this.getTransactions();
   }
 
   private getCards(){
@@ -52,13 +51,6 @@ transactions;
     .subscribe (res =>{
       this.transactions = res;
     })
-
-    
-
-    //this.cardsService.getTransactions(dateFrom, dateTo)
-    //.subscribe (res =>{
-    //  this.transactions = res;
-    //})
   }
 
  pay(from, to, transactionAmount){

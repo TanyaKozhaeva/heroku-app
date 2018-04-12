@@ -30,7 +30,6 @@ subscription: Subscription;
     //this.subscription = this.addCardService.addingCard.subscribe((data) => this.cards.push(data)) 
    this.subscription = addCardService.subscription$.subscribe(
      data => {
-       console.log(data)
        this.addCard(data);
      }
    )
@@ -60,11 +59,9 @@ subscription: Subscription;
   }
   
   addCard(card){
-    console.log(card)
     if (card == null){
       return
     }
-    console.log(this.cards)
     this.cards.push(card);
   }
 

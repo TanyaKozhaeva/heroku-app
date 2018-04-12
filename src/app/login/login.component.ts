@@ -39,10 +39,12 @@ model = new User();
   }
 
   login(){
+    console.log("login")
     this.authService.login(this.model)
   .subscribe(
     data => {  
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       this.alertService.success("SUCCESS", true);
        if(this.currentUser.userInfo.role == "USER"){
         this.path = 'user'
         //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
@@ -54,6 +56,7 @@ model = new User();
     },
     error => {
       this.alertService.error(error);
+      console.log(error)
     });
   }
   

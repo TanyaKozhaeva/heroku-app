@@ -19,6 +19,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert/alert.service';
+import { HttpErrorInterceptor } from './services/http-error.interceptor';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
 //import { UserInterfaceComponent } from './user-interface/user-interface.component';
@@ -56,6 +57,11 @@ import { AlertService } from './alert/alert.service';
     useClass: JwtInterceptor,
       multi: true
   },
+ {
+    provide: HTTP_INTERCEPTORS,
+  useClass: HttpErrorInterceptor,
+    multi: true
+},
   AuthGuard,
   AlertService
   ],

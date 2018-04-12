@@ -18,7 +18,6 @@ export class AddCardService {
   subscription$ = this.subscription.asObservable();
   executeAction(data){
     this.subscription.next(data);
-    console.log(data)
   }
   
 }

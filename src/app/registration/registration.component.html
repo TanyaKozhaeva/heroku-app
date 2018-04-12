@@ -1,7 +1,6 @@
-<div class="formBox">
-
+<div class="main-screen__form-block registration">
 <form name="registerForm" (ngSubmit)="registerForm.valid && register()" #registerForm="ngForm" novalidate class="form registration__form">
-        <h2 class="title">Registration</h2>
+        <h2 class="title form__title">Registration</h2>
         <div class="form__group">
                 <input type="text" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required placeholder="First name" class="form__input"/>
                 <app-errors [control]="firstName"></app-errors>
@@ -10,7 +9,7 @@
                 <input type="text"  name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required placeholder="Last name" class="form__input"/>
                 <app-errors [control]="lastName"></app-errors>
         </div>
-        
+
         <div class="form__group">
                 <input type="text" class="form__input" name="userPhone" placeholder="Phone"
                 [(ngModel)]="model.phone"
@@ -34,7 +33,7 @@
         #passwordGroup="ngModelGroup"
         validateEqual
         password="userPassword"
-        confirmation="passwordConfirmation">              
+        confirmation="passwordConfirmation">
                 <input type="password" class="form__input" name="userPassword" placeholder="Password"
                 [(ngModel)]="model.password"
                 #userPassword="ngModel"
@@ -49,9 +48,8 @@
                 required/>
                 <app-errors [control]="passwordGroup"></app-errors>
         </div>
-                        
-        <button class="link" [disabled]="!registerForm.valid">Register</button>
-        <a [routerLink]="['/login']" class="form__link link">Cancel</a>
+
+        <button class="link link_color_main" [disabled]="!registerForm.valid">Register</button>
+        <a [routerLink]="['/login']" class="link link_color_color2">Cancel</a>
 </form>
 </div>
-

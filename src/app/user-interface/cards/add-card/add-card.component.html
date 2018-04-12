@@ -41,12 +41,12 @@
 </div> -->
 
 <div class="form__group">
-    <input type="text" class="form__input" name="cardBalance" 
-    [(ngModel)]="cardModel.balance" #cardBalance="ngModel" 
+    <input type="text" class="form__input" name="cardSum" 
+    [(ngModel)]="cardModel.sum" #cardSum="ngModel" 
     placeholder="Card balance"
     [textMask]="{mask: currencyMask}"/>
 </div>
-    <button (click)="addCard()"
+    <button
     type="submit"
     class="link"
     [disabled]="!addCardForm.form.valid">
