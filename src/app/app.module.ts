@@ -20,6 +20,8 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert/alert.service';
 import { HttpErrorInterceptor } from './services/http-error.interceptor';
+import { HeaderModule } from './header/header.module';
+import { DashComponent } from './dash/dash.component';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
 //import { UserInterfaceComponent } from './user-interface/user-interface.component';
@@ -31,7 +33,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    DashComponent
     //ErrorsComponent
 
     //UserInterfaceComponent
@@ -45,6 +48,7 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
     DirectivesModule,
     FormsModule,
     ReactiveFormsModule,
+    HeaderModule,
     AdminModule,
     UserInterfaceModule,
     TextMaskModule,

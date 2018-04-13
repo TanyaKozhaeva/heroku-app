@@ -1,6 +1,11 @@
-<div class="nav">
-    <a [routerLink]="['./', {id: userId}]" routerLinkActive="active" class="link">Cards</a>
-    <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="active" class="link" >Transactions</a>
-</div>
-<router-outlet></router-outlet>
+<div class="user-interface">
+  <app-header></app-header>
 
+  <div class="user-interface__content">
+    <nav class="nav user-interface__nav">
+        <a [routerLink]="['./', {id: userId}]" routerLinkActive="active" class="link user-interface__nav-link link_color_light">Cards</a>
+        <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="active" class="link user-interface__nav-link link_color_light" >Transactions</a>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+</div>

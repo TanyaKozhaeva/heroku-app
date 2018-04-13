@@ -9,7 +9,7 @@ import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
 import { AddCardComponent } from './cards/add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { DashComponent } from './dash/dash.component';
+//import { DashComponent } from './dash/dash.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 
@@ -43,8 +43,8 @@ const userRoutes: Routes = [
         { path: 'add-card', component: AddCardComponent }
       ]},
      // { path: 'cards', component: CardsComponent },
-      { path: 'transactions', component: TransactionsComponent },
-      { path: 'add-card', component: AddCardComponent }
+      { path: 'transactions', component: TransactionsComponent }
+    //  { path: 'add-card', component: AddCardComponent }
     ]
   }
 ]

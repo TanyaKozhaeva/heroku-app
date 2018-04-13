@@ -3,16 +3,44 @@
 @import "sass/smart-grid.sass"
 @import "sass/vars.sass"
 //Edit
+.wrapper
+  +wrapper
+.row
+  +row-flex
 .header
-    padding: 1rem
-    box-sizing: border-box
-    display: flex
-    flex-direction: column
-    justify-content: center
-    border-bottom-left-radius: 100%
-    border-bottom-right-radius: 100%
-    background: linear-gradient(to bottom, #69ea65 0%,#5bd851 50%,#5bd851 52%,#4ac136 100%)
-    // background-color: $mainColor
+  padding: .5rem
+  display: flex
+  justify-content: space-between
+  box-sizing: border-box
+  background-color: $mainColor
+  box-shadow: 0 1rem 0 0 lighten($mainColor, 10%)
+  margin-bottom: 1rem
+  border-bottom: 1rem solid lighten($mainColor, 20%)
+  position: relative
+  //border-bottom: 10px solid lighten($mainColor, 10%)
+  &__logo
+    display: inline-block
+    width: 50px
+    height: 50px
+  &__logout-link
+    text-align: right
+    color: $mainColorLight
+
+  &::before,
+  &::after
+    content: ""
+    display: block
+    @extend .circleDecor
+  &::before
+    width: 10px
+    height: 10px
+    bottom: -20px
+    left: 2%
+  &::after
+    width: 15px
+    height: 15px
+    bottom: -50px
+    left: 10%
 
 .title
     font-size: 2.25rem
@@ -23,44 +51,86 @@
   font-size: 1.125em
   font-weight: 400
   color: $fontColor
-
+.circleDecor
+  border-radius: 100%
+  background-color: darken($mainColor, 10%)
+  position: absolute
 
 .form
-  padding: 1rem
+  padding: $offset_one_side
+  text-align: center
+  border-radius: 5px
+  background-color: $mainColorLight
+
   &__title
     margin-bottom: .8em
     text-align: center
 
-  &__group:not(:last-child)
-    margin-bottom: .8rem
+  &__group:last-of-type
+    margin-bottom: $offset
+    border-bottom: 1px solid $bgColor
 
   &__input
     width: 100%
     padding: .8em .8rem
-    border: 1px solid $bgColor
+    border-top: 1px solid $bgColor
     box-sizing: border-box
     color: $fontColor
-
+    text-align: center
+    &::placeholder
+      color: inherit
     .ng-invalid.ng-touched
         border-color: red
-.active
-    color: #21204e
-    background-color: #C4D4E0
+
 
 .link
   display: inline-block
-  min-width: 8.61rem
-  min-height: 3.33rem
+  min-width: 6.61rem
   font-size: 1.1rem
   padding: 1em
-  color: $mainColorLight
+  box-sizing: border-box
+  border-radius: 3px
   text-align: center
-  vertical-align: middle
+  color: $mainColorLight
   &_color
     &_main
       background-color: $mainColor
-    &_color2
-      background-color: $mainColor2
+    &_accent
+      background-color: $accentColor
+    &_light
+      background-color: $mainColorLight
+      color: $fontColor
+      box-shadow: $blocksShadow
+
+.add-btn
+  display: inline-block
+  width: 4rem
+  height: 4rem
+  border-radius: 100%
+  border: 2px solid $mainColorLight
+  background-color: $accentColor
+
+
+.message
+  padding: $offset-one-side
+  font-size: 1.1rem
+  text-align: center
+  &_success
+    color: $successColor
+    background-color: lighten($successColor, 40%)
+    border: 1px solid $successColor
+  &_danger
+    color: $dangerColor
+    background-color: lighten($dangerColor, 40%)
+    border: 1px solid $dangerColor
+
+.list
+  background-color: $mainColorLight
+  box-shadow: $blocksShadow
+  &:nth-child(even)
+    background-color: $bgColor
+  &__item
+    padding: 1em $offset-one-side
 .icon
   width: 100%
   height: 100%

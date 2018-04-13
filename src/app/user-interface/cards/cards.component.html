@@ -1,22 +1,17 @@
 <div class="cards">
-  
+
   <!-- <div *ngIf="cards.length == 0">
         You have no cards
   </div> -->
   <!-- <div *ngIf="cards.length > 0"></div> -->
-  <div>
+  <ul class="cards__list list">
   <app-card-item *ngFor="let card of cards"
   [card] = "card">
   </app-card-item>
+</ul>
+<div class="cards__add-form">
+  <span class="cards__add-form-suggestion">Add a card</span>
+  <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="add-btn">+</a>
+  <router-outlet></router-outlet>
 </div>
-<a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link">Add a card</a>
-<router-outlet></router-outlet>
-<!-- <a routerLink="./add-card" routerLinkActive="active" class="link">Add a card</a> -->
-<!-- <button (click) = "displayForm()" class="link">Add a card</button> -->
-<!-- <app-add-card *ngIf="addCardForm"
-[currentUser] = "currentUser"
-(addingCard)="addCard($event)"> 
-</app-add-card> -->
 </div>
-
-<!-- [currentUser] = "currentUser" -->
