@@ -20,7 +20,7 @@ import { AlertService } from '../../../alert/alert.service';
 
 
 export class AddCardComponent implements OnInit {
-  
+
 //@Input() currentUser;
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
 //@Output() addingCard = new EventEmitter;////
@@ -33,7 +33,7 @@ cardModel = new Card();
 /*cardModel = {
   userId: 'number'
 };*/
-  constructor( 
+  constructor(
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
@@ -45,7 +45,7 @@ cardModel = new Card();
     this.userId = this.route.snapshot.paramMap.get('id');
     //this.cardModel = new Card(this.currentUser.id);
    }
-   
+
 
    addCard(){
     // this.cardModel.userId = this.userId;
@@ -53,7 +53,8 @@ cardModel = new Card();
      this.cardsService.addCard(this.cardModel)
      .subscribe(res => {
       this.addCardService.executeAction(res);
-      
+      this.alertService.success("Card successfully added!", false);
+
      //this.addingCard.emit(res);////
      //this.addCardService.addingCard.emit("this.cardModel");
      },

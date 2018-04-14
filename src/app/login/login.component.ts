@@ -10,7 +10,7 @@ import { AlertService } from '../alert/alert.service';
   //selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
-  providers: [ 
+  providers: [
     UserService,
     AuthService
    ]
@@ -42,9 +42,8 @@ model = new User();
     console.log("login")
     this.authService.login(this.model)
   .subscribe(
-    data => {  
+    data => {
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       this.alertService.success("SUCCESS", true);
        if(this.currentUser.userInfo.role == "USER"){
         this.path = 'user'
         //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
@@ -59,10 +58,10 @@ model = new User();
       console.log(error)
     });
   }
-  
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);//
   }
-    
+
   }

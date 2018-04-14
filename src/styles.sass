@@ -3,47 +3,18 @@
 @import "sass/smart-grid.sass"
 @import "sass/vars.sass"
 //Edit
+body
+  font-family: $mainFont
 .wrapper
-  +wrapper
+  // +wrapper
+  max-width: 1100px
+  margin: 0 auto
+
 .row
   +row-flex
-.header
-  padding: .5rem
-  display: flex
-  justify-content: space-between
-  box-sizing: border-box
-  background-color: $mainColor
-  box-shadow: 0 1rem 0 0 lighten($mainColor, 10%)
-  margin-bottom: 1rem
-  border-bottom: 1rem solid lighten($mainColor, 20%)
-  position: relative
-  //border-bottom: 10px solid lighten($mainColor, 10%)
-  &__logo
-    display: inline-block
-    width: 50px
-    height: 50px
-  &__logout-link
-    text-align: right
-    color: $mainColorLight
-
-  &::before,
-  &::after
-    content: ""
-    display: block
-    @extend .circleDecor
-  &::before
-    width: 10px
-    height: 10px
-    bottom: -20px
-    left: 2%
-  &::after
-    width: 15px
-    height: 15px
-    bottom: -50px
-    left: 10%
 
 .title
-    font-size: 2.25rem
+    font-size: 2.25em
     font-weight: 600
     margin: 0 auto
     color: $fontColor
@@ -51,13 +22,10 @@
   font-size: 1.125em
   font-weight: 400
   color: $fontColor
-.circleDecor
-  border-radius: 100%
-  background-color: darken($mainColor, 10%)
-  position: absolute
+
 
 .form
-  padding: $offset_one_side
+  padding: $offset $offset_one_side
   text-align: center
   border-radius: 5px
   background-color: $mainColorLight
@@ -72,16 +40,26 @@
 
   &__input
     width: 100%
-    padding: .8em .8rem
+    font-size: 1.5em
+    padding: 1.08em $offset-one-side
     border-top: 1px solid $bgColor
     box-sizing: border-box
+    font-weight: 600
     color: $fontColor
     text-align: center
     &::placeholder
+      font-weight: inherit
       color: inherit
     .ng-invalid.ng-touched
         border-color: red
-
+  &__controls
+    display: flex
+    justify-content: space-between
+    margin-left: -$offset-one-side
+    margin-right: -$offset-one-side
+    .link
+      flex: 1
+      margin: 0 $offset-one-side
 
 .link
   display: inline-block
@@ -89,9 +67,11 @@
   font-size: 1.1rem
   padding: 1em
   box-sizing: border-box
+  font-weight: 600
   border-radius: 3px
   text-align: center
   color: $mainColorLight
+  box-shadow: $blocksShadow
   &_color
     &_main
       background-color: $mainColor
@@ -107,30 +87,66 @@
   width: 4rem
   height: 4rem
   border-radius: 100%
-  border: 2px solid $mainColorLight
+  border: .5rem solid lighten($accentColor, 10%)
   background-color: $accentColor
+  position: relative
+  &::before
+    content: "+"
+    font-size: 3.5rem
+    color: $mainColorLight
+    font-weight: 600
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 
-
-.message
-  padding: $offset-one-side
-  font-size: 1.1rem
-  text-align: center
-  &_success
-    color: $successColor
-    background-color: lighten($successColor, 40%)
-    border: 1px solid $successColor
-  &_danger
-    color: $dangerColor
-    background-color: lighten($dangerColor, 40%)
-    border: 1px solid $dangerColor
 
 .list
+  border-radius: 5px
   background-color: $mainColorLight
   box-shadow: $blocksShadow
-  &:nth-child(even)
-    background-color: $bgColor
   &__item
-    padding: 1em $offset-one-side
-.icon
+    padding: 1.6em $offset-one-side
+    border-bottom: 1px solid $bgColor
+.card-item
+  font-size: 1.125em
+  display: flex
+  justify-content: space-between
+  &__info
+    text-align: left
+  &__name
+    color: $fontColor
+    font-weight: 400
+  &__num
+    color: $fontColor
+    font-weight: 600
+  &__sum
+    font-weight: 600
+    color: $mainColor
+    text-align: right
+
+.table
+  table-layout: fixed
   width: 100%
-  height: 100%
+  text-align: center
+  border-collapse: collapse
+  border: 1px solid $fontColor
+  &__head
+    background-color: darken($bgColor, 20%)
+  &__item-date
+    width: 20%
+  &__item-recepient
+    width: 50%
+  &__item-sum
+    width: 30%
+  &__cell
+    padding: 1em 2%
+
+
+.hidden
+  position: absolute
+  left: -10000px
+  top: auto
+  width: 1px
+  height: 1px
+  overflow: hidden

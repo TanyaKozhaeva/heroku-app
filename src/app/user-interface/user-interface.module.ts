@@ -8,6 +8,7 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 //import { DashComponent } from './dash/dash.component';
 import { HeaderModule } from '../header/header.module';
+import { AlertModule } from '../alert/alert.module';
 import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
 import { AddCardComponent } from './cards/add-card/add-card.component';
@@ -25,6 +26,7 @@ import { HeaderComponent } from '../header/header.component';
     CommonModule,
     FormsModule,
     HeaderModule,
+    AlertModule,
     DirectivesModule,
     TextMaskModule,
     UserRoutingModule

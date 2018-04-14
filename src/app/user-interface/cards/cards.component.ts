@@ -26,8 +26,8 @@ subscription: Subscription;
     private cardsService: CardsService,
     private addCardService: AddCardService,
     private route: ActivatedRoute
-  ) { 
-    //this.subscription = this.addCardService.addingCard.subscribe((data) => this.cards.push(data)) 
+  ) {
+    //this.subscription = this.addCardService.addingCard.subscribe((data) => this.cards.push(data))
    this.subscription = addCardService.subscription$.subscribe(
      data => {
        this.addCard(data);
@@ -42,13 +42,10 @@ subscription: Subscription;
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.getCards();
-    
+
   }
   ngOnChanges() {
     this.getCards();
-  }
-  displayForm() {
-    this.addCardForm ? this.addCardForm = false : this.addCardForm = true;
   }
 
   private getCards() {
@@ -57,7 +54,7 @@ subscription: Subscription;
       this.cards = res;
     });
   }
-  
+
   addCard(card){
     if (card == null){
       return

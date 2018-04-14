@@ -1,0 +1,20 @@
+@import "../../../sass/smart-grid.sass"
+@import "../../../sass/vars.sass"
+.payments-block
+  &__form
+    margin-bottom: $offset-one-side
+.transactions
+  &__cards-list
+    &:not(:last-child)
+      margin-bottom: $offset-one-side
+.transaction
+  font-size: 1.1em
+  &__date
+    font-weight: 600
+  &__sours
+    text-transform: uppercase
+    font-weight: 400
+    color: $fontColor
+  &__sum
+    font-weight: 600
+    color: $mainColor

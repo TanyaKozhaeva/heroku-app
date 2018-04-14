@@ -4,14 +4,20 @@
         You have no cards
   </div> -->
   <!-- <div *ngIf="cards.length > 0"></div> -->
-  <ul class="cards__list list">
-  <app-card-item *ngFor="let card of cards"
-  [card] = "card">
-  </app-card-item>
-</ul>
+  <div class="cards__list-wrapper">
+    <ul class="cards__list list">
+    <app-card-item *ngFor="let card of cards"
+    [card] = "card">
+    </app-card-item>
+  </ul>
+  <p class="cards__add-suggestion">Add a card</p>
+  <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="add-btn cards__add-btn">
+    <span class="hidden">Open add form</span>
+  </a>
+  </div>
+  
 <div class="cards__add-form">
-  <span class="cards__add-form-suggestion">Add a card</span>
-  <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="add-btn">+</a>
+  <app-alert></app-alert>
   <router-outlet></router-outlet>
 </div>
 </div>

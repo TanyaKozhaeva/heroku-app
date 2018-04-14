@@ -1,10 +1,20 @@
-<div class="user-interface">
+<div class="ui">
   <app-header></app-header>
 
-  <div class="user-interface__content">
-    <nav class="nav user-interface__nav">
-        <a [routerLink]="['./', {id: userId}]" routerLinkActive="active" class="link user-interface__nav-link link_color_light">Cards</a>
-        <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="active" class="link user-interface__nav-link link_color_light" >Transactions</a>
+  <div class="ui__content wrapper">
+    <nav class="nav ui__nav">
+        <a [routerLink]="['./', {id: userId}]" routerLinkActive="ui__nav-link_active" class="link ui__nav-link link_color_light">
+          <svg class="icon ui__btn-icon">
+            <use xlink:href="assets/svg/symbol/sprite.svg#credit-card"></use>
+          </svg><br>
+          <span>Cards</span>
+        </a>
+        <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="ui__nav-link_active" class="link ui__nav-link link_color_light" >
+          <svg class="icon ui__btn-icon">
+            <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
+          </svg><br>
+          <span>Transactions</span>
+        </a>
     </nav>
     <router-outlet></router-outlet>
   </div>

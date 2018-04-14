@@ -17,7 +17,7 @@ import { UserInterfaceModule } from './user-interface/user-interface.module';
 import { AuthGuard } from './services/auth-guard.service';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { TextMaskModule } from 'angular2-text-mask';
-import { AlertComponent } from './alert/alert.component';
+import { AlertModule } from './alert/alert.module';
 import { AlertService } from './alert/alert.service';
 import { HttpErrorInterceptor } from './services/http-error.interceptor';
 import { HeaderModule } from './header/header.module';
@@ -33,7 +33,6 @@ import { DashComponent } from './dash/dash.component';
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    AlertComponent,
     DashComponent
     //ErrorsComponent
 
@@ -49,11 +48,12 @@ import { DashComponent } from './dash/dash.component';
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,
+    AlertModule,
     AdminModule,
     UserInterfaceModule,
     TextMaskModule,
     AppRoutingModule
- 
+
   ],
   providers: [
     {

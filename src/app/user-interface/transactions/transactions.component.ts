@@ -15,6 +15,9 @@ export class TransactionsComponent implements OnInit {
 userId;
 cards;
 transactions;
+dateFrom = "2016-10-01"
+// dateForm;
+
 
   constructor(
     private cardsService: CardsService,
@@ -26,6 +29,12 @@ transactions;
     //console.log(this.userId)
     this.getCards();
   }
+
+  // currentDate(){
+  //   const currentDate = new Date();
+  //   return currentDate.toISOString().substring(0, 10);
+  //   this.dateForm = return currentDate.toISOString().substring(0, 10);
+  // }
 
   private getCards(){
     this.cardsService.getCards(this.userId)
@@ -41,10 +50,10 @@ transactions;
     })
   }
 
-  transactionsFilter(dateFrom, dateTo){
+  transactionsFilter(){
     let data = {
-      from: dateFrom.value,
-      to: dateTo.value
+      from: this.dateFrom
+      // to: dateTo.value
     }
     console.log(data)
     this.cardsService.transactionsFilter(data)

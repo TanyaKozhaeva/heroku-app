@@ -25,8 +25,8 @@ export class CardsService {
   }
 
   addCard(card) {
-    return this.http.post('http://apihonestbank.herokuapp.com/wallets/', card)
-    //return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
+    //return this.http.post('http://apihonestbank.herokuapp.com/wallets/', card)
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 
   blockCard(card){
@@ -41,4 +41,3 @@ export class CardsService {
   }
 
 }
-

@@ -1,0 +1,14 @@
+@import "../../sass/vars.sass"
+.message
+  padding: $offset-one-side
+  font-size: 1.1rem
+  font-weight: 400
+  text-align: center
+  &_success
+    color: $successColor
+    background-color: lighten($successColor, 40%)
+    border: 1px solid $successColor
+  &_danger
+    color: $dangerColor
+    background-color: lighten($dangerColor, 40%)
+    border: 1px solid $dangerColor

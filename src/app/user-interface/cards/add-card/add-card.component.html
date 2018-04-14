@@ -1,17 +1,22 @@
-<form (ngSubmit)="addCardForm.form.valid && addCard()" class="addCardForm" #addCardForm="ngForm" class="form">
-<h2 class="title">Add a card</h2>
+<form (ngSubmit)="addCardForm.form.valid && addCard()" class="add-form form" #addCardForm="ngForm" class="form">
+<h2 class="form__title title">
+  <svg class="icon add-form__title-icon">
+    <use xlink:href="assets/svg/symbol/sprite.svg#add-card"></use>
+  </svg>
+  <span>Card requisites</span>
+</h2>
     <div class="form__group">
     <input type="text"
-    class="form__input" name="cardName" 
-    [(ngModel)]="cardModel.name" #cardName="ngModel" 
+    class="form__input" name="cardName"
+    [(ngModel)]="cardModel.name" #cardName="ngModel"
     required placeholder="Card name">
     <app-errors [control]="cardName"></app-errors>
 </div>
 
 <div class="form__group">
-    <input type="text" class="form__input" name="cardNumber" 
-    [(ngModel)]="cardModel.number" 
-    #cardNumber="ngModel" 
+    <input type="text" class="form__input" name="cardNumber"
+    [(ngModel)]="cardModel.number"
+    #cardNumber="ngModel"
     placeholder="Card number"
     ngModel
     cardValidator
@@ -21,10 +26,10 @@
 </div>
 
 <div class="form__group">
-    <input type="text" class="form__input" name="cardExpiration" 
-    [(ngModel)]="cardModel.expired" 
-    #cardExpiration="ngModel" 
-    placeholder="Expiration term" 
+    <input type="text" class="form__input" name="cardExpiration"
+    [(ngModel)]="cardModel.expired"
+    #cardExpiration="ngModel"
+    placeholder="Expiration term"
     expiredValidator
     [textMask]="{mask: expiredMask}"
     required>
@@ -32,8 +37,8 @@
 </div>
 
 <!-- <div class="form__group">
-    <input type="number" class="form__input" name="cardVerification" 
-    [(ngModel)]="cardModel.verification" 
+    <input type="number" class="form__input" name="cardVerification"
+    [(ngModel)]="cardModel.verification"
     #cardVerification="ngModel"
     placeholder="CVV2-code"
     required>
@@ -41,18 +46,18 @@
 </div> -->
 
 <div class="form__group">
-    <input type="text" class="form__input" name="cardSum" 
-    [(ngModel)]="cardModel.sum" #cardSum="ngModel" 
+    <input type="text" class="form__input" name="cardSum"
+    [(ngModel)]="cardModel.sum" #cardSum="ngModel"
     placeholder="Card balance"
     [textMask]="{mask: currencyMask}"/>
 </div>
     <button
     type="submit"
-    class="link"
+    class="link link_color_main"
     [disabled]="!addCardForm.form.valid">
-    ADD
+    Add
     </button>
-    <button class="link"
+    <button class="link link_color_accent"
     (click)="cansel()">
     Cansel
     </button>

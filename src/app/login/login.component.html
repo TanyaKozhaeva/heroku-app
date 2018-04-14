@@ -21,9 +21,11 @@
                         required/>
                         <app-errors [control]="userPassword"></app-errors>
                 </div>
+                <span class="form__controls">
+                  <button class="link link_color_main" [disabled]="!loginForm.valid">Login</button>
+                  <a [routerLink]="['/register']" class="link link_color_accent">Register</a>
+                </span>
 
-                <button class="link link link_color_main" [disabled]="!loginForm.valid">Login</button>
-                <a [routerLink]="['/register']" class="link link_color_accent">Register</a>
         </form>
 </div>
 
