@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserInterfaceComponent } from './user-interface.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
-//import { DashComponent } from './dash/dash.component';
+import { DashComponent } from './dash/dash.component';
 import { HeaderModule } from '../header/header.module';
 import { AlertModule } from '../alert/alert.module';
 import { CardsComponent } from './cards/cards.component';
@@ -36,6 +36,7 @@ import { ConfirmService } from '../services/confirm.service';
   ],
   declarations: [
     UserInterfaceComponent,
+    DashComponent,
     CardsComponent,
     CardItemComponent,
     AddCardComponent,
