@@ -6,6 +6,7 @@ import { AddCardService } from '../../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../../alert/alert.service';
+import { ConfirmService } from '../../../services/confirm.service';
 
 
 @Component({
@@ -38,7 +39,8 @@ cardModel = new Card();
     private route: ActivatedRoute,
     private router: Router,
     private addCardService: AddCardService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private confirmService: ConfirmService
   ) { }
 
   ngOnInit() {
@@ -70,9 +72,10 @@ cardModel = new Card();
   canDeactivate(): Observable<boolean> | boolean {
 
     if(!this.cardModel){
+      console.log(this.cardModel)
       return true
     }
-    //return this.dialogService
+    return this.confirmService.confirm('Discard changes for Person?');
 
   }
 

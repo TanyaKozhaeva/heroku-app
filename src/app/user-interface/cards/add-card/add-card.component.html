@@ -27,7 +27,7 @@
 
 <div class="form__group">
     <input type="text" class="form__input" name="cardExpiration"
-    [(ngModel)]="cardModel.expired"
+    [(ngModel)]="cardModel.expiration"
     #cardExpiration="ngModel"
     placeholder="Expiration term"
     expiredValidator
@@ -45,11 +45,13 @@
     <div *ngIf="addCardForm.submitted && !cardVerification.valid">CVV2-code is required</div>
 </div> -->
 
+
+
+<!-- [textMask]="{mask: currencyMask}" -->
 <div class="form__group">
     <input type="text" class="form__input" name="cardSum"
     [(ngModel)]="cardModel.sum" #cardSum="ngModel"
-    placeholder="Card balance"
-    [textMask]="{mask: currencyMask}"/>
+    placeholder="Card balance"/>
 </div>
     <button
     type="submit"

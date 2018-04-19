@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 import { UserInterfaceComponent } from './user-interface.component';
 import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
@@ -12,6 +11,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 //import { DashComponent } from './dash/dash.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
+import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
 
 const userRoutes: Routes = [
   {
@@ -40,7 +40,9 @@ const userRoutes: Routes = [
       { path: '', 
       component: CardsComponent,
       children: [
-        { path: 'add-card', component: AddCardComponent }
+        { path: 'add-card', 
+        component: AddCardComponent,
+        canDeactivate: [CanDeactivateGuard] }
       ]},
      // { path: 'cards', component: CardsComponent },
       { path: 'transactions', component: TransactionsComponent }
@@ -65,6 +67,9 @@ const userRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    CanDeactivateGuard
   ]
 //  providers: [
 //    {

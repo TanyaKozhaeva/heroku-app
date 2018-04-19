@@ -20,6 +20,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { UserRoutingModule } from './user-routing.module'
 import { AddCardService } from '../services/addcard.service';
 import { HeaderComponent } from '../header/header.component';
+//import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
+import { ConfirmService } from '../services/confirm.service';
+
 
 @NgModule({
   imports: [
@@ -39,7 +42,8 @@ import { HeaderComponent } from '../header/header.component';
     TransactionsComponent
   ],
   providers: [
-    AddCardService
+    AddCardService,
+    ConfirmService
   ]
   //providers: [
   //  {

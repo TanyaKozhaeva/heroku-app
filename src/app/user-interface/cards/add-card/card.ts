@@ -13,7 +13,7 @@ export class Card {
         name: string;
         number: number;
         limit: null;
-        expired: number;
+        expiration: number;
         isBlocked: boolean;
         smsInform: boolean;
         status: boolean;
