@@ -2,7 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } 
 import { CardsService } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { AddCardService } from '../../services/addcard.service';
+//import { AccountsService } from '../../services/accounts.service';
 import { Subscription } from 'rxjs/Subscription';
+import { AddAccountService } from '../../services/addaccount.service';
 
 
 @Component({
@@ -13,26 +15,30 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class CardsComponent implements OnInit, OnChanges, OnDestroy {
 userId;
+accounts: any[]=[];
 cards: any[]=[];
 addCardForm = false;
 
-
-//@Input() currentUser;
 subscription: Subscription;
 
-//currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(
     private cardsService: CardsService,
     private addCardService: AddCardService,
+    private addAccountService: AddAccountService,
     private route: ActivatedRoute
   ) {
-    //this.subscription = this.addCardService.addingCard.subscribe((data) => this.cards.push(data))
+  /*
    this.subscription = addCardService.subscription$.subscribe(
      data => {
-       this.addCard(data);
-     }
-   )
+      this.getAccounts()
+     })*/
+     this.subscription = addAccountService.subscription$.subscribe(
+      data => {
+        this.addAccount(data);
+        console.log(data)
+      }
+    )
   }
 
   ngOnDestroy(){
@@ -41,25 +47,36 @@ subscription: Subscription;
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
-    this.getCards();
-
+    this.getAccounts();
   }
   ngOnChanges() {
-    this.getCards();
+    this.getAccounts()
   }
 
-  private getCards() {
-    this.cardsService.getCards(this.userId)
+
+  private getAccounts(){
+    this.cardsService.getAccounts(this.userId)
     .subscribe(res => {
-      this.cards = res;
+      this.accounts = res;
+      console.log(res)
     });
   }
-
+/*
   addCard(card){
     if (card == null){
       return
     }
     this.cards.push(card);
+  }*/
+
+  addAccount(account){
+    if (account == null){
+      return
+
+    }
+    this.accounts.push(account);
+    console.log(this.accounts)
   }
+
 
 }

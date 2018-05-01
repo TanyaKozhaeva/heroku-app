@@ -3,6 +3,7 @@ import { CardsService } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
+
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
@@ -15,7 +16,7 @@ export class TransactionsComponent implements OnInit {
 userId;
 cards;
 transactions;
-dateFrom = "2016-10-01"
+dateFrom;
 // dateForm;
 
 
@@ -28,7 +29,10 @@ dateFrom = "2016-10-01"
     this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
     this.getCards();
+    
   }
+
+  
 
   // currentDate(){
   //   const currentDate = new Date();

@@ -12,6 +12,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
+import { AddAccountComponent } from './accounts/add-account/add-account.component';
 
 const userRoutes: Routes = [
   {
@@ -42,11 +43,12 @@ const userRoutes: Routes = [
       children: [
         { path: 'add-card', 
         component: AddCardComponent,
+        canDeactivate: [CanDeactivateGuard] },
+        { path: 'add-account', 
+        component: AddAccountComponent,
         canDeactivate: [CanDeactivateGuard] }
       ]},
-     // { path: 'cards', component: CardsComponent },
       { path: 'transactions', component: TransactionsComponent }
-    //  { path: 'add-card', component: AddCardComponent }
     ]
   }
 ]

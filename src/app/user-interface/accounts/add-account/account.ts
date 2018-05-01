@@ -8,13 +8,8 @@
         public balance?: number
     ){}
 }*/
-export class Card {
-        id: number;
-        name: string;
+export class Account {
         number: number;
-        limit: null;
-        expiration: number;
-        isBlocked: boolean;
-        smsInform: boolean;
-        status: boolean
+        amount: string;
+        currency: string;
 }

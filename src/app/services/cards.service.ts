@@ -11,9 +11,16 @@ export class CardsService {
 
   constructor( private http: HttpClient) { }
 
-  getCards(userId){
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/' + userId)
+  getCards(accountId){
+    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/' + accountId)
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/1')
   }
+
+  getAccounts(userId){
+   // return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/' + userId)
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts')
+  }
+ 
 
   getTransactions(){
    // return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions' + userId)
@@ -25,8 +32,8 @@ export class CardsService {
   }
 
   addCard(card) {
-    return this.http.post('http://apihonestbank.herokuapp.com/wallets/', card)
-    //return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
+    ///return this.http.post('http://apihonestbank.herokuapp.com/wallets/account/', card)
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 
   blockCard(card){

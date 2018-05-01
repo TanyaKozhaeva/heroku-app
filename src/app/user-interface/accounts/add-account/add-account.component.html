@@ -1,0 +1,45 @@
+<form (ngSubmit)="addAccountForm.form.valid && addAccount()" class="add-form form" #addAccountForm="ngForm">
+  <h2 class="form__title title">
+    <span>Create new account</span>
+  </h2>
+  
+  <div class="form__group">
+      <input type="text" class="form__input" name="accountNumber"
+      [(ngModel)]="accountModel.number"
+      #accountNumber="ngModel"
+      placeholder="Account number"
+      ngModel
+      cardValidator
+      [textMask]="{mask: numberMask}"
+      required>
+      <app-errors [control]="accountNumber"></app-errors>
+  </div>
+  
+  <div class="form__group">
+      <input type="text" class="form__input" name="accountAmount"
+      [(ngModel)]="accountModel.amount" #accountAmount="ngModel"
+      placeholder="Account balance"
+      [textMask]="{mask: currencyMask}"
+      required>
+      <app-errors [control]="accountAmount"></app-errors>
+  </div>
+  <div class="form__group">
+    <select class="form__input" [(ngModel)]="accountModel.currency" name="accountCurrency" #accountCurrency="ngModel">
+      <option *ngFor="let p of products" value="{{ p.currency }}" class="card-option">
+        {{p.currency}}
+      </option>
+  </select>
+  </div>
+  
+      <button
+      type="submit"
+      class="link link_color_main"
+      [disabled]="!addAccountForm.form.valid">
+      Add
+      </button>
+      <button class="link link_color_accent"
+      (click)="cansel()">
+      Cansel
+      </button>
+  </form>
+  

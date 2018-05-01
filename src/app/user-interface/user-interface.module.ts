@@ -22,6 +22,10 @@ import { AddCardService } from '../services/addcard.service';
 import { HeaderComponent } from '../header/header.component';
 //import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
 import { ConfirmService } from '../services/confirm.service';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountItemComponent } from './accounts/account-item/account-item.component';
+import { AddAccountComponent } from './accounts/add-account/add-account.component';
+import { AddAccountService } from '../services/addaccount.service';
 
 
 @NgModule({
@@ -40,10 +44,14 @@ import { ConfirmService } from '../services/confirm.service';
     CardsComponent,
     CardItemComponent,
     AddCardComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    AccountsComponent,
+    AccountItemComponent,
+    AddAccountComponent
   ],
   providers: [
     AddCardService,
+    AddAccountService,
     ConfirmService
   ]
   //providers: [

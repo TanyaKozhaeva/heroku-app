@@ -1,0 +1,20 @@
+<li class="account-item list__item">
+    <span class="account-item__info">
+      <span class="account-item__num">{{account.number}}</span>
+    </span>
+      <span class="account-item__sum">{{account.amount}}</span>
+      <span class="account-item__sum">{{account.currency}}</span>
+      <button class="link" (click)="getCards()">Show cards</button>
+      <ul class="cards__list list">
+        <app-card-item *ngFor="let card of cards"
+        [card] = "card">
+        </app-card-item>
+      </ul>
+      <div class="add-card-form">
+        <p class="cards__add-suggestion">Add a card</p>
+        <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link link_color_accent">
+          <!-- add id Account param instead userId -->
+          <span class="hidden">Open add form</span>
+        </a>
+      </div>
+  </li>
