@@ -38,7 +38,7 @@ const userRoutes: Routes = [
            // { path: '', component: CardsComponent }
         //]
      // },
-      { path: '', 
+      { path: 'cards', 
       component: CardsComponent,
       children: [
         { path: 'add-card', 

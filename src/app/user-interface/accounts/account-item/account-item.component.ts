@@ -25,6 +25,9 @@ export class AccountItemComponent implements OnInit {
   ) {
      this.subscription = addCardService.subscription$.subscribe(
       data => {
+        if(data == null){
+          return
+        }
        // this.addCard(data);
        this.getCards();
         console.log(data)

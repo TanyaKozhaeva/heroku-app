@@ -65,7 +65,7 @@ cardModel = new Card();
      }
 
      cansel(){
-       this.router.navigate(['/user']);
+       this.router.navigate(['user/cards']);
      }
 
   canDeactivate(): Observable<boolean> | boolean {

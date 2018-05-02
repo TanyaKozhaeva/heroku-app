@@ -16,9 +16,10 @@ import { Observable } from 'rxjs/Observable';
   ]
 })
 export class AddAccountComponent implements OnInit {
-accountModel = new Account;
+accountModel = new Account();
 userId;
-products: any[]=[];
+products;
+
 numberMask: any[] = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 currencyMask = createNumberMask({ prefix: '', suffix: '', thousandsSeparatorSymbol: '.', allowDecimal: true, decimalSymbol: ',' })
   constructor(
@@ -28,18 +29,21 @@ currencyMask = createNumberMask({ prefix: '', suffix: '', thousandsSeparatorSymb
     private addAccountService: AddAccountService,
     private alertService: AlertService,
     private confirmService: ConfirmService
-  ) { }
+  ) {}
 
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     //this.cardModel = new Card(this.currentUser.id);
     this.getProducts()
+    //this.accountModel.currency = "USD";
+    //console.log(this.products[0].currency)
    }
    private getProducts(){
     this.accountsService.getProducts()
     .subscribe(res => {
       this.products = res;
+      this.accountModel.currency = this.products[2].currency
     });
 }
 
@@ -60,7 +64,7 @@ currencyMask = createNumberMask({ prefix: '', suffix: '', thousandsSeparatorSymb
      }
 
      cansel(){
-       this.router.navigate(['/user']);
+       this.router.navigate(['user/cards']);
      }
 
   canDeactivate(): Observable<boolean> | boolean {

@@ -16,14 +16,14 @@ export class TransactionsComponent implements OnInit {
 userId;
 cards;
 transactions;
-dateFrom;
+currentDate;
 // dateForm;
 
 
   constructor(
     private cardsService: CardsService,
     private route: ActivatedRoute
-  ) { }
+  ) {this.currentDate = new Date() }
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
@@ -32,13 +32,16 @@ dateFrom;
     
   }
 
-  
+  /*
 
-  // currentDate(){
-  //   const currentDate = new Date();
-  //   return currentDate.toISOString().substring(0, 10);
-  //   this.dateForm = return currentDate.toISOString().substring(0, 10);
-  // }
+   currentDate(){
+    const currentDate = new Date();
+    console.log(currentDate.toString())
+   return currentDate.toString()
+   
+     //this.dateForm = return currentDate.toISOString().substring(0, 10);
+   }
+   */
 
   private getCards(){
     this.cardsService.getCards(this.userId)
@@ -56,7 +59,7 @@ dateFrom;
 
   transactionsFilter(){
     let data = {
-      from: this.dateFrom
+      //from: this.dateFrom
       // to: dateTo.value
     }
     console.log(data)

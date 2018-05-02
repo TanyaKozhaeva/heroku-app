@@ -55,6 +55,7 @@ subscription: Subscription;
 
 
   private getAccounts(){
+    console.log(this.userId)
     this.cardsService.getAccounts(this.userId)
     .subscribe(res => {
       this.accounts = res;

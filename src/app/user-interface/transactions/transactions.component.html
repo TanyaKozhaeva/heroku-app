@@ -47,7 +47,8 @@
       from="dateFrom"
       to="dateTo">
         <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
-        <input type="date" name="dateFrom" [(ngModel)]="dateFrom">
+        <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
+        <input type="date" name="dateFrom" #dateFrom [ngModel]="currentDate | date: 'dd.MM.yyyy'" (ngModelChange)="currentDate = $event">
         <input type="date" name="dateTo" #dateTo ngModel>
         <app-errors [control]="dateGroup"></app-errors>
         <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
