@@ -67,7 +67,7 @@ cardModel = new Card();
      cansel(){
        this.router.navigate(['user/cards']);
      }
-
+/*
   canDeactivate(): Observable<boolean> | boolean {
 
     if(!this.cardModel){
@@ -77,7 +77,22 @@ cardModel = new Card();
     return this.confirmService.confirm('Discard changes for Person?');
 
   }
+*/
 
+canDeactivate(): Observable<boolean> | boolean {
+
+  if(!this.cardModel){
+    console.log(this.cardModel)
+    return true
+  }
+  //this.confirmService.confirm('Discard changes for Person?');
+ 
+  this.confirmService.message("Discard changes for Card?");
+  return this.confirmService.navigateAwaySelection$;
+  
+  
+
+}
 
 
 

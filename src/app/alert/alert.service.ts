@@ -36,7 +36,6 @@ export class AlertService {
   }
 
   getMessage(){
-    console.log("get message")
     return this.subscription$;
   }
 

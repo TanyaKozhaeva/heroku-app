@@ -21,6 +21,7 @@ import { AlertModule } from './alert/alert.module';
 import { AlertService } from './alert/alert.service';
 import { HttpErrorInterceptor } from './services/http-error.interceptor';
 import { HeaderModule } from './header/header.module';
+import { ConfirmWindowModule } from './confirm-window/confirm-window.module'
 import { DashComponent } from './dash/dash.component';
 //import { PasswordValidationDirective } from './directives/password-validation.directive';
 
@@ -48,6 +49,7 @@ import { DashComponent } from './dash/dash.component';
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,
+    ConfirmWindowModule,
     AlertModule,
     AdminModule,
     UserInterfaceModule,

@@ -1,5 +1,5 @@
-<div class="confirm">
+<div class="confirm" *ngIf="showWindow">
   <p class="confirm__message">{{message}}</p>
-  <button class="confirm()">Yes</button>
-  <button class="decline()">No</button>
+  <button (click)="choose(true)">Yes</button>
+  <button (click)="choose(false)">No</button>
 </div>

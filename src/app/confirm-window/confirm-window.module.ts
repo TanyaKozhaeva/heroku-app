@@ -6,6 +6,9 @@ import { ConfirmWindowComponent } from './confirm-window.component';
   imports: [
     CommonModule
   ],
-  declarations: [ConfirmWindowComponent]
+  declarations: [ConfirmWindowComponent],
+  exports: [
+    ConfirmWindowComponent
+  ]
 })
 export class ConfirmWindowModule { }

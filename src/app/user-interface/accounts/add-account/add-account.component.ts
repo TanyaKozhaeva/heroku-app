@@ -73,8 +73,9 @@ currencyMask = createNumberMask({ prefix: '', suffix: '', thousandsSeparatorSymb
       console.log(this.accountModel)
       return true
     }
-    return this.confirmService.confirm('Discard changes for Account?');
 
+    this.confirmService.message("Discard changes for Account?");
+  return this.confirmService.navigateAwaySelection$;
   }
 
 

@@ -26,6 +26,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { AccountItemComponent } from './accounts/account-item/account-item.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { AddAccountService } from '../services/addaccount.service';
+import { ConfirmWindowModule } from '../confirm-window/confirm-window.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AddAccountService } from '../services/addaccount.service';
     CommonModule,
     FormsModule,
     HeaderModule,
+    ConfirmWindowModule,
     AlertModule,
     DirectivesModule,
     TextMaskModule,

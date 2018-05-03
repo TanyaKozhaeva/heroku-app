@@ -12,41 +12,54 @@ body
 
 .row
   +row-flex
-
+.logo
+  font-size: 7.5em
+  color: $mainColorLight
+  text-align: center
 .title
-    font-size: 2.25em
-    font-weight: 600
+    //font-size: 2.25em
+    font-size: 4.06em
+    font-weight: 300
     margin: 0 auto
-    color: $fontColor
+    //color: $fontColor
+    color: $mainColorLight
 .subtitle
   font-size: 1.125em
-  font-weight: 400
+  font-weight: 300
   color: $fontColor
+
 
 
 .form
   padding: $offset $offset_one_side
-  text-align: center
-  border-radius: 5px
-  background-color: $mainColorLight
-
+  //text-align: center
+  // border-radius: 5px
+  // background-color: $mainColorLight
   &__title
     margin-bottom: .8em
     text-align: center
+  
 
   &__group:last-of-type
     margin-bottom: $offset
-    border-bottom: 1px solid $bgColor
+    //border-bottom: 1px solid $bgColor
+    
 
   &__input
     width: 100%
-    font-size: 1.5em
-    padding: 1.08em $offset-one-side
-    border-top: 1px solid $bgColor
+    //font-size: 1.5em
+    font-size: 1.18em
+    //padding: 1.08em $offset-one-side
+    padding: 2.14em $offset-one-side 1.02em
+    //border-top: 1px solid $bgColor
     box-sizing: border-box
-    font-weight: 600
-    color: $fontColor
-    text-align: center
+    border-bottom: 2px solid $mainColorLight
+    font-weight: 300
+    //color: $fontColor
+    color: $mainColorLight
+    text-align: left
+    background-color: transparent
+    //text-align: center
     &::placeholder
       font-weight: inherit
       color: inherit
@@ -65,18 +78,22 @@ body
   display: inline-block
   min-width: 6.61rem
   font-size: 1.1rem
-  padding: 1em
+  //padding: 1em
+  padding: .7em
   box-sizing: border-box
-  font-weight: 600
+  font-weight: 700
   border-radius: 3px
   text-align: center
   color: $mainColorLight
   box-shadow: $blocksShadow
   &_color
     &_main
-      background-color: $mainColor
+      //background-color: $mainColor
+      background-color: $fontColor
     &_accent
-      background-color: $accentColor
+      //background-color: $accentColor
+      background-color: $bgColor
+      color: $fontColor
     &_light
       background-color: $mainColorLight
       color: $fontColor
@@ -94,7 +111,7 @@ body
     content: "+"
     font-size: 3.5rem
     color: $mainColorLight
-    font-weight: 600
+    font-weight: 700
     position: absolute
     top: 50%
     left: 50%
