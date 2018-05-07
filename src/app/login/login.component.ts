@@ -45,14 +45,14 @@ model = new User();
     data => {
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
        if(this.currentUser.userInfo.role == "USER"){
-        this.path = 'user/cards'
+        this.path = 'user'
         //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'user';//2
        } else {
         this.path = 'admin';//2
        }
-       this.router.navigate([this.path, {id: this.currentUser.userInfo.userId}]);
+       //this.router.navigate([this.path, {id: this.currentUser.userInfo.userId}]);
         //this.router.navigate([redirect]);
-        //this.router.navigate([this.path]);
+        this.router.navigate([this.path]);
     },
     error => {
       this.alertService.error(error);

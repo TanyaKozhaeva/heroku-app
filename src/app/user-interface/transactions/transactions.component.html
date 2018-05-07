@@ -1,29 +1,32 @@
 <div class="payments-block">
-<form class="form payments-block__form" name="paymentForm" (ngSubmit)="paymentForm.valid && pay(from, to, transactionAmount)" #paymentForm="ngForm" novalidate>
+<form class="form payments-block__form" name="paymentForm" (ngSubmit)="paymentForm.valid && makeTransaction()" #paymentForm="ngForm" novalidate>
   <label> Send from:
-    <select class="form__input" #from>
-    <option *ngFor="let c of cards" value="{{ c.number }}" class="card-option">
-      <span class="card-option__name">{{c.name}}</span>
-      <span class="card-option__num">{{c.number}}</span>
+    <select class="form__input" name="sourceName" [(ngModel)]="transaction.sourceName" #sourceName="ngModel">
+    <option *ngFor="let a of accounts; let i='index'" value="{{ a }}" class="card-option">
+      <span class="card-option__num">{{a.number}}</span>
+      <span class="card-option__num">{{a.amount}}</span>
+      <span class="card-option__num">{{a.currency}}</span>
     </option>
   </select>
 </label>
 <label> Recipient:
-  <select class="form__input" #to>
-      <option *ngFor="let c of cards" value="{{ c.number }}" class="card-option">
-        <span class="card-option__name">{{c.name}}</span>
-        <span class="card-option__num">{{c.number}}</span>
+  <select class="form__input" name="destinationName" [(ngModel)]="transaction.destinationName" #destinationName="ngModel">
+      <option *ngFor="let a of accounts" value="{{ a.number }}" class="card-option">
+        <span class="card-option__num">{{a.number}}</span>
+        <span class="card-option__num">{{a.amount}}</span>
+      <span class="card-option__num">{{a.currency}}</span>
       </option>
   </select>
 </label>
 <div class="form-group">
-  <input type="number" name="transactionAmount" class="form__input"
+  <input type="number" name="transactionAmount" class="form__input" [(ngModel)]="transaction.sum" #transactionAmount="ngModel"
   placeholder="Amount"
-  ngModel
   required
   #transactionAmount>
   <app-errors [control]="transactionAmount"></app-errors>
   </div>
+  <!-- value="{{account}}" -->
+  <input type="text" name="transactionCurrency" class="form__input" [(ngModel)]="transaction.currency" #transactionCurrency="ngModel" value="{{transaction.currency}}">
   <button type="submit"
   [disabled]="!paymentForm.valid"
   class="link link_color_main">Transfer</button>

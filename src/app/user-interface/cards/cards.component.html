@@ -5,6 +5,7 @@
   </div> -->
   <!-- <div *ngIf="cards.length > 0"></div> -->
   <div class="cards__list-wrapper">
+      <app-alert></app-alert>
       <ul class="accounts__list list">
           <app-account-item *ngFor="let account of accounts"
           [account] = "account">
@@ -22,7 +23,7 @@
   </div>
   
 <div class="cards__add-form">
-  <app-alert></app-alert>
-  <router-outlet></router-outlet>
+  <!-- <app-alert></app-alert> -->
+  <!-- <router-outlet></router-outlet> -->
 </div>
 </div>

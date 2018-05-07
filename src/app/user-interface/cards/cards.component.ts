@@ -36,7 +36,6 @@ subscription: Subscription;
      this.subscription = addAccountService.subscription$.subscribe(
       data => {
         this.addAccount(data);
-        console.log(data)
       }
     )
   }
@@ -55,11 +54,9 @@ subscription: Subscription;
 
 
   private getAccounts(){
-    console.log(this.userId)
     this.cardsService.getAccounts(this.userId)
     .subscribe(res => {
       this.accounts = res;
-      console.log(res)
     });
   }
 /*

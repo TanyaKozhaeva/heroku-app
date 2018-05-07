@@ -8,7 +8,7 @@ import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
 import { AddCardComponent } from './cards/add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-//import { DashComponent } from './dash/dash.component';
+import { DashComponent } from './dash/dash.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
@@ -18,7 +18,7 @@ const userRoutes: Routes = [
   {
       path: 'user',
       component: UserInterfaceComponent,
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
       children:[
        // {
          // path: '',
@@ -38,12 +38,14 @@ const userRoutes: Routes = [
            // { path: '', component: CardsComponent }
         //]
      // },
+     { path: '', component: DashComponent },
       { path: 'cards', 
       component: CardsComponent,
       children: [
         { path: 'add-card', 
         component: AddCardComponent,
-        canDeactivate: [CanDeactivateGuard] },
+        canDeactivate: [CanDeactivateGuard] 
+      },
         { path: 'add-account', 
         component: AddAccountComponent,
         canDeactivate: [CanDeactivateGuard] }

@@ -1,20 +1,23 @@
-<form (ngSubmit)="addCardForm.form.valid && addCard()" class="add-form form" #addCardForm="ngForm" class="form">
-<h2 class="form__title title">
+<form (ngSubmit)="addCardForm.form.valid && addCard()" class="add-card-form" #addCardForm="ngForm">
+<!-- <h2 class="form__title">
   <svg class="icon add-form__title-icon">
     <use xlink:href="assets/svg/symbol/sprite.svg#add-card"></use>
   </svg>
   <span>Card requisites</span>
-</h2>
-    <div class="form__group">
+</h2> -->
+    <div class="add-card-form__group-name">
     <input type="text"
-    class="form__input" name="cardName"
+    class="add-card-form__input-name" name="cardName"
     [(ngModel)]="cardModel.name" #cardName="ngModel"
     required placeholder="Card name">
     <app-errors [control]="cardName"></app-errors>
 </div>
+<!-- <svg class="icon add-card-form__icon">
+    <use xlink:href="assets/svg/symbol/sprite.svg#add-card"></use>
+  </svg> -->
 
-<div class="form__group">
-    <input type="text" class="form__input" name="cardNumber"
+<div class="add-card-form__group-num">
+    <input type="text" class="add-card-form__input-num" name="cardNumber"
     [(ngModel)]="cardModel.number"
     #cardNumber="ngModel"
     placeholder="Card number"
@@ -25,8 +28,8 @@
     <app-errors [control]="cardNumber"></app-errors>
 </div>
 
-<div class="form__group">
-    <input type="text" class="form__input" name="cardExpiration"
+<div class="add-card-form__group-exp">
+    <input type="text" class="add-card-form__input-exp" name="cardExpiration"
     [(ngModel)]="cardModel.expiration"
     #cardExpiration="ngModel"
     placeholder="Expiration term"
@@ -46,10 +49,12 @@
 </div> -->
 
 
-    <button
+
+<button
     type="submit"
     class="link link_color_main"
-    [disabled]="!addCardForm.form.valid">
+    [disabled]="!addCardForm.form.valid"
+   >
     Add
     </button>
     <button class="link link_color_accent"
@@ -57,3 +62,4 @@
     Cansel
     </button>
 </form>
+

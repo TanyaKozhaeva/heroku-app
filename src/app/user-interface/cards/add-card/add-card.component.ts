@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { Card } from '../add-card/card'
 import { CardsService } from '../../../services/cards.service';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../../alert/alert.service';
 import { ConfirmService } from '../../../services/confirm.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -25,9 +26,10 @@ export class AddCardComponent implements OnInit {
 //@Input() currentUser;
 //currentUser = JSON.parse(localStorage.getItem('currentUser'));
 //@Output() addingCard = new EventEmitter;////
+@ViewChild('addCardForm') public addCardForm: NgForm;
 numberMask: any[] = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 expiredMask: any[] = [/\d/, /\d/, '/', /\d/, /\d/]
-userId;
+accountId;
 cardModel = new Card();
 
 /*cardModel = {
@@ -43,18 +45,19 @@ cardModel = new Card();
   ) { }
 
   ngOnInit() {
-    this.userId = this.route.snapshot.paramMap.get('id');
-    //this.cardModel = new Card(this.currentUser.id);
+    this.accountId = this.route.snapshot.paramMap.get('id');
    }
 
 
    addCard(){
     // this.cardModel.userId = this.userId;
-    console.log(this.cardModel)
-     this.cardsService.addCard(this.cardModel)
+     this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
       this.addCardService.executeAction(res);
+      this.addCardForm.reset();
       this.alertService.success("Card successfully added!", false);
+      this.router.navigate(['user/cards']);
+      
 
      //this.addingCard.emit(res);////
      //this.addCardService.addingCard.emit("this.cardModel");
@@ -81,12 +84,10 @@ cardModel = new Card();
 
 canDeactivate(): Observable<boolean> | boolean {
 
-  if(!this.cardModel){
-    console.log(this.cardModel)
+  if(this.addCardForm.pristine){
     return true
   }
   //this.confirmService.confirm('Discard changes for Person?');
- 
   this.confirmService.message("Discard changes for Card?");
   return this.confirmService.navigateAwaySelection$;
   

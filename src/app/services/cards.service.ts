@@ -12,13 +12,13 @@ export class CardsService {
   constructor( private http: HttpClient) { }
 
   getCards(accountId){
-    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/' + accountId)
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/1')
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/' + accountId)
+    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/wallets/account/1')
   }
 
   getAccounts(userId){
-   // return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/' + userId)
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts')
+   return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/')
+    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
   }
  
 
@@ -27,12 +27,12 @@ export class CardsService {
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions')
   }
 
-  transactionsFilter(data){
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions', data)
+  transactionsFilter(data, accountId){
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
   }
 
-  addCard(card) {
-    ///return this.http.post('http://apihonestbank.herokuapp.com/wallets/account/', card)
+  addCard(card, accointId) {
+    ///return this.http.post('http://apihonestbank.herokuapp.com/wallets/account/'+ accountId, card)
     return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 

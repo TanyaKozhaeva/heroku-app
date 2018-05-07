@@ -14,6 +14,13 @@ export class AccountItemComponent implements OnInit {
   @Input() account;
   //accountId = this.account.id
   cards: any[]=[];
+  //cards;
+  accountId;
+  showTransactions = false;
+  //showCards = false;
+  transactions;
+  //accountId = this.account.id;
+ 
 
   subscription: Subscription;
 
@@ -29,14 +36,18 @@ export class AccountItemComponent implements OnInit {
           return
         }
        // this.addCard(data);
+       //this.cards.push(data)
        this.getCards();
-        console.log(data)
+        console.log(this.cards)
       }
     )
+    
   }
 
 
   ngOnInit() {
+    this.accountId = this.account.id;
+    this.getCards()
   }
 
   ngOnDestroy(){
@@ -45,12 +56,46 @@ export class AccountItemComponent implements OnInit {
 
   private getCards() {
     //this.cardsService.getCards(this.account.id)
-    this.cardsService.getCards(1)
+    //this.showCards ? this.showCards = false : this.showCards = true;
+    //console.log(this.showCards);
+      this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
       console.log(res)
     });
   }
+
+  showingTransactions(){
+    this.showTransactions ? this.showTransactions = false : this.showTransactions = true;
+
+  }
+
+  transactionsFilter(){
+    let data = {
+      //from: this.dateFrom
+      // to: dateTo.value
+
+    }
+    console.log(data)
+    this.cardsService.transactionsFilter(data, this.accountId)
+    .subscribe (res =>{
+      this.transactions = res;
+    })
+  }
+
+  /*
+  private getCards() {
+    //this.cardsService.getCards(this.account.id)
+    if(!this.cards){
+      this.cardsService.getCards(this.accountId)
+    .subscribe(res => {
+      this.cards = res;
+      console.log(res)
+    })
+    }
+    console.log(this.cards)
+    return
+  }*/
 /*
   addCard(card){
     if (card == null){

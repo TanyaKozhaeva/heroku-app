@@ -4,7 +4,7 @@
     </span>
       <span class="account-item__sum">{{account.amount}}</span>
       <span class="account-item__sum">{{account.currency}}</span>
-      <button class="link" (click)="getCards()">Show cards</button>
+      <!-- <button class="link link_color_main" (click)="getCards()">Show cards</button> -->
       <ul class="cards__list list">
         <app-card-item *ngFor="let card of cards"
         [card] = "card">
@@ -12,9 +12,50 @@
       </ul>
       <div class="add-card-form">
         <p class="cards__add-suggestion">Add a card</p>
-        <a [routerLink]="['./add-card', {id: userId}]" routerLinkActive="active" class="link link_color_accent">
+        <a [routerLink]="['./add-card', {id: accountId}]" routerLinkActive="active" class="link link_color_accent">
           <!-- add id Account param instead userId -->
           <span class="hidden">Open add form</span>
         </a>
       </div>
-  </li>
+
+      <button class="link link_color_main" (click)="showingTransactions()">Show transactions</button>
+<div class="account-item__transactions transactions" *ngIf="showTransactions">
+
+    <!-- <button class="payments-block__cards-btn link" (click)="getTransactions()">Get transactions</button> -->
+    <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
+        <div class="transactions__date-form-group"
+        ngModelGroup="dateGroup"
+        #dateGroup="ngModelGroup"
+        dateValidator
+        from="dateFrom"
+        to="dateTo">
+          <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
+          <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
+          <input type="date" name="dateFrom" #dateFrom [ngModel]="currentDate | date: 'dd.MM.yyyy'" (ngModelChange)="currentDate = $event">
+          <input type="date" name="dateTo" #dateTo ngModel>
+          <app-errors [control]="dateGroup"></app-errors>
+          <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
+        </div>
+      </form>
+      <table class="transactions__list table">
+        <thead class="table__head">
+          <tr class="table__row">
+            <th class="table__cell table__item-date">Date</th>
+            <th class="table__cell table__item-source">Recipient</th>
+            <th class="table__cell table__item-recepient">Recipient</th>
+            <th class="table__cell table__item-sum">Sum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="!transactions" class="table__row">Select a date</tr>
+          <tr *ngFor="let t of transactions" class="table__row">
+            <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
+            <td class="table__cell">{{t.sourceName}}</td>
+            <td class="table__cell">{{t.destinationName}}</td>
+            <td class="table__cell">{{t.sum}}</td>
+          </tr>
+        </tbody>
+  
+      </table>
+      </div>
+      </li>
