@@ -1,4 +1,24 @@
-<app-users-item *ngFor="let user of users"
+<!-- <app-users-item *ngFor="let user of users"
   [user] = "user"
   (delete)="deleteUser($event)">
-</app-users-item>
+</app-users-item> -->
+
+
+<table class="transactions__list table">
+    <thead class="table__head">
+      <tr class="table__row">
+        <th class="table__cell">First Name</th>
+        <th class="table__cell">Second Name</th>
+        <th class="table__cell">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users; let i='index'" class="table__row">
+        <td class="table__cell">{{u.profile.firstName}}</td>
+        <td class="table__cell">{{u.profile.lastName}}</td>
+        <td class="table__cell">{{u.profile.email}}</td>
+        <a [routerLink]="['./user-item', {id: i}]" routerLinkActive="" class="link link_color_light"></a>
+      </tr>
+    </tbody>
+
+  </table>

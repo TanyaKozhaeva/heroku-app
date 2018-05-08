@@ -5,21 +5,24 @@
   </div> -->
   <!-- <div *ngIf="cards.length > 0"></div> -->
   <div class="cards__list-wrapper">
-      <app-alert></app-alert>
+      <!-- <app-alert></app-alert> -->
       <ul class="accounts__list list">
           <app-account-item *ngFor="let account of accounts"
           [account] = "account">
           </app-account-item>
         </ul>
-    <!-- <ul class="cards__list list">
-    <app-card-item *ngFor="let card of cards"
-    [card] = "card">
-    </app-card-item>
-  </ul> -->
-  <p class="cards__add-suggestion">Add an account</p>
+
+
+        <a [routerLink]="['../transactions', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link`" >
+          <svg class="icon dash__link-icon">
+            <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
+          </svg><br>
+          <span>Make a payment</span>
+        </a>
+  <!-- <p class="cards__add-suggestion">Add an account</p>
   <a [routerLink]="['./add-account', {id: userId}]" routerLinkActive="active" class="add-btn cards__add-btn">
     <span class="hidden">Open add form</span>
-  </a>
+  </a> -->
   </div>
   
 <div class="cards__add-form">

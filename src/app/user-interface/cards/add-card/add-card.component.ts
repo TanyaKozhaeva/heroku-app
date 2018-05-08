@@ -51,11 +51,12 @@ cardModel = new Card();
 
    addCard(){
     // this.cardModel.userId = this.userId;
+    console.log(this.accountId)
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
-      this.addCardService.executeAction(res);
+     // this.addCardService.executeAction(res);
       this.addCardForm.reset();
-      this.alertService.success("Card successfully added!", false);
+      this.alertService.success("Card successfully added!", true);
       this.router.navigate(['user/cards']);
       
 

@@ -9,12 +9,8 @@
     ){}
 }*/
 export class Card {
-        id: number;
         name: string;
         number: number;
         limit: null;
         expiration: number;
-        isBlocked: boolean;
-        smsInform: boolean;
-        status: boolean
 }

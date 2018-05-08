@@ -9,7 +9,9 @@
     <input type="text"
     class="add-card-form__input-name" name="cardName"
     [(ngModel)]="cardModel.name" #cardName="ngModel"
-    required placeholder="Card name">
+    required
+    maxlength="8"
+    placeholder="Card name">
     <app-errors [control]="cardName"></app-errors>
 </div>
 <!-- <svg class="icon add-card-form__icon">

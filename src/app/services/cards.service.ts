@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CardsService {
-  private headers = new Headers({'Content-Type': 'application/json'});
+  //private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor( private http: HttpClient) { }
 
@@ -31,17 +31,23 @@ export class CardsService {
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
   }
 
-  addCard(card, accointId) {
-    ///return this.http.post('http://apihonestbank.herokuapp.com/wallets/account/'+ accountId, card)
-    return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
+  makePayment(transaction){
+    return this.http.post<any[]>('https://apihonestbank.herokuapp.com/transactions/', transaction)
+  }
+
+  addCard(card, accountId) {
+    const headers = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
+    };
+    console.log(accountId)
+    return this.http.post('https://apihonestbank.herokuapp.com/wallets/account/'+ accountId, card, headers)
+    //return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 
   blockCard(card){
     console.log(card)
-    //const headers = {
-     // headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
-    //};
-    return this.http.put('http://apihonestbank.herokuapp.com/wallets/' + card.id, card)
+    
+    return this.http.put('https://apihonestbank.herokuapp.com/wallets/' + card.id, card)
     .map(res =>
       console.log(res)
     )

@@ -39,7 +39,7 @@ const userRoutes: Routes = [
         //]
      // },
      { path: '', component: DashComponent },
-      { path: 'cards', 
+      /*{ path: 'cards', 
       component: CardsComponent,
       children: [
         { path: 'add-card', 
@@ -49,7 +49,12 @@ const userRoutes: Routes = [
         { path: 'add-account', 
         component: AddAccountComponent,
         canDeactivate: [CanDeactivateGuard] }
-      ]},
+      ]},*/
+      { path: 'cards', component: CardsComponent},
+      { path: 'add-card', 
+        component: AddCardComponent,
+        canDeactivate: [CanDeactivateGuard] 
+      },
       { path: 'transactions', component: TransactionsComponent }
     ]
   }

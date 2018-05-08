@@ -1,32 +1,96 @@
 <div class="payments-block">
-<form class="form payments-block__form" name="paymentForm" (ngSubmit)="paymentForm.valid && makeTransaction()" #paymentForm="ngForm" novalidate>
+    <button class="link link_color_accent"
+    (click)="cansel()">
+    Cansel
+    </button>
+<form class="form payments-block__form" name="paymentForm" (ngSubmit)="paymentForm.valid && makePayment()" #paymentForm="ngForm" novalidate>
   <label> Send from:
     <select class="form__input" name="sourceName" [(ngModel)]="transaction.sourceName" #sourceName="ngModel">
-    <option *ngFor="let a of accounts; let i='index'" value="{{ a }}" class="card-option">
+    <option *ngFor="let a of accounts" value="{{ a.number }}" class="card-option">
       <span class="card-option__num">{{a.number}}</span>
       <span class="card-option__num">{{a.amount}}</span>
       <span class="card-option__num">{{a.currency}}</span>
     </option>
   </select>
 </label>
-<label> Recipient:
-  <select class="form__input" name="destinationName" [(ngModel)]="transaction.destinationName" #destinationName="ngModel">
-      <option *ngFor="let a of accounts" value="{{ a.number }}" class="card-option">
-        <span class="card-option__num">{{a.number}}</span>
-        <span class="card-option__num">{{a.amount}}</span>
-      <span class="card-option__num">{{a.currency}}</span>
-      </option>
-  </select>
-</label>
+<!-- password="userPassword"
+        confirmation="passwordConfirmation" -->
+      
+<!-- <fieldset class="form__group" ngModelGroup="recipientGroup"
+        #recipientGroup="ngModelGroup"
+        required
+        >
+                <input type="number" class="form__input" name="recipient" placeholder="Recipient"
+                [(ngModel)]="transaction.destinationName"
+                #recipient="ngModel"/>
+
+                <select class="form__input" name="destinationName" [(ngModel)]="transaction.destinationName" #destinationName="ngModel">
+                  <option *ngFor="let a of accounts" value="{{ a.number }}" class="card-option">
+                    <span class="card-option__num">{{a.number}}</span>
+                    <span class="card-option__num">{{a.amount}}</span>
+                  <span class="card-option__num">{{a.currency}}</span>
+                  </option>
+              </select>
+              <app-errors [control]="recipientGroup"></app-errors>
+        </fieldset> -->
+
+        <fieldset>
+          <legend> Recipient:</legend>
+          <div *ngIf="!inputField">
+              <select class="form__input" 
+              name="recipientAccount"
+              #recipientAccount="ngModel"
+              [(ngModel)]="transaction.destinationName" 
+              required
+              >
+                  <option *ngFor="let a of accounts" value="{{ a.number }}" class="card-option">
+                    <span class="card-option__num">{{a.number}}</span>
+                    <span class="card-option__num">{{a.amount}}</span>
+                  <span class="card-option__num">{{a.currency}}</span>
+                  </option>
+              </select>
+              <app-errors [control]="recipientAccount"></app-errors>
+          </div>
+          
+          <div *ngIf="inputField">
+              <input type="text" class="form__input" 
+              name="recipientManualInput" 
+              #recipientManualInput="ngModel"
+              placeholder="Recipient"
+              [(ngModel)]="transaction.destinationName"
+              required
+              cardValidator
+              [textMask]="{mask: numberMask}" 
+             >
+             <!-- maxlength="16"
+              minlength="16" -->
+             <app-errors [control]="recipientManualInput"></app-errors>
+          </div>
+          
+         
+          <button class="" *ngIf="!inputField" (click)="enteringRecipientNumber()">Input the recipient`s card number</button>
+          <button class="" *ngIf="inputField" (click)="enteringRecipientNumber()">Select from account list</button>
+        
+        </fieldset>
+        
+         
+
 <div class="form-group">
-  <input type="number" name="transactionAmount" class="form__input" [(ngModel)]="transaction.sum" #transactionAmount="ngModel"
+  <input type="number" 
+  class="form__input"
+  name="transactionAmount"  
+  [(ngModel)]="transaction.sum" 
+  #transactionAmount="ngModel"
   placeholder="Amount"
-  required
-  #transactionAmount>
+  required>
   <app-errors [control]="transactionAmount"></app-errors>
   </div>
   <!-- value="{{account}}" -->
-  <input type="text" name="transactionCurrency" class="form__input" [(ngModel)]="transaction.currency" #transactionCurrency="ngModel" value="{{transaction.currency}}">
+  <input type="text" class="form__input"
+  name="transactionCurrency"
+  [(ngModel)]="transaction.currency"
+  #transactionCurrency="ngModel"
+  disabled>
   <button type="submit"
   [disabled]="!paymentForm.valid"
   class="link link_color_main">Transfer</button>

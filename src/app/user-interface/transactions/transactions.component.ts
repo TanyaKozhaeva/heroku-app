@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, ViewChild } from '@angular/core';
 import { CardsService } from '../../services/cards.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import { Transaction } from './transaction';
+import { AlertService } from '../../alert/alert.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -11,20 +13,22 @@ import { Transaction } from './transaction';
   styleUrls: ['./transactions.component.sass'],
   providers: [CardsService]
 })
-export class TransactionsComponent implements OnInit, OnChanges {
-//@Input() currentUser;
-//currentUser = JSON.parse(localStorage.getItem('currentUser'));
+export class TransactionsComponent implements OnChanges, OnInit, DoCheck {
+@ViewChild('paymentForm') public addCardForm: NgForm;
+numberMask: any[] = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 userId;
-accounts;
+accounts: any[]=[];
 transactions;
 transaction = new Transaction();
 currentDate;
-sourceName;
+inputField = false;
 // dateForm;
 
 
   constructor(
     private cardsService: CardsService,
+    private alertService: AlertService,
+    private router: Router,
     private route: ActivatedRoute
   ) {this.currentDate = new Date();
   }
@@ -33,14 +37,21 @@ sourceName;
     this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
     this.getAccounts();
-    console.log(this.transaction)
+    //this.getCurrency();
+   // console.log(this.transaction)
     
    
   }
   ngOnChanges(){
-
-   console.log(this.transaction)
+    //this.getAccounts();
+    //this.getCurrency();
+   //console.log(this.transaction)
   }
+  ngDoCheck(){
+    //this.getAccounts();
+    this.getCurrency();
+  }
+
 
   /*
 
@@ -57,13 +68,24 @@ sourceName;
     this.cardsService.getAccounts(this.userId)
     .subscribe (res =>{
       this.accounts = res;
-      //this.sourceName = this.accounts[0].number
       this.transaction.sourceName = this.accounts[0].number
-      //this.transaction.currency = this.transaction.sourceName.currency
-      console.log(this.transaction)
+
       
     
     })
+  }
+
+  enteringRecipientNumber(){
+    this.transaction.destinationName = "";
+    this.inputField ? this.inputField = false : this.inputField = true;
+  }
+
+  private getCurrency(){
+    for(var i=0; i<this.accounts.length; i++){
+      if(this.accounts[i].number == this.transaction.sourceName){
+        this.transaction.currency = this.accounts[i].currency;
+      } 
+    }
   }
 
   private getTransactions(){
@@ -85,21 +107,21 @@ sourceName;
     })
   }
 
- makeTransaction(){
+ makePayment(){
    console.log(this.transaction)
-   /*
-    console.log(from.value)
-    console.log(to.value)
-    console.log(transactionAmount.value)
-    let data = {
-      sourceName: from.value,
-      destinationName: to.value,
-      sum: transactionAmount.value
-    }*/
-    /*this.cardsService.makeTransaction(this.transaction)
+    this.cardsService.makePayment(this.transaction)
     .subscribe (res =>{
-      this.transactions = res;
-    })*/
+      //this.transactions = res;
+      this.alertService.success("Payment was sent", false);
+      this.addCardForm.reset();
+    },
+    error => {
+      this.alertService.error(error);
+    })
+  }
+
+  cansel(){
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
 }
