@@ -1,9 +1,16 @@
-<div class="cardItem">
+<!-- <div class="cardItem">
     <span class="cardName">{{card.name}}</span>
     <span class="cardNumber">{{card.number}}</span>
     <span class="cardBalance">{{card.blocked}}</span>
 
     <button class="link" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
     <button class="link" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
-</div>
+</div> -->
+
+<td class="table__cell">{{card.name}}</td>
+        <td class="table__cell">{{card.number}}</td>
+        <td class="table__cell">{{card.expiration}}</td>
+        <button class="link" (click)="deleteCard(i)">Delete</button>
+        <button class="link" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
+    <button class="link" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
 

@@ -44,6 +44,11 @@ export class CardsService {
     //return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 
+  deleteCard(cardId){
+    return this.http.delete('https://jsonplaceholder.typicode.com/posts/'+ cardId)
+    //return this.http.delete('http://jsonplaceholder.typicode.com/wallets/'+ cardId)
+  };
+
   blockCard(card){
     console.log(card)
     

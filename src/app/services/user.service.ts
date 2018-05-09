@@ -19,9 +19,8 @@ export class UserService {
   };
 
   deleteUser(userId){
-    return this.http.delete('https://apihonestbank.herokuapp.com/users/'+ userId)
-    //.map(res =>
-      //res.json());
+    //return this.http.delete('https://apihonestbank.herokuapp.com/users/'+ userId)
+    return this.http.delete('http://jsonplaceholder.typicode.com/users/'+ userId)
   };
 
   getUsers(){

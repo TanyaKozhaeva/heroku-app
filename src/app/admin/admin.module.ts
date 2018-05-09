@@ -7,10 +7,14 @@ import { AdminComponent } from '../admin/admin.component';
 import { UsersComponent } from '../admin/users/users.component';
 import { CardsComponent } from '../admin/cards/cards.component';
 
+
 import { AdminRouting } from '../admin/admin-routing';
+import { AlertModule } from '../alert/alert.module';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { UsersItemComponent } from './users/users-item/users-item.component';
+//import { AccountItemComponent } from '../user-interface/accounts/account-item/account-item.component';
 import { CardItemComponent } from './users/card-item/card-item.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 //import { ErrorsComponent } from '../errors/errors.component';
 //import { PhonevalidatorDirective } from '../services/phonevalidator.directive';
 //import { EmailvalidatorDirective } from '../services/emailvalidator.directive'
@@ -21,6 +25,7 @@ import { CardItemComponent } from './users/card-item/card-item.component';
     CommonModule,
     //ReactiveFormsModule,
     FormsModule,
+    AlertModule,
     AdminRouting
   ],
   declarations: [
@@ -29,8 +34,10 @@ import { CardItemComponent } from './users/card-item/card-item.component';
     CardsComponent,
     AdminDashComponent,
     UsersItemComponent,
+   // AccountItemComponent,
     //ErrorsComponent,
-    CardItemComponent
+    CardItemComponent,
+   TransactionsComponent
     //PhonevalidatorDirective
    // EmailvalidatorDirective
   ]
