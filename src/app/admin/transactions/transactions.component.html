@@ -1,3 +1,36 @@
-<p>
-  transactions works!
-</p>
+<form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
+  <div class="transactions__date-form-group"
+  ngModelGroup="dateGroup"
+  #dateGroup="ngModelGroup"
+  dateValidator
+  from="dateFrom"
+  to="dateTo">
+    <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
+    <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
+    <input type="date" name="dateFrom" #dateFrom [ngModel]="currentDate | date: 'dd.MM.yyyy'" (ngModelChange)="currentDate = $event">
+    <input type="date" name="dateTo" #dateTo ngModel>
+    <!-- <app-errors [control]="dateGroup"></app-errors> -->
+    <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
+  </div>
+</form>
+<table class="transactions__list table">
+  <thead class="table__head">
+    <tr class="table__row">
+      <th class="table__cell table__item-date">Date</th>
+      <th class="table__cell table__item-soutce">Source</th>
+      <th class="table__cell table__item-recepient">Recipient</th>
+      <th class="table__cell table__item-sum">Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr *ngFor="let t of transactions" class="table__row">
+      <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
+      <td class="table__cell">{{t.sourceName}}</td>
+      <td class="table__cell">{{t.destinationName}}</td>
+      <td class="table__cell">{{t.sum}}</td>
+    </tr>
+  </tbody>
+  <p *ngIf="!transactions" class="table__row">Select a date</p>
+
+</table>

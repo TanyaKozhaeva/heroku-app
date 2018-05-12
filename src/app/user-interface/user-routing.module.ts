@@ -12,6 +12,7 @@ import { DashComponent } from './dash/dash.component';
 import { AuthGuard } from '../services/auth-guard.service';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
+import { AccountItemComponent } from './accounts/account-item/account-item.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 
 const userRoutes: Routes = [
@@ -23,39 +24,40 @@ const userRoutes: Routes = [
        // {
          // path: '',
          // component: CardsComponent
-        
+
          // canActivateChild: [AuthGuard],
           ///children: [
-            /*{ path: 'cards', 
+            /*{ path: 'cards',
               component: CardsComponent,
               children: [
-                { path: 'add-card', 
+                { path: 'add-card',
                   component: AddCardComponent }
               ]},*/
             //{ path: 'cards', component: CardsComponent},
             //{ path: 'transactions', component: TransactionsComponent },
-            
+
            // { path: '', component: CardsComponent }
         //]
      // },
      { path: '', component: DashComponent },
-      /*{ path: 'cards', 
+      /*{ path: 'cards',
       component: CardsComponent,
       children: [
-        { path: 'add-card', 
+        { path: 'add-card',
         component: AddCardComponent,
-        canDeactivate: [CanDeactivateGuard] 
+        canDeactivate: [CanDeactivateGuard]
       },
-        { path: 'add-account', 
+        { path: 'add-account',
         component: AddAccountComponent,
         canDeactivate: [CanDeactivateGuard] }
       ]},*/
       { path: 'cards', component: CardsComponent},
-      { path: 'add-card', 
+      { path: 'add-card',
         component: AddCardComponent,
-        canDeactivate: [CanDeactivateGuard] 
+        canDeactivate: [CanDeactivateGuard]
       },
       { path: 'transactions', component: TransactionsComponent }
+      { path: 'account-item', component: AccountItemComponent }
     ]
   }
 ]

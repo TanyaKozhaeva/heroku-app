@@ -23,14 +23,16 @@
         <td class="table__cell">{{a.number}}</td>
         <td class="table__cell">{{a.amount}}</td>
         <td class="table__cell">{{a.currency}}</td>
-        <a [routerLink]="['.././../cards', a.id]" routerLinkActive="" class="link link_color_main">Cards</a>
+        <a [routerLink]="['./cards', a.id]" routerLinkActive="" class="link link_color_main">Cards</a>
         <a [routerLink]="['./transactions', a.id]" routerLinkActive="" class="link link_color_main">Transactions</a>
         <button class="link" (click)="deleteAccount(i, a.id)">Delete</button>
+        
       </tr>
     </tbody>
 
   </table>
  </div>
+ <router-outlet></router-outlet>
 
   
 </div>

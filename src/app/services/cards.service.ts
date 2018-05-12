@@ -50,12 +50,7 @@ export class CardsService {
   };
 
   blockCard(card){
-    console.log(card)
-    
     return this.http.put('https://apihonestbank.herokuapp.com/wallets/' + card.id, card)
-    .map(res =>
-      console.log(res)
-    )
   }
 
 }

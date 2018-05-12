@@ -1,0 +1,48 @@
+@import "../../../../sass/smart-grid.sass"
+@import "../../../../sass/vars.sass"
+.account-item
+  &__info
+    padding: 3.2em $offset-one-side 2.46em
+    text-align: center
+    background-image: $mainGradient
+    color: $mainColorLight
+    position: relative
+    &::before
+      display: block
+      content: ""
+      border: 1rem solid transparent
+      border-bottom: 1rem solid $mainColorLight
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      bottom: 0
+  &__info-btn
+    display: inline-block
+    font-size: 1.2em
+    font-weight: 300
+    margin-top: 1em
+    color: $mainColorLight
+    position: relative
+    &::before
+      content: "+"
+      display: block
+      font-size: 1.5em
+      position: absolute
+      top: 50%
+      left: 0
+      transform: translate(-140%, -50%)
+  &__info-number
+    display: block
+    font-size: 1.5em
+    font-weight: 700
+    margin-bottom: .8em
+  &__info-sum
+    display: block
+    font-size: 3.25em
+    font-weight: 100
+  &__cards-list
+    margin-bottom: $offset
+
+  &__transactions-btn
+    width: 80%
+    margin: 0 auto $offset

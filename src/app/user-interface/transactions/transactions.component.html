@@ -103,7 +103,8 @@
       <span class="card-item__name">{{c.name}}</span>
       <span class="card-item__num">{{c.number}}</span>
     </span>
-      <span class="card-item__sum">{{c.sum}} UAH</span>
+      <span class="card-item__sum">{{c.sum}}</span>
+      <span class="card-item__currency">{{c.currency}}</span>
   </div>
   <!-- <button class="payments-block__cards-btn link" (click)="getTransactions()">Get transactions</button> -->
   <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
@@ -125,6 +126,7 @@
       <thead class="table__head">
         <tr class="table__row">
           <th class="table__cell table__item-date">Date</th>
+          <th class="table__cell table__item-source">Soutce</th>
           <th class="table__cell table__item-recepient">Recipient</th>
           <th class="table__cell table__item-sum">Sum</th>
         </tr>
@@ -133,6 +135,7 @@
         <tr *ngIf="!transactions" class="table__row">Select a date</tr>
         <tr *ngFor="let t of transactions" class="table__row">
           <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
+          <td class="table__cell">{{t.sourceName}}</td>
           <td class="table__cell">{{t.destinationName}}</td>
           <td class="table__cell">{{t.sum}}</td>
         </tr>

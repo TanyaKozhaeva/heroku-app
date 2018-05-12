@@ -13,16 +13,24 @@ body
 .row
   +row-flex
 .logo
-  font-size: 3.5em
+  display: inline-block
+  font-size: 3em
   text-transform: uppercase
   font-weight: 700
   color: $mainColorLight
   text-align: center
+  position: relative
   &__icon
+    width: 1em
+    height: 1em
+    position: absolute
+    top: -.4em
+    left: 0
+    transform: translateX(-94%)
     fill: $mainColorLight
 .title
     //font-size: 2.25em
-    font-size: 4.06em
+    font-size: 2.06em
     font-weight: 300
     margin: 0 auto
     //color: $fontColor
@@ -35,19 +43,19 @@ body
 
 
 .form
-  padding: $offset $offset_one_side
+  padding: $offset_one_side
   //text-align: center
   // border-radius: 5px
   // background-color: $mainColorLight
   &__title
     margin-bottom: .8em
     text-align: center
-  
+
 
   &__group:last-of-type
     margin-bottom: $offset
     //border-bottom: 1px solid $bgColor
-    
+
 
   &__input
     width: 100%
@@ -71,22 +79,24 @@ body
         border-color: red
   &__controls
     display: flex
+    flex-direction: column
     justify-content: space-between
     margin-left: -$offset-one-side
     margin-right: -$offset-one-side
     .link
       flex: 1
       margin: 0 $offset-one-side
+      &:not(:last-child)
+        margin-bottom: 1.02em
 
 .link
-  display: inline-block
+  display: block
   min-width: 6.61rem
   font-size: 1.1rem
-  //padding: 1em
-  padding: .7em
+  padding: 1.1em
   box-sizing: border-box
   font-weight: 700
-  border-radius: 3px
+  border-radius: 15px
   text-align: center
   color: $mainColorLight
   box-shadow: $blocksShadow
@@ -96,38 +106,19 @@ body
       background-color: $fontColor
     &_accent
       //background-color: $accentColor
+      background-color: $mainColor
+      color: $mainColorLight
+    &_light
       background-color: $bgColor
       color: $fontColor
-    &_light
-      background-color: $mainColorLight
-      color: $fontColor
       box-shadow: $blocksShadow
-
-.add-btn
-  display: inline-block
-  width: 4rem
-  height: 4rem
-  border-radius: 100%
-  border: .5rem solid lighten($accentColor, 10%)
-  background-color: $accentColor
-  position: relative
-  &::before
-    content: "+"
-    font-size: 3.5rem
-    color: $mainColorLight
-    font-weight: 700
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-
 
 .list
   border-radius: 5px
   background-color: $mainColorLight
-  box-shadow: $blocksShadow
+  //box-shadow: $blocksShadow
   &__item
-    padding: 1.6em $offset-one-side
+    padding: 1.3em $offset-one-side
     border-bottom: 1px solid $bgColor
 .card-item
   font-size: 1.125em

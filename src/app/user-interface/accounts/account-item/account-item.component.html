@@ -1,24 +1,29 @@
-<li class="account-item list__item">
-    <span class="account-item__info">
-      <span class="account-item__num">{{account.number}}</span>
-    </span>
-      <span class="account-item__sum">{{account.amount}}</span>
-      <span class="account-item__sum">{{account.currency}}</span>
+<li class="account-item">
+    <div class="account-item__info">
+      <span class="account-item__info-number">{{account.number}}</span>
+      <span class="account-item__info-sum">
+        <span>{{account.amount}}</span>
+        <span>{{account.currency}}</span>
+      </span>
+          <a [routerLink]="['../add-card', {id: accountId}]" routerLinkActive="active" class="account-item__info-btn">
+          Add a card
+        </a>
+    </div>
+
       <!-- <button class="link link_color_main" (click)="getCards()">Show cards</button> -->
-      <ul class="cards__list list">
+      <ul class="account-item__cards-list list">
         <app-card-item *ngFor="let card of cards"
         [card] = "card">
         </app-card-item>
       </ul>
-      <div class="add-card-form">
-        <p class="cards__add-suggestion">Add a card</p>
-        <a [routerLink]="['../add-card', {id: accountId}]" routerLinkActive="active" class="link link_color_accent">
-          <!-- add id Account param instead userId -->
-          <span class="hidden">Open add form</span>
-        </a>
-      </div>
 
-      <button class="link link_color_main" (click)="showingTransactions()">Show transactions</button>
+
+      <button class="account-item__transactions-btn link link_color_light"
+      (click)="showingTransactions()"
+      *ngIf="!showTransactions">Show transactions</button>
+      <button class="account-item__transactions-btn link link_color_light"
+      *ngIf="showTransactions">Hide transactions</button>
+
 <div class="account-item__transactions transactions" *ngIf="showTransactions">
 
     <!-- <button class="payments-block__cards-btn link" (click)="getTransactions()">Get transactions</button> -->
@@ -47,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngIf="!transactions" class="table__row">Select a date</tr>
+          <p *ngIf="!transactions" class="table__row">Select a date</p>
           <tr *ngFor="let t of transactions" class="table__row">
             <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
             <td class="table__cell">{{t.sourceName}}</td>
@@ -55,7 +60,7 @@
             <td class="table__cell">{{t.sum}}</td>
           </tr>
         </tbody>
-  
+
       </table>
       </div>
       </li>

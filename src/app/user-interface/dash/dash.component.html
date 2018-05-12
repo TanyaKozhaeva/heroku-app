@@ -17,6 +17,16 @@
       </tr>
     </tbody>
   </table>
+  <ul class="dash__accounts-list">
+    <li *ngFor="let a of accounts">
+      <a [routerLink]="['./account-item', a.id]" routerLinkActive="" class="dash__nav-link">
+        {{a.number}}
+        {{a.amount}}
+        {{a.currency}}
+      </a>
+    </li>
+
+  </ul>
 
   <div class="wrapper">
       <nav class="nav dash__nav">

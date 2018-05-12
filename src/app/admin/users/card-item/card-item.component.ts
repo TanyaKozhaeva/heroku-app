@@ -16,6 +16,7 @@ export class CardItemComponent implements OnInit {
   ngOnInit() {
   }
   deleteCard(index){
+    console.log(this.card.id)
     this.cardsService.deleteCard(this.card.id)
     .subscribe(res =>{
       this.deletingCard.emit(index)
@@ -25,7 +26,12 @@ export class CardItemComponent implements OnInit {
   disableCard(){
     console.log(this.card)
     this.card.blocked ? this.card.blocked=false : this.card.blocked=true;
-    this.cardsService.blockCard(this.card);
+    this.cardsService.blockCard(this.card)
+    /*
+    .subscribe(res =>{
+      console.log(res)
+    })
+    */
   }
 
 }
