@@ -17,6 +17,7 @@ body
   font-size: 3em
   text-transform: uppercase
   font-weight: 700
+  margin-left: 1em
   color: $mainColorLight
   text-align: center
   position: relative
@@ -30,15 +31,19 @@ body
     fill: $mainColorLight
 .title
     //font-size: 2.25em
-    font-size: 2.06em
+    font-size: 1.6em
     font-weight: 300
-    margin: 0 auto
+    // margin: 0 auto
     //color: $fontColor
     color: $mainColorLight
+    &_color
+      &_main
+        color: $mainColor
+
 .subtitle
-  font-size: 1.125em
-  font-weight: 300
-  color: $fontColor
+  font-size: 1.35em
+  font-weight: 700
+  color: $mainColorLight
 
 
 
@@ -53,7 +58,7 @@ body
 
 
   &__group:last-of-type
-    margin-bottom: $offset
+    margin-bottom: $offset-one-side
     //border-bottom: 1px solid $bgColor
 
 
@@ -62,7 +67,8 @@ body
     //font-size: 1.5em
     font-size: 1.18em
     //padding: 1.08em $offset-one-side
-    padding: 2.14em $offset-one-side 1.02em
+    padding: 1.2em $offset-one-side 1.02em
+    margin-bottom: $offset-one-side
     //border-top: 1px solid $bgColor
     box-sizing: border-box
     border-bottom: 2px solid $mainColorLight
@@ -77,6 +83,20 @@ body
       color: inherit
     .ng-invalid.ng-touched
         border-color: red
+    &_color
+      &_dark
+        border-bottom: 2px solid $fontColor
+        color: $fontColor
+  &__switch-box
+    margin-bottom: $offset-one-side
+    text-align: center
+  &__switch-input-btn
+    padding: .2em .5em
+    border-radius: 6px
+    color: $mainColorLight
+    background-color: $fontColor
+
+
   &__controls
     display: flex
     flex-direction: column
@@ -112,14 +132,49 @@ body
       background-color: $bgColor
       color: $fontColor
       box-shadow: $blocksShadow
+.cancel-btn
+  // width: 1.3rem
+  // height: 1.3rem
+  // border: 1px solid $mainColor
+  // border-radius: 50%
+  // background-color: $mainColorLight
+  position: relative
+  &::before
+    content: "<<"
+    font-size: 2em
+    color: $mainColor
+.delete-btn
+  position: relative
+  &::before
+    content: "x"
+    font-size: 2em
+    color: $dangerColor
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+
 
 .list
-  border-radius: 5px
+  font-size: 1.125em
+  color: $fontColor
+  //border-radius: 5px
   background-color: $mainColorLight
   //box-shadow: $blocksShadow
+  &_clear
+    background-color: transparent
+    color: $mainColorLight
   &__item
+    display: flex
+    justify-content: space-between
     padding: 1.3em $offset-one-side
     border-bottom: 1px solid $bgColor
+  &__accent-line
+    padding: .5em $offset-one-side
+    text-align: right
+    color: $mainColorLight
+    background-color: $fontColor
 .card-item
   font-size: 1.125em
   display: flex
@@ -153,7 +208,16 @@ body
     width: 30%
   &__cell
     padding: 1em 2%
+  
 
+.tableLight
+  &__row
+    // &:nth-child(odd)
+    //   background-color: darken($mainColor, 10%)
+    border-bottom: 1px solid $mainColorLight
+  &__cell
+    padding: .8em $offset-one-side
+    text-align: center
 
 .hidden
   position: absolute

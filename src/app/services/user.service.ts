@@ -24,14 +24,20 @@ export class UserService {
   };
 
   getUsers(){
-  
+
     return this.http.get('https://apihonestbank.herokuapp.com/users')
     //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
     //.map(res =>
     // console.log(res))
   }
-  getFullUsersInfo(){
-    return this.http.get('https://apihonestbank.herokuapp.com/profiles')
+  getProfiles(){
+    return this.http.get('https://apihonestbank.herokuapp.com/admin/users')
+    //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
+   // .map(res =>
+    /// res.json());
+  }
+  getUserDetails(userId){
+    return this.http.get('https://apihonestbank.herokuapp.com/admin/users/'+ userId)
     //return this.http.get('http://jsonplaceholder.typicode.com/users', {headers: this.headers})
    // .map(res =>
     /// res.json());
@@ -45,4 +51,3 @@ export class UserService {
         //new Blob([res.blob()], { type: 'application/pdf' }))
   }
 }
-  

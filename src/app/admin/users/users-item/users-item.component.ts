@@ -34,14 +34,21 @@ userId;
     this.user = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
        // this.userService.getHero(params.get('id')))
-       this.userId = params.get('id') 
+       this.userId = params.get('id')
     ));*/
     //this.getCards(this.user);
     this.userId = this.route.snapshot.paramMap.get('id');
+    //this.getUserDetails();
     this.getAccounts();
   }
+  getUserDetails() {
+     this.userService.getUserDetails(this.userId)
+     .subscribe(res => {
+       console.log(res)
+       this.user = res;
+     });
+   }
 
- 
   private getAccounts() {
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {
@@ -49,6 +56,7 @@ userId;
       console.log(this.accounts)
     });
   }
+
 /*
   private getCards(accountId) {
     this.cardsService.getCards(accountId)
@@ -57,7 +65,7 @@ userId;
     });
   }*/
 
- 
+
 
   deleteAccount(i, id){
     //this.users.splice(i, 1);

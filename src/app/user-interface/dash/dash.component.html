@@ -1,34 +1,47 @@
 <div class="dash">
-<p class="dash__promo">Welcome to MobyPay</p>
+<p class="dash__promo title">Welcome to MobiPay</p>
 
-<table class="dash__prod products">
-    <thead class="table__head">
-      <tr class="table__row">
-        <th class="table__cell table__item-currency"></th>
-        <th class="table__cell table__item-sell">Sell</th>
-        <th class="table__cell table__item-bay">Buy</th>
+
+<table class="dash__prod tableLight">
+    <thead class="tableLight__head">
+      <tr class="tableLight__row">
+        <th class="tableLight__cell"></th>
+        <th class="tableLight__cell">Sell</th>
+        <th class="tableLight__cell">Buy</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of products" class="table__row">
-        <td class="table__cell">{{p.currency}}</td>
-        <td class="table__cell">{{p.sellCourse}}</td>
-        <td class="table__cell">{{p.buyCourse}}</td>
+      <tr *ngFor="let p of products" class="tableLight__row">
+        <td class="tableLight__cell">{{p.currency}}</td>
+        <td class="tableLight__cell">{{p.sellCourse}}</td>
+        <td class="tableLight__cell">{{p.buyCourse}}</td>
       </tr>
     </tbody>
   </table>
-  <ul class="dash__accounts-list">
-    <li *ngFor="let a of accounts">
-      <a [routerLink]="['./account-item', a.id]" routerLinkActive="" class="dash__nav-link">
-        {{a.number}}
+  <h3 class="dash__title subtitle">Your Accounts</h3>
+  <p class="dash__text">Select an account to see details</p>
+  <table class="dash__accounts tableLight">
+      <tbody>
+        <tr *ngFor="let a of accounts" class="tableLight__row" [routerLink]="['./account-item', a.id]" routerLinkActive="">
+          <td class="tableLight__cell">{{a.number}}</td>
+          <td class="tableLight__cell">{{a.amount}}</td>
+          <td class="tableLight__cell">{{a.currency}}</td>
+          <td class="tableLight__cell">{{a.blocked}}</td>
+        </tr>
+      </tbody>
+    </table>
+  <!-- <ul class="dash__accounts-list list list_clear">
+    <li *ngFor="let a of accounts" [routerLink]="['./account-item', a.id, {userId: userId}]" routerLinkActive="" class="list__item">
+      <span>{{a.number}}
         {{a.amount}}
         {{a.currency}}
-      </a>
+      </span>
+      <p class="list__accent-line">{{a.blocked}}</p>
     </li>
 
-  </ul>
+  </ul> -->
 
-  <div class="wrapper">
+  <!-- <div class="wrapper">
       <nav class="nav dash__nav">
           <a [routerLink]="['./cards', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link">
             <svg class="icon dash__link-icon">
@@ -44,7 +57,14 @@
           </a>
       </nav>
       <router-outlet></router-outlet>
-    </div>
+    </div> -->
+    <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="" class="dash__transactions-link link link_color_light" >
+      <!-- <svg class="icon dash__link-icon">
+        <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
+      </svg><br> -->
+      <!-- <span>Transactions</span> -->
+      Make a payment
+    </a>
 </div>
 
 <!-- [currentUser] = "currentUser" -->

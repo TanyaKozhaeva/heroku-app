@@ -56,8 +56,8 @@ const userRoutes: Routes = [
         component: AddCardComponent,
         canDeactivate: [CanDeactivateGuard]
       },
-      { path: 'transactions', component: TransactionsComponent }
-      { path: 'account-item', component: AccountItemComponent }
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'account-item/:id', component: AccountItemComponent }
     ]
   }
 ]

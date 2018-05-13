@@ -1,9 +1,9 @@
-<li class="account-item">
+<div class="account-item">
     <div class="account-item__info">
-      <span class="account-item__info-number">{{account.number}}</span>
+      <span class="account-item__info-number">{{accountItem.number}}</span>
       <span class="account-item__info-sum">
-        <span>{{account.amount}}</span>
-        <span>{{account.currency}}</span>
+        <span>{{accountItem.amount}}</span>
+        <span>{{accountItem.currency}}</span>
       </span>
           <a [routerLink]="['../add-card', {id: accountId}]" routerLinkActive="active" class="account-item__info-btn">
           Add a card
@@ -18,10 +18,11 @@
       </ul>
 
 
-      <button class="account-item__transactions-btn link link_color_light"
+      <button class="account-item__link link link_color_light"
       (click)="showingTransactions()"
       *ngIf="!showTransactions">Show transactions</button>
-      <button class="account-item__transactions-btn link link_color_light"
+      <button class="account-item__link link link_color_light"
+      (click)="showingTransactions()"
       *ngIf="showTransactions">Hide transactions</button>
 
 <div class="account-item__transactions transactions" *ngIf="showTransactions">
@@ -62,5 +63,15 @@
         </tbody>
 
       </table>
+
       </div>
-      </li>
+      <a [routerLink]="['.././transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
+        Make a payment
+      </a>
+      <!-- <button class="account-item__cancel-btn cancel-btn"
+      (click)="navigate()">Make a payment
+      </button> -->
+      <button class="account-item__cancel-btn cancel-btn"
+      (click)="cansel()">
+      </button>
+    </div>

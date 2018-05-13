@@ -16,14 +16,14 @@ userId;
     //this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
- this.userId = this.currentUser.userInfo.userId
+ //!!!!!this.userId = this.currentUser.userInfo.userId
    console.log(this.userId)
   }
-  
+
  // navigationExtras: NavigationExtras = {
   //  queryParams: { 'currentUser': 'this.currentUser'}
   //};
 
-  
+
 
 }

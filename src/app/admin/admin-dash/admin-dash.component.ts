@@ -27,7 +27,7 @@ users;
 
 
  getUsers() {
-    this.userService.getUsers()
+    this.userService.getProfiles()
     .subscribe(res => {
       console.log(res)
       this.users = res;

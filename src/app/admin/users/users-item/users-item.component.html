@@ -1,13 +1,14 @@
 <div class="userItem">
-  
 
 
- 
-<!-- <div class="userName">
-  <span class="userName">{{user.profile.firstName}}</span>
-  <span class="userName">{{user.profile.lastName}}</span>
+
+
+<div class="userItem__profile">
+  <span class="userItem__name">{{user.profile.firstName}}  {{user.profile.lastName}}</span>
+  <span class="userItem__phone">Phone {{user.profile.phone}}</span>
+  <span class="userItem__email">Email {{user.profile.email}}</span>
 </div>
- <span class="userEmail">Email {{user.profile.email}}</span> -->
+
  <div class="userItem__accounts-box">
   <h3 calss="userItem__accounts-title">Accounts</h3>
   <table class="userItem__accounts-list table">
@@ -26,7 +27,7 @@
         <a [routerLink]="['./cards', a.id]" routerLinkActive="" class="link link_color_main">Cards</a>
         <a [routerLink]="['./transactions', a.id]" routerLinkActive="" class="link link_color_main">Transactions</a>
         <button class="link" (click)="deleteAccount(i, a.id)">Delete</button>
-        
+
       </tr>
     </tbody>
 
@@ -34,5 +35,5 @@
  </div>
  <router-outlet></router-outlet>
 
-  
+
 </div>

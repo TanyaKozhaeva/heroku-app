@@ -4,7 +4,7 @@
   display: flex
   justify-content: space-between
   box-sizing: border-box
-  background-color: $mainColorLight
+  background-color: $mainColor
   //box-shadow: 0 1rem 0 0 lighten($mainColor, 10%)
   //margin-bottom: 1rem
   //border-bottom: 1rem solid lighten($mainColor, 20%)
@@ -12,28 +12,8 @@
   //border-bottom: 10px solid lighten($mainColor, 10%)
   &__logo
     font-size: 1.5rem
-    color: $mainColor
+    color: $mainColorLight
   &__logout-link
     font-weight: 600
     text-align: right
-    color: $mainColor
-
-  &::before,
-  &::after
-    content: ""
-    display: block
-    @extend .circleDecor
-  &::before
-    width: 10px
-    height: 10px
-    bottom: -20px
-    left: 2%
-  &::after
-    width: 15px
-    height: 15px
-    bottom: -50px
-    left: 10%
-.circleDecor
-  border-radius: 100%
-  background-color: darken($mainColor, 10%)
-  position: absolute
+    color: $mainColorLight

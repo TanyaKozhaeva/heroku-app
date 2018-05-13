@@ -9,7 +9,8 @@ import { AccountsService } from '../../services/accounts.service';
   ]
 })
 export class DashComponent implements OnInit {
-products;
+products: any[]=[];
+accounts: any[]=[];
 currentUser;
 userId;
 
@@ -20,7 +21,9 @@ userId;
   ngOnInit() {
     this.getProducts();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
- this.userId = this.currentUser.userInfo.userId
+ //this.userId = this.currentUser.userInfo.userId;
+ this.userId = 2;
+this.getAccounts()
    console.log(this.userId)
   }
 
@@ -30,5 +33,10 @@ userId;
       this.products = res;
     })
   }
-
+  private getAccounts(){
+    this.accountsService.getAccounts(this.userId)
+    .subscribe(res => {
+      this.accounts = res;
+    });
+  }
 }

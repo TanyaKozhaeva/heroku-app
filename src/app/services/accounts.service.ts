@@ -21,6 +21,10 @@ export class AccountsService {
      //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
    }
 
+  getAccountDetails(accountId){
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/'+ accountId)
+  }
+
   getProducts(){
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/products')
   }
