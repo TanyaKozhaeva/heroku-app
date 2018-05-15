@@ -44,6 +44,18 @@ body
   font-size: 1.35em
   font-weight: 700
   color: $mainColorLight
+  &_color
+    &_main
+      color: $mainColor
+.text
+  font-size: .8em
+  font-weight: 300
+  color: $mainColorLight
+  &_color
+    &_main
+      color: $mainColor
+
+
 
 
 
@@ -144,15 +156,16 @@ body
     font-size: 2em
     color: $mainColor
 .delete-btn
-  position: relative
-  &::before
-    content: "x"
-    font-size: 2em
-    color: $dangerColor
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+  color: $dangerColor
+  // position: relative
+  // &::before
+  //   content: "x"
+  //   font-size: 2em
+  //   color: $dangerColor
+  //   position: absolute
+  //   top: 50%
+  //   left: 50%
+  //   transform: translate(-50%, -50%)
 
 
 
@@ -196,10 +209,19 @@ body
   table-layout: fixed
   width: 100%
   text-align: center
+  color: $fontColor
   border-collapse: collapse
-  border: 1px solid $fontColor
+  border: 1px solid $bgColor
   &__head
-    background-color: darken($bgColor, 20%)
+    background-color: darken($bgColor, 10%)
+  &__head-row
+    font-size: .9em
+  &__row
+    font-size: .8em
+    border-bottom: 1px solid $bgColor
+    &_cursor
+      &_pointer
+        cursor: pointer
   &__item-date
     width: 20%
   &__item-recepient
@@ -208,7 +230,14 @@ body
     width: 30%
   &__cell
     padding: 1em 2%
-  
+    text-align: center
+    &_color
+      &_main
+        color: $mainColor
+    &_position
+      &_rel
+        position: relative
+
 
 .tableLight
   &__row
@@ -218,6 +247,21 @@ body
   &__cell
     padding: .8em $offset-one-side
     text-align: center
+    
+.actions-list
+  width: 100%
+  position: absolute
+  bottom: 0
+  left: 50%
+  transform: translate(-50%, 100%)
+  z-index: 1000
+  border: 1px solid $bgColor
+  color: $fontColor
+  background-color: $mainColorLight
+  box-shadow: $blocksShadow
+  &__item
+    padding: .5em 5%
+    border-bottom: 1px solid $bgColor
 
 .hidden
   position: absolute

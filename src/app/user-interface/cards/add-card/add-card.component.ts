@@ -51,14 +51,14 @@ cardModel = new Card();
 
    addCard(){
     // this.cardModel.userId = this.userId;
-    console.log(this.accountId)
+    console.log(this.cardModel)
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
      // this.addCardService.executeAction(res);
       this.addCardForm.reset();
       this.alertService.success("Card successfully added!", true);
-      this.router.navigate(['user/cards']);
-      
+      // this.router.navigate(['user/cards']);
+
 
      //this.addingCard.emit(res);////
      //this.addCardService.addingCard.emit("this.cardModel");
@@ -91,8 +91,8 @@ canDeactivate(): Observable<boolean> | boolean {
   //this.confirmService.confirm('Discard changes for Person?');
   this.confirmService.message("Discard changes for Card?");
   return this.confirmService.navigateAwaySelection$;
-  
-  
+
+
 
 }
 

@@ -16,6 +16,8 @@ import { HeaderModule } from '../header/header.module';
 //import { AccountItemComponent } from '../user-interface/accounts/account-item/account-item.component';
 import { CardItemComponent } from './users/card-item/card-item.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { BackBtnModule } from '../back-btn/back-btn.module';
+import { AccountItemComponent } from './users/users-item/account-item/account-item.component';
 //import { ErrorsComponent } from '../errors/errors.component';
 //import { PhonevalidatorDirective } from '../services/phonevalidator.directive';
 //import { EmailvalidatorDirective } from '../services/emailvalidator.directive'
@@ -27,6 +29,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
     //ReactiveFormsModule,
     FormsModule,
     AlertModule,
+    BackBtnModule,
     HeaderModule,
     AdminRouting
   ],
@@ -39,7 +42,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
    // AccountItemComponent,
     //ErrorsComponent,
     CardItemComponent,
-   TransactionsComponent
+   TransactionsComponent,
+   AccountItemComponent
     //PhonevalidatorDirective
    // EmailvalidatorDirective
   ]

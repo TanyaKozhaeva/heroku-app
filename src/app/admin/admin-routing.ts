@@ -28,14 +28,17 @@ const adminRoutes: Routes = [
              // { path: '**', redirectTo: '' }
           //]
         },
-        { path: 'users-item/:id',
+        /*{ path: 'users-item/:id',
         component: UsersItemComponent,
         children: [
           { path: 'cards/:id', component: CardsComponent },
           { path: 'transactions/:id', component: TransactionsComponent }
 
         ]
-      }
+      }*/
+      { path: 'users-item/:id', component: UsersItemComponent},
+      { path: 'cards/:id', component: CardsComponent },
+      { path: 'transactions/:id', component: TransactionsComponent }
       ]
     }
   ]

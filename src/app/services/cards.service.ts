@@ -20,7 +20,7 @@ export class CardsService {
    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/')
     //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
   }
- 
+
 
   getTransactions(){
    // return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions' + userId)
@@ -40,7 +40,7 @@ export class CardsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
     };
     console.log(accountId)
-    return this.http.post('https://apihonestbank.herokuapp.com/wallets/account/'+ accountId, card, headers)
+    return this.http.post('https://apihonestbank.herokuapp.com/wallets/account/'+ accountId, card)
     //return this.http.post('https://jsonplaceholder.typicode.com/posts', card)
   }
 

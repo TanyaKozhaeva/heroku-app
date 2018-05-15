@@ -10,7 +10,22 @@
 <td class="table__cell">{{card.name}}</td>
         <td class="table__cell">{{card.number}}</td>
         <td class="table__cell">{{card.expiration}}</td>
-        <button class="link link_color_main" (click)="deleteCard(i)">Delete</button>
-        <button class="link link_color_main" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
-    <button class="link link_color_main" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
+
+        <td (click)="showingActions()"
+    class="table__cell
+    table__cell_color_main
+    table__cell_position_rel">
+      Select action
+      <ul *ngIf="showActions" class="actions-list">
+        <li class="actions-list__item">
+            <button class="" (click)="deleteCard()">Delete</button>
+        </li>
+        <li class="actions-list__item">
+            <button class="" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
+            <button class="" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
+      </li>
+      </ul>
+    </td>
+
+
 

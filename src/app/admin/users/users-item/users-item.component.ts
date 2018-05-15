@@ -19,6 +19,7 @@ export class UsersItemComponent implements OnInit {
 @Output() delete = new EventEmitter();
 accounts: any[]=[];
 userId;
+showActions = false;
 
 
   constructor(
@@ -57,6 +58,10 @@ userId;
     });
   }
 
+  showingActions(){
+    this.showActions ? this.showActions=false : this.showActions=true;
+  }
+
 /*
   private getCards(accountId) {
     this.cardsService.getCards(accountId)
@@ -66,7 +71,7 @@ userId;
   }*/
 
 
-
+/*
   deleteAccount(i, id){
     //this.users.splice(i, 1);
     this.accountsService.deleteAccount(id)
@@ -77,6 +82,9 @@ userId;
     error => {
       this.alertService.error(error);
     });
-  }
+  }*/
 
+  deleteAccount(i){
+    this.accounts.splice(i, 1);
+  }
 }

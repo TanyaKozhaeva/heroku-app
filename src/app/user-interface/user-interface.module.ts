@@ -17,6 +17,7 @@ import { DirectivesModule } from '../directives/directives.module';
 import { TextMaskModule } from 'angular2-text-mask';
 
 
+
 import { UserRoutingModule } from './user-routing.module'
 import { AddCardService } from '../services/addcard.service';
 import { HeaderComponent } from '../header/header.component';
@@ -27,6 +28,7 @@ import { AccountItemComponent } from './accounts/account-item/account-item.compo
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { AddAccountService } from '../services/addaccount.service';
 import { ConfirmWindowModule } from '../confirm-window/confirm-window.module';
+import { BackBtnModule } from '../back-btn/back-btn.module';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { ConfirmWindowModule } from '../confirm-window/confirm-window.module';
     HeaderModule,
     ConfirmWindowModule,
     AlertModule,
+    BackBtnModule,
     DirectivesModule,
     TextMaskModule,
     UserRoutingModule

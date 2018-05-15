@@ -1,0 +1,19 @@
+    <td class="table__cell">{{account.number}}</td>
+    <td class="table__cell">{{account.amount}}</td>
+    <td class="table__cell">{{account.currency}}</td>
+    <td (click)="showingActions()"
+    colspan="2"
+    class="table__cell table__cell_color_main table__cell_position_rel">
+      Select action
+      <ul *ngIf="showActions" class="actions-list">
+        <li class="actions-list__item">
+          <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="">Show cards</a>
+        </li>
+        <li class="actions-list__item">
+          <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="">Show transactions</a>
+      </li>
+        <li class="actions-list__item">
+          <button (click)="deleteAccount()" class="">Delete</button>
+        </li>
+      </ul>
+    </td>

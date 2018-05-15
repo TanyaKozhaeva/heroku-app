@@ -31,7 +31,7 @@ export class AccountsService {
 
   deleteAccount(accountId){
     //return this.http.delete('https://apihonestbank.herokuapp.com/users/'+ userId)
-    return this.http.delete('http://jsonplaceholder.typicode.com/accounts/'+ accountId)
+    return this.http.delete('http://jsonplaceholder.typicode.com/users/'+ accountId)
   };
 
 

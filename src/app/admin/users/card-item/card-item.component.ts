@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardsService } from '../../../services/cards.service';
 
 @Component({
-  selector: 'app-card-item',
+  selector: '[app-card-item]',
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.sass'],
   providers: [CardsService]
@@ -11,15 +11,18 @@ export class CardItemComponent implements OnInit {
   @Input() card;
   @Input() index;
   @Output() deletingCard = new EventEmitter();
+  showActions;
+
+
   constructor( private cardsService: CardsService) { }
 
   ngOnInit() {
   }
-  deleteCard(index){
+  deleteCard(){
     console.log(this.card.id)
     this.cardsService.deleteCard(this.card.id)
     .subscribe(res =>{
-      this.deletingCard.emit(index)
+      this.deletingCard.emit(this.index)
     })
     
   }
@@ -32,6 +35,10 @@ export class CardItemComponent implements OnInit {
       console.log(res)
     })
     */
+  }
+
+  showingActions(){
+    this.showActions ? this.showActions=false : this.showActions=true;
   }
 
 }

@@ -5,7 +5,7 @@
         <span>{{accountItem.amount}}</span>
         <span>{{accountItem.currency}}</span>
       </span>
-          <a [routerLink]="['../add-card', {id: accountId}]" routerLinkActive="active" class="account-item__info-btn">
+          <a [routerLink]="['../../add-card', {id: accountId}]" routerLinkActive="active" class="account-item__info-btn">
           Add a card
         </a>
     </div>
@@ -65,7 +65,7 @@
       </table>
 
       </div>
-      <a [routerLink]="['.././transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
+      <a [routerLink]="['../../transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
         Make a payment
       </a>
       <!-- <button class="account-item__cancel-btn cancel-btn"
