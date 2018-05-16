@@ -30,11 +30,9 @@ body
     transform: translateX(-94%)
     fill: $mainColorLight
 .title
-    //font-size: 2.25em
     font-size: 1.6em
     font-weight: 300
-    // margin: 0 auto
-    //color: $fontColor
+    text-align: center
     color: $mainColorLight
     &_color
       &_main
@@ -43,6 +41,7 @@ body
 .subtitle
   font-size: 1.35em
   font-weight: 700
+  text-align: center
   color: $mainColorLight
   &_color
     &_main
@@ -50,6 +49,7 @@ body
 .text
   font-size: .8em
   font-weight: 300
+  text-align: center
   color: $mainColorLight
   &_color
     &_main
@@ -107,6 +107,9 @@ body
     border-radius: 6px
     color: $mainColorLight
     background-color: $fontColor
+  &__btn
+    width: 80%
+    margin: 0 auto
 
 
   &__controls
@@ -188,22 +191,6 @@ body
     text-align: right
     color: $mainColorLight
     background-color: $fontColor
-.card-item
-  font-size: 1.125em
-  display: flex
-  justify-content: space-between
-  &__info
-    text-align: left
-  &__name
-    color: $fontColor
-    font-weight: 400
-  &__num
-    color: $fontColor
-    font-weight: 600
-  &__sum
-    font-weight: 600
-    color: $mainColor
-    text-align: right
 
 .table
   table-layout: fixed
@@ -222,12 +209,12 @@ body
     &_cursor
       &_pointer
         cursor: pointer
-  &__item-date
-    width: 20%
-  &__item-recepient
-    width: 50%
-  &__item-sum
-    width: 30%
+  // &__item-date
+  //   width: 20%
+  // &__item-recepient
+  //   width: 50%
+  // &__item-sum
+  //   width: 30%
   &__cell
     padding: 1em 2%
     text-align: center
@@ -247,7 +234,7 @@ body
   &__cell
     padding: .8em $offset-one-side
     text-align: center
-    
+
 .actions-list
   width: 100%
   position: absolute

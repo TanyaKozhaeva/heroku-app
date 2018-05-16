@@ -2,9 +2,26 @@
 @import "../../../sass/vars.sass"
 .payments-block
   padding: $offset $offset-one-side
+  &__link
+    display: block
+    margin: 0 auto
+    border-bottom: 1px solid $mainColor
+
   &__form
     color: $fontColor
     margin-bottom: $offset-one-side
+  input[name="transactionAmount"]
+    width: 60%
+  input[name="transactionCurrency"]
+    width: 35%
+    text-align: center
+    background-color: $bgColor
+    border: none
+  &__form-label
+    display: block
+    font-size: 1.1rem
+    font-weight: 700
+    color: $fontColor
 
 .transactions
   &__cards-list

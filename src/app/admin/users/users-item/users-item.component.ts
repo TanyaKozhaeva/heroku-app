@@ -54,7 +54,6 @@ showActions = false;
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {
       this.accounts = res;
-      console.log(this.accounts)
     });
   }
 

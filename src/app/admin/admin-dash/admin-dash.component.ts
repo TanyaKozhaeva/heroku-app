@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../alert/alert.service';
 
@@ -9,7 +9,7 @@ import { AlertService } from '../../alert/alert.service';
   styleUrls: ['./admin-dash.component.sass'],
   providers: [UserService]
 })
-export class AdminDashComponent implements OnInit, OnChanges {
+export class AdminDashComponent implements OnInit {
 users;
 
 
@@ -19,9 +19,6 @@ users;
 
 
   ngOnInit() {
-    this.getUsers();//не работает  on Changes
-  }
-  ngOnChanges() {
     this.getUsers();
   }
 
@@ -29,7 +26,6 @@ users;
  getUsers() {
     this.userService.getProfiles()
     .subscribe(res => {
-      console.log(res)
       this.users = res;
     });
   }

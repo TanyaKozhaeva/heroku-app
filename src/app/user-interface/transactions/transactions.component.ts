@@ -20,7 +20,6 @@ userId;
 accounts: any[]=[];
 transactions;
 transaction = new Transaction();
-currentDate;
 inputField = false;
 // dateForm;
 
@@ -30,7 +29,7 @@ inputField = false;
     private alertService: AlertService,
     private router: Router,
     private route: ActivatedRoute
-  ) {this.currentDate = new Date();
+  ) {
   }
 
   ngOnInit() {
@@ -114,14 +113,16 @@ inputField = false;
       //this.transactions = res;
       this.alertService.success("Payment was sent", false);
       this.addCardForm.reset();
+      this.getAccounts();
     },
     error => {
+      console.log(error)
       this.alertService.error(error);
     })
   }
 
   cansel(){
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../user']);
   }
 
 }

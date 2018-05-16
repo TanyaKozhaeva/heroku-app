@@ -43,7 +43,6 @@ export class AccountItemComponent implements OnInit {
        // this.addCard(data);
        //this.cards.push(data)
        this.getCards();
-        console.log(this.cards)
       }
     )
 
@@ -67,7 +66,6 @@ export class AccountItemComponent implements OnInit {
     this.accountsService.getAccountDetails(this.accountId)
   .subscribe(res => {
     this.accountItem = res;
-    console.log(res)
   });
 }
 
@@ -79,7 +77,6 @@ export class AccountItemComponent implements OnInit {
       this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
-      console.log(res)
     });
   }
 

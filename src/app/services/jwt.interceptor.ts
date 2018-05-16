@@ -14,7 +14,7 @@ export class JwtInterceptor implements HttpInterceptor {
                    //Authorization: `pepepepp`
                 }
             });
-            console.log(request)
+  
         }
         return next.handle(request);
     }

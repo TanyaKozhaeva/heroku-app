@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -8,18 +8,19 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./back-btn.component.sass']
 })
 export class BackBtnComponent implements OnInit {
+ 
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private location: Location
+  ) {
+   }
 
   ngOnInit() {
+    
   }
 
   cansel(){
-    this.router.navigate(['../'], {relativeTo: this.route});
-    console.log(this.route)
+    this.location.back()
   }
 
 }

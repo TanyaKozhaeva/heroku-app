@@ -44,10 +44,15 @@ const adminRoutes: Routes = [
   ]
   @NgModule({
     imports: [
-      RouterModule.forChild(adminRoutes)
+     // RouterModule.forChild(adminRoutes)
+     RouterModule.forRoot(
+      adminRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
     ],
     exports: [
       RouterModule
     ]
   })
 export class AdminRouting {}
+

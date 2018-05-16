@@ -32,11 +32,9 @@ export class CardsComponent implements OnInit {
 
   
   private getCards() {
-    console.log(this.accountId)
     this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
-      console.log(this.cards)
     });
     
   }

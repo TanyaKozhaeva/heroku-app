@@ -1,20 +1,24 @@
 <div class="payments-block">
-    <button class="payments-block__cancel-btn cancel-btn"
-    (click)="cansel()">
-    </button>
 
-<form class="form payments-block__form" name="paymentForm" (ngSubmit)="paymentForm.valid && makePayment()" #paymentForm="ngForm" novalidate>
-  <label> Send from:
-    <select class="form__input form__input_color_dark" name="sourceName" [(ngModel)]="transaction.sourceName" #sourceName="ngModel">
+<form class="form payments-block__form"
+name="paymentForm"
+(ngSubmit)="paymentForm.valid && makePayment()"
+#paymentForm="ngForm" novalidate>
+
+  <label class="payments-block__form-label" for="sourceName"> Send from:</label>
+    <select class="form__input form__input_color_dark"
+    name="sourceName"
+    [(ngModel)]="transaction.sourceName"
+    #sourceName="ngModel"
+    id="sourceName">
     <option *ngFor="let a of accounts" value="{{ a.number }}" class="">
       <span class="">{{a.number}}</span>
       <span class="">{{a.amount}}</span>
       <span class="">{{a.currency}}</span>
     </option>
   </select>
-</label>
   <fieldset>
-    <legend> Recipient:</legend>
+    <legend class="payments-block__form-label">Recipient:</legend>
       <div *ngIf="!inputField">
         <select class="form__input form__input_color_dark"
           name="recipientAccount"
@@ -51,29 +55,29 @@
 
 
 
-<div class="form__group">
-  <label> Amount:
+<div class="payments-block__amount-input">
+  <label class="payments-block__form-label" for="transactionAmount"> Amount:</label>
   <input type="number"
   class="form__input form__input_color_dark"
   name="transactionAmount"
   [(ngModel)]="transaction.sum"
   #transactionAmount="ngModel"
+  id="transactionAmount"
   required>
-</label>
-<input type="text" class=""
+<input type="text" class="form__input form__input_color_dark"
 name="transactionCurrency"
 [(ngModel)]="transaction.currency"
 #transactionCurrency="ngModel"
 disabled>
   <app-errors [control]="transactionAmount"></app-errors>
   </div>
-  <!-- value="{{account}}" -->
+
 
 
 
   <button type="submit"
   [disabled]="!paymentForm.valid"
-  class="link link_color_main">Transfer</button>
+  class="form__btn link link_color_main">Transfer</button>
 </form>
 
 <!-- <div class="payments-block__transactions transactions">
@@ -122,4 +126,6 @@ disabled>
     </table> -->
     <!-- </div> -->
     <!-- </div> -->
+    <app-back-btn></app-back-btn>
+    <button class="payments-block__link text text_color_main" (click)="cansel()">Go to Main</button>
 </div>

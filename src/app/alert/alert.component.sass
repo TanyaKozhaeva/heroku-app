@@ -1,14 +1,52 @@
 @import "../../sass/vars.sass"
 .message
-  padding: $offset-one-side
-  font-size: 1.1rem
-  font-weight: 400
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 3000
+  width: 295px
+  padding: 2em $offset-one-side
+  box-sizing: border-box
+  border: 1px solid $bgColor
   text-align: center
+  background-color: $mainColorLight
+  box-shadow: $blocksShadow
+  &__text
+    font-size: 1.1rem
+    font-weight: 300
+    margin-bottom: 1.3em
+    color: $fontColor
+    text-align: center
+  &__icon
+    width: 100px
+    height: 60px
+    &_success
+      fill: $successColor
+    &_danger
+      fill: $dangerColor
   &_success
-    color: $successColor
-    background-color: lighten($successColor, 40%)
+    //color: $successColor
     border: 1px solid $successColor
+
   &_danger
-    color: $dangerColor
-    background-color: lighten($dangerColor, 40%)
+    //color: $dangerColor
     border: 1px solid $dangerColor
+  &__btn
+    position: absolute
+    top: -5%
+    right: -3%
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    border: 1px solid $fontColor
+    background-color: $mainColorLight
+    &::before
+      content: "x"
+      font-size: 1.3rem
+      font-weight: 300
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -53%)
+      color: $fontColor

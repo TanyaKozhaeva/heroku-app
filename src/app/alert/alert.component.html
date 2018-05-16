@@ -1,1 +1,14 @@
-<div *ngIf="message" [ngClass]="{'message': message, 'message_success': message.type === 'success', 'message_danger': message.type === 'error'}">{{message.text}}</div>
+<div
+*ngIf="message"
+[ngClass]="{'message': message,
+'message_success': message.type === 'success',
+'message_danger': message.type === 'error'}">
+<p class="message__text">{{message.text}}</p>
+  <svg class="icon message__icon message__icon_success" *ngIf="message.type === 'success'">
+    <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
+  </svg>
+  <svg class="icon message__icon message__icon_danger" *ngIf="message.type === 'error'">
+    <use xlink:href="assets/svg/symbol/sprite.svg#danger"></use>
+  </svg>
+<button class="message__btn" (click)="close()"></button>
+</div>

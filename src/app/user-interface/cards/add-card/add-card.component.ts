@@ -64,12 +64,12 @@ cardModel = new Card();
      //this.addCardService.addingCard.emit("this.cardModel");
      },
      error => {
-      this.alertService.error(error);
+      this.alertService.error("Something went wrong. Please try again later");
     })
      }
 
      cansel(){
-       this.router.navigate(['user/cards']);
+       this.router.navigate(['/user']);
      }
 /*
   canDeactivate(): Observable<boolean> | boolean {
