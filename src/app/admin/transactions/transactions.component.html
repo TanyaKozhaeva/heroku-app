@@ -4,7 +4,7 @@
     {{currentAccount.number}}
     {{currentAccount.amount}}
     {{currentAccount.currency}}</p>
-  <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__date-form form">
+  <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter()" class="transactions__date-form form">
     <div class="transactions__date-form-group"
     ngModelGroup="dateGroup"
     #dateGroup="ngModelGroup"
