@@ -24,17 +24,17 @@ export class CardItemComponent implements OnInit {
     .subscribe(res =>{
       this.deletingCard.emit(this.index)
     })
-    
+
   }
   disableCard(){
     console.log(this.card)
     this.card.blocked ? this.card.blocked=false : this.card.blocked=true;
     this.cardsService.blockCard(this.card)
-    /*
+
     .subscribe(res =>{
       console.log(res)
     })
-    */
+  
   }
 
   showingActions(){

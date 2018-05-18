@@ -9,10 +9,11 @@ import { AccountsService } from '../../services/accounts.service';
   ]
 })
 export class DashComponent implements OnInit {
-products: any[]=[];
-accounts: any[]=[];
+products: any[] = [];
+accounts: any[] = [];
 currentUser;
 userId;
+
 
   constructor(
     private accountsService: AccountsService
@@ -21,22 +22,22 @@ userId;
   ngOnInit() {
     this.getProducts();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
- //this.userId = this.currentUser.userInfo.userId;
- this.userId = 2;
-this.getAccounts()
-   console.log(this.userId)
+ this.userId = 2; // !!!!!!!!!!!!!!!!!!!!!!
+this.getAccounts();
+
   }
 
-  private getProducts(){
+  private getProducts() {
     this.accountsService.getProducts()
     .subscribe(res => {
       this.products = res;
-    })
+    });
   }
-  private getAccounts(){
+  private getAccounts() {
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {
       this.accounts = res;
     });
   }
+
 }

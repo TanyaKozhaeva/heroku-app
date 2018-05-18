@@ -1,9 +1,9 @@
 <div *ngIf="showWindow" class="confirm-wrapper">
-  <div class="confirm">
-    <p class="confirm__message">{{message}}</p>
-    <div class="confirm__controls">
-      <button class="confirm__btn link link_color_main"(click)="choose(true)">Yes</button>
-      <button class="confirm__btn link link_color_accent"(click)="choose(false)">No</button>
+  <div class="modal">
+    <p class="modal__text">{{message}}</p>
+    <div class="modal__controls">
+      <button class="modal__confirm-btn link link_color_main"(click)="choose(true)">Yes</button>
+      <button class="modal__confirm-btn link link_color_accent"(click)="choose(false)">No</button>
     </div>
   </div>
 </div>

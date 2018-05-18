@@ -1,6 +1,6 @@
-<div class="transactions">
+<div class="transactions admin-main-screen__item">
   <h2 class="transactions__title title title_color_main">Transactions</h2>
-  <p class="transactions__text text text_color_main">For account:
+  <p *ngIf="currentAccount" class="transactions__text text text_color_main">For account:
     {{currentAccount.number}}
     {{currentAccount.amount}}
     {{currentAccount.currency}}</p>
@@ -20,8 +20,8 @@
     </div>
   </form>
 
-
-  <table class="transactions__list table">
+<div class="transactions__list table-wrapper">
+  <table class="table">
     <thead class="table__head">
       <tr class="table__row">
         <th class="table__cell">Date</th>
@@ -41,6 +41,7 @@
 <tr *ngIf="!transactions" class="table__row"><td colspan="4" class="table__cell">Select a date</td></tr>
     </tbody>
   </table>
+</div>
 
   <app-back-btn></app-back-btn>
 </div>

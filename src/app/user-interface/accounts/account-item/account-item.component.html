@@ -1,5 +1,5 @@
 <div class="account-item">
-    <div class="account-item__info">
+    <div *ngIf="accountItem" class="account-item__info">
       <span class="account-item__info-number">{{accountItem.number}}</span>
       <span class="account-item__info-sum">
         <span>{{accountItem.amount}}</span>
@@ -44,7 +44,8 @@
           <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
         </div>
       </form>
-      <table class="transactions__list table">
+      <div class="transactions__list table-wrapper">
+      <table class="table">
         <thead class="table__head">
           <tr class="table__row">
             <th class="table__cell">Date</th>
@@ -64,6 +65,7 @@
         </tbody>
 
       </table>
+    </div>
 
       </div>
       <a [routerLink]="['../../transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
