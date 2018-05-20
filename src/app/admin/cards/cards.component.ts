@@ -11,7 +11,7 @@ import { AccountsService } from '../../services/accounts.service';
   providers: [CardsService, AccountsService, AlertService]
 })
 export class CardsComponent implements OnInit {
-  cards: any[]=[];
+  cards;
   accountId;
   currentAccount;
 
@@ -26,17 +26,17 @@ export class CardsComponent implements OnInit {
     this.accountId = this.route.snapshot.paramMap.get('id');
     this.getCards();
     this.getAccountDetails();
-    
+
   }
 
 
-  
+
   private getCards() {
     this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
     });
-    
+
   }
 
 

@@ -1,21 +1,11 @@
-<!-- <div class="cardItem">
-    <span class="cardName">{{card.name}}</span>
-    <span class="cardNumber">{{card.number}}</span>
-    <span class="cardBalance">{{card.blocked}}</span>
-
-    <button class="link" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
-    <button class="link" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
-</div> -->
-
-<td class="table__cell">{{card.name}}</td>
         <td class="table__cell">{{card.number}}</td>
         <td class="table__cell">{{card.expiration}}</td>
 
         <td (click)="showingActions()"
-        
+
     class="table__cell
     table__cell_color_main
-    table__cell_position_rel">
+    table__cell_actions">
       Select action
       <ul *ngIf="showActions" class="actions-list">
         <li class="actions-list__item">

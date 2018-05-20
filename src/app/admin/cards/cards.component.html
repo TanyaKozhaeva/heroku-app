@@ -1,39 +1,41 @@
 <div class="cards admin-main-screen__item">
+  <div class="wrapper-admin">
+    <h2 class="cards__title title title_color_main">Cards</h2>
+    <p *ngIf="currentAccount" class="cards__text text text_color_main">For account:
+      {{currentAccount.number}}
+      {{currentAccount.amount}}
+      {{currentAccount.currency}}</p>
+    <div class="cards__item table-wrapper">
+      <table class="table">
+        <thead class="table__head">
+          <tr class="table__row">
+            <th class="table__cell">Number</th>
+            <th class="table__cell table__cell_width_20">Exp</th>
+            <th class="table__cell table__cell_width_20">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr app-card-item
+          *ngFor="let c of cards; let i='index'"
+          class="table__row"
+          [class.table__row_disable]="c.blocked"
+            [card] = "c"
+            [index] = "i"
+            (deletingCard)="deleteCard($event)"
+            >
+          </tr>
+          <tr *ngIf="cards.length == 0" class="table__row">
+            <td class="table__cell" colspan="3">
+              -
+            </td>
+          </tr>
+        </tbody>
 
-  <h2 class="cards__title title title_color_main">Cards</h2>
-  <p *ngIf="currentAccount" class="cards__text text text_color_main">For account:
-    {{currentAccount.number}}
-    {{currentAccount.amount}}
-    {{currentAccount.currency}}</p>
-  <div class="cards__item table-wrapper">
-    <table class="table">
-      <thead class="table__head">
-        <tr class="table__row">
-          <th class="table__cell">Name</th>
-          <th class="table__cell">Number</th>
-          <th class="table__cell table__cell_width_small">Exp</th>
-          <th class="table__cell">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr app-card-item
-        *ngFor="let c of cards; let i='index'"
-        class="table__row"
-        [class.table__row_disable]="c.blocked"
-          [card] = "c"
-          [index] = "i"
-          (deletingCard)="deleteCard($event)"
-          >
-          <!-- <td class="table__cell">{{c.name}}</td>
-          <td class="table__cell">{{c.number}}</td>
-          <td class="table__cell">{{c.expiration}}</td>
-          <button class="link" (click)="deleteCard(i, c.id)">Delete</button>
-          <button class="link" (click)="disableCard(i, c.id)">Disable</button> -->
-        </tr>
-      </tbody>
+      </table>
+    </div>
 
-    </table>
+    <app-back-btn></app-back-btn>
   </div>
 
-  <app-back-btn></app-back-btn>
+
 </div>

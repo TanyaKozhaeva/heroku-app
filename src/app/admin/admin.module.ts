@@ -18,6 +18,7 @@ import { CardItemComponent } from './users/card-item/card-item.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { BackBtnModule } from '../back-btn/back-btn.module';
 import { AccountItemComponent } from './users/users-item/account-item/account-item.component';
+import { LoaderModule } from '../loader/loader.module';
 //import { ErrorsComponent } from '../errors/errors.component';
 //import { PhonevalidatorDirective } from '../services/phonevalidator.directive';
 //import { EmailvalidatorDirective } from '../services/emailvalidator.directive'
@@ -28,6 +29,7 @@ import { AccountItemComponent } from './users/users-item/account-item/account-it
     CommonModule,
     //ReactiveFormsModule,
     FormsModule,
+    LoaderModule,
     AlertModule,
     BackBtnModule,
     HeaderModule,

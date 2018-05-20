@@ -5,10 +5,15 @@
 //Edit
 body
   font-family: $mainFont
-.wrapper
+.wrapper-ui
   // +wrapper
-  max-width: 1100px
+  max-width: 780px
   margin: 0 auto
+  padding: 0 $offset-one-side
+.wrapper-admin
+  max-width: 1280px
+  margin: 0 auto
+  padding: 0 $offset-one-side
 
 .row
   +row-flex
@@ -61,44 +66,33 @@ body
 
 .form
   padding: $offset_one_side
-  //text-align: center
-  // border-radius: 5px
-  // background-color: $mainColorLight
+
+
   &__title
     margin-bottom: .8em
 
-
-
-  &__group:last-of-type
-    margin-bottom: $offset-one-side
-    //border-bottom: 1px solid $bgColor
-
-
   &__input
     width: 100%
-    //font-size: 1.5em
-    font-size: 1.18em
-    //padding: 1.08em $offset-one-side
+    font-size: 1em
     padding: 1.2em $offset-one-side 1.02em
     margin-bottom: $offset-one-side
-    //border-top: 1px solid $bgColor
     box-sizing: border-box
     border-bottom: 2px solid $mainColorLight
     font-weight: 300
-    //color: $fontColor
     color: $mainColorLight
     text-align: left
     background-color: transparent
-    //text-align: center
     &::placeholder
       font-weight: inherit
       color: inherit
     .ng-invalid.ng-touched
         border-color: red
+
     &_color
       &_dark
         border-bottom: 2px solid $fontColor
         color: $fontColor
+
   &__switch-box
     margin-bottom: $offset-one-side
     text-align: center
@@ -110,22 +104,17 @@ body
   &__btn
     width: 80%
     margin: 0 auto
-
-
-  &__controls
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    margin-left: -$offset-one-side
-    margin-right: -$offset-one-side
-    .link
-      flex: 1
-      margin: 0 $offset-one-side
-      &:not(:last-child)
-        margin-bottom: 1.02em
+.link-box
+  display: flex
+  flex-direction: column
+  width: 100%
+  margin: 0 auto $offset
+  @media screen and (min-width: $break_xs)
+    flex-direction: row
 
 .link
   display: block
+  width: 100%
   min-width: 6.61rem
   font-size: 1.1rem
   padding: 1.1em
@@ -135,6 +124,13 @@ body
   text-align: center
   color: $mainColorLight
   box-shadow: $blocksShadow
+  @media screen and (max-width: #{$break_xs}-1)
+    &:not(:last-child)
+      margin-bottom: $offset
+  @media screen and (min-width: $break_xs)
+    width: 50%
+    &:not(:last-child)
+      margin-right: $offset
   &_color
     &_main
       //background-color: $mainColor
@@ -148,27 +144,15 @@ body
       color: $fontColor
       box-shadow: $blocksShadow
 .cancel-btn
-  // width: 1.3rem
-  // height: 1.3rem
-  // border: 1px solid $mainColor
-  // border-radius: 50%
-  // background-color: $mainColorLight
   position: relative
   &::before
     content: "<<"
     font-size: 2em
     color: $mainColor
 .delete-btn
+  font-size: .75em
   color: $dangerColor
-  // position: relative
-  // &::before
-  //   content: "x"
-  //   font-size: 2em
-  //   color: $dangerColor
-  //   position: absolute
-  //   top: 50%
-  //   left: 50%
-  //   transform: translate(-50%, -50%)
+
 
 
 
@@ -192,8 +176,9 @@ body
     color: $mainColorLight
     background-color: $fontColor
 .table-wrapper
-  margin-left: -$offset-one-side
-  margin-right: -$offset-one-side
+  @media screen and (max-width: #{$break_sm}-1)
+    margin-left: -$offset-one-side
+    margin-right: -$offset-one-side
 .table
   table-layout: fixed
   width: 100%
@@ -206,7 +191,7 @@ body
   &__head-row
     font-size: .9em
   &__row
-    font-size: .8em
+    font-size: .75em
     border-bottom: 1px solid $bgColor
     &_cursor
       &_pointer
@@ -226,12 +211,16 @@ body
     &_color
       &_main
         color: $mainColor
-    &_position
-      &_rel
-        position: relative
+    &_actions
+      position: relative
+      width: 20%
+      cursor: pointer
+
     &_width
       &_small
         width: 14%
+      &_20
+        width: 20%
 
 
 .tableLight
@@ -239,6 +228,9 @@ body
     // &:nth-child(odd)
     //   background-color: darken($mainColor, 10%)
     border-bottom: 1px solid $mainColorLight
+    &_cursor
+      &_pointer
+        cursor: pointer
     &_disable
       color: $fontColor
       border-bottom: 1px solid $fontColor
@@ -250,16 +242,17 @@ body
     text-align: center
 
 .actions-list
-  width: 100%
+  min-width: 200%
   position: absolute
   bottom: 0
-  left: 50%
-  transform: translate(-50%, 100%)
+  right: 0
+  transform: translateY(100%)
   z-index: 1000
   border: 1px solid $bgColor
   color: $fontColor
   background-color: $mainColorLight
   box-shadow: $blocksShadow
+
   &__item
     padding: .5em 5%
     border-bottom: 1px solid $bgColor
@@ -325,3 +318,7 @@ body
   width: 1px
   height: 1px
   overflow: hidden
+
+@media screen and (min-width: $break_xs)
+  body
+    font-size: 1.35rem

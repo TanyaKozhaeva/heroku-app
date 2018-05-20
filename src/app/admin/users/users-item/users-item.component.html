@@ -1,68 +1,74 @@
 <div class="user-item admin-main-screen__item">
 
 
+<div class="wrapper-admin">
 
 
-<!-- <div class="user-item__profile">
-  <span class="user-item__name">Name: {{user.profile.firstName}}  {{user.profile.lastName}}</span>
-  <span class="user-item__phone">Phone: {{user.profile.phone}}</span>
-  <span class="user-item__email">Email: {{user.profile.email}}</span>
-</div> -->
+   <div class="user-item__accounts-box">
+    <h2 class="user-item__title title title_color_main">Accounts</h2>
+    <p class="user-item__text text text_color_main">
+      For user: {{user.profile.firstName}}  {{user.profile.lastName}}
+    </p>
+  <div class="user-item__accounts-list table-wrapper">
+    <table class="table">
+      <thead class="table__head">
+        <tr class="table__row">
+          <th class="table__cell">Number</th>
+          <th class="table__cell">Amount</th>
+          <!-- <th class="table__cell table__cell_width_20">Currency</th> -->
+          <th class="table__cell table__cell_actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let a of accounts; let i='index'" class="table__row">
+          <app-account-item
+          [account] = "a"
+          [index] = "i"
+          (deletingAccount)="deleteAccount($event)"
+          ></app-account-item> -->
 
- <div class="user-item__accounts-box">
-  <h2 class="user-item__title title title_color_main">Accounts</h2>
-<div class="user-item__accounts-list table-wrapper">
-  <table class="table">
-    <thead class="table__head">
-      <tr class="table__row">
-        <th class="table__cell">Number</th>
-        <th class="table__cell">Amount</th>
-        <th class="table__cell">Currency</th>
-        <th class="table__cell" colspan="2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- <tr *ngFor="let a of accounts; let i='index'" class="table__row">
-        <app-account-item
-        [account] = "a"
-        [index] = "i"
-        (deletingAccount)="deleteAccount($event)"
-        ></app-account-item> -->
+          <tr app-account-item *ngFor="let a of accounts; let i='index'" class="table__row"
 
-        <tr app-account-item *ngFor="let a of accounts; let i='index'" class="table__row"
+              [account] = "a"
+              [index] = "i"
+              (deletingAccount)="deleteAccount($event)"
+             >
 
-            [account] = "a"
-            [index] = "i"
-            (deletingAccount)="deleteAccount($event)"
-           >
-
-        <!-- <td class="table__cell">{{a.number}}</td>
-        <td class="table__cell">{{a.amount}}</td>
-        <td class="table__cell">{{a.currency}}</td>
-        <td (click)="showingActions()"
-        colspan="2"
-        class="table__cell table__cell_color_main table__cell_position_rel">
-          Select action
-          <ul *ngIf="showActions" class="actions-list">
-            <li class="actions-list__item">
-              <a [routerLink]="['../../cards', a.id]" routerLinkActive="" class="">Show cards</a>
+          <!-- <td class="table__cell">{{a.number}}</td>
+          <td class="table__cell">{{a.amount}}</td>
+          <td class="table__cell">{{a.currency}}</td>
+          <td (click)="showingActions()"
+          colspan="2"
+          class="table__cell table__cell_color_main table__cell_position_rel">
+            Select action
+            <ul *ngIf="showActions" class="actions-list">
+              <li class="actions-list__item">
+                <a [routerLink]="['../../cards', a.id]" routerLinkActive="" class="">Show cards</a>
+              </li>
+              <li class="actions-list__item">
+                <a [routerLink]="['../../transactions', a.id]" routerLinkActive="" class="">Show transactions</a>
             </li>
-            <li class="actions-list__item">
-              <a [routerLink]="['../../transactions', a.id]" routerLinkActive="" class="">Show transactions</a>
-          </li>
-            <li class="actions-list__item">
-              <button (click)="deleteAccount(i, a.id)" class="">Delete</button>
-            </li>
-          </ul>
-        </td> -->
+              <li class="actions-list__item">
+                <button (click)="deleteAccount(i, a.id)" class="">Delete</button>
+              </li>
+            </ul>
+          </td> -->
 
-      </tr>
-    </tbody>
+        </tr>
+        <tr *ngIf="accounts.length == 0" class="table__row">
+          <td class="table__cell" colspan="3">
+            -
+          </td>
+        </tr>
+      </tbody>
 
-  </table>
+    </table>
+  </div>
+   </div>
+
+
+  <app-back-btn></app-back-btn>
 </div>
- </div>
- <router-outlet></router-outlet>
 
-<app-back-btn></app-back-btn>
+
 </div>

@@ -17,8 +17,8 @@ export class AccountsService {
   */
 
   getAccounts(userId){
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/')
-     //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
+    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/')
+     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
    }
 
   getAccountDetails(accountId){
@@ -30,8 +30,8 @@ export class AccountsService {
   }
 
   deleteAccount(accountId){
-    //return this.http.delete('https://apihonestbank.herokuapp.com/users/'+ userId)
-    return this.http.delete('http://jsonplaceholder.typicode.com/users/'+ accountId)
+    return this.http.delete('https://apihonestbank.herokuapp.com/accounts/'+ accountId)
+    //return this.http.delete('http://jsonplaceholder.typicode.com/users/'+ accountId)
   };
 
 

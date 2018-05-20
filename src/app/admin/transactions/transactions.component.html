@@ -1,47 +1,50 @@
 <div class="transactions admin-main-screen__item">
-  <h2 class="transactions__title title title_color_main">Transactions</h2>
-  <p *ngIf="currentAccount" class="transactions__text text text_color_main">For account:
-    {{currentAccount.number}}
-    {{currentAccount.amount}}
-    {{currentAccount.currency}}</p>
-  <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter()" class="transactions__date-form form">
-    <div class="transactions__date-form-group"
-    ngModelGroup="dateGroup"
-    #dateGroup="ngModelGroup"
-    dateValidator
-    from="dateFrom"
-    to="dateTo">
-      <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
-      <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
-      <input type="date" name="dateFrom" #dateFrom ngModel>
-      <input type="date" name="dateTo" #dateTo ngModel>
-      <!-- <app-errors [control]="dateGroup"></app-errors> -->
-      <button class="date-form__link link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
-    </div>
-  </form>
+  <div class="wrapper-admin">
+    <h2 class="transactions__title title title_color_main">Transactions</h2>
+    <p *ngIf="currentAccount" class="transactions__text text text_color_main">For account:
+      {{currentAccount.number}}
+      {{currentAccount.amount}}
+      {{currentAccount.currency}}</p>
+    <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter()" class="transactions__date-form form">
+      <div class="transactions__date-form-group"
+      ngModelGroup="dateGroup"
+      #dateGroup="ngModelGroup"
+      dateValidator
+      from="dateFrom"
+      to="dateTo">
+        <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
+        <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
+        <input type="date" name="dateFrom" #dateFrom ngModel>
+        <input type="date" name="dateTo" #dateTo ngModel>
+        <!-- <app-errors [control]="dateGroup"></app-errors> -->
+        <button class="date-form__link link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
+      </div>
+    </form>
 
-<div class="transactions__list table-wrapper">
-  <table class="table">
-    <thead class="table__head">
-      <tr class="table__row">
-        <th class="table__cell">Date</th>
-        <th class="table__cell">Source</th>
-        <th class="table__cell">Recipient</th>
-        <th class="table__cell">Sum</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="transactions__list table-wrapper">
+    <table class="table">
+      <thead class="table__head">
+        <tr class="table__row">
+          <th class="table__cell">Date</th>
+          <th class="table__cell">Source</th>
+          <th class="table__cell">Recipient</th>
+          <th class="table__cell">Sum</th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <tr *ngFor="let t of transactions" class="table__row">
-        <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
-        <td class="table__cell">{{t.sourceName}}</td>
-        <td class="table__cell">{{t.destinationName}}</td>
-        <td class="table__cell">{{t.sum}}</td>
-      </tr>
-<tr *ngIf="!transactions" class="table__row"><td colspan="4" class="table__cell">Select a date</td></tr>
-    </tbody>
-  </table>
-</div>
+        <tr *ngFor="let t of transactions" class="table__row">
+          <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
+          <td class="table__cell">{{t.sourceName}}</td>
+          <td class="table__cell">{{t.destinationName}}</td>
+          <td class="table__cell">{{t.sum}}</td>
+        </tr>
+  <tr *ngIf="!transactions" class="table__row"><td colspan="4" class="table__cell">Select a date</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <app-back-btn></app-back-btn>
+    <app-back-btn></app-back-btn>
+  </div>
+
 </div>

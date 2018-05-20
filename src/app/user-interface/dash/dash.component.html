@@ -1,76 +1,80 @@
 <div class="dash">
-<p class="dash__promo title">Welcome to MobiPay</p>
+  <div class="wrapper-ui">
+    <p class="dash__promo title">Welcome to MobiPay</p>
 
 
-<table class="dash__prod tableLight">
-    <thead class="tableLight__head">
-      <tr class="tableLight__row">
-        <th class="tableLight__cell"></th>
-        <th class="tableLight__cell">Sell</th>
-        <th class="tableLight__cell">Buy</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of products" class="tableLight__row">
-        <td class="tableLight__cell">{{p.currency}}</td>
-        <td class="tableLight__cell">{{p.sellCourse}}</td>
-        <td class="tableLight__cell">{{p.buyCourse}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 class="dash__title subtitle">Your Accounts</h3>
-  <p class="dash__text text">Select an account to see details</p>
-  <table class="dash__accounts tableLight">
-      <tbody>
-        <tr *ngFor="let a of accounts"
-        class="tableLight__row"
-        [class.tableLight__row_disable]="a.blocked"
-        >
-          <td class="tableLight__cell">{{a.number}}</td>
-          <td class="tableLight__cell">{{a.amount}}</td>
-          <td class="tableLight__cell">{{a.currency}}</td>
-          <td class="tableLight__cell">
-            <span *ngIf="!a.blocked" [routerLink]="['./account-item', a.id]" routerLinkActive="">Details</span>
-            <span *ngIf="a.blocked">Blocked</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <!-- <ul class="dash__accounts-list list list_clear">
-    <li *ngFor="let a of accounts" [routerLink]="['./account-item', a.id, {userId: userId}]" routerLinkActive="" class="list__item">
-      <span>{{a.number}}
-        {{a.amount}}
-        {{a.currency}}
-      </span>
-      <p class="list__accent-line">{{a.blocked}}</p>
-    </li>
+    <table class="dash__prod tableLight">
+        <thead class="tableLight__head">
+          <tr class="">
+            <th class="tableLight__cell"></th>
+            <th class="tableLight__cell">Sell</th>
+            <th class="tableLight__cell">Buy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products" class="">
+            <td class="tableLight__cell">{{p.currency}}</td>
+            <td class="tableLight__cell">{{p.sellCourse}}</td>
+            <td class="tableLight__cell">{{p.buyCourse}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="dash__title subtitle">Your Accounts</h3>
+      <p class="dash__text text">Select an account to see details</p>
+      <table class="dash__accounts tableLight">
+          <tbody>
+            <tr *ngFor="let a of accounts"
+            class="tableLight__row tableLight__row_cursor_pointer"
+            [class.tableLight__row_disable]="a.blocked"
+            [routerLink]="['./account-item', a.id]"
+            >
+              <td class="tableLight__cell">{{a.number}}</td>
+              <td class="tableLight__cell">{{a.amount}}</td>
+              <td class="tableLight__cell">{{a.currency}}</td>
+              <!-- <td class="tableLight__cell">
+                <span *ngIf="!a.blocked" [routerLink]="['./account-item', a.id]" routerLinkActive="">Details</span>
+                <span *ngIf="a.blocked">Blocked</span>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      <!-- <ul class="dash__accounts-list list list_clear">
+        <li *ngFor="let a of accounts" [routerLink]="['./account-item', a.id, {userId: userId}]" routerLinkActive="" class="list__item">
+          <span>{{a.number}}
+            {{a.amount}}
+            {{a.currency}}
+          </span>
+          <p class="list__accent-line">{{a.blocked}}</p>
+        </li>
 
-  </ul> -->
+      </ul> -->
 
-  <!-- <div class="wrapper">
-      <nav class="nav dash__nav">
-          <a [routerLink]="['./cards', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link">
-            <svg class="icon dash__link-icon">
-              <use xlink:href="assets/svg/symbol/sprite.svg#credit-card"></use>
-            </svg><br>
-            <span>Cards</span>
-          </a>
-          <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link`" >
-            <svg class="icon dash__link-icon">
-              <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
-            </svg><br>
-            <span>Transactions</span>
-          </a>
-      </nav>
-      <router-outlet></router-outlet>
-    </div> -->
-    <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="" class="dash__transactions-link link link_color_light" >
-      <!-- <svg class="icon dash__link-icon">
-        <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
-      </svg><br> -->
-      <!-- <span>Transactions</span> -->
-      Make a payment
-    </a>
-</div>
+      <!-- <div class="wrapper">
+          <nav class="nav dash__nav">
+              <a [routerLink]="['./cards', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link">
+                <svg class="icon dash__link-icon">
+                  <use xlink:href="assets/svg/symbol/sprite.svg#credit-card"></use>
+                </svg><br>
+                <span>Cards</span>
+              </a>
+              <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link`" >
+                <svg class="icon dash__link-icon">
+                  <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
+                </svg><br>
+                <span>Transactions</span>
+              </a>
+          </nav>
+          <router-outlet></router-outlet>
+        </div> -->
+        <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="" class="dash__transactions-link link link_color_light" >
+          <!-- <svg class="icon dash__link-icon">
+            <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
+          </svg><br> -->
+          <!-- <span>Transactions</span> -->
+          Make a payment
+        </a>
+    </div>
 
-<!-- [currentUser] = "currentUser" -->
+    <!-- [currentUser] = "currentUser" -->
+
+  </div>

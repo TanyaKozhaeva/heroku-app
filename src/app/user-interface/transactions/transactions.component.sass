@@ -1,19 +1,20 @@
 @import "../../../sass/smart-grid.sass"
 @import "../../../sass/vars.sass"
 .payments-block
-  padding: $offset $offset-one-side
+  padding: $offset 0
   &__link
     display: block
     margin: 0 auto
     border-bottom: 1px solid $mainColor
 
   &__form
+    max-width: 580px
     color: $fontColor
-    margin-bottom: $offset-one-side
+    margin: 0 auto $offset
   input[name="transactionAmount"]
-    width: 60%
+    width: 70%
   input[name="transactionCurrency"]
-    width: 35%
+    width: 25%
     text-align: center
     background-color: $bgColor
     border: none

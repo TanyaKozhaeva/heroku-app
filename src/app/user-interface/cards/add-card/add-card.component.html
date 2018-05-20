@@ -1,5 +1,5 @@
 <div class="add-card">
-<div class="add-card__form-wrapper">
+<div class="wrapper-ui">
 <form (ngSubmit)="addCardForm.form.valid && addCard()"
 class="add-card-form add-card__form"
 #addCardForm="ngForm"
@@ -17,7 +17,7 @@ id="addCardForm">
     id="cardName"
     [(ngModel)]="cardModel.name" #cardName="ngModel"
     required
-    maxlength="13">
+    maxlength="15">
     <app-errors [control]="cardName"></app-errors>
 <!-- </div> -->
 <!-- <svg class="icon add-card-form__icon">
@@ -54,18 +54,21 @@ id="addCardForm">
 
 
 </form>
-<button
-    type="submit"
-    class="link link_color_main add-card-form__btn"
-    [disabled]="!addCardForm.form.valid"
-    form="addCardForm"
-   >
-    Add
-    </button>
-    <button class="link link_color_accent add-card-form__btn"
-    (click)="cansel()">
-    Cansel
-    </button>
+<div class="add-card__controls link-box">
+  <button
+      type="submit"
+      class="link link_color_main add-card-form__btn"
+      [disabled]="!addCardForm.form.valid"
+      form="addCardForm"
+     >
+      Add
+      </button>
+      <button class="link link_color_accent add-card-form__btn"
+      (click)="cansel()">
+      Cansel
+      </button>
+</div>
+
 
 
   </div>

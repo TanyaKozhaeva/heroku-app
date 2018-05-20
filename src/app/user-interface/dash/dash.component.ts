@@ -23,6 +23,7 @@ userId;
     this.getProducts();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
  this.userId = 2; // !!!!!!!!!!!!!!!!!!!!!!
+ //this.userId = this.currentUser.id;
 this.getAccounts();
 
   }

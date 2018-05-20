@@ -3,33 +3,36 @@
   (delete)="deleteUser($event)">
 </app-users-item> -->
 <div class="admin-dash admin-main-screen__item">
-  <app-alert></app-alert>
-  <h2 class="admin-dash__title title title_color_main">Dashboard</h2>
-  <p class="admin-dash__text text text_color_main">Select a user to see details</p>
-<div class="admin-dash__users-list table-wrapper">
-  <table class="table">
-      <thead class="table__head">
-        <tr class="table__head-row">
-          <th class="table__cell">Name</th>
-          <th class="table__cell">Phone</th>
-          <th class="table__cell">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let u of users; let i='index'" class="table__row table__row_cursor_pointer" [routerLink]="['./users-item', u.id]" routerLinkActive="">
-          <td class="table__cell">{{u.profile.firstName}} {{u.profile.lastName}}</td>
-          <td class="table__cell">{{u.phone}}</td>
-          <!-- <a [routerLink]="['./users-item', u.id]" routerLinkActive="" class="link link_color_accent">Show details</a> -->
-          <!-- <button class="admin-dash__delete-btn delete-btn" (click)="deleteUser(i, u.id)">
-            <span class="hidden">Delete</span>
-          </button> -->
-          <td class="table__cell">
-            <button (click)="deleteUser(i, u.id)" class="delete-btn">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+  <div class="wrapper-admin">
+    <app-alert></app-alert>
+    <h2 class="admin-dash__title title title_color_main">Dashboard</h2>
+    <p class="admin-dash__text text text_color_main">Select a user to see details</p>
+  <div class="admin-dash__users-list table-wrapper">
+    <table class="table">
+        <thead class="table__head">
+          <tr class="table__head-row">
+            <th class="table__cell">Name</th>
+            <th class="table__cell">Phone</th>
+            <th class="table__cell table__cell_width_20">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users; let i='index'" class="table__row table__row_cursor_pointer" [routerLink]="['./users-item', u.id]" routerLinkActive="">
+            <td class="table__cell">{{u.profile.firstName}} {{u.profile.lastName}}</td>
+            <td class="table__cell">{{u.phone}}</td>
+            <!-- <a [routerLink]="['./users-item', u.id]" routerLinkActive="" class="link link_color_accent">Show details</a> -->
+            <!-- <button class="admin-dash__delete-btn delete-btn" (click)="deleteUser(i, u.id)">
+              <span class="hidden">Delete</span>
+            </button> -->
+            <td class="table__cell">
+              <button (click)="deleteUser(i, u.id)" class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
 
-    </table>
+      </table>
+    </div>
   </div>
+
 
 </div>

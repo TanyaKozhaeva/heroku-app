@@ -2,7 +2,6 @@
         <form name="loginForm" (ngSubmit)="loginForm.valid && login()" #loginForm="ngForm" novalidate class="form login__form">
                 <h2 class="title form__title">Login to your Account</h2>
 
-                <div class="form__group">
                         <input type="tel" class="form__input" name="userPhone" placeholder="Phone"
                         [(ngModel)]="model.phone"
                         #userPhone="ngModel"
@@ -10,9 +9,7 @@
 
                         required/>
                         <app-errors [control]="userPhone"></app-errors>
-                </div>
 
-                <div class="form__group">
                         <input type="password" class="form__input" name="userPassword" placeholder="Password"
                         [(ngModel)]="model.password"
                         #userPassword="ngModel"
@@ -20,11 +17,11 @@
 
                         required/>
                         <app-errors [control]="userPassword"></app-errors>
-                </div>
-                <span class="form__controls">
+
+                <div class="link-box">
                   <button class="link link_color_main" [disabled]="!loginForm.valid">Login</button>
                   <a [routerLink]="['/register']" class="link link_color_light">Register</a>
-                </span>
+                </div>
 
         </form>
 </div>

@@ -1,6 +1,21 @@
 @import "../../../../sass/smart-grid.sass"
 @import "../../../../sass/vars.sass"
 .account-item
+  //padding: 0 $offset-one-side $offset
+  padding-bottom: $offset
+  @media screen and (min-width: $break_sm)
+    padding-top: 3rem
+  &__block-box
+    padding-top: 3rem
+  &__block-text
+    span
+      display: block
+  &__active-box
+    padding-bottom: $offset
+    margin-bottom: $offset
+    @media screen and (min-width: $break_sm)
+      box-shadow: $blocksShadow
+
   &__info
     padding: 3.2em $offset-one-side 2.46em
     text-align: center
@@ -16,6 +31,10 @@
       left: 50%
       transform: translateX(-50%)
       bottom: 0
+    @media screen and (max-width: #{$break_sm}-1)
+      margin-right: -$offset-one-side
+      margin-left: -$offset-one-side
+
   &__info-btn
     display: inline-block
     font-size: 1.2em
@@ -40,19 +59,19 @@
     display: block
     font-size: 3.25em
     font-weight: 100
+  &__controls
+    width: 80%
   &__cards-list
     margin-bottom: $offset
   &__transactions
     margin-bottom: $offset
 
-  &__link
-    width: 80%
-    margin: 0 auto $offset
 .cards-list
   &__item
     font-size: 1em
     padding: 1.3em $offset-one-side
     border-bottom: 1px solid $bgColor
+    text-align: center
     color: $fontColor
     background-color: $mainColorLight
   &__item-name
