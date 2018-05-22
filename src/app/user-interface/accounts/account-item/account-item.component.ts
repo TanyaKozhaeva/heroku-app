@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import { CardsService } from '../../../services/cards.service';
 import { Subscription } from 'rxjs/Subscription';
 import { AddCardService } from '../../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountsService } from '../../../services/accounts.service';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-account-item',
@@ -11,7 +13,7 @@ import { AccountsService } from '../../../services/accounts.service';
   styleUrls: ['./account-item.component.sass'],
   providers: [CardsService, AccountsService]
 })
-export class AccountItemComponent implements OnInit {
+export class AccountItemComponent implements OnInit, DoCheck {
   @Input() account;
   //accountId = this.account.id
   userId;
@@ -22,7 +24,15 @@ export class AccountItemComponent implements OnInit {
   showTransactions = false;
   //showCards = false;
   transactions;
+  dateFrom = new FormControl(new Date());
+  minDate;
   //accountId = this.account.id;
+  dateTo = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
+ /*  addEvent ( event: MatDatepickerInputEvent < Date >) {
+     this.date = event.value
+  }*/
+
 
 
   subscription: Subscription;
@@ -46,6 +56,8 @@ export class AccountItemComponent implements OnInit {
       }
     )
 
+
+
   }
 
 
@@ -55,6 +67,13 @@ export class AccountItemComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.getAccountDetails();
     this.getCards();
+  }
+
+
+  ngDoCheck(){
+    console.log(this.dateFrom.value)
+    this.minDate = this.dateFrom.value;
+    console.log(this.minDate)
   }
 
   ngOnDestroy(){
@@ -97,6 +116,11 @@ export class AccountItemComponent implements OnInit {
     .subscribe (res =>{
       this.transactions = res;
     })
+  }
+
+  filter(){
+    console.log(this.dateTo.value)
+    console.log(this.dateFrom.value)
   }
 
   // navigate(){

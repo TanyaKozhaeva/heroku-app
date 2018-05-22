@@ -27,7 +27,39 @@
                     </li>
                   </ul>
 
+                  <!-- <div class="content">
+                    <h4>datepicker should display current date:</h4>
+                    <div class="row">
+                      <div class="col-xs-12 col-12 col-md-4 form-group">
+                        <input type="text"
+                              class="form-control"
+                          
+                              #dp="bsDatepicker"
+                              bsDatepicker [(bsValue)]="myDateValue">
+                      </div>
+                    </div>
+                  </div>
+ -->
+ <!-- <mat-form-field> -->
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" 
+                    [(ngModel)]="dateFrom.value"
+                    class="form__input"
+                    >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+ <!-- </mat-form-field> -->
+                    <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
+                    [(ngModel)]="dateTo.value"
+                    [min]="minDate"
+                    class="form__input"
+                    >
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+<!-- <app-errors [control]="dateGroup"></app-errors>
+        </fieldset> -->
 
+                    <button class="link link_color_main" (click)="filter()"></button>
+                  <!-- </mat-form-field> -->
 
   <div class="account-item__controls link-box">
     <a [routerLink]="['../../transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
@@ -44,22 +76,32 @@
 
       <div class="account-item__transactions transactions" *ngIf="showTransactions">
 
-          <!-- <button class="payments-block__cards-btn link" (click)="getTransactions()">Get transactions</button> -->
-          <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
+            <!-- <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
               <div class="transactions__date-form-group"
               ngModelGroup="dateGroup"
               #dateGroup="ngModelGroup"
               dateValidator
               from="dateFrom"
               to="dateTo">
-                <!-- <input type="date" name="dateFrom" #dateFrom ngModel [value]={{currentDate | date: 'dd.MM.yyyy'}}> -->
-                <!-- <input type="date" name="dateFrom" [(ngModel)]="dateFrom"> -->
+
+
                 <input type="date" name="dateFrom" #dateFrom [ngModel]="currentDate | date: 'dd.MM.yyyy'" (ngModelChange)="currentDate = $event">
                 <input type="date" name="dateTo" #dateTo ngModel>
                 <app-errors [control]="dateGroup"></app-errors>
+
+
                 <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
               </div>
-            </form>
+            </form> -->
+
+
+
+
+
+
+
+
+
             <div class="transactions__list table-wrapper">
             <table class="table">
               <thead class="table__head">

@@ -21,16 +21,16 @@ showActions;
   ngOnInit() {
   }
 
-   showingActions(){
-    this.showActions ? this.showActions=false : this.showActions=true;
+   showingActions() {
+    this.showActions ? this.showActions = false : this.showActions = true;
   }
 
-  deleteAccount(){
-    //this.users.splice(i, 1);
+  deleteAccount() {
+    // this.users.splice(i, 1);
     this.accountsService.deleteAccount(this.account.id)
     .subscribe(res => {
-      this.deletingAccount.emit(this.index)
-      this.alertService.success("Account deleted", true);
+      this.deletingAccount.emit(this.index);
+      this.alertService.success('Account deleted', true);
     },
     error => {
       this.alertService.error(error);
