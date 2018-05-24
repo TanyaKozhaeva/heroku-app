@@ -1,32 +1,56 @@
 <div class="main-screen__form-block registration">
 <form name="registerForm" (ngSubmit)="registerForm.valid && register()" #registerForm="ngForm" novalidate class="form registration__form">
         <h2 class="title form__title">Registration</h2>
-
-                <input type="text" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required placeholder="First name" class="form__input"/>
-                <app-errors [control]="firstName"></app-errors>
-
-
-                <input type="text"  name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required placeholder="Last name" class="form__input"/>
-                <app-errors [control]="lastName"></app-errors>
-
-
-
-                <input type="text" class="form__input" name="userPhone" placeholder="Phone"
-                [(ngModel)]="model.phone"
-                #userPhone="ngModel"
-                [textMask]="{mask: mask}"
-                telephoneNumber
-                required/>
-                <app-errors [control]="userPhone"></app-errors>
+<div class="form__input-wrap">
+  <input type="text" name="firstName"
+  [(ngModel)]="model.firstName"
+  #firstName="ngModel"
+  required
+  id="firstName"
+  class="form__input"/>
+<label class="form__label" for="firstName">First name</label>
+  <app-errors [control]="firstName"></app-errors>
+</div>
 
 
+<div class="form__input-wrap">
+  <input type="text"  name="lastName"
+  [(ngModel)]="model.lastName"
+  #lastName="ngModel"
+  required
+  id="lastName"
+  class="form__input"/>
+<label class="form__label" for="lastName">Last name</label>
+  <app-errors [control]="lastName"></app-errors>
+</div>
 
-                <input type="email" class="form__input" name="userEmail" placeholder="Email"
-                [(ngModel)]="model.email"
-                #userEmail="ngModel"
-                email
-                required />
-                <app-errors [control]="userEmail"></app-errors>
+
+
+<div class="form__input-wrap">
+  <input type="text" class="form__input" name="userPhone"
+  [(ngModel)]="model.phone"
+  #userPhone="ngModel"
+  [textMask]="{mask: mask}"
+  telephoneNumber
+  id="userPhone"
+  required/>
+  <label class="form__label" for="userPhone">Phone</label>
+  <app-errors [control]="userPhone"></app-errors>
+</div>
+
+
+
+<div class="form__input-wrap">
+  <input type="email" class="form__input" name="userEmail"
+  [(ngModel)]="model.email"
+  #userEmail="ngModel"
+  email
+  required
+  id="userEmail" />
+  <label class="form__label" for="userEmail">Email</label>
+  <app-errors [control]="userEmail"></app-errors>
+</div>
+
 
 
         <fieldset ngModelGroup="passwordGroup"
@@ -34,19 +58,28 @@
         validateEqual
         password="userPassword"
         confirmation="passwordConfirmation">
-                <input type="password" class="form__input" name="userPassword" placeholder="Password"
-                [(ngModel)]="model.password"
-                #userPassword="ngModel"
-                passwordValidation
-                minlength="6"
-                required/>
-                <app-errors [control]="userPassword"></app-errors>
+        <div class="form__input-wrap">
+          <input type="password" class="form__input" name="userPassword"
+          [(ngModel)]="model.password"
+          #userPassword="ngModel"
+          passwordValidation
+          minlength="6"
+          required
+          id="userPassword"/>
+          <label class="form__label" for="userPassword">Password</label>
+          <app-errors [control]="userPassword"></app-errors>
+        </div>
 
-                <input type="password" class="form__input" name="passwordConfirmation" placeholder="Confirm password"
-                #passwordConfirmation="ngModel"
-                ngModel
-                required/>
-                <app-errors [control]="passwordGroup"></app-errors>
+<div class="form__input-wrap">
+  <input type="password" class="form__input" name="passwordConfirmation"
+  #passwordConfirmation="ngModel"
+  ngModel
+  required
+  id="passwordConfirmation"/>
+  <label class="form__label" for="passwordConfirmation">Confirm password</label>
+  <app-errors [control]="passwordGroup"></app-errors>
+</div>
+
         </fieldset>
 <div class="link-box">
         <button class="link link_color_main" [disabled]="!registerForm.valid">Register</button>

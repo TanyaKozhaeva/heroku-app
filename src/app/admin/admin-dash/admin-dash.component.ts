@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../alert/alert.service';
+//import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ users;
 
   constructor(
     private userService: UserService,
-    private alertService: AlertService) { }
+    private alertService: AlertService ) { }
 
 
   ngOnInit() {
@@ -27,6 +28,7 @@ users;
     this.userService.getProfiles()
     .subscribe(res => {
       this.users = res;
+      //this.loaderService.executeAction(false);
     });
   }
 
@@ -35,7 +37,7 @@ users;
     this.userService.deleteUser(id)
     .subscribe(res => {
       this.users.splice(i, 1);
-      this.alertService.success("User deleted", true);
+      this.alertService.success('User deleted', true);
     },
     error => {
       this.alertService.error(error);

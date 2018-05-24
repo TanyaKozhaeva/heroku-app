@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdminComponent } from '../admin/admin.component';
 import { UsersComponent } from '../admin/users/users.component';
@@ -18,6 +20,7 @@ import { CardItemComponent } from './users/card-item/card-item.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { BackBtnModule } from '../back-btn/back-btn.module';
 import { AccountItemComponent } from './users/users-item/account-item/account-item.component';
+import { TransactionsModule } from '../transactions/transactions.module';
 import { LoaderModule } from '../loader/loader.module';
 //import { ErrorsComponent } from '../errors/errors.component';
 //import { PhonevalidatorDirective } from '../services/phonevalidator.directive';
@@ -28,7 +31,10 @@ import { LoaderModule } from '../loader/loader.module';
   imports: [
     CommonModule,
     //ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    TransactionsModule,
     LoaderModule,
     AlertModule,
     BackBtnModule,

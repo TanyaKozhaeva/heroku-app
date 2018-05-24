@@ -1,0 +1,25 @@
+@import "../../sass/vars.sass"
+.errors
+  position: absolute
+  top: -50%
+  right: -9%
+  padding: .8em 1.2em
+  font-size: .6em
+  font-weight: 700
+  text-align: center
+  background-color: $mainColorLight
+  box-shadow: $blocksShadow
+  color: red
+  border-radius: 10px
+
+  &::before
+    content: ""
+    position: absolute
+    right: 19%
+    bottom: 0
+    transform: translateY(100%)
+    border: 10px solid transparent
+    border-top: 10px solid $mainColorLight
+
+  &__item
+    margin-bottom: .3em

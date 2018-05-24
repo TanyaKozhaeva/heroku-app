@@ -1,1 +1,37 @@
-@import '../../../node_modules/bootstrap/scss/bootstrap'
+@import "../../sass/vars.sass"
+.transactions
+    padding: 0  $offset-one-side
+    &__calendar
+        margin-bottom: $offset
+.calendar
+    &__wrap
+        display: flex
+        flex-wrap: wrap
+        margin-bottom: $offset
+    &__input-wrap
+        flex: 1
+        flex-basis: 225px
+        //display: inline-flex
+        //align-items: baseline
+        position: relative
+        border-bottom: 1px solid $bgColor
+        margin: 0 $offset-one-side
+        
+
+    &__input
+        width: 100%
+        padding: .4em 5%
+        box-sizing: border-box
+        font-size: .9em
+        color: $fontColor
+    &__toggler
+        position: absolute
+        right: 5%
+        top: 50%
+        transform: translateY(-50%)
+    &__link
+        margin: 0 auto
+        
+    
+
+    

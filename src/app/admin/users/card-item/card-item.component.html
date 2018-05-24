@@ -7,7 +7,10 @@
     table__cell_color_main
     table__cell_actions">
       Select action
-      <ul *ngIf="showActions" class="actions-list">
+      <ul
+class="actions-list"
+[@showActions]="showActions"
+      >
         <li class="actions-list__item">
             <button class="" (click)="deleteCard()">Delete</button>
         </li>
@@ -17,3 +20,14 @@
       </li>
       </ul>
     </td>
+<!--
+*ngIf="showActions"
+[ngClass]="{
+'actions-list_active': showActions,
+'actions-list_disable': !showActions}"
+class="actions-list"
+[class.actions-list_active]="showActions"
+[ngClass]="{'actions-list_active': showActions}"
+    [ngClass]="{'message': message,
+    'message_success': message.type === 'success',
+    'message_danger': message.type === 'error'}" -->

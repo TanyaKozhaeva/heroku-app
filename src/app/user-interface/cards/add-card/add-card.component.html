@@ -4,29 +4,21 @@
 class="add-card-form add-card__form"
 #addCardForm="ngForm"
 id="addCardForm">
-<!-- <h2 class="form__title">
-  <svg class="icon add-form__title-icon">
-    <use xlink:href="assets/svg/symbol/sprite.svg#add-card"></use>
-  </svg>
-  <span>Card requisites</span>
-</h2> -->
-    <!-- <div class="add-card-form__group-name"> -->
-    <label class="add-card-form__label" for="cardName"> Name:</label>
-    <input type="text"
-    class="add-card-form__input-name" name="cardName"
-    id="cardName"
-    [(ngModel)]="cardModel.name" #cardName="ngModel"
-    required
-    maxlength="15">
-    <app-errors [control]="cardName"></app-errors>
-<!-- </div> -->
-<!-- <svg class="icon add-card-form__icon">
-    <use xlink:href="assets/svg/symbol/sprite.svg#add-card"></use>
-  </svg> -->
 
-<!-- <div class="add-card-form__group-num"> -->
+    <div class="add-card-form__input-name">
+      <label class="add-card-form__label" for="cardName"> Name:</label>
+      <input type="text"
+      name="cardName"
+      id="cardName"
+      [(ngModel)]="cardModel.name" #cardName="ngModel"
+      required
+      maxlength="15">
+      <app-errors [control]="cardName"></app-errors>
+    </div>
+
+<div class="add-card-form__input-num">
   <label class="add-card-form__label" for="cardNumber">Number:</label>
-    <input type="text" class="add-card-form__input-num"
+    <input type="text"
     name="cardNumber"
     id="cardNumber"
     [(ngModel)]="cardModel.number"
@@ -36,11 +28,11 @@ id="addCardForm">
     [textMask]="{mask: numberMask}"
     required>
     <app-errors [control]="cardNumber"></app-errors>
-<!-- </div> -->
+</div>
 
-<!-- <div class="add-card-form__group-exp"> -->
+<div class="add-card-form__input-exp">
   <label class="add-card-form__label" for="cardExpiration">Expires end:</label>
-    <input type="text" class="add-card-form__input-exp"
+    <input type="text"
     name="cardExpiration"
     id="cardExpiration"
     [(ngModel)]="cardModel.expiration"
@@ -48,9 +40,8 @@ id="addCardForm">
     expiredValidator
     [textMask]="{mask: expiredMask}"
     required>
-
     <app-errors [control]="cardExpiration"></app-errors>
-<!-- </div> -->
+</div>
 
 
 </form>

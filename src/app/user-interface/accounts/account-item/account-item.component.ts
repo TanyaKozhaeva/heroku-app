@@ -13,7 +13,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
   styleUrls: ['./account-item.component.sass'],
   providers: [CardsService, AccountsService]
 })
-export class AccountItemComponent implements OnInit, DoCheck {
+export class AccountItemComponent implements OnInit {
   @Input() account;
   //accountId = this.account.id
   userId;
@@ -23,15 +23,7 @@ export class AccountItemComponent implements OnInit, DoCheck {
   cards: any[]=[];
   showTransactions = false;
   //showCards = false;
-  transactions;
-  dateFrom = new FormControl(new Date());
-  minDate;
-  //accountId = this.account.id;
-  dateTo = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
- /*  addEvent ( event: MatDatepickerInputEvent < Date >) {
-     this.date = event.value
-  }*/
+  
 
 
 
@@ -70,11 +62,6 @@ export class AccountItemComponent implements OnInit, DoCheck {
   }
 
 
-  ngDoCheck(){
-    console.log(this.dateFrom.value)
-    this.minDate = this.dateFrom.value;
-    console.log(this.minDate)
-  }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -105,23 +92,7 @@ export class AccountItemComponent implements OnInit, DoCheck {
 
   }
 
-  transactionsFilter(){
-    let data = {
-      //from: this.dateFrom
-      // to: dateTo.value
 
-    }
-    console.log(data)
-    this.cardsService.transactionsFilter(data, this.accountId)
-    .subscribe (res =>{
-      this.transactions = res;
-    })
-  }
-
-  filter(){
-    console.log(this.dateTo.value)
-    console.log(this.dateFrom.value)
-  }
 
   // navigate(){
   //   console.log('nav')

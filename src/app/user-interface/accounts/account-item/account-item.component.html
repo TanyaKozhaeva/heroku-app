@@ -40,26 +40,8 @@
                     </div>
                   </div>
  -->
- <!-- <mat-form-field> -->
-                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" 
-                    [(ngModel)]="dateFrom.value"
-                    class="form__input"
-                    >
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
- <!-- </mat-form-field> -->
-                    <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
-                    [(ngModel)]="dateTo.value"
-                    [min]="minDate"
-                    class="form__input"
-                    >
-                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker2></mat-datepicker>
-<!-- <app-errors [control]="dateGroup"></app-errors>
-        </fieldset> -->
 
-                    <button class="link link_color_main" (click)="filter()"></button>
-                  <!-- </mat-form-field> -->
+  
 
   <div class="account-item__controls link-box">
     <a [routerLink]="['../../transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
@@ -74,35 +56,10 @@
 
   </div>
 
-      <div class="account-item__transactions transactions" *ngIf="showTransactions">
-
-            <!-- <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form">
-              <div class="transactions__date-form-group"
-              ngModelGroup="dateGroup"
-              #dateGroup="ngModelGroup"
-              dateValidator
-              from="dateFrom"
-              to="dateTo">
-
-
-                <input type="date" name="dateFrom" #dateFrom [ngModel]="currentDate | date: 'dd.MM.yyyy'" (ngModelChange)="currentDate = $event">
-                <input type="date" name="dateTo" #dateTo ngModel>
-                <app-errors [control]="dateGroup"></app-errors>
-
-
-                <button class="link link_color_main" [disabled]="!dateForm.valid">Filter period</button>
-              </div>
-            </form> -->
-
-
-
-
-
-
-
-
-
-            <div class="transactions__list table-wrapper">
+      <div class="account-item__transactions" *ngIf="showTransactions">
+        <transactions
+        [accountId]="accountId"></transactions>
+            <!-- <div class="transactions__list table-wrapper">
             <table class="table">
               <thead class="table__head">
                 <tr class="table__row">
@@ -123,7 +80,7 @@
               </tbody>
 
             </table>
-          </div>
+          </div> -->
 
             </div>
 

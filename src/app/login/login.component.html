@@ -1,22 +1,28 @@
 <div class="main-screen__form-block login">
         <form name="loginForm" (ngSubmit)="loginForm.valid && login()" #loginForm="ngForm" novalidate class="form login__form">
                 <h2 class="title form__title">Login to your Account</h2>
+                <div class="form__input-wrap">
 
-                        <input type="tel" class="form__input" name="userPhone" placeholder="Phone"
-                        [(ngModel)]="model.phone"
-                        #userPhone="ngModel"
-                        ngModel
+                                          <input type="tel" class="form__input" name="userPhone"
+                                          [(ngModel)]="model.phone"
+                                          #userPhone="ngModel"
+                                          ngModel
+                                          id="phone"
+                                          required/>
+                                          <app-errors [control]="userPhone"></app-errors>
+<label class="form__label" for="phone">Phone</label>
+                </div>
+<div class="form__input-wrap">
 
-                        required/>
-                        <app-errors [control]="userPhone"></app-errors>
-
-                        <input type="password" class="form__input" name="userPassword" placeholder="Password"
-                        [(ngModel)]="model.password"
-                        #userPassword="ngModel"
-                        ngModel
-
-                        required/>
-                        <app-errors [control]="userPassword"></app-errors>
+                          <input type="password" class="form__input" name="userPassword"
+                          [(ngModel)]="model.password"
+                          #userPassword="ngModel"
+                          ngModel
+                          id="password"
+                          required/>
+                          <app-errors [control]="userPassword"></app-errors>
+<label class="form__label" for="password">Password</label>
+</div>
 
                 <div class="link-box">
                   <button class="link link_color_main" [disabled]="!loginForm.valid">Login</button>

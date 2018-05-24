@@ -18,7 +18,7 @@ import { AddCardComponent } from './cards/add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { DirectivesModule } from '../directives/directives.module';
 import { TextMaskModule } from 'angular2-text-mask';
-import {MatDatepickerModule,  MatNativeDateModule, MatDatepickerToggle} from '@angular/material';
+//import {MatDatepickerModule,  MatNativeDateModule, MatDatepickerToggle} from '@angular/material';
 
 //MatFormFieldModule, MatInputModule,
 
@@ -45,8 +45,8 @@ import { TransactionsModule } from '../transactions/transactions.module';
     ButtonsModule.forRoot(),
     //MatFormFieldModule,
     //MatInputModule,
-    MatDatepickerModule,
-   MatNativeDateModule,
+ //   MatDatepickerModule,
+ //  MatNativeDateModule,
    TransactionsModule,
     ConfirmWindowModule,
     AlertModule,

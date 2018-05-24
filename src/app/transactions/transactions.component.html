@@ -1,5 +1,54 @@
-<!-- <form name="dateForm" #dateForm="ngForm" (ngSubmit)="dateForm.valid && transactionsFilter(dateFrom, dateTo)" class="transactions__form form"> -->
+ <!-- <mat-form-field> -->
+<div class="transactions">
+        <div class="calendar transactions__calendar">
+            <div class="calendar__wrap">
+                    <div class="calendar__input-wrap">
+                            <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date" 
+                            [(ngModel)]="dateFrom.value"
+                            class="calendar__input"
+                            >
+                            <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFrom></mat-datepicker>
+        
+                    </div>
+                    <div class="calendar__input-wrap">
+                            <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date"
+                            [(ngModel)]="dateTo.value"
+                            [min]="minDate"
+                            class="calendar__input"
+                            >
+                            <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerTo></mat-datepicker>
+                    </div>
+            </div>
+                   
+        
+                <button class="calendar__link link link_color_main" (click)="filter()">Filter</button>
+ </div>
 
-  
+ <div class="transactions__list table-wrapper">
+        <table class="table">
+          <thead class="table__head">
+            <tr class="table__row">
+              <th class="table__cell">Date</th>
+              <th class="table__cell">Source and Recipient</th>
+              <th class="table__cell">Sum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of transactions" class="table__row">
+              <td class="table__cell">{{t.date | date: 'dd.MM.yy'}}</td>
+              <td class="table__cell">
+                  <span>From: {{t.sourceName}}</span>
+                  <span>To: {{t.destinationName}}</span>
+                </td>
+              <td class="table__cell">{{t.sum}}</td>
+            </tr>
+            <tr *ngIf="!transactions" class="table__row"><td colspan="3" class="table__cell">Select a date</td></tr>
+          </tbody>
 
-<!-- </form> -->
+        </table>
+      </div>
+
+</div>
+        

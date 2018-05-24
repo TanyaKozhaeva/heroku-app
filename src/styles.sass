@@ -2,6 +2,10 @@
 @import "sass/reset.sass"
 @import "sass/smart-grid.sass"
 @import "sass/vars.sass"
+@import "sass/material-datepicker.sass"
+
+
+
 //Edit
 body
   font-family: $mainFont
@@ -66,10 +70,26 @@ body
 
 .form
   padding: $offset_one_side
-
-
+  color: $mainColorLight
+  text-align: left
   &__title
     margin-bottom: .8em
+    //color: $mainColorLight
+  &__input-wrap
+    position: relative
+    // &:focus.form__label
+    //   top: 0
+    //   font-size: .85em
+    //   color: red
+  &__label
+    font-size: 1em
+    font-weight: 300
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+    transition: .2s
+    pointer-events: none
 
   &__input
     width: 100%
@@ -80,13 +100,11 @@ body
     border-bottom: 2px solid $mainColorLight
     font-weight: 300
     color: $mainColorLight
-    text-align: left
     background-color: transparent
-    &::placeholder
-      font-weight: inherit
-      color: inherit
-    .ng-invalid.ng-touched
-        border-color: red
+    &:focus ~ .form__label,
+    &.ng-dirty ~ .form__label
+      top: 0
+      font-size: .85em
 
     &_color
       &_dark
@@ -104,6 +122,14 @@ body
   &__btn
     width: 80%
     margin: 0 auto
+
+
+// input
+//   &:focus ~ label
+//     top: -15px
+//     font-size: 14px
+//     color: #5264AE
+
 .link-box
   display: flex
   flex-direction: column
@@ -123,7 +149,57 @@ body
   border-radius: 15px
   text-align: center
   color: $mainColorLight
-  box-shadow: $blocksShadow
+  overflow: hidden
+  position: relative
+  &:hover:enabled
+    box-shadow: $blocksShadow
+  // &:enabled
+  //   box-shadow: $blocksShadow
+  // &::before
+  //   content: ""
+  //   position: absolute
+  //   top: 0
+  //   left: -110%
+  //   width: 100%
+  //   height: 100%
+  //   background: rgba(255, 255, 255, .2)
+  //   //opacity: 0
+  //   transition: .6s
+  //
+  // &::after
+  //   content: ""
+  //   position: absolute
+  //   top: 0
+  //   left: -10%
+  //   border: 30px solid transparent
+  //   border-left: 30px solid rgba(255, 255, 255, .2)
+  //   //opacity: 0
+  //   transition: .6s
+
+  // &:hover:enabled::before
+  //   left: 0
+  //   //opacity: 1
+  // &:hover:enabled::after
+  //   left: 100%
+    //opacity: 1
+
+    //   content: ""
+  //   display: block
+  //   position: absolute
+  //   top: 0
+  //   left: 0
+  //   transform: translateX(-50%)
+  //   z-index: -1
+  //   width: 100%
+  //   height: 100%
+  //   border-radius: 15px
+  //   box-shadow: $blocksShadow
+  //   transition: width .3s ease-in-out
+  // &:hover
+  //   transform: scale(.1)
+  // &:hover::after
+  //   width: 90%
+
   @media screen and (max-width: #{$break_xs}-1)
     &:not(:last-child)
       margin-bottom: $offset
@@ -133,22 +209,25 @@ body
       margin-right: $offset
   &_color
     &_main
-      //background-color: $mainColor
-      background-color: $fontColor
+      background-color: $btnColor
+      transition: .6s
+      &:disabled
+        background-color: lighten($fontColor, 30%)
     &_accent
-      //background-color: $accentColor
       background-color: $mainColor
       color: $mainColorLight
+      transition: .6s
+      &:disabled
+        background-color: lighten($mainColor, 30%)
+
     &_light
       background-color: $bgColor
       color: $fontColor
-      box-shadow: $blocksShadow
-.cancel-btn
-  position: relative
-  &::before
-    content: "<<"
-    font-size: 2em
-    color: $mainColor
+      transition: .6s
+      &:disabled
+        background-color: lighten($bgColor, 10%)
+
+
 .delete-btn
   font-size: .75em
   color: $dangerColor
@@ -193,9 +272,12 @@ body
   &__row
     font-size: .75em
     border-bottom: 1px solid $bgColor
-    &_cursor
-      &_pointer
-        cursor: pointer
+
+    &_clickable
+      cursor: pointer
+      &:hover
+        box-shadow: $blocksShadow
+
     &_disable
       color: lighten($fontColor, 40%)
       background-color: $bgColor
@@ -228,9 +310,10 @@ body
     // &:nth-child(odd)
     //   background-color: darken($mainColor, 10%)
     border-bottom: 1px solid $mainColorLight
-    &_cursor
-      &_pointer
-        cursor: pointer
+    &_clickable
+      cursor: pointer
+      &:hover
+        box-shadow: 0px 15px 50px 0 rgba(255, 255, 255, 0.3)
     &_disable
       color: $fontColor
       border-bottom: 1px solid $fontColor
@@ -252,10 +335,15 @@ body
   color: $fontColor
   background-color: $mainColorLight
   box-shadow: $blocksShadow
-
   &__item
     padding: .5em 5%
+    //height: 0
+    //line-height: 36px
     border-bottom: 1px solid $bgColor
+    overflow: hidden
+
+
+
 
 
 //MODAL WINDOW
@@ -263,9 +351,10 @@ body
   position: absolute
   top: 50%
   left: 50%
-  transform: translate(-50%, -50%)
+  margin-left: -148px
+  transform: translateY(-50%)
   z-index: 3000
-  width: 295px
+  width: 296px
   padding: 2em $offset-one-side
   box-sizing: border-box
   border: 1px solid $bgColor
@@ -332,29 +421,28 @@ body
 
 .mat-calendar-header
   background-color: $mainColor
-.mat-calendar-table-header
-  font-size: .7em
-  color: lighten($fontColor, 10%)
+//.mat-calendar-table-header
+//  font-size: .7em
+//  color: lighten($fontColor, 10%)
 
-.mat-calendar-body-cell-content
-  font-size: .8em
-  border-width: 0
-  border-style: none
-  &:hover
-    background-color: $bgColor
+//.mat-calendar-body-cell-content
+//  font-size: .8em
+//  border-width: 0
+//  border-style: none
+//  &:hover
+//    background-color: $bgColor
 .mat-calendar-body-selected
   background-color: $mainColor
-  color: $mainColorLight
+//  color: $mainColorLight
 .mat-datepicker-toggle-active
   color: $mainColor
-  &:active
-    background-color: red
+//  &:active
+//    background-color: red
 
 .mat-calendar-body-disabled
   .mat-calendar-body-cell-content
     color: lighten($fontColor, 10%)
     background-color: $bgColor
-   
-.mat-calendar-body-label
-  font-weight: 700
 
+//.mat-calendar-body-label
+//  font-weight: 700

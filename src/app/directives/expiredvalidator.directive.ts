@@ -14,10 +14,9 @@ export class ExpiredvalidatorDirective implements Validator {
 
     const message = {
       'expiredValidator': {
-        'message': 'The card number must contain 16 digits'
+        'message': 'Expiration date must be valid'
       }
     };
     return isValidCardExpired ? null : message;
   }
 }
-

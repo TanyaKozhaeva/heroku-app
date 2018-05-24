@@ -24,7 +24,7 @@
       <table class="dash__accounts tableLight">
           <tbody>
             <tr *ngFor="let a of accounts"
-            class="tableLight__row tableLight__row_cursor_pointer"
+            class="tableLight__row tableLight__row_clickable"
             [class.tableLight__row_disable]="a.blocked"
             [routerLink]="['./account-item', a.id]"
             >

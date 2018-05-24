@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let u of users; let i='index'" class="table__row table__row_cursor_pointer" [routerLink]="['./users-item', u.id]" routerLinkActive="">
+          <tr *ngFor="let u of users; let i='index'" class="table__row table__row_clickable" [routerLink]="['./users-item', u.id]" routerLinkActive="">
             <td class="table__cell">{{u.profile.firstName}} {{u.profile.lastName}}</td>
             <td class="table__cell">{{u.phone}}</td>
             <!-- <a [routerLink]="['./users-item', u.id]" routerLinkActive="" class="link link_color_accent">Show details</a> -->

@@ -4,7 +4,9 @@
     <td (click)="showingActions()"
     class="table__cell table__cell_color_main table__cell_actions">
       Select action
-      <ul *ngIf="showActions" class="actions-list">
+      <ul
+      [@showActions]="showActions"
+      class="actions-list">
         <li class="actions-list__item">
           <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="">Show cards</a>
         </li>
@@ -16,3 +18,5 @@
         </li>
       </ul>
     </td>
+
+     <!-- *ngIf="showActions" -->

@@ -1,17 +1,41 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardsService } from '../../../services/cards.service';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: '[app-card-item]',
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.sass'],
-  providers: [CardsService]
+  providers: [CardsService],
+  animations: [
+    trigger('showActions', [
+      state('true', style({
+        opacity: '1',
+        height: '*'
+        //transform: 'scaleY(1) translateY(100%)'
+      })),
+      state('false',   style({
+        opacity: '0',
+        height: '0'
+        //transform:'scaleY(0) translateY(100%)',
+
+      })),
+      transition('false <=> true', animate('100ms ease-in'))
+    ])
+]
 })
+
+
 export class CardItemComponent implements OnInit {
   @Input() card;
   @Input() index;
   @Output() deletingCard = new EventEmitter();
-  showActions;
+  showActions=false;
 
 
   constructor( private cardsService: CardsService) { }
@@ -34,7 +58,7 @@ export class CardItemComponent implements OnInit {
     .subscribe(res =>{
       console.log(res)
     })
-  
+
   }
 
   showingActions(){

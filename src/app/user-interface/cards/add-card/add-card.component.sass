@@ -28,9 +28,11 @@
   box-shadow: $blocksShadow
   background-color: $mainColorLight
   input
+    width: 100%
     padding: .2em 2%
     box-sizing: border-box
     color: $fontColor
+    border: 1px solid $bgColor
     &:not(:last-child)
       margin-bottom: .3em
 
@@ -40,20 +42,26 @@
     font-weight: 700
     color: $btnColor
   &__input
-
     &-name
       width: 70%
-      font-size: .85em
-      font-weight: 300
-      border: 1px solid $bgColor
+      position: relative
+      input
+        font-size: .85em
+        font-weight: 300
 
     &-num
       width: 100%
-      background-color: $bgColor
-      font-size: 1.4em
-      font-weight: 700
+      position: relative
+      input
+        font-size: 1.4em
+        font-weight: 700
+        background-color: $bgColor
     &-exp
-      width: 21%
-      background-color: $bgColor
-      font-size: 1em
-      font-weight: 300
+      width: 100%
+      position: relative
+      input
+        width: 25%
+        font-size: 1em
+        font-weight: 300
+        text-align: center
+        background-color: $bgColor
