@@ -68,8 +68,8 @@ export class TransactionsComponent implements OnInit, DoCheck{
   }
 
   filter(){
-    console.log(this.dateTo.value)
-    console.log(this.dateFrom.value)
+   // console.log(this.dateTo.value)
+   // console.log(this.dateFrom.value)
   }
 
 }
