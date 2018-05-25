@@ -1,6 +1,7 @@
-import { Component, OnInit, DoCheck, Input } from '@angular/core';
+import { Component, OnInit, DoCheck, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { CardsService } from '../services/cards.service';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,10 +9,11 @@ import { CardsService } from '../services/cards.service';
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.sass']
 })
-export class TransactionsComponent implements OnInit, DoCheck {
+export class TransactionsComponent implements OnInit, DoCheck{
   @Input() accountId;
   transactions;
-  currentDate = new FormControl(new Date());
+ // currentDate = new FormControl(new Date());
+ currentDate = new Date();
   dateFrom = this.currentDate;
   minDate;
 
@@ -21,6 +23,11 @@ export class TransactionsComponent implements OnInit, DoCheck {
   serializedDate = new FormControl((new Date()).toString());
  /*  addEvent ( event: MatDatepickerInputEvent < Date >) {
      this.date = event.value
+  }*/
+  /*
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.currenevent.value)
+    console.log(Date)
   }*/
   constructor(
     private cardsService: CardsService
@@ -37,10 +44,11 @@ export class TransactionsComponent implements OnInit, DoCheck {
   }
 
 
+  
   ngDoCheck(){
-    console.log(this.dateFrom.value)
-    this.minDate = this.dateFrom.value;
-    console.log(this.minDate)
+    console.log(this.dateFrom)
+    this.minDate = this.dateFrom;
+    console.log(this.dateTo)
   }
 
 
