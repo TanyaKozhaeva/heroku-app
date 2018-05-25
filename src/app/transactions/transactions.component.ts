@@ -11,10 +11,11 @@ import { CardsService } from '../services/cards.service';
 export class TransactionsComponent implements OnInit, DoCheck {
   @Input() accountId;
   transactions;
-  dateFrom = new FormControl(new Date());
+  dateFrom = currentDate;
   minDate;
+  currentDate = new FormControl(new Date());
   // accountId = this.account.id;
-  dateTo = new FormControl(new Date());
+  dateTo = currentDate;
   //serializedDate = new FormControl((new Date()).toISOString());
   serializedDate = new FormControl((new Date()).toString());
  /*  addEvent ( event: MatDatepickerInputEvent < Date >) {
