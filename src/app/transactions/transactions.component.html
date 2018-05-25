@@ -3,17 +3,17 @@
         <div class="calendar transactions__calendar">
             <div class="calendar__wrap">
                     <div class="calendar__input-wrap">
-                            <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date" 
-                            [(ngModel)]="dateFrom.value"
+                            <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date"
+                            [(ngModel)]="dateFrom"
                             class="calendar__input"
                             >
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
                             <mat-datepicker #pickerFrom></mat-datepicker>
-        
+
                     </div>
                     <div class="calendar__input-wrap">
                             <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date"
-                            [(ngModel)]="dateTo.value"
+                            [(ngModel)]="dateTo"
                             [min]="minDate"
                             class="calendar__input"
                             >
@@ -21,8 +21,8 @@
                             <mat-datepicker #pickerTo></mat-datepicker>
                     </div>
             </div>
-                   
-        
+
+
                 <button class="calendar__link link link_color_main" (click)="filter()">Filter</button>
  </div>
 
@@ -51,4 +51,3 @@
       </div>
 
 </div>
-        
