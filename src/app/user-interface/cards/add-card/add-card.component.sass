@@ -33,8 +33,11 @@
     box-sizing: border-box
     color: $fontColor
     border: 1px solid $bgColor
+    transition: border .6s
     &:not(:last-child)
       margin-bottom: .3em
+    &:focus
+      border: 2px solid $mainColor
 
   &__label
     display: block
