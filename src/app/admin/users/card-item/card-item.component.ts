@@ -35,7 +35,9 @@ export class CardItemComponent implements OnInit {
   @Input() card;
   @Input() index;
   @Output() deletingCard = new EventEmitter();
+
   showActions=false;
+  showSpinner;
 
 
   constructor( private cardsService: CardsService) { }
@@ -43,21 +45,22 @@ export class CardItemComponent implements OnInit {
   ngOnInit() {
   }
   deleteCard(){
+    this.showSpinner = true;
     console.log(this.card.id)
     this.cardsService.deleteCard(this.card.id)
     .subscribe(res =>{
       this.deletingCard.emit(this.index)
+      this.showSpinner = false;
     })
 
   }
   disableCard(){
-    console.log(this.card)
     this.card.blocked ? this.card.blocked=false : this.card.blocked=true;
     this.cardsService.blockCard(this.card)
 
-    .subscribe(res =>{
-      console.log(res)
-    })
+    // .subscribe(res =>{
+    //
+    // })
 
   }
 

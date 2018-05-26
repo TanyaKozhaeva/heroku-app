@@ -5,6 +5,7 @@ import { User } from '../registration/user';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../alert/alert.service';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   //selector: 'app-login',
@@ -27,6 +28,7 @@ model = new User();
 
   constructor(
     //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    private loaderService: LoaderService,
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
@@ -40,8 +42,10 @@ model = new User();
 
   login(){
     console.log("login")
+    this.loaderService.executeAction(true);
     this.authService.login(this.model)
   .subscribe(
+
     data => {
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
        if(this.currentUser.userInfo.role == "USER"){
@@ -53,11 +57,16 @@ model = new User();
        //this.router.navigate([this.path, {id: this.currentUser.userInfo.userId}]);
         //this.router.navigate([redirect]);
         this.router.navigate([this.path]);
+        this.loaderService.executeAction(false);
+
     },
     error => {
       this.alertService.error(error);
       console.log(error)
-    });
+      this.loaderService.executeAction(false);
+    }
+    );
+
   }
 
   logout() {

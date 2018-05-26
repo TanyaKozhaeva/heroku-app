@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Transaction } from './transaction';
 import { AlertService } from '../../alert/alert.service';
 import { NgForm } from '@angular/forms';
+import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ inputField = false;
 
 
   constructor(
+    private loaderService: LoaderService,
     private cardsService: CardsService,
     private alertService: AlertService,
     private router: Router,
@@ -33,13 +35,14 @@ inputField = false;
   }
 
   ngOnInit() {
+    this.loaderService.executeAction(true);
     this.userId = this.route.snapshot.paramMap.get('id');
     //console.log(this.userId)
     this.getAccounts();
     //this.getCurrency();
    // console.log(this.transaction)
-    
-   
+
+
   }
   ngOnChanges(){
     //this.getAccounts();
@@ -58,7 +61,7 @@ inputField = false;
     const currentDate = new Date();
     console.log(currentDate.toString())
    return currentDate.toString()
-   
+
      //this.dateForm = return currentDate.toISOString().substring(0, 10);
    }
    */
@@ -67,10 +70,11 @@ inputField = false;
     this.cardsService.getAccounts(this.userId)
     .subscribe (res =>{
       this.accounts = res;
-      this.transaction.sourceName = this.accounts[0].number
+      this.transaction.sourceName = this.accounts[0].number;
+      this.loaderService.executeAction(false);
 
-      
-    
+
+
     })
   }
 
@@ -83,40 +87,25 @@ inputField = false;
     for(var i=0; i<this.accounts.length; i++){
       if(this.accounts[i].number == this.transaction.sourceName){
         this.transaction.currency = this.accounts[i].currency;
-      } 
+      }
     }
   }
 
-  private getTransactions(){
-    this.cardsService.getTransactions()
-    .subscribe (res =>{
-      this.transactions = res;
-    })
-  }
-
-  transactionsFilter(){
-    let data = {
-      //from: this.dateFrom
-      // to: dateTo.value
-    }
-    console.log(data)
-    this.cardsService.transactionsFilter(data, this.userId)
-    .subscribe (res =>{
-      this.transactions = res;
-    })
-  }
 
  makePayment(){
    console.log(this.transaction)
+   this.loaderService.executeAction(true);
     this.cardsService.makePayment(this.transaction)
     .subscribe (res =>{
       //this.transactions = res;
       this.alertService.success("Payment was sent", false);
       this.addCardForm.reset();
       this.getAccounts();
+      this.loaderService.executeAction(false);
     },
     error => {
       console.log(error)
+      this.loaderService.executeAction(false);
       this.alertService.error(error);
     })
   }

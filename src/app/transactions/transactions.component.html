@@ -4,7 +4,7 @@
             <div class="calendar__wrap">
                     <div class="calendar__input-wrap">
                             <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date"
-                            
+
                             [(ngModel)]="dateFrom"
                             class="calendar__input"
                             >
@@ -21,6 +21,7 @@
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerTo"></mat-datepicker-toggle>
                             <mat-datepicker #pickerTo></mat-datepicker>
                     </div>
+                     <!-- touchUi="true" -->
             </div>
 
 
@@ -45,7 +46,12 @@
                 </td>
               <td class="table__cell">{{t.sum}}</td>
             </tr>
-            <tr *ngIf="!transactions" class="table__row"><td colspan="3" class="table__cell">Select a date</td></tr>
+            <tr *ngIf="!transactions" class="table__row"><td colspan="3" class="table__cell">
+              Select a date
+              <app-spinner
+              [showSpinner]="showSpinner"></app-spinner>
+
+            </td></tr>
           </tbody>
 
         </table>

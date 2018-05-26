@@ -15,6 +15,7 @@
     width: 80%
     margin: 0 auto
 
+
 .add-card-form
   width: 18em
   height: 11.81em
@@ -33,11 +34,11 @@
     box-sizing: border-box
     color: $fontColor
     border: 1px solid $bgColor
-    transition: border .6s
+    transition: box-shadow .6s
     &:not(:last-child)
       margin-bottom: .3em
     &:focus
-      border: 2px solid $mainColor
+      box-shadow: 0px 0px 8px 2px rgba(4, 139, 253, 0.4) inset
 
   &__label
     display: block

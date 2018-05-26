@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routing';
+import { LoaderModule } from './loader/loader.module';
 import { AdminModule } from '../app/admin/admin.module';
 import { DirectivesModule } from '../app/directives/directives.module';
 import { RegistrationComponent } from './registration/registration.component';
@@ -23,11 +24,8 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor';
 import { HeaderModule } from './header/header.module';
 import { ConfirmWindowModule } from './confirm-window/confirm-window.module'
 import { DashComponent } from './dash/dash.component';
-//import { PasswordValidationDirective } from './directives/password-validation.directive';
+import { SpinnerModule } from './spinner/spinner.module';
 
-//import { UserInterfaceComponent } from './user-interface/user-interface.component';
-//import { AdminComponent } from './admin/admin.component';
-//import { UsersComponent } from './admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +33,6 @@ import { DashComponent } from './dash/dash.component';
     RegistrationComponent,
     LoginComponent,
     DashComponent
-    //ErrorsComponent
-
-    //UserInterfaceComponent
-    //AdminComponent,
-    //UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +41,8 @@ import { DashComponent } from './dash/dash.component';
     DirectivesModule,
     FormsModule,
     ReactiveFormsModule,
+    LoaderModule,
+    SpinnerModule,
     HeaderModule,
     ConfirmWindowModule,
     AlertModule,

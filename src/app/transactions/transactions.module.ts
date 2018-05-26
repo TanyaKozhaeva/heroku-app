@@ -5,15 +5,21 @@ import { FormsModule } from '@angular/forms';
 //import { BsDatepickerModule } from 'ngx-bootstrap';
 import { TransactionsComponent } from './transactions.component';
 import {MatDatepickerModule,  MatNativeDateModule, MatDatepickerToggle} from '@angular/material';
+import { SpinnerModule } from '../spinner/spinner.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    SpinnerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
    // BsDatepickerModule.forRoot(),
-    //DatepickerModule.forRoot() 
+    //DatepickerModule.forRoot()
   ],
   declarations: [TransactionsComponent],
   //bootstrap:    [ TransactionsComponent ],

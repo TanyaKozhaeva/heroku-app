@@ -7,6 +7,7 @@ import { UserService } from '../../../services/user.service';
 import { switchMap } from 'rxjs/operators';
 import { AlertService } from '../../../alert/alert.service';
 import { AccountsService } from '../../../services/accounts.service';
+import { LoaderService } from '../../../loader/loader.service';
 
 @Component({
   selector: 'app-users-item',
@@ -23,6 +24,7 @@ showActions = false;
 
 
   constructor(
+  private loaderService: LoaderService,
   private accountsService: AccountsService,
   private userService: UserService,
   //private cardsService: CardsService,
@@ -38,6 +40,7 @@ showActions = false;
        this.userId = params.get('id')
     ));*/
     //this.getCards(this.user);
+    this.loaderService.executeAction(true);
     this.userId = this.route.snapshot.paramMap.get('id');
     //this.getUserDetails();
     this.getAccounts();
@@ -54,6 +57,7 @@ showActions = false;
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {
       this.accounts = res;
+      this.loaderService.executeAction(false);
     });
   }
 

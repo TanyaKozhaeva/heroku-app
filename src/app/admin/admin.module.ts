@@ -22,6 +22,7 @@ import { BackBtnModule } from '../back-btn/back-btn.module';
 import { AccountItemComponent } from './users/users-item/account-item/account-item.component';
 import { TransactionsModule } from '../transactions/transactions.module';
 import { LoaderModule } from '../loader/loader.module';
+import { SpinnerModule } from '../spinner/spinner.module';
 //import { ErrorsComponent } from '../errors/errors.component';
 //import { PhonevalidatorDirective } from '../services/phonevalidator.directive';
 //import { EmailvalidatorDirective } from '../services/emailvalidator.directive'
@@ -38,6 +39,7 @@ import { LoaderModule } from '../loader/loader.module';
     LoaderModule,
     AlertModule,
     BackBtnModule,
+    SpinnerModule,
     HeaderModule,
     AdminRouting
   ],

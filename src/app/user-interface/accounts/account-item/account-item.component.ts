@@ -6,6 +6,7 @@ import { AddCardService } from '../../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountsService } from '../../../services/accounts.service';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { LoaderService } from '../../../loader/loader.service';
 
 @Component({
   selector: 'app-account-item',
@@ -31,6 +32,7 @@ export class AccountItemComponent implements OnInit {
 
 
   constructor(
+    private loaderService: LoaderService,
     private cardsService: CardsService,
     private accountsService: AccountsService,
     private addCardService: AddCardService,
@@ -54,6 +56,7 @@ export class AccountItemComponent implements OnInit {
 
 
   ngOnInit() {
+    this.loaderService.executeAction(true);
     //this.accountId = this.account.id;
     this.accountId = this.route.snapshot.paramMap.get('id');
     this.userId = this.route.snapshot.paramMap.get('userId');
@@ -83,6 +86,7 @@ export class AccountItemComponent implements OnInit {
       this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
+      this.loaderService.executeAction(false);
     });
   }
 

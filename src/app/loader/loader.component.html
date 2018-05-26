@@ -1,3 +1,5 @@
-<p *ngIf="showLoader">
-  loader works!
-</p>
+<div class="loader"
+@showLoader
+*ngIf="showLoader">
+  <svg class="icon loader__icon"><use xlink:href="assets/svg/symbol/sprite.svg#spinner-circle"></use></svg>
+</div>

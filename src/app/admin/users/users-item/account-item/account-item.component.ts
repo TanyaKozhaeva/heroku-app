@@ -35,6 +35,7 @@ export class AccountItemComponent implements OnInit {
 @Input() index;
 @Output() deletingAccount = new EventEmitter();
 showActions=false;
+showSpinner;
 
   constructor(
     private accountsService: AccountsService,
@@ -50,6 +51,7 @@ showActions=false;
 
   deleteAccount() {
     // this.users.splice(i, 1);
+    this.showSpinner = true;
     this.accountsService.deleteAccount(this.account.id)
     .subscribe(res => {
       this.deletingAccount.emit(this.index);
@@ -58,6 +60,7 @@ showActions=false;
     error => {
       this.alertService.error(error);
     });
+    this.showSpinner = false;
   }
 
 

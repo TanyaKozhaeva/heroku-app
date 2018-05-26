@@ -27,6 +27,7 @@ export class ErrorsComponent {
 
 
   shouldShowErrors(): boolean {
+    //console.log(this.control.name)
     return this.control &&
       this.control.errors &&
       (this.control.invalid && this.control.touched);

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../../alert/alert.service';
 import { ConfirmService } from '../../../services/confirm.service';
 import { NgForm } from '@angular/forms';
+import { LoaderService } from '../../../loader/loader.service';
 
 
 @Component({
@@ -36,6 +37,7 @@ cardModel = new Card();
   userId: 'number'
 };*/
   constructor(
+    private loaderService: LoaderService,
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
@@ -52,10 +54,12 @@ cardModel = new Card();
    addCard(){
     // this.cardModel.userId = this.userId;
     console.log(this.cardModel)
+    this.loaderService.executeAction(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
      // this.addCardService.executeAction(res);
       this.addCardForm.reset();
+      this.loaderService.executeAction(false);
       this.alertService.success("Card successfully added!", true);
       // this.router.navigate(['user/cards']);
 
@@ -64,6 +68,7 @@ cardModel = new Card();
      //this.addCardService.addingCard.emit("this.cardModel");
      },
      error => {
+      this.loaderService.executeAction(false);
       this.alertService.error("Something went wrong. Please try again later");
     })
      }

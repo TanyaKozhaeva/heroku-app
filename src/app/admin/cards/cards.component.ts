@@ -3,6 +3,7 @@ import { CardsService } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../alert/alert.service';
 import { AccountsService } from '../../services/accounts.service';
+import { LoaderService } from '../../loader/loader.service';
 
 @Component({
   selector: 'app-cards',
@@ -16,6 +17,7 @@ export class CardsComponent implements OnInit {
   currentAccount;
 
   constructor(
+    private loaderService: LoaderService,
     private cardsService: CardsService,
     private accountsService: AccountsService,
     private alertService: AlertService,
@@ -23,6 +25,7 @@ export class CardsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loaderService.executeAction(true);
     this.accountId = this.route.snapshot.paramMap.get('id');
     this.getCards();
     this.getAccountDetails();
@@ -35,6 +38,7 @@ export class CardsComponent implements OnInit {
     this.cardsService.getCards(this.accountId)
     .subscribe(res => {
       this.cards = res;
+      this.loaderService.executeAction(false);
     });
 
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { CardsService } from '../services/cards.service';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,6 +12,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 })
 export class TransactionsComponent implements OnInit, DoCheck{
   @Input() accountId;
+  showSpinner = false;
   transactions;
  // currentDate = new FormControl(new Date());
  currentDate = new Date();
@@ -30,7 +32,8 @@ export class TransactionsComponent implements OnInit, DoCheck{
     console.log(Date)
   }*/
   constructor(
-    private cardsService: CardsService
+    private cardsService: CardsService,
+    private route: ActivatedRoute
   ) {
 
    // this.bsRangeValue = [this.bsDateFrom, this.bsDateTo];
@@ -39,12 +42,13 @@ export class TransactionsComponent implements OnInit, DoCheck{
   // myDateValue: Date;
 
   ngOnInit() {
+    this.accountId = this.route.snapshot.paramMap.get('id');
     // this.myDateValue = new Date();
     console.log(this.accountId)
   }
 
 
-  
+
   ngDoCheck(){
     console.log(this.dateFrom)
     this.minDate = this.dateFrom;
@@ -54,22 +58,20 @@ export class TransactionsComponent implements OnInit, DoCheck{
 
 
 
-  transactionsFilter(){
+  filter(){
     let data = {
       //from: this.dateFrom
       // to: dateTo.value
 
     }
     console.log(data)
+    this.showSpinner = true;
     this.cardsService.transactionsFilter(data, this.accountId)
     .subscribe (res =>{
       this.transactions = res;
+      this.showSpinner = false;
     })
   }
 
-  filter(){
-   // console.log(this.dateTo.value)
-   // console.log(this.dateFrom.value)
-  }
 
 }
