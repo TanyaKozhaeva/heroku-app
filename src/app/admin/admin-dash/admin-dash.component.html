@@ -2,7 +2,7 @@
   [user] = "user"
   (delete)="deleteUser($event)">
 </app-users-item> -->
-<div class="admin-dash admin-main-screen__item">
+<div class="admin-dash admin-main-screen__item vh-without-header" >
   <div class="wrapper-admin">
     <app-alert></app-alert>
     <h2 class="admin-dash__title title title_color_main">Dashboard</h2>
@@ -27,7 +27,7 @@
             <td class="table__cell table__cell_actions">
                 <app-spinner
                 [showSpinner]="showSpinner"></app-spinner>
-              <button (click)="deleteUser(i, u.id)" class="delete-btn">Delete</button>
+              <button (click)="deleteUser(i, u.id)" class="action-btn">Delete</button>
             </td>
           </tr>
         </tbody>

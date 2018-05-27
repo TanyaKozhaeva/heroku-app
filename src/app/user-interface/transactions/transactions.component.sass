@@ -1,11 +1,11 @@
 @import "../../../sass/smart-grid.sass"
 @import "../../../sass/vars.sass"
 .payments-block
-  padding: $offset 0
-  &__link
-    display: block
-    margin: 0 auto
-    border-bottom: 1px solid $mainColor
+  padding: $offset $offset-one-side
+  display: flex
+  flex-direction: column
+  &__controls
+    margin-top: auto
 
   &__form
     max-width: 580px

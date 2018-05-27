@@ -7,11 +7,12 @@
   font-size: .6em
   font-weight: 700
   text-align: center
+  color: red
   background-color: $mainColorLight
   box-shadow: $blocksShadow
-  color: red
   border-radius: 10px
-
+  &__item
+    margin-bottom: .3em
   &::before
     content: ""
     position: absolute
@@ -20,6 +21,3 @@
     transform: translateY(100%)
     border: 10px solid transparent
     border-top: 10px solid $mainColorLight
-
-  &__item
-    margin-bottom: .3em

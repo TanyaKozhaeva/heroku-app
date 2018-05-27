@@ -1,4 +1,4 @@
-<div class="transactions admin-main-screen__item">
+<div class="transactions admin-main-screen__item vh-without-header">
   <div class="wrapper-admin">
     <h2 class="transactions__title title title_color_main">Transactions</h2>
     <p *ngIf="currentAccount" class="transactions__text text text_color_main">For account:
@@ -7,7 +7,9 @@
       {{currentAccount.currency}}</p>
 <transactions></transactions>
 
+
+  </div>
+  <div class="transactions__controls">
     <app-back-btn></app-back-btn>
   </div>
-
 </div>

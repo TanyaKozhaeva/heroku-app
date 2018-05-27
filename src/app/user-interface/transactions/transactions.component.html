@@ -1,4 +1,4 @@
-<div class="payments-block">
+<div class="payments-block vh-without-header">
   <div class="wrapper-ui">
     <form class="form payments-block__form"
     name="paymentForm"
@@ -76,9 +76,11 @@
       [disabled]="!paymentForm.valid"
       class="form__btn link link_color_main">Transfer</button>
     </form>
-        <app-back-btn></app-back-btn>
-        <button class="payments-block__link text text_color_main" (click)="cansel()">Go to Main</button>
 
   </div>
+<div class="payments-block__controls">
+  <app-back-btn></app-back-btn>
+</div>
+
 
 </div>

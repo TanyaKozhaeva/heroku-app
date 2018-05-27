@@ -1,4 +1,4 @@
-<div class="cards admin-main-screen__item">
+<div class="cards admin-main-screen__item vh-without-header">
   <div class="wrapper-admin">
     <h2 class="cards__title title title_color_main">Cards</h2>
     <p *ngIf="currentAccount" class="cards__text text text_color_main">For account:
@@ -34,8 +34,9 @@
       </table>
     </div>
 
-    <app-back-btn></app-back-btn>
   </div>
 
-
+  <div class="cards__controls">
+    <app-back-btn></app-back-btn>
+  </div>
 </div>

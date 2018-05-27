@@ -5,6 +5,8 @@
 
 .account-item
   //padding: 0 $offset-one-side $offset
+  display: flex
+  flex-direction: column
   padding-bottom: $offset
   @media screen and (min-width: $break_sm)
     padding-top: 3rem
@@ -32,11 +34,11 @@
       border-bottom: 1rem solid $mainColorLight
       position: absolute
       left: 50%
-      transform: translateX(-50%)
-      bottom: 0
-    @media screen and (max-width: #{$break_sm}-1)
-      margin-right: -$offset-one-side
-      margin-left: -$offset-one-side
+      margin-left: -.5rem
+      bottom: -2px
+
+
+
 
   &__info-btn
     display: inline-block
@@ -49,10 +51,15 @@
       content: "+"
       display: block
       font-size: 1.5em
+      font-weight: 300
       position: absolute
-      top: 50%
-      left: 0
-      transform: translate(-140%, -50%)
+      top: 0
+      left: -25%
+      line-height: .75
+      transition: transform .6s
+    &:hover
+      &::before
+        transform: scale(1.2)
   &__info-number
     display: block
     font-size: 1.5em
@@ -64,10 +71,14 @@
     font-weight: 100
   &__controls
     width: 80%
+    margin-bottom: $offset
   &__cards-list
     margin-bottom: $offset
   &__transactions
     margin-bottom: $offset
+  &__cancel-controls
+    margin-top: auto
+    padding: 0 $offset-one-side
 
 .cards-list
   &__item
@@ -82,5 +93,3 @@
     margin-right: .4em
   &__item-num
     font-weight: 700
-
-

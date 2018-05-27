@@ -8,12 +8,13 @@ id="addCardForm">
     <div class="add-card-form__input-name">
       <label class="add-card-form__label" for="cardName"> Name:</label>
       <input type="text"
-      name="cardName name"
+      name="cardName"
       id="cardName"
       [(ngModel)]="cardModel.name" #cardName="ngModel"
       required
       maxlength="15">
       <app-errors [control]="cardName"></app-errors>
+      
     </div>
 
 <div class="add-card-form__input-num">
@@ -27,7 +28,9 @@ id="addCardForm">
     cardValidator
     [textMask]="{mask: numberMask}"
     required>
-    <app-errors [control]="cardNumber"></app-errors>
+      <app-errors [control]="cardNumber"></app-errors>
+
+    
 </div>
 
 <div class="add-card-form__input-exp">
@@ -40,7 +43,10 @@ id="addCardForm">
     expiredValidator
     [textMask]="{mask: expiredMask}"
     required>
-    <app-errors [control]="cardExpiration"></app-errors>
+
+      <app-errors [control]="cardExpiration"></app-errors>
+
+    
 </div>
 
 

@@ -2,7 +2,7 @@
 @import "sass/reset.sass"
 @import "sass/smart-grid.sass"
 @import "sass/vars.sass"
-@import "sass/material-datepicker.sass"
+//@import "sass/material-datepicker.sass"
 
 
 
@@ -11,13 +11,15 @@ body
   font-family: $mainFont
 .wrapper-ui
   // +wrapper
+  width: 100%
   max-width: 780px
   margin: 0 auto
-  padding: 0 $offset-one-side
+  box-sizing: border-box
 .wrapper-admin
+  width: 100%
   max-width: 1280px
   margin: 0 auto
-  padding: 0 $offset-one-side
+
 
 .row
   +row-flex
@@ -110,6 +112,8 @@ body
       &_dark
         border-bottom: 2px solid $fontColor
         color: $fontColor
+        &:focus
+          box-shadow: 0 4px 2px -3px $fontColor
 
   &__switch-box
     margin-bottom: $offset-one-side
@@ -119,6 +123,8 @@ body
     border-radius: 6px
     color: $mainColorLight
     background-color: $fontColor
+    &:hover
+      box-shadow: $blocksShadow
   &__btn
     width: 80%
     margin: 0 auto
@@ -133,8 +139,9 @@ body
 .link-box
   display: flex
   flex-direction: column
+  justify-content: center
   width: 100%
-  margin: 0 auto $offset
+  margin: 0 auto
   @media screen and (min-width: $break_xs)
     flex-direction: row
 
@@ -228,8 +235,10 @@ body
         background-color: lighten($bgColor, 10%)
 
 
-.delete-btn
-  font-size: .75em
+.action-btn
+  font-size: 1em
+  font-family: $mainFont
+  font-weight: 300
   color: $dangerColor
 
 
@@ -307,13 +316,12 @@ body
 
 .tableLight
   &__row
-    // &:nth-child(odd)
-    //   background-color: darken($mainColor, 10%)
     border-bottom: 1px solid $mainColorLight
     &_clickable
       cursor: pointer
+      transition: box-shadow .3s
       &:hover
-      //  box-shadow: 0px 15px 50px 0 rgba(255, 255, 255, 0.3)
+        box-shadow: 0 5px 3px -3px $mainColorLight
     &_disable
       color: $fontColor
       border-bottom: 1px solid $fontColor
@@ -407,6 +415,13 @@ body
   width: 1px
   height: 1px
   overflow: hidden
+.box-height
+  min-height: 100vh
+  box-sizing: border-box
+.vh-without-header
+  min-height: calc(100vh - 61px)
+  box-sizing: border-box
+
 
 @media screen and (min-width: $break_xs)
   body

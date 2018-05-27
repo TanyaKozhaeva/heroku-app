@@ -1,7 +1,7 @@
 @import "../../../sass/smart-grid.sass"
 @import "../../../sass/vars.sass"
 .dash
-  padding: 4.7rem 0 $offset
+  padding: 4.7rem $offset-one-side $offset
   text-align: center
   background-image: $mainGradient
   color: $mainColorLight
@@ -12,7 +12,7 @@
     width: 300px
     margin: 0 auto 4.7rem
   &__title
-    margin-bottom: calc(#{$offset-one-side}/2)
+    margin-bottom: .75rem
   &__text
     margin-bottom: $offset-one-side
   &__accounts

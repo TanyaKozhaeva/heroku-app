@@ -110,8 +110,4 @@ inputField = false;
     })
   }
 
-  cansel(){
-    this.router.navigate(['../user']);
-  }
-
 }

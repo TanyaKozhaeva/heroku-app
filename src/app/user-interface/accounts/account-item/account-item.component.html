@@ -1,4 +1,4 @@
-<div *ngIf="accountItem" class="account-item">
+<div *ngIf="accountItem" class="account-item vh-without-header">
   <div class="wrapper-ui">
     <div *ngIf="accountItem.blocked" class="account-item__block-box">
       <p class="account-item__block-text title title_color_main">
@@ -33,7 +33,7 @@
                       <div class="col-xs-12 col-12 col-md-4 form-group">
                         <input type="text"
                               class="form-control"
-                          
+
                               #dp="bsDatepicker"
                               bsDatepicker [(bsValue)]="myDateValue">
                       </div>
@@ -41,7 +41,7 @@
                   </div>
  -->
 
-  
+
 
   <div class="account-item__controls link-box">
     <a [routerLink]="['../../transactions', {id: userId}]" routerLinkActive="" class="account-item__link link link_color_accent">
@@ -49,10 +49,13 @@
     </a>
     <button class="link link_color_light"
     (click)="showingTransactions()"
-    *ngIf="!showTransactions">Show transactions</button>
-    <button class="link link_color_light"
+    >
+    <span *ngIf="!showTransactions">Show transactions</span>
+    <span *ngIf="showTransactions">Hide transactions</span>
+  </button>
+    <!-- <button class="link link_color_light"
     (click)="showingTransactions()"
-    *ngIf="showTransactions">Hide transactions</button>
+    *ngIf="showTransactions">Hide transactions</button> -->
 
   </div>
 
@@ -89,7 +92,9 @@
         <!-- <button class="account-item__cancel-btn cancel-btn"
         (click)="navigate()">Make a payment
         </button> -->
-        <app-back-btn></app-back-btn>
-  </div>
 
+  </div>
+<div class="account-item__cancel-controls">
+  <app-back-btn></app-back-btn>
+</div>
     </div>
