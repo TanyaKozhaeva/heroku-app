@@ -25,6 +25,7 @@ import { HeaderModule } from './header/header.module';
 import { ConfirmWindowModule } from './confirm-window/confirm-window.module'
 import { DashComponent } from './dash/dash.component';
 import { SpinnerModule } from './spinner/spinner.module';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { SpinnerModule } from './spinner/spinner.module';
     multi: true
 },
   AuthGuard,
+  AuthService,
   AlertService
   ],
   bootstrap: [AppComponent]

@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from "../registration/user";
+import { User } from '../registration/user';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
 
 @Component({
-  //selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.sass'],
   providers: [ UserService ]
 })
 export class RegistrationComponent implements OnInit {
 model = new User();
-//mask: any[] = ['+', '380', '', /[0-9]/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
 
   constructor(
@@ -30,7 +28,7 @@ mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\
     this.router.navigate(['/']); 
     },
     error => {
-      this.alertService.error(error);
+      this.alertService.error('Something went wrong. Please try again later');
     })
 }
 }

@@ -31,50 +31,11 @@
               <td class="tableLight__cell">{{a.number}}</td>
               <td class="tableLight__cell">{{a.amount}}</td>
               <td class="tableLight__cell">{{a.currency}}</td>
-              <!-- <td class="tableLight__cell">
-                <span *ngIf="!a.blocked" [routerLink]="['./account-item', a.id]" routerLinkActive="">Details</span>
-                <span *ngIf="a.blocked">Blocked</span>
-              </td> -->
             </tr>
           </tbody>
         </table>
-      <!-- <ul class="dash__accounts-list list list_clear">
-        <li *ngFor="let a of accounts" [routerLink]="['./account-item', a.id, {userId: userId}]" routerLinkActive="" class="list__item">
-          <span>{{a.number}}
-            {{a.amount}}
-            {{a.currency}}
-          </span>
-          <p class="list__accent-line">{{a.blocked}}</p>
-        </li>
-
-      </ul> -->
-
-      <!-- <div class="wrapper">
-          <nav class="nav dash__nav">
-              <a [routerLink]="['./cards', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link">
-                <svg class="icon dash__link-icon">
-                  <use xlink:href="assets/svg/symbol/sprite.svg#credit-card"></use>
-                </svg><br>
-                <span>Cards</span>
-              </a>
-              <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="ui__nav-link_active" class="dash__nav-link`" >
-                <svg class="icon dash__link-icon">
-                  <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
-                </svg><br>
-                <span>Transactions</span>
-              </a>
-          </nav>
-          <router-outlet></router-outlet>
-        </div> -->
         <a [routerLink]="['./transactions', {id: userId}]" routerLinkActive="" class="dash__transactions-link link link_color_light" >
-          <!-- <svg class="icon dash__link-icon">
-            <use xlink:href="assets/svg/symbol/sprite.svg#transaction"></use>
-          </svg><br> -->
-          <!-- <span>Transactions</span> -->
           Make a payment
         </a>
     </div>
-
-    <!-- [currentUser] = "currentUser" -->
-
   </div>

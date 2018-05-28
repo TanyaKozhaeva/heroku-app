@@ -2,7 +2,7 @@
 @import "sass/reset.sass"
 @import "sass/smart-grid.sass"
 @import "sass/vars.sass"
-//@import "sass/material-datepicker.sass"
+@import "sass/material-datepicker.sass"
 
 
 
@@ -144,6 +144,10 @@ body
   margin: 0 auto
   @media screen and (min-width: $break_xs)
     flex-direction: row
+  &__item
+    @media screen and (max-width: #{$break_xs}-1)
+      &:not(:last-child)
+        margin-bottom: $offset
 
 .link
   display: block
@@ -207,9 +211,7 @@ body
   // &:hover::after
   //   width: 90%
 
-  @media screen and (max-width: #{$break_xs}-1)
-    &:not(:last-child)
-      margin-bottom: $offset
+
   @media screen and (min-width: $break_xs)
     width: 50%
     &:not(:last-child)

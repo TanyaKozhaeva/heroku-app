@@ -1,14 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { Card } from '../add-card/card'
-import { CardsService } from '../../../services/cards.service';
+import { Card } from '../add-card/card';
+import { CardsService } from '../../services/cards.service';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
-import { AddCardService } from '../../../services/addcard.service';
+//import { AddCardService } from '../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { AlertService } from '../../../alert/alert.service';
-import { ConfirmService } from '../../../services/confirm.service';
+import { AlertService } from '../../alert/alert.service';
+import { ConfirmService } from '../../services/confirm.service';
 import { NgForm } from '@angular/forms';
-import { LoaderService } from '../../../loader/loader.service';
+import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
@@ -41,7 +41,7 @@ cardModel = new Card();
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
-    private addCardService: AddCardService,
+    //private addCardService: AddCardService,
     private alertService: AlertService,
     private confirmService: ConfirmService
   ) { }
@@ -91,10 +91,10 @@ cardModel = new Card();
 canDeactivate(): Observable<boolean> | boolean {
 
   if(this.addCardForm.pristine){
-    return true
+    return true;
   }
-  //this.confirmService.confirm('Discard changes for Person?');
-  this.confirmService.message("Discard changes for Card?");
+
+  this.confirmService.message('Discard changes for Card?');
   return this.confirmService.navigateAwaySelection$;
 
 

@@ -5,13 +5,11 @@ import { LoaderService } from '../../loader/loader.service';
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.component.html',
-  styleUrls: ['./dash.component.sass'],
-  providers: [AccountsService
-  ]
+  styleUrls: ['./dash.component.sass']
 })
 export class DashComponent implements OnInit {
-products: any[] = [];
-accounts: any[] = [];
+products;
+accounts;
 currentUser;
 userId;
 
@@ -19,14 +17,14 @@ userId;
   constructor(
     private loaderService: LoaderService,
     private accountsService: AccountsService
-  ) { }
+  ) { 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+ this.userId = this.currentUser.userInfo.userId;
+  }
 
   ngOnInit() {
-    this.loaderService.executeAction(true);
-    this.getProducts();
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
- this.userId = 2; // !!!!!!!!!!!!!!!!!!!!!!
- //this.userId = this.currentUser.id;
+    //this.loaderService.executeAction(true);
+    this.getProducts(); 
 this.getAccounts();
 
   }

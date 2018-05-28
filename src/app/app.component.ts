@@ -13,17 +13,4 @@ export class AppComponent {
   title = 'app';
   constructor(
     private userService: UserService) { }
-
-  getReport(){
-    this.userService.getReport()
-    //.subscribe(
-     // (res) => {
-         // saveAs(res, "myPDF.pdf"); //if you want to save it - you need file-saver for this : https://www.npmjs.com/package/file-saver
-
-     // var fileURL = URL.createObjectURL(res);
-      //window.open(fileURL); // if you want to open it in new tab
-
-      //}
-  //);
-  }
 }
