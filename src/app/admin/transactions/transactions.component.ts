@@ -32,7 +32,7 @@ export class TransactionsComponent implements OnInit {
       // to: dateTo.value
     }
     console.log(data)
-    this.cardsService.transactionsFilter(data, this.accountId)
+    this.accountsService.transactionsFilter(data, this.accountId)
     .subscribe (res =>{
       this.transactions = res;
     })
