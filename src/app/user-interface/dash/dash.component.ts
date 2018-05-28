@@ -23,7 +23,7 @@ userId;
   }
 
   ngOnInit() {
-    //this.loaderService.executeAction(true);
+    this.loaderService.executeAction(true);
     this.getProducts(); 
 this.getAccounts();
 

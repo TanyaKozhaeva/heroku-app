@@ -10,7 +10,6 @@ import { LoaderService } from '../../loader/loader.service';
   styleUrls: ['./account-item.component.sass']
 })
 export class AccountItemComponent implements OnInit {
-  userId;
   accountId;
   accountItem;
   cards;
@@ -25,7 +24,6 @@ export class AccountItemComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.accountId = this.route.snapshot.paramMap.get('id');
-    this.userId = this.route.snapshot.paramMap.get('userId');
   }
 
 

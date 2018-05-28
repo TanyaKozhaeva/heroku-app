@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, OnInit,  ViewChild } from '@angular/core';
 import { Card } from '../add-card/card';
 import { CardsService } from '../../services/cards.service';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
-//import { AddCardService } from '../../services/addcard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../alert/alert.service';
@@ -12,60 +11,42 @@ import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
-  selector: 'app-add-card',
+  //selector: 'app-add-card',
   templateUrl: './add-card.component.html',
-  styleUrls: ['./add-card.component.sass'],
-  providers: [
-    CardsService
-    //AddCardService,
-    ]
+  styleUrls: ['./add-card.component.sass']
 })
 
 
 export class AddCardComponent implements OnInit {
 
-//@Input() currentUser;
-//currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//@Output() addingCard = new EventEmitter;////
 @ViewChild('addCardForm') public addCardForm: NgForm;
 numberMask: any[] = [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 expiredMask: any[] = [/\d/, /\d/, '/', /\d/, /\d/]
 accountId;
 cardModel = new Card();
 
-/*cardModel = {
-  userId: 'number'
-};*/
   constructor(
     private loaderService: LoaderService,
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
-    //private addCardService: AddCardService,
     private alertService: AlertService,
     private confirmService: ConfirmService
-  ) { }
+  ) { 
+    this.accountId = this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
-    this.accountId = this.route.snapshot.paramMap.get('id');
    }
 
 
    addCard(){
-    // this.cardModel.userId = this.userId;
-    console.log(this.cardModel)
     this.loaderService.executeAction(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
-     // this.addCardService.executeAction(res);
       this.addCardForm.reset();
       this.loaderService.executeAction(false);
       this.alertService.success("Card successfully added!", true);
-      // this.router.navigate(['user/cards']);
-
-
-     //this.addingCard.emit(res);////
-     //this.addCardService.addingCard.emit("this.cardModel");
      },
      error => {
       this.loaderService.executeAction(false);
@@ -76,17 +57,7 @@ cardModel = new Card();
      cansel(){
        this.router.navigate(['/user']);
      }
-/*
-  canDeactivate(): Observable<boolean> | boolean {
 
-    if(!this.cardModel){
-      console.log(this.cardModel)
-      return true
-    }
-    return this.confirmService.confirm('Discard changes for Person?');
-
-  }
-*/
 
 canDeactivate(): Observable<boolean> | boolean {
 
@@ -100,9 +71,4 @@ canDeactivate(): Observable<boolean> | boolean {
 
 
 }
-
-
-
-
-
 }

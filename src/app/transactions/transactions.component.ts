@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import { CardsService } from '../services/cards.service';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { ActivatedRoute } from '@angular/router';
+import { AccountsService } from '../services/accounts.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,7 +33,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
     console.log(Date)
   }*/
   constructor(
-    private cardsService: CardsService,
+    private accountsService: AccountsService,
     private route: ActivatedRoute
   ) {
 
@@ -50,9 +51,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
 
 
   ngDoCheck(){
-    console.log(this.dateFrom)
     this.minDate = this.dateFrom;
-    console.log(this.dateTo)
   }
 
 
@@ -66,7 +65,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
     }
     console.log(data)
     this.showSpinner = true;
-    this.cardsService.transactionsFilter(data, this.accountId)
+    this.accountsService.transactionsFilter(data, this.accountId)
     .subscribe (res =>{
       this.transactions = res;
       this.showSpinner = false;

@@ -29,6 +29,7 @@ model = new User();
   ) { }
 
   ngOnInit() {
+    this.loaderService.executeAction(false);
   }
 
   login() {

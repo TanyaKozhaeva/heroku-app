@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { Http, Headers } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
@@ -10,14 +9,8 @@ export class AccountsService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor( private http: HttpClient) { }
-/*
-  getAccounts(userId){
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/' + userId)
-  }
-  */
 
   getAccounts(userId){
-    //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/')
      return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
    }
 
@@ -31,14 +24,15 @@ export class AccountsService {
 
   deleteAccount(accountId){
     return this.http.delete('https://apihonestbank.herokuapp.com/accounts/'+ accountId)
-    //return this.http.delete('http://jsonplaceholder.typicode.com/users/'+ accountId)
-  };
-
-
-  addAccount(account) {
-    //return this.http.post('https://apihonestbank.herokuapp.com/accounts/', account)
-    return this.http.post('https://jsonplaceholder.typicode.com/posts', account)
   }
 
+
+  transactionsFilter(data, accountId){
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
+  }
+
+  makePayment(transaction){
+    return this.http.post<any[]>('https://apihonestbank.herokuapp.com/transactions/', transaction)
+  }
 
 }
