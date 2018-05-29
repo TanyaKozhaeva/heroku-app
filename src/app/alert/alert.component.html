@@ -1,6 +1,5 @@
 <div *ngIf="message"
 @message
-
 class="modal">
 <p class="modal__text">{{message.text}}</p>
   <svg class="icon modal__icon modal__icon_success" *ngIf="message.type === 'success'">
@@ -14,7 +13,3 @@ class="modal">
 </button>
 </div>
 
-<!-- [ngClass]="{'message': message,
-'message_success': message.type === 'success',
-'message_danger': message.type === 'error'}" -->
-<!-- [@message]="message" -->

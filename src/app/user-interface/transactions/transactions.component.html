@@ -17,7 +17,7 @@
           <span class="">{{a.currency}}</span>
         </option>
       </select>
-      <fieldset>
+      <fieldset class="form__input-wrap">
         <legend class="payments-block__form-label">Recipient:</legend>
           <div *ngIf="!inputField">
             <select class="form__input form__input_color_dark"
@@ -31,7 +31,10 @@
                   <span class="">{{a.currency}}</span>
                 </option>
             </select>
-            <app-errors [control]="recipientAccount"></app-errors>
+            <div class="form__errors">
+                <app-errors [control]="recipientAccount"></app-errors>
+            </div>
+            
           </div>
 
           <div *ngIf="inputField">
@@ -41,9 +44,11 @@
               placeholder="Input the recipient"
               [(ngModel)]="transaction.destinationName"
               required
-              cardValidator
-              [textMask]="{mask: numberMask}">
-            <app-errors [control]="recipientManualInput"></app-errors>
+              minlength="16">
+              <div class="form__errors">
+                  <app-errors [control]="recipientManualInput"></app-errors>
+              </div>
+            
               </div>
 
     <div class="form__switch-box">
@@ -55,22 +60,26 @@
 
 
 
-    <div class="payments-block__amount-input">
-      <label class="payments-block__form-label" for="transactionAmount"> Amount:</label>
-      <input type="number"
-      class="form__input form__input_color_dark"
-      name="transactionAmount"
-      [(ngModel)]="transaction.sum"
-      #transactionAmount="ngModel"
-      id="transactionAmount"
-      required>
-    <input type="text" class="form__input form__input_color_dark"
-    name="transactionCurrency"
-    [(ngModel)]="transaction.currency"
-    #transactionCurrency="ngModel"
-    disabled>
-      <app-errors [control]="transactionAmount"></app-errors>
+    <div class="form__input-wrap">
+        <label class="payments-block__form-label" for="transactionAmount"> Amount:</label>
+            <input type="number"
+            class="form__input form__input_color_dark"
+            name="transactionAmount"
+            [(ngModel)]="transaction.sum"
+            #transactionAmount="ngModel"
+            id="transactionAmount"
+            required>
+        
+      <input type="text" class="form__input form__input_color_dark"
+      name="transactionCurrency"
+      [(ngModel)]="transaction.currency"
+      #transactionCurrency="ngModel"
+      disabled>
+      <div class="form__errors">
+          <app-errors [control]="transactionAmount"></app-errors>
       </div>
+    </div>
+      
 
       <button type="submit"
       [disabled]="!paymentForm.valid"

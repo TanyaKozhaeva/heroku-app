@@ -1,14 +1,12 @@
     <td class="table__cell">{{account.number}}</td>
     <td class="table__cell">{{account.amount}}  {{account.currency}}</td>
-    <!-- <td class="table__cell">{{account.currency}}</td> -->
     <td (click)="showingActions()"
     class="table__cell table__cell_color_main table__cell_actions">
       Select action
       <app-spinner
       [showSpinner]="showSpinner"></app-spinner>
-      <ul
-      [@showActions]="showActions"
-      class="actions-list">
+      <ul class="actions-list"
+      [@showActions]="showActions">
         <li class="actions-list__item">
           <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="">Show cards</a>
         </li>
@@ -18,7 +16,9 @@
         <li class="actions-list__item">
           <button (click)="deleteAccount()" class="action-btn">Delete</button>
         </li>
+        <li class="actions-list__item">
+            <button *ngIf="!account.blocked" (click)="disableAccount()" class="action-btn">Block</button>
+            <button *ngIf="account.blocked" (click)="disableAccount()" class="action-btn">Unlock</button>
+          </li>
       </ul>
     </td>
-
-     <!-- *ngIf="showActions" -->

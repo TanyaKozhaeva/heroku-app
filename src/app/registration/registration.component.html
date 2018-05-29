@@ -1,5 +1,7 @@
 <div class="main-screen__form-block registration">
-<form name="registerForm" (ngSubmit)="registerForm.valid && register()" #registerForm="ngForm" novalidate class="form registration__form">
+<form name="registerForm" (ngSubmit)="registerForm.valid && register()"
+#registerForm="ngForm"
+novalidate class="form registration__form">
         <h2 class="title form__title">Registration</h2>
 <div class="form__input-wrap">
   <input type="text" name="firstName"
@@ -9,7 +11,10 @@
   id="firstName"
   class="form__input"/>
 <label class="form__label" for="firstName">First name</label>
+<div class="form__errors">
   <app-errors [control]="firstName"></app-errors>
+</div>
+  
 </div>
 
 
@@ -21,7 +26,10 @@
   id="lastName"
   class="form__input"/>
 <label class="form__label" for="lastName">Last name</label>
+<div class="form__errors">
   <app-errors [control]="lastName"></app-errors>
+</div>
+  
 </div>
 
 
@@ -35,7 +43,10 @@
   id="userPhone"
   required/>
   <label class="form__label" for="userPhone">Phone</label>
-  <app-errors [control]="userPhone"></app-errors>
+  <div class="form__errors">
+    <app-errors [control]="userPhone"></app-errors>
+  </div>
+  
 </div>
 
 
@@ -48,7 +59,10 @@
   required
   id="userEmail" />
   <label class="form__label" for="userEmail">Email</label>
-  <app-errors [control]="userEmail"></app-errors>
+  <div class="form__errors">
+    <app-errors [control]="userEmail"></app-errors>
+  </div>
+  
 </div>
 
 
@@ -67,7 +81,10 @@
           required
           id="userPassword"/>
           <label class="form__label" for="userPassword">Password</label>
-          <app-errors [control]="userPassword"></app-errors>
+          <div class="form__errors">
+            <app-errors [control]="userPassword"></app-errors>
+          </div>
+          
         </div>
 
 <div class="form__input-wrap">
@@ -77,13 +94,16 @@
   required
   id="passwordConfirmation"/>
   <label class="form__label" for="passwordConfirmation">Confirm password</label>
-  <app-errors [control]="passwordGroup"></app-errors>
+  <div class="form__errors">
+    <app-errors [control]="passwordGroup"></app-errors>
+  </div>
+  
 </div>
 
         </fieldset>
 <div class="link-box">
-        <button class="link link_color_main" [disabled]="!registerForm.valid">Register</button>
-        <a [routerLink]="['/login']" class="link link_color_light">Cancel</a>
+        <button class="link-box__item link link_color_main" [disabled]="!registerForm.valid">Register</button>
+        <a [routerLink]="['/login']" class="link-box__item link link_color_light">Cancel</a>
       </div>
 </form>
 </div>

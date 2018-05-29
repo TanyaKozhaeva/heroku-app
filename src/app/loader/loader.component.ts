@@ -41,7 +41,6 @@ export class LoaderComponent implements OnInit {
     this.subscription = loaderService.subscription$.subscribe(
       data => {
         this.showLoader = data;
-        console.log(data)
       }
     )
   }

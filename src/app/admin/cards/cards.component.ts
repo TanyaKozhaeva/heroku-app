@@ -6,13 +6,11 @@ import { AccountsService } from '../../services/accounts.service';
 import { LoaderService } from '../../loader/loader.service';
 
 @Component({
-  selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.sass'],
-  providers: [CardsService, AccountsService, AlertService]
+  styleUrls: ['./cards.component.sass']
 })
 export class CardsComponent implements OnInit {
-  cards;
+  cards: any[] = [];
   accountId;
   currentAccount;
 
@@ -22,14 +20,14 @@ export class CardsComponent implements OnInit {
     private accountsService: AccountsService,
     private alertService: AlertService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.accountId = this.route.snapshot.paramMap.get('id');
+   }
 
   ngOnInit() {
     this.loaderService.executeAction(true);
-    this.accountId = this.route.snapshot.paramMap.get('id');
-    this.getCards();
     this.getAccountDetails();
-
+    this.getCards();
   }
 
 
@@ -43,7 +41,6 @@ export class CardsComponent implements OnInit {
 
   }
 
-
   deleteCard(i){
     this.cards.splice(i, 1);
   }
@@ -54,11 +51,4 @@ export class CardsComponent implements OnInit {
       this.currentAccount = res;
     });
   }
-  /*
-  disableCard(i, id){
-    //this.card.blocked ? this.card.blocked=false : this.card.blocked=true;
-    this.cardsService.blockCard(id);
-  }
-  */
-
 }

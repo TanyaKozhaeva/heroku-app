@@ -17,13 +17,10 @@ import {
       state('true', style({
         opacity: '1',
         height: '*'
-        //transform: 'scaleY(1) translateY(100%)'
       })),
       state('false',   style({
         opacity: '0',
         height: '0'
-        //transform:'scaleY(0) translateY(100%)',
-
       })),
       transition('false <=> true', animate('100ms ease-in'))
     ])
@@ -35,8 +32,7 @@ export class CardItemComponent implements OnInit {
   @Input() card;
   @Input() index;
   @Output() deletingCard = new EventEmitter();
-
-  showActions=false;
+  showActions = false;
   showSpinner;
 
 
@@ -44,28 +40,24 @@ export class CardItemComponent implements OnInit {
 
   ngOnInit() {
   }
+
   deleteCard(){
     this.showSpinner = true;
-    console.log(this.card.id)
+
     this.cardsService.deleteCard(this.card.id)
     .subscribe(res =>{
       this.deletingCard.emit(this.index)
       this.showSpinner = false;
     })
-
-  }
-  disableCard(){
-    this.card.blocked ? this.card.blocked=false : this.card.blocked=true;
-    this.cardsService.blockCard(this.card)
-
-    // .subscribe(res =>{
-    //
-    // })
-
   }
 
-  showingActions(){
-    this.showActions ? this.showActions=false : this.showActions=true;
+  disableCard() {
+    this.card.blocked ? this.card.blocked = false : this.card.blocked = true;
+    this.cardsService.blockCard(this.card);
+  }
+
+  showingActions() {
+    this.showActions ? this.showActions = false : this.showActions = true;
   }
 
 }

@@ -10,33 +10,11 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 export class HttpErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
-        
         .catch((error: HttpErrorResponse) => {
+            console.log(error.error.message);
             const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
-            let mess = parsedError.error.message
-            console.log(parsedError)
+            const mess = parsedError.error.message;
             return new ErrorObservable(mess);
-            //return Observable.empty<HttpEvent<any>>();
         })
-    /*
-        .map((event: HttpEvent<any>) => {
-            if (event instanceof Error) {
-              /*  console.log(event)
-              /*
-              return event.clone({
-                body: JSON.parse(event.body),
-              });*/
-           // }
-         // })*/
-          /*
-          .catch((error: HttpErrorResponse) => {
-              const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
-              let mess = parsedError.error.message
-              console.log(parsedError)
-              return new ErrorObservable(mess);
-              
-          });
-          */
-    
 }
 }

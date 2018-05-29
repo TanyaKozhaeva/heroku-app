@@ -10,14 +10,12 @@ export class PasswordValidationDirective implements Validator {
 
   validate(c: FormControl): ValidationErrors {
     const hasNumber = /[0-9]/.test(c.value);
-    //const hasCapitalLetter = /[A-Z]/.test(c.value);
-    const hasLowercaseLetter = /[a-z]/.test(c.value);
-    //const passwordValid = hasNumber && hasCapitalLetter && hasLowercaseLetter;
-    const passwordValid = hasNumber && hasLowercaseLetter;
+    const hasLetter = /[A-z]/.test(c.value);
+    const passwordValid = hasNumber && hasLetter;
  
     const message = {
       'passwordValidation': {
-        'message': 'The password must contain....'
+        'message': 'The password must contain letters and numeric characters'
       }
     };
     return passwordValid ? null : message;

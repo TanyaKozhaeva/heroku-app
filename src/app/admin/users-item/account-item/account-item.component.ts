@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AccountsService } from '../../../../services/accounts.service';
-import { AlertService } from '../../../../alert/alert.service';
+import { AccountsService } from '../../../services/accounts.service';
+import { AlertService } from '../../../alert/alert.service';
 import {
   trigger,
   state,
@@ -17,13 +17,10 @@ import {
       state('true', style({
         opacity: '1',
         height: '*'
-        //transform: 'scaleY(1) translateY(100%)'
       })),
       state('false',   style({
         opacity: '0',
         height: '0'
-        //transform:'scaleY(0) translateY(100%)',
-
       })),
       transition('false => true', animate('130ms ease-in')),
       transition('true => false', animate('130ms ease-out'))
@@ -50,7 +47,6 @@ showSpinner;
   }
 
   deleteAccount() {
-    // this.users.splice(i, 1);
     this.showSpinner = true;
     this.accountsService.deleteAccount(this.account.id)
     .subscribe(res => {
@@ -63,6 +59,9 @@ showSpinner;
     this.showSpinner = false;
   }
 
-
+  disableAccount(){
+    this.account.blocked ? this.account.blocked=false : this.account.blocked=true;
+    this.accountsService.blockAccount(this.account)
+  }
 
 }

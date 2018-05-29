@@ -1,7 +1,3 @@
-<!-- <app-users-item *ngFor="let user of users"
-  [user] = "user"
-  (delete)="deleteUser($event)">
-</app-users-item> -->
 <div class="admin-dash admin-main-screen__item vh-without-header" >
   <div class="wrapper-admin">
     <app-alert></app-alert>
@@ -20,10 +16,6 @@
           <tr *ngFor="let u of users; let i='index'" class="table__row table__row_clickable" >
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.profile.firstName}} {{u.profile.lastName}}</td>
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.phone}}</td>
-            <!-- <a [routerLink]="['./users-item', u.id]" routerLinkActive="" class="link link_color_accent">Show details</a> -->
-            <!-- <button class="admin-dash__delete-btn delete-btn" (click)="deleteUser(i, u.id)">
-              <span class="hidden">Delete</span>
-            </button> -->
             <td class="table__cell table__cell_actions">
                 <app-spinner
                 [showSpinner]="showSpinner"></app-spinner>
@@ -31,10 +23,7 @@
             </td>
           </tr>
         </tbody>
-
       </table>
     </div>
   </div>
-
-
 </div>

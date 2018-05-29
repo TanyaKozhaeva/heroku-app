@@ -24,7 +24,7 @@ export class ConfirmPasswordDirective implements Validator {
       }
     }
 
-    if (fieldTwo != '' && fieldOne !== fieldTwo ) {
+    if (fieldTwo !== '' && fieldOne !== fieldTwo ) {
       return message;
     }
     return null;

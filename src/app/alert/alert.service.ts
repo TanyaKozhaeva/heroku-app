@@ -38,6 +38,4 @@ export class AlertService {
   getMessage(){
     return this.subscription$;
   }
-
-  
 }

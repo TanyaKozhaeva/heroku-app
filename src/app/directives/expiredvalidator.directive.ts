@@ -9,7 +9,6 @@ import { NG_VALIDATORS, Validator, FormControl, ValidationErrors } from '@angula
 export class ExpiredvalidatorDirective implements Validator {
 
   validate(c: FormControl): ValidationErrors {
-    //const isValidCardExpired = /^(?:0?[1-9]|1[0-2]) *\/ *[1-9][0-9]$/.test(c.value);
     const isValidCardExpired = /^(?:0?[1-9]|1[0-2]) *\/ *(1[8-9]|[2-9][0-9])$/.test(c.value);
 
     const message = {

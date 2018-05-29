@@ -11,7 +11,6 @@ import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
-  //selector: 'app-add-card',
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.sass']
 })

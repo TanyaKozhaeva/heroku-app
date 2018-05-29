@@ -1,10 +1,37 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControlDirective, AbstractControl } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-errors',
   templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.sass']
+  styleUrls: ['./errors.component.sass'],
+  animations: [
+    trigger('showWindow', [
+      transition(':enter', [
+        style({
+          opacity: 0
+        }),
+        animate(".3s ease-in-out", style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1
+        }),
+        animate(".3s ease-in-out", style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ]
 })
 export class ErrorsComponent {
 
@@ -25,9 +52,7 @@ export class ErrorsComponent {
   @Input()
   private control: AbstractControlDirective | AbstractControl;
 
-
   shouldShowErrors(): boolean {
-    console.log(this.control)
     return this.control &&
       this.control.errors &&
       (this.control.invalid && this.control.touched);
@@ -41,5 +66,4 @@ export class ErrorsComponent {
   private getMessage(type: string, params: any) {
     return ErrorsComponent.errorMessages[type](params);
   }
-
 }

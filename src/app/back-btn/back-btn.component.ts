@@ -16,7 +16,6 @@ export class BackBtnComponent implements OnInit {
    }
 
   ngOnInit() {
-    
   }
 
   cansel(){

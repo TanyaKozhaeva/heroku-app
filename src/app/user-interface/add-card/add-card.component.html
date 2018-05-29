@@ -13,7 +13,10 @@ id="addCardForm">
       [(ngModel)]="cardModel.name" #cardName="ngModel"
       required
       maxlength="15">
-      <app-errors [control]="cardName"></app-errors>
+      <div class="form__errors">
+          <app-errors [control]="cardName"></app-errors>
+      </div>
+      
       
     </div>
 
@@ -28,7 +31,10 @@ id="addCardForm">
     cardValidator
     [textMask]="{mask: numberMask}"
     required>
+    <div class="form__errors">
       <app-errors [control]="cardNumber"></app-errors>
+    </div>
+      
 
     
 </div>
@@ -43,8 +49,11 @@ id="addCardForm">
     expiredValidator
     [textMask]="{mask: expiredMask}"
     required>
+    <div class="form__errors">
+        <app-errors [control]="cardExpiration"></app-errors>
+    </div>
 
-      <app-errors [control]="cardExpiration"></app-errors>
+      
 
     
 </div>

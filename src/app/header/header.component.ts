@@ -5,8 +5,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass'],
-  providers: [ AuthService ]
+  styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
 
@@ -19,6 +18,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/']);//
+    this.router.navigate(['/']);
   }
 }

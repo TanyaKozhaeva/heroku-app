@@ -36,28 +36,6 @@ import {
       ])
     ])
   ]
-//   animations: [
-//     trigger('message', [
-//      state('false', style({transform: 'translateX(0) scale(1)'})),
-//      state('true',   style({transform: 'translateX(0) scale(1.1)'})),
-//      transition('false => true', animate('100ms ease-in')),
-//      transition('true => false', animate('100ms ease-out')),
-//      transition('void => false', [
-//        style({transform: 'translateX(-100%) scale(1)'}),
-//        animate(100)
-//      ]),
-//      transition('false => void', [
-//        animate(100, style({transform: 'translateX(100%) scale(1)'}))
-//      ]),
-//      transition('void => true', [
-//        style({transform: 'translateX(0) scale(0)'}),
-//        animate(200)
-//      ]),
-//      transition('true => void', [
-//        animate(200, style({transform: 'translateX(0) scale(0)'}))
-//      ])
-//    ])
-// ]
 })
 export class AlertComponent implements OnInit {
   message;

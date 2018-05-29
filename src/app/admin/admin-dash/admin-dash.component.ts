@@ -14,12 +14,10 @@ import {
 @Component({
   selector: 'app-admin-dash',
   templateUrl: './admin-dash.component.html',
-  styleUrls: ['./admin-dash.component.sass'],
-  providers: [UserService]
+  styleUrls: ['./admin-dash.component.sass']
 })
 export class AdminDashComponent implements OnInit {
 users;
-
 showSpinner;
 
 
@@ -45,19 +43,17 @@ showSpinner;
     });
   }
 
-  deleteUser(i, id){
+  deleteUser(i, id) {
     this.showSpinner = true;
-    //this.users.splice(i, 1);
     this.userService.deleteUser(id)
-
     .subscribe(res => {
+      this.showSpinner = false;
       this.users.splice(i, 1);
-      this.alertService.success('User deleted', false);
+      this.alertService.success('User deleted');
     },
     error => {
-      this.alertService.error(error);
+      this.showSpinner = false;
+      this.alertService.error('Something went wrong. Please try again later');
     });
-    this.showSpinner = false;
   }
-
 }

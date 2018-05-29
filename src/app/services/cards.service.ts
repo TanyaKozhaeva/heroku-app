@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -18,7 +17,7 @@ export class CardsService {
   }
 
   deleteCard(cardId){
-    return this.http.delete('https://jsonplaceholder.typicode.com/posts/'+ cardId)
+    return this.http.delete('https://apihonestbank.herokuapp.com/wallets/' + cardId)
   };
 
   blockCard(card){

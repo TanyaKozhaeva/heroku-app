@@ -1,35 +1,17 @@
         <td class="table__cell">{{card.number}}</td>
         <td class="table__cell">{{card.expiration}}</td>
-
         <td (click)="showingActions()"
-
-    class="table__cell
-    table__cell_color_main
-    table__cell_actions">
-      Select action
+        class="table__cell table__cell_color_main table__cell_actions">
+        Select action
       <app-spinner
       [showSpinner]="showSpinner"></app-spinner>
-      <ul
-class="actions-list"
-[@showActions]="showActions"
-      >
+      <ul class="actions-list" [@showActions]="showActions">
         <li class="actions-list__item">
             <button class="action-btn" (click)="deleteCard()">Delete</button>
         </li>
         <li class="actions-list__item">
             <button class="action-btn" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
             <button class="action-btn" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
-      </li>
+        </li>
       </ul>
     </td>
-<!--
-*ngIf="showActions"
-[ngClass]="{
-'actions-list_active': showActions,
-'actions-list_disable': !showActions}"
-class="actions-list"
-[class.actions-list_active]="showActions"
-[ngClass]="{'actions-list_active': showActions}"
-    [ngClass]="{'message': message,
-    'message_success': message.type === 'success',
-    'message_danger': message.type === 'error'}" -->

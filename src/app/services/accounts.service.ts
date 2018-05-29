@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -26,7 +25,10 @@ export class AccountsService {
     return this.http.delete('https://apihonestbank.herokuapp.com/accounts/'+ accountId)
   }
 
-
+  blockAccount(account){
+    return this.http.put('https://apihonestbank.herokuapp.com/accounts/' + account.id, account)
+  }
+  
   transactionsFilter(data, accountId){
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
   }

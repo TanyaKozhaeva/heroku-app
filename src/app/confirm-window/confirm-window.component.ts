@@ -45,8 +45,7 @@ export class ConfirmWindowComponent implements OnInit {
 
   constructor(
     private confirmService: ConfirmService
-  ) { 
-    
+  ) {
     this.subscription = confirmService.subscription$.subscribe(
       data => {
         this.message = data;
@@ -57,6 +56,7 @@ export class ConfirmWindowComponent implements OnInit {
 
   ngOnInit() {
   }
+
   choose(choice: boolean): void {
     this.confirmService.navigateAwaySelection$.next(choice);
     this.showWindow = false;

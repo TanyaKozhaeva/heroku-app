@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CardsService } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { AccountsService } from '../../services/accounts.service';
+import { LoaderService } from '../../loader/loader.service';
 
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.sass'],
-  providers: [CardsService, AccountsService]
+  styleUrls: ['./transactions.component.sass']
 })
 export class TransactionsComponent implements OnInit {
   accountId;
@@ -17,30 +16,23 @@ export class TransactionsComponent implements OnInit {
 
 
   constructor(
-    private cardsService: CardsService,
+    private loaderService: LoaderService,
     private route: ActivatedRoute,
     private accountsService: AccountsService
-  ) { }
+  ) { 
+    this.accountId = this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
-    this.accountId = this.route.snapshot.paramMap.get('id');
+    this.loaderService.executeAction(true);
     this.getAccountDetails();
   }
-  transactionsFilter(){
-    let data = {
-      //from: this.dateFrom
-      // to: dateTo.value
-    }
-    console.log(data)
-    this.accountsService.transactionsFilter(data, this.accountId)
-    .subscribe (res =>{
-      this.transactions = res;
-    })
-  }
+
   private getAccountDetails(){
     this.accountsService. getAccountDetails(this.accountId)
     .subscribe(res => {
       this.currentAccount = res;
+      this.loaderService.executeAction(false);
     });
   }
 }

@@ -7,9 +7,7 @@ import { LoaderService } from '../loader/loader.service';
 
 @Component({
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass'],
- // providers: [AuthService
- //  ]
+  styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
 mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
@@ -38,7 +36,7 @@ model = new User();
   .subscribe(
     data => {
        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       if (this.currentUser.userInfo.role == "USER"){
+       if (this.currentUser.userInfo.role === "USER"){
         this.path = 'user';
        } else {
         this.path = 'admin';
@@ -54,10 +52,4 @@ model = new User();
     );
 
   }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  }
+}

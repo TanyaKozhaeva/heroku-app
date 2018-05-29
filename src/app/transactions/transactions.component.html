@@ -1,4 +1,3 @@
- <!-- <mat-form-field> -->
 <div class="transactions">
         <div class="calendar transactions__calendar">
             <div class="calendar__wrap">
@@ -10,7 +9,6 @@
                             >
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
                             <mat-datepicker #pickerFrom></mat-datepicker>
-                            <!-- (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" -->
                     </div>
                     <div class="calendar__input-wrap">
                             <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date"
@@ -21,13 +19,12 @@
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerTo"></mat-datepicker-toggle>
                             <mat-datepicker #pickerTo></mat-datepicker>
                     </div>
-                     <!-- touchUi="true" -->
             </div>
 
 <div class="calendar__link link-box">
   <button class="link link_color_main" (click)="filter()">Filter</button>
 </div>
-                 </div>
+  </div>
 
  <div class="transactions__list table-wrapper">
         <table class="table">
