@@ -16,6 +16,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
  currentDate = new Date();
   dateFrom = this.currentDate;
   minDate;
+  maxDate;
   dateTo = this.currentDate;
 
   constructor(
@@ -33,6 +34,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
 
   ngDoCheck(){
     this.minDate = this.dateFrom;
+    this.maxDate = this.dateTo;
   }
 
 

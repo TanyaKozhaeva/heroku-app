@@ -4,12 +4,7 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",
-    "types": [],
-    "paths": {
-      "rxjs": [
-        "./vendor/rxjs.ts"
-      ]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",

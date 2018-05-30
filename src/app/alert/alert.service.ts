@@ -10,7 +10,7 @@ export class AlertService {
   private subscription = new Subject<any>();
   subscription$ = this.subscription.asObservable();
   private keepAfterNavigationChange = false;
-  
+
 
   constructor(private router: Router) {
     router.events.subscribe(event => {
@@ -32,7 +32,6 @@ export class AlertService {
   error(message: string, keepAfterNavigationChange = false){
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subscription.next({type: 'error', text: message})
-    console.log(this.subscription)
   }
 
   getMessage(){

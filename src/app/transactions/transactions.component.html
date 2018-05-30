@@ -3,8 +3,8 @@
             <div class="calendar__wrap">
                     <div class="calendar__input-wrap">
                             <input matInput [matDatepicker]="pickerFrom" placeholder="Choose a date"
-
                             [(ngModel)]="dateFrom"
+                            [max]="maxDate"
                             class="calendar__input"
                             >
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerFrom"></mat-datepicker-toggle>

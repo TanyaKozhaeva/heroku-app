@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+//import { ModuleWithProviders } from '@angular/core';
 import { UserInterfaceComponent } from './user-interface.component';
 import { AddCardComponent } from './add-card/add-card.component';
 import { TransactionsComponent } from './transactions/transactions.component';
@@ -13,8 +13,10 @@ import { CanDeactivateGuard } from '../services/can-deactivate-guard.service';
 const userRoutes: Routes = [
   {
       path: 'user',
+      //path: '',
       component: UserInterfaceComponent,
       canActivate: [AuthGuard],
+      //canLoad: [AuthGuard],
       children: [
      { path: '', component: DashComponent },
       { path: 'add-card',
@@ -39,3 +41,5 @@ const userRoutes: Routes = [
   ]
 })
 export class UserRoutingModule { }
+
+//export const UserRoutingModule: ModuleWithProviders = RouterModule.forChild(userRoutes)
