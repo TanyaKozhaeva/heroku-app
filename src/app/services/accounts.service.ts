@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+  'Content-Type':  'application/json'
+  })
+  };
 
 @Injectable()
 export class AccountsService {
-  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor( private http: HttpClient) { }
 
   getAccounts(userId){
-     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId)
+     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId, httpOptions)
    }
 
   getAccountDetails(accountId){
@@ -18,7 +21,7 @@ export class AccountsService {
   }
 
   getProducts(){
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/products')
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/products', httpOptions)
   }
 
   deleteAccount(accountId){
