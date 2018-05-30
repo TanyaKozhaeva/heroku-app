@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
-    { path: '', 
+    { path: '',
     component: DashComponent,
     children: [
       { path: '', component: LoginComponent },
