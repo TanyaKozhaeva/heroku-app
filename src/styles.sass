@@ -159,8 +159,9 @@ body
   text-align: center
   color: $mainColorLight
   transition: background-color .6s
-  &:hover:enabled
-    box-shadow: $blocksShadow
+  &:hover
+    &:not(:disabled)
+      box-shadow: $blocksShadow
   &_color
     &_main
       background-color: $btnColor
@@ -315,10 +316,11 @@ body
       content: "x"
       font-size: 1.3rem
       font-weight: 300
+      line-height: .65
       position: absolute
       top: 50%
       left: 50%
-      transform: translate(-50%, -50%)
+      transform: translate(-51%, -60%)
       color: $fontColor
 
 // Hidden text in controls
