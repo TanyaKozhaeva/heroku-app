@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { UserInterfaceComponent } from './user-interface.component';
 import { AddCardComponent } from './add-card/add-card.component';
@@ -31,7 +29,6 @@ const userRoutes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(userRoutes)
   ],
   exports: [

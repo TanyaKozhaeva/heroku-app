@@ -10,6 +10,7 @@ export class UserInterfaceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('user works')
 
   }
 

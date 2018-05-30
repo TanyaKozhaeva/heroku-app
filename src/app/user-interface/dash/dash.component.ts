@@ -9,7 +9,7 @@ import { LoaderService } from '../../loader/loader.service';
 })
 export class DashComponent implements OnInit {
 products;
-accounts;
+accounts: any[]=[];
 currentUser;
 userId;
 

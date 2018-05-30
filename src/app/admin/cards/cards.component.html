@@ -5,7 +5,7 @@
       {{currentAccount.number}}
       {{currentAccount.amount}}
       {{currentAccount.currency}}</p>
-    <div class="cards__item table-wrapper">
+    <div *ngIf="currentAccount" class="cards__item table-wrapper">
       <table class="table">
         <thead class="table__head">
           <tr class="table__row">
@@ -21,6 +21,7 @@
           [class.table__row_disable]="c.blocked"
             [card] = "c"
             [index] = "i"
+            [currentAccountStatus] ='currentAccount.blocked'
             (deletingCard)="deleteCard($event)"
             >
           </tr>

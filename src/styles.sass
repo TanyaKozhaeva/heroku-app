@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "sass/reset.sass"
-@import "sass/smart-grid.sass"
+//@import "sass/smart-grid.sass"
 @import "sass/vars.sass"
 @import "sass/material-datepicker.sass"
 
@@ -15,18 +15,12 @@ body
   width: 100%
   max-width: 780px
   margin: 0 auto
-  box-sizing: border-box
 .wrapper-admin
   width: 100%
   max-width: 1280px
   margin: 0 auto
 
-//.row
- // display: flex
- // flex-wrap: wrap
-
-
- //LOGO
+//LOGO
 .logo
   display: inline-block
   font-size: 3em
@@ -34,7 +28,6 @@ body
   font-weight: 700
   margin-left: 1em
   color: $mainColorLight
-  text-align: center
   position: relative
   &__icon
     width: 1em
@@ -101,11 +94,11 @@ body
 
   &__input
     width: 100%
-    font-size: 1em
     padding: 1.2em $offset-one-side 1.02em
-    margin-bottom: $offset-one-side
     box-sizing: border-box
+    margin-bottom: $offset-one-side
     border-bottom: 2px solid $mainColorLight
+    font-size: 1em
     font-weight: 300
     color: $mainColorLight
     background-color: transparent
@@ -150,10 +143,13 @@ body
     @media screen and (max-width: #{$break_xs}-1)
       &:not(:last-child)
         margin-bottom: $offset
+    @media screen and (min-width: $break_xs)
+      width: 50%
+      &:not(:last-child)
+        margin-right: $offset
 
 .link
   display: block
-  width: 100%
   min-width: 6.61rem
   font-size: 1.1rem
   padding: 1.1em
@@ -162,32 +158,22 @@ body
   border-radius: 15px
   text-align: center
   color: $mainColorLight
-  overflow: hidden
-  position: relative
+  transition: background-color .6s
   &:hover:enabled
     box-shadow: $blocksShadow
-
-  @media screen and (min-width: $break_xs)
-    width: 50%
-    &:not(:last-child)
-      margin-right: $offset
   &_color
     &_main
       background-color: $btnColor
-      transition: .6s
       &:disabled
         background-color: lighten($fontColor, 30%)
     &_accent
       background-color: $mainColor
       color: $mainColorLight
-      transition: .6s
       &:disabled
         background-color: lighten($mainColor, 30%)
-
     &_light
       background-color: $bgColor
       color: $fontColor
-      transition: .6s
       &:disabled
         background-color: lighten($bgColor, 10%)
 
@@ -195,28 +181,15 @@ body
   font-size: 1em
   font-family: $mainFont
   font-weight: 300
-  color: $dangerColor
+  &_color
+    &_danger
+      color: $dangerColor
+  &:hover,
+  &:active
+    text-decoration: underline
 
 
 
-// LIST
-.list
-  font-size: 1.125em
-  color: $fontColor
-  background-color: $mainColorLight
-  &_clear
-    background-color: transparent
-    color: $mainColorLight
-  &__item
-    display: flex
-    justify-content: space-between
-    padding: 1.3em $offset-one-side
-    border-bottom: 1px solid $bgColor
-  &__accent-line
-    padding: .5em $offset-one-side
-    text-align: right
-    color: $mainColorLight
-    background-color: $fontColor
 
 
 // TABLES
@@ -256,12 +229,10 @@ body
     &_actions
       width: 20%
       cursor: pointer
-
     &_width
       &_small
         width: 14%
-      &_20
-        width: 20%
+
 
 
 .tableLight
@@ -275,7 +246,6 @@ body
     &_disable
       color: $fontColor
       border-bottom: 1px solid $fontColor
-
   &__cell
     padding: .8em $offset-one-side
     text-align: center
@@ -299,13 +269,13 @@ body
 
 //MODAL WINDOW
 .modal
+  width: 296px
   position: absolute
   top: 50%
   left: 50%
   margin-left: -148px
   transform: translateY(-50%)
   z-index: 3000
-  width: 296px
   padding: 2em $offset-one-side
   box-sizing: border-box
   border: 1px solid $bgColor

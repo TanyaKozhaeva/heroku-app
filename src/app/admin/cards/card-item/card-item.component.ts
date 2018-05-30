@@ -31,6 +31,7 @@ import {
 export class CardItemComponent implements OnInit {
   @Input() card;
   @Input() index;
+  @Input() currentAccountStatus;
   @Output() deletingCard = new EventEmitter();
   showActions = false;
   showSpinner;

@@ -68,7 +68,6 @@ import { UserService } from './services/user.service';
 UserService,
   AuthGuard,
   AuthService,
-
     AccountsService,
     CardsService
   ],

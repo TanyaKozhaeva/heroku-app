@@ -20,7 +20,7 @@
         </tbody>
       </table>
       <h3 class="dash__title subtitle">Your Accounts</h3>
-      <p class="dash__text text">Select an account to see details</p>
+      <p *ngIf="accounts.length !== 0" class="dash__text text">Select an account to see details</p>
       <table class="dash__accounts tableLight">
           <tbody>
             <tr *ngFor="let a of accounts"
@@ -32,10 +32,20 @@
               <td class="tableLight__cell">{{a.amount}}</td>
               <td class="tableLight__cell">{{a.currency}}</td>
             </tr>
+            <tr *ngIf="accounts.length === 0"
+            class="tableLight__row"
+            >
+            <td class="tableLight__cell text" colspan="3">You have no accounts</td>
+            </tr>
+
           </tbody>
         </table>
-        <a [routerLink]="['./transactions']" routerLinkActive="" class="dash__transactions-link link link_color_light" >
-          Make a payment
-        </a>
+        <div *ngIf = "accounts.length !== 0"
+        class="link-box">
+          <a [routerLink]="['./transactions']" routerLinkActive=""
+          class="link-box__item link link_color_light" >
+            Make a payment
+          </a>
+        </div>
     </div>
   </div>

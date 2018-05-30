@@ -1,39 +1,11 @@
 @import "../sass/reset.sass"
-@import "../sass/smart-grid.sass"
 @import "../sass/vars.sass"
 .main-screen
   padding: 8rem 0 4rem
   background-image: $mainGradient
-
-  &::before
-    content: ""
-    display: block
-    position: absolute
-    top: 0
-    left: 0
-    bottom: 0
-    right: 0
-    //background: url(./assets/img/mainScreen-bg-1920w.jpg) center no-repeat
-    background-size: cover
-    opacity: .2
-    mix-blend-mode: multiply
-    z-index: -1
-
-  &__content
-    padding: 1rem
-
-  &__message
-    // +col
-    // +size(6)
-    width: 50%
-    margin: 0 auto
-  +xs-block
-    background-color: $bgColor
-
   &__form-block
     width: 100%
     @media screen and (min-width: $break_xs)
       width: 80%
       max-width: 459px
       margin: 0 auto
-      //box-shadow: 0px 15px 50px 0 rgba(0, 0, 0, 0.1)

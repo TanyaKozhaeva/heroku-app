@@ -5,12 +5,14 @@
         Select action
       <app-spinner
       [showSpinner]="showSpinner"></app-spinner>
-      <ul class="actions-list" [@showActions]="showActions">
+      <ul class="actions-list"
+      *ngIf="showActions"
+      [@showActions]="showActions">
         <li class="actions-list__item">
-            <button class="action-btn" (click)="deleteCard()">Delete</button>
+            <button class="action-btn action-btn_color_danger" (click)="deleteCard()">Delete</button>
         </li>
-        <li class="actions-list__item">
-            <button class="action-btn" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
+        <li *ngIf="!currentAccountStatus" class="actions-list__item">
+            <button class="action-btn action-btn_color_danger" *ngIf="!card.blocked" (click)="disableCard()">Block</button>
             <button class="action-btn" *ngIf="card.blocked" (click)="disableCard()">Unlock</button>
         </li>
       </ul>
