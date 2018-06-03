@@ -3,7 +3,6 @@
   padding: $offset 0
   &__form
     font-size: 1rem
-    margin: 0 auto 4rem
     @media screen and (min-width: $break_xs)
       font-size: 1.3rem
     @media screen and (min-width: $break_sm)
@@ -16,17 +15,19 @@
 
 
 .add-card-form
-  width: 18em
-  height: 11.81em
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  padding: 1.2em 1.3em
-  box-sizing: border-box
-  border-radius: 10px
-  border: 1px solid $fontColor
-  box-shadow: $blocksShadow
-  background-color: $mainColorLight
+  &__input-wrap
+    width: 18em
+    height: 11.81em
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 1.2em 1.3em
+    box-sizing: border-box
+    margin: 0 auto 4rem
+    border-radius: 10px
+    border: 1px solid $fontColor
+    box-shadow: $blocksShadow
+    background-color: $mainColorLight
   input
     width: 100%
     padding: .2em 2%

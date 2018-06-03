@@ -4,62 +4,58 @@
 class="add-card-form add-card__form"
 #addCardForm="ngForm"
 id="addCardForm">
-
-    <div class="add-card-form__input-name">
-      <label class="add-card-form__label" for="cardName"> Name:</label>
-      <input type="text"
-      name="cardName"
-      id="cardName"
-      [(ngModel)]="cardModel.name" #cardName="ngModel"
-      required
-      maxlength="15">
-      <div class="form__errors">
-          <app-errors [control]="cardName"></app-errors>
-      </div>
-      
-      
+<div class="add-card-form__input-wrap">
+  <div class="add-card-form__input-name">
+    <label class="add-card-form__label" for="cardName"> Name:</label>
+    <input type="text"
+    name="cardName"
+    id="cardName"
+    [(ngModel)]="cardModel.name" #cardName="ngModel"
+    required
+    maxlength="15">
+    <div class="form__errors">
+        <app-errors [control]="cardName"></app-errors>
     </div>
+    
+    
+  </div>
 
 <div class="add-card-form__input-num">
-  <label class="add-card-form__label" for="cardNumber">Number:</label>
-    <input type="text"
-    name="cardNumber"
-    id="cardNumber"
-    [(ngModel)]="cardModel.number"
-    #cardNumber="ngModel"
-    ngModel
-    cardValidator
-    [textMask]="{mask: numberMask}"
-    required>
-    <div class="form__errors">
-      <app-errors [control]="cardNumber"></app-errors>
-    </div>
-      
-
+<label class="add-card-form__label" for="cardNumber">Number:</label>
+  <input type="text"
+  name="cardNumber"
+  id="cardNumber"
+  [(ngModel)]="cardModel.number"
+  #cardNumber="ngModel"
+  ngModel
+  cardValidator
+  [textMask]="{mask: numberMask}"
+  required>
+  <div class="form__errors">
+    <app-errors [control]="cardNumber"></app-errors>
+  </div>
     
+
+  
 </div>
 
 <div class="add-card-form__input-exp">
-  <label class="add-card-form__label" for="cardExpiration">Expires end:</label>
-    <input type="text"
-    name="cardExpiration"
-    id="cardExpiration"
-    [(ngModel)]="cardModel.expiration"
-    #cardExpiration="ngModel"
-    expiredValidator
-    [textMask]="{mask: expiredMask}"
-    required>
-    <div class="form__errors">
-        <app-errors [control]="cardExpiration"></app-errors>
-    </div>
-
-      
-
-    
+<label class="add-card-form__label" for="cardExpiration">Expires end:</label>
+  <input type="text"
+  name="cardExpiration"
+  id="cardExpiration"
+  [(ngModel)]="cardModel.expiration"
+  #cardExpiration="ngModel"
+  expiredValidator
+  [textMask]="{mask: expiredMask}"
+  required>
+  <div class="form__errors">
+      <app-errors [control]="cardExpiration"></app-errors>
+  </div>
 </div>
+</div>
+   
 
-
-</form>
 <div class="add-card__controls link-box">
   <button
       type="submit"
@@ -74,6 +70,8 @@ id="addCardForm">
       Cansel
       </button>
 </div>
+</form>
+
 
 
 
