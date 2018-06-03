@@ -49,7 +49,7 @@ cardModel = new Card();
       this.alertService.success("Card successfully added!", true);
      },
      error => {
-      console.log(res)
+      console.log(error)
       this.loaderService.executeAction(false);
       this.alertService.error("Something went wrong. Please try again later");
     })
