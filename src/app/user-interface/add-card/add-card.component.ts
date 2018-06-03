@@ -40,6 +40,7 @@ cardModel = new Card();
 
 
    addCard(){
+     console.log(this.cardModel)
     this.loaderService.executeAction(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
