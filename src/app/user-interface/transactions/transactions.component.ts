@@ -47,6 +47,7 @@ inputField = false;
   private getAccounts(){
     this.accountsService.getAccounts(this.userId)
     .subscribe (res =>{
+      console.log(res)
       this.accounts = res;
       this.transaction.sourceName = this.accounts[0].number;
       this.loaderService.executeAction(false);
@@ -54,6 +55,7 @@ inputField = false;
   }
 
   enteringRecipientNumber(){
+    console.log(this.transaction)
     this.transaction.destinationName = "";
     this.inputField ? this.inputField = false : this.inputField = true;
   }

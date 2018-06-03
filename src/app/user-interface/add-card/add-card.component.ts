@@ -43,11 +43,13 @@ cardModel = new Card();
     this.loaderService.executeAction(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
+       console.log(res)
       this.addCardForm.reset();
       this.loaderService.executeAction(false);
       this.alertService.success("Card successfully added!", true);
      },
      error => {
+      console.log(res)
       this.loaderService.executeAction(false);
       this.alertService.error("Something went wrong. Please try again later");
     })
