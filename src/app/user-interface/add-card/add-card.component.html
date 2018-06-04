@@ -3,7 +3,8 @@
 <form (ngSubmit)="addCardForm.form.valid && addCard()"
 class="add-card-form add-card__form"
 #addCardForm="ngForm"
-id="addCardForm">
+id="addCardForm"
+novalidate>
 <div class="add-card-form__input-wrap">
   <div class="add-card-form__input-name">
     <label class="add-card-form__label" for="cardName"> Name:</label>
@@ -65,14 +66,14 @@ id="addCardForm">
      >
       Add
       </button>
-
+      <button type="button" class="link-box__item link link_color_accent add-card-form__btn"
+      (click)="cansel()">
+      Cansel
+      </button>
 </div>
 </form>
 
-<button class="link-box__item link link_color_accent add-card-form__btn"
-(click)="cansel()">
-Cansel
-</button>
+
 
 
   </div>
