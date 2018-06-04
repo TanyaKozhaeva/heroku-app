@@ -31,7 +31,7 @@ mask: any[] = ['+', '3', '8', '0', /[1-9]/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\
     },
     error => {
       this.loaderService.executeAction(false);
-      this.alertService.error('Something went wrong. Please try again later');
+      this.alertService.error(error);
     })
 }
 }

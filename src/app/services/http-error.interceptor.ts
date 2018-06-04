@@ -11,9 +11,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
         .catch((error: HttpErrorResponse) => {
-            console.log(error.error.message);
-            const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
-            const mess = parsedError.error.message;
+            //console.log(error.error.message);
+            console.log(error);
+            //const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
+            //const mess = parsedError.error.message;
+            const mess = error.error.message;
             return new ErrorObservable(mess);
         })
 }
