@@ -1,39 +1,41 @@
-<div class="user-item admin-main-screen__item vh-without-header">
-<div class="wrapper-admin">
-   <div class="user-item__accounts-box">
-    <h2 class="user-item__title title title_color_main">Accounts</h2>
-    <p *ngIf = "user" class="user-item__text text text_color_main">
-      For user: {{user.profile.firstName}}  {{user.profile.lastName}}
-    </p>
-  <div class="user-item__accounts-list table-wrapper">
-    <table class="table">
-      <thead class="table__head">
-        <tr class="table__row">
-          <th class="table__cell">Number</th>
-          <th class="table__cell">Amount</th>
-          <th class="table__cell table__cell_actions">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr app-account-item *ngFor="let a of accounts; let i='index'" class="table__row"
-          [class.table__row_disable]="a.blocked"
-              [account] = "a"
-              [index] = "i"
-              (deletingAccount)="deleteAccount($event)"
-             >
-        </tr>
-        <tr *ngIf="accounts.length == 0" class="table__row">
-          <td class="table__cell" colspan="3">
-            -
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-   </div>
-</div>
+<div class="admin-main-screen__item">
+  <div class="vh-without-header user-item">
+    <div class="wrapper-admin">
+       <div class="user-item__accounts-box">
+        <h2 class="user-item__title title title_color_main">Accounts</h2>
+        <p *ngIf = "user" class="user-item__text text text_color_main">
+          For user: {{user.profile.firstName}}  {{user.profile.lastName}}
+        </p>
+      <div class="user-item__accounts-list table-wrapper">
+        <table class="table">
+          <thead class="table__head">
+            <tr class="table__row">
+              <th class="table__cell">Number</th>
+              <th class="table__cell">Amount</th>
+              <th class="table__cell table__cell_actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr app-account-item *ngFor="let a of accounts; let i='index'" class="table__row"
+              [class.table__row_disable]="a.blocked"
+                  [account] = "a"
+                  [index] = "i"
+                  (deletingAccount)="deleteAccount($event)"
+                 >
+            </tr>
+            <tr *ngIf="accounts.length == 0" class="table__row">
+              <td class="table__cell" colspan="3">
+                -
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+       </div>
+    </div>
 
-<div class="user-item__controls">
-  <app-back-btn></app-back-btn>
-</div>
+    <div class="user-item__controls">
+      <app-back-btn></app-back-btn>
+    </div>
+  </div>
 </div>

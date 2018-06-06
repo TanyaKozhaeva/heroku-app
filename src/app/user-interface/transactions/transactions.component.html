@@ -12,9 +12,7 @@
         #sourceName="ngModel"
         id="sourceName">
         <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
-          <span class="">{{a.number}}</span>
-          <span class="">{{a.amount}}</span>
-          <span class="">{{a.currency}}</span>
+          {{a.number}} {{a.amount}} {{a.currency}}
         </option>
       </select>
       <fieldset class="form__input-wrap">
@@ -26,15 +24,13 @@
               [(ngModel)]="transaction.destinationName"
               required>
                 <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
-                  <span class="">{{a.number}}</span>
-                  <span class="">{{a.amount}}</span>
-                  <span class="">{{a.currency}}</span>
+                  {{a.number}} {{a.amount}} {{a.currency}}
                 </option>
             </select>
             <div class="form__errors">
                 <app-errors [control]="recipientAccount"></app-errors>
             </div>
-            
+
           </div>
 
           <div *ngIf="inputField">
@@ -44,16 +40,17 @@
               placeholder="Input the recipient"
               [(ngModel)]="transaction.destinationName"
               required
-              minlength="16">
+              minlength="16"
+              autofocus>
               <div class="form__errors">
                   <app-errors [control]="recipientManualInput"></app-errors>
               </div>
-            
+
               </div>
 
     <div class="form__switch-box">
-      <button class="form__switch-input-btn" *ngIf="!inputField" (click)="enteringRecipientNumber()">Input the recipient`s card number</button>
-      <button class="form__switch-input-btn" *ngIf="inputField" (click)="enteringRecipientNumber()">Select from account list</button>
+      <button type="button" class="form__switch-input-btn" *ngIf="!inputField" (click)="enteringRecipientNumber()">Input the recipient`s card number</button>
+      <button type="button" class="form__switch-input-btn" *ngIf="inputField" (click)="enteringRecipientNumber()">Select from account list</button>
     </div>
 
             </fieldset>
@@ -69,7 +66,7 @@
             #transactionAmount="ngModel"
             id="transactionAmount"
             required>
-        
+
       <input type="text" class="form__input form__input_color_dark"
       name="transactionCurrency"
       [(ngModel)]="transaction.currency"
@@ -79,13 +76,24 @@
           <app-errors [control]="transactionAmount"></app-errors>
       </div>
     </div>
-      
+
 <div class="form__controls link-box">
   <button type="submit"
   [disabled]="!paymentForm.valid"
   class="link-box__item link link_color_main">Transfer</button>
 </div>
     </form>
+
+    <!-- <select class="form__input form__input_color_dark"
+      name="recipientAccount"
+      #recipientAccount="ngModel"
+      [(ngModel)]="transaction.destinationName"
+      required>
+        <option *ngFor="let a of accounts" value="{{ a.number }}" class="">
+          {{a.number}}
+        </option>
+    </select> -->
+
 
   </div>
 <div class="payments-block__controls">

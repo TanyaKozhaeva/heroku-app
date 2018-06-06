@@ -6,6 +6,7 @@
       <app-spinner
       [showSpinner]="showSpinner"></app-spinner>
       <ul class="actions-list"
+      *ngIf="showActions"
       [@showActions]="showActions">
         <li class="actions-list__item">
           <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn">Show cards</a>

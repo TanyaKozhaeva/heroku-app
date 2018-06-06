@@ -40,7 +40,6 @@ cardModel = new Card();
 
 
    addCard(){
-    console.log(this.cardModel)
     this.loaderService.executeAction(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
@@ -49,7 +48,6 @@ cardModel = new Card();
       this.alertService.success("Card successfully added!", true);
      },
      error => {
-       console.log(error)
       this.loaderService.executeAction(false);
       this.alertService.error("Something went wrong. Please try again later");
     })
@@ -67,7 +65,6 @@ canDeactivate(): Observable<boolean> | boolean {
   }
 
   this.confirmService.message('Discard changes for Card?');
-  console.log(this.confirmService.navigateAwaySelection$)
   return this.confirmService.navigateAwaySelection$;
 }
 }

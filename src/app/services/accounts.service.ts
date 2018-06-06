@@ -29,9 +29,10 @@ export class AccountsService {
   }
 
   blockAccount(account){
+    console.log(account)
     return this.http.put('https://apihonestbank.herokuapp.com/accounts/' + account.id, account)
   }
-  
+
   transactionsFilter(data, accountId){
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
   }
