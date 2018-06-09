@@ -31,8 +31,9 @@ export class AccountItemComponent implements OnInit {
 @Input() account;
 @Input() index;
 @Output() deletingAccount = new EventEmitter();
-showActions=false;
+showActions = false;
 showSpinner;
+rechargeInput = false;
 
   constructor(
     private accountsService: AccountsService,
@@ -44,6 +45,32 @@ showSpinner;
 
    showingActions() {
     this.showActions ? this.showActions = false : this.showActions = true;
+  }
+
+  showRechargeInput() {
+    this.rechargeInput ? this.rechargeInput = false : this.rechargeInput = true;
+  }
+
+  rechargeAccount() {
+    this.showingActions();
+    this.accountsService.rechargeAccount(this.account)
+    .subscribe(res => {
+      this.alertService.success('Success', true);
+      this.rechargeInput = false;
+    },
+    error => {
+      this.alertService.error("Error", error);
+      this.getAccountItem();
+      this.rechargeInput = false;
+    }
+     );
+  }
+
+  getAccountItem(){
+    this.accountsService.getAccountDetails(this.account.id)
+    .subscribe(res => {
+      this.account = res;
+    })
   }
 
   deleteAccount() {

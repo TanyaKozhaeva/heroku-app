@@ -1,6 +1,24 @@
     <td class="table__cell">{{account.number}}</td>
-    <td class="table__cell">{{account.amount}}  {{account.currency}}</td>
-    <td (click)="showingActions()"
+    <td *ngIf="!rechargeInput" class="table__cell">{{account.amount}}  {{account.currency}}</td>
+    <td colspan="2" *ngIf="rechargeInput" class="table__cell">
+      <div class="table__input-box recharge-account">
+          <input class="recharge-account__input" type="number"
+          name="accountAmount"
+          [(ngModel)]="account.amount"
+          #accountAmount="ngModel"
+          required/>
+          <span class="recharge-account__currency">{{account.currency}}</span>
+          <button class="recharge-account__btn" (click)="rechargeAccount()">
+            <span class="hidden">Ok</span>
+            <svg class="icon recharge-account__icon recharge-account__icon_success">
+                <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
+            </svg>
+          </button>
+      </div>
+
+    </td>
+    <td *ngIf="!rechargeInput"
+    (click)="showingActions()"
     class="table__cell table__cell_color_main table__cell_actions">
       Select action
       <app-spinner
@@ -8,6 +26,9 @@
       <ul class="actions-list"
       *ngIf="showActions"
       [@showActions]="showActions">
+      <li class="actions-list__item">
+          <button (click)="showRechargeInput()" class="action-btn">Recharge an account</button>
+      </li>
         <li class="actions-list__item">
           <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn">Show cards</a>
         </li>

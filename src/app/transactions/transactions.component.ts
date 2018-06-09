@@ -14,6 +14,8 @@ export class TransactionsComponent implements OnInit, DoCheck{
   showSpinner = false;
   transactions;
  currentDate = new Date();
+ //date = new Date();
+ //currentDate = date.toLocaleString("ru")
   dateFrom = this.currentDate;
   minDate;
   maxDate;
