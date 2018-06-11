@@ -53,7 +53,12 @@ rechargeInput = false;
 
   rechargeAccount() {
     this.showingActions();
-    this.accountsService.rechargeAccount(this.account)
+    let data = {
+      id: this.account.id,
+      amount: this.account.amount,
+      blocked: this.account.blocked
+    }
+    this.accountsService.rechargeAccount(data)
     .subscribe(res => {
       this.alertService.success('Success', true);
       this.rechargeInput = false;
@@ -88,7 +93,18 @@ rechargeInput = false;
 
   disableAccount(){
     this.account.blocked ? this.account.blocked=false : this.account.blocked=true;
-    this.accountsService.blockAccount(this.account)
+    let data = {
+      id: this.account.id,
+      amount: this.account.amount,
+      blocked: this.account.blocked
+    }
+    this.accountsService.blockAccount(data)
+    .subscribe(res => {
+      return
+    },
+    error => {
+      this.alertService.error(error);
+      this.getAccountItem()
+    });
   }
-
 }

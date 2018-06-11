@@ -14,11 +14,13 @@ const appRoutes: Routes = [
       { path: '', component: LoginComponent },
       { path: 'register', component: RegistrationComponent },
       { path: '**', redirectTo: '' }
-      //{ path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
+
       //{ path: 'user', loadChildren: 'app/user-interface/user-interface.module#UserInterfaceModule', canActivate: [AuthGuard]}
 
-    ]
+    ],
   },
+  //{ path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}
+  //{ path: 'admin', loadChildren: 'admin.bundle.js'}
 ];
   @NgModule({
     imports: [

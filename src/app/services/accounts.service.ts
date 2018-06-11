@@ -29,10 +29,10 @@ export class AccountsService {
   }
 
   blockAccount(account){
-    return this.http.put('https://apihonestbank.herokuapp.com/accounts/' + account.id, account)
+    return this.http.put('https://apihonestbank.herokuapp.com/accounts/update', account)
   }
   rechargeAccount(account){
-    return this.http.put('https://apihonestbank.herokuapp.com/accounts/' + account.id, account)
+    return this.http.put('https://apihonestbank.herokuapp.com/accounts/update', account)
   }
 
   transactionsFilter(data, accountId){

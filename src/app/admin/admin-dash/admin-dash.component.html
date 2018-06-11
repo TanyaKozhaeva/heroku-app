@@ -2,20 +2,20 @@
   <div class="wrapper-admin">
     <h2 class="admin-dash__title title title_color_main">Dashboard</h2>
     <p class="admin-dash__text text text_color_main">Select a user to see details</p>
-  <div class="admin-dash__users-list table-wrapper">
+  <div *ngIf="users" class="admin-dash__users-list table-wrapper">
     <table class="table">
         <thead class="table__head">
           <tr class="table__head-row">
             <th class="table__cell">Name</th>
             <th class="table__cell">Phone</th>
-            <th class="table__cell">Actions</th>
+            <th class="table__cell table__cell_actions">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let u of users; let i='index'" class="table__row table__row_clickable" >
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.profile.firstName}} {{u.profile.lastName}}</td>
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.phone}}</td>
-            <td class="table__cell table__cell_actions">
+            <td class="table__cell">
                 <app-spinner
                 [showSpinner]="showSpinner"></app-spinner>
               <button (click)="deleteUser(i, u.id)" class="action-btn action-btn_color_danger">Delete</button>

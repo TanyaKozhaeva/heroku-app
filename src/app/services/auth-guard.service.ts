@@ -3,7 +3,7 @@ import { CanActivate, CanLoad, Route, Router, ActivatedRouteSnapshot, RouterStat
 import { AuthService } from '../services/auth.service';
 
 @Injectable ()
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
     constructor(
         private authService: AuthService,
@@ -13,9 +13,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         return this.checkLogin();
       }
+      /*
     canLoad(route: Route): boolean {
       return this.checkLogin();
-    }
+    }*/
 
         checkLogin(){
         if (localStorage.getItem('currentUser')) {

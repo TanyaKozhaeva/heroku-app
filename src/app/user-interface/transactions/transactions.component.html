@@ -11,7 +11,7 @@
         [(ngModel)]="transaction.sourceName"
         #sourceName="ngModel"
         id="sourceName">
-        <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
+        <option *ngFor="let a of accounts" [disabled]="a.blocked || a.amount == 0" value="{{ a.number }}" class="">
           {{a.number}} {{a.amount}} {{a.currency}}
         </option>
       </select>
@@ -23,7 +23,7 @@
               #recipientAccount="ngModel"
               [(ngModel)]="transaction.destinationName"
               required>
-                <option *ngFor="let a of accounts" [disabled]="a.blocked || a.amount == 0" value="{{ a.number }}" class="">
+                <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
                   {{a.number}} {{a.amount}} {{a.currency}}
                 </option>
             </select>

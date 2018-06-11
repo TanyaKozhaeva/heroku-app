@@ -10,11 +10,12 @@
                                           #userPhone="ngModel"
                                           ngModel
                                           id="phone"
+                                          [textMask]="{mask: mask}"
                                           required/>
                                           <div class="form__errors">
                                         <app-errors [control]="userPhone"></app-errors>
                                           </div>
-                                          
+
 <label class="form__label" for="phone">Phone</label>
                 </div>
 <div class="form__input-wrap">
@@ -24,11 +25,12 @@
                           #userPassword="ngModel"
                           ngModel
                           id="password"
+                          passwordValidation
                           required/>
                           <div class="form__errors">
                                 <app-errors [control]="userPassword"></app-errors>
                           </div>
-                          
+
 <label class="form__label" for="password">Password</label>
 </div>
 
@@ -39,9 +41,3 @@
 
         </form>
 </div>
-
-<!-- Добавить в логин потом -->
-<!-- [textMask]="{mask: mask}"
-telephoneNumber -->
-<!-- И в пароль -->
-<!-- passwordValidation -->

@@ -8,7 +8,7 @@
                             class="calendar__input"
                             >
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-                            <mat-datepicker #pickerFrom></mat-datepicker>
+                            <mat-datepicker touchUi="true" #pickerFrom></mat-datepicker>
                     </div>
                     <div class="calendar__input-wrap">
                             <input matInput [matDatepicker]="pickerTo" placeholder="Choose a date"
@@ -17,7 +17,7 @@
                             class="calendar__input"
                             >
                             <mat-datepicker-toggle class="calendar__toggler" matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-                            <mat-datepicker #pickerTo></mat-datepicker>
+                            <mat-datepicker touchUi="true" #pickerTo></mat-datepicker>
                     </div>
             </div>
 

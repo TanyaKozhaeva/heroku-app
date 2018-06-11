@@ -15,7 +15,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
   transactions;
  currentDate = new Date();
  //date = new Date();
- //currentDate = date.toLocaleString("ru")
+ //currentDate = this.date.toLocaleString("ru")
   dateFrom = this.currentDate;
   minDate;
   maxDate;

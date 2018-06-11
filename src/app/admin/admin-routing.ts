@@ -24,7 +24,7 @@ const adminRoutes: Routes = [
       { path: 'users-item/:id', component: UsersItemComponent},
       { path: 'cards/:id', component: CardsComponent },
       { path: 'transactions/:id', component: TransactionsComponent }
-      ]
+    ]
     }
   ];
 
