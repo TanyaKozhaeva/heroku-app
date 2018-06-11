@@ -2,7 +2,7 @@
 .account-item
   display: flex
   flex-direction: column
-  padding: 0 $offset-one-side $offset
+  padding-bottom: $offset
   @media screen and (min-width: $break_sm)
     padding-top: 3rem
   &__block-box
@@ -11,7 +11,7 @@
     span
       display: block
   &__active-box
-    padding-bottom: $offset
+    padding: 0 $offset-one-side $offset
     margin-bottom: $offset
     @media screen and (min-width: $break_sm)
       box-shadow: $blocksShadow
