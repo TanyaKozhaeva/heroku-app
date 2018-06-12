@@ -1,5 +1,6 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
 import { Card } from '../add-card/card';
+import { Location } from '@angular/common';
 import { CardsService } from '../../services/cards.service';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +30,7 @@ cardModel = new Card();
     private cardsService: CardsService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private alertService: AlertService,
     private confirmService: ConfirmService
   ) {
@@ -54,7 +56,7 @@ cardModel = new Card();
      }
 
      cansel(){
-       this.router.navigate(['/user']);
+       this.location.back()
      }
 
 
