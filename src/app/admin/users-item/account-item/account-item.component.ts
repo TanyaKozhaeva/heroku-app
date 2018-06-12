@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AccountsService } from '../../../services/accounts.service';
 import { AlertService } from '../../../alert/alert.service';
+import { LoaderService } from '../../../loader/loader.service';
 import {
   trigger,
   state,
@@ -36,6 +37,7 @@ showSpinner;
 rechargeInput = false;
 
   constructor(
+      private loaderService: LoaderService,
     private accountsService: AccountsService,
     private alertService: AlertService
   ) { }
@@ -52,7 +54,8 @@ rechargeInput = false;
   }
 
   rechargeAccount() {
-    this.showingActions();
+    this.loaderService.executeAction(true);
+    this.showActions = false;
     let data = {
       id: this.account.id,
       amount: this.account.amount,
@@ -60,13 +63,15 @@ rechargeInput = false;
     }
     this.accountsService.rechargeAccount(data)
     .subscribe(res => {
-      this.alertService.success('Success', true);
+      this.alertService.success('Success');
       this.rechargeInput = false;
+      this.loaderService.executeAction(false);
     },
     error => {
-      this.alertService.error("Error", error);
+      this.alertService.error("Error");
       this.getAccountItem();
       this.rechargeInput = false;
+      this.loaderService.executeAction(false);
     }
      );
   }

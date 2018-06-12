@@ -17,36 +17,37 @@
       </select>
       <fieldset class="form__input-wrap">
         <legend class="payments-block__form-label">Recipient:</legend>
-          <div *ngIf="!inputField">
-            <select class="form__input form__input_color_dark"
-              name="recipientAccount"
-              #recipientAccount="ngModel"
-              [(ngModel)]="transaction.destinationName"
-              required>
-                <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
-                  {{a.number}} {{a.amount}} {{a.currency}}
-                </option>
-            </select>
-            <div class="form__errors">
-                <app-errors [control]="recipientAccount"></app-errors>
-            </div>
-
+        <div *ngIf="!inputField">
+          <select class="form__input form__input_color_dark"
+            name="recipientAccount"
+            #recipientAccount="ngModel"
+            [(ngModel)]="transaction.destinationName"
+            required>
+              <option value="undefined" disabled selected> Select the recipient</option>
+              <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
+                {{a.number}} {{a.amount}} {{a.currency}}
+              </option>
+          </select>
+          <div class="form__errors">
+              <app-errors [control]="recipientAccount"></app-errors>
           </div>
+        </div>
 
-          <div *ngIf="inputField">
+
+<div *ngIf="inputField">
             <input type="text" class="form__input form__input_color_dark"
               name="recipientManualInput"
               #recipientManualInput="ngModel"
               placeholder="Input the recipient"
               [(ngModel)]="transaction.destinationName"
               required
-              minlength="16"
+              cardValidator
+              [textMask]="{mask: numberMask}"
               autofocus>
               <div class="form__errors">
                   <app-errors [control]="recipientManualInput"></app-errors>
               </div>
-
-              </div>
+</div>
 
     <div class="form__switch-box">
       <button type="button" class="form__switch-input-btn" *ngIf="!inputField" (click)="enteringRecipientNumber()">Input the recipient`s card number</button>

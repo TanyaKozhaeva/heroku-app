@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import { CardsService } from '../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { AccountsService } from '../services/accounts.service';
+//import { NativeDateAdapter, DateAdapter, MD_DATE_FORMATS } from "@angular/material";
 
 @Component({
   selector: 'transactions',
@@ -48,6 +49,7 @@ export class TransactionsComponent implements OnInit, DoCheck{
     this.showSpinner = true;
     this.accountsService.transactionsFilter(data, this.accountId)
     .subscribe (res => {
+      console.log(res) 
       this.transactions = res;
       this.showSpinner = false;
     });
