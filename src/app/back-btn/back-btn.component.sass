@@ -1,7 +1,14 @@
 @import "../../sass/vars.sass"
 .cancel-btn
-  &::before
-    content: "<<"
-    font-size: 2em
-    color: $mainColor
-    cursor: pointer
+  width: 45px
+  height: 45px
+  border-radius: 50%
+  background-color: $mainColorLight
+  border: 1px solid $bgColor
+  box-shadow: $blocksShadow
+  text-align: center
+  &__icon
+    width: 18px
+    height: 18px
+    vertical-align: middle
+    fill: $mainColor
