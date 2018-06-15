@@ -6,9 +6,11 @@
           name="accountAmount"
           [(ngModel)]="account.amount"
           #accountAmount="ngModel"
+          amountValidator
+          minlength="0"
           required/>
           <span class="recharge-account__currency">{{account.currency}}</span>
-          <button *ngIf="!showSpinner" class="recharge-account__btn" (click)="rechargeAccount()">
+          <button type="button" *ngIf="!showSpinner" [disabled]="account.amount < 0" class="recharge-account__btn" (click)="rechargeAccount()">
             <span class="hidden">Recharge an account</span>
             <svg class="icon recharge-account__icon recharge-account__icon_success">
                 <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>

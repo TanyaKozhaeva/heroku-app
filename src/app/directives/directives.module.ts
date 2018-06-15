@@ -6,6 +6,7 @@ import { ConfirmPasswordDirective } from './confirmPassword.directive';
 import { CardvalidatorDirective } from './cardvalidator.directive';
 import { ErrorsComponent } from '../errors/errors.component';
 import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
+import { AmountvalidatorDirective } from './amountvalidator.directive';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
     ConfirmPasswordDirective,
     CardvalidatorDirective,
     ErrorsComponent,
-    ExpiredvalidatorDirective
+    ExpiredvalidatorDirective,
+    AmountvalidatorDirective
   ],
   exports: [
     PhonevalidatorDirective,
@@ -26,6 +28,7 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
     ConfirmPasswordDirective,
     CardvalidatorDirective,
     ExpiredvalidatorDirective,
+    AmountvalidatorDirective,
     ErrorsComponent
   ]
 })

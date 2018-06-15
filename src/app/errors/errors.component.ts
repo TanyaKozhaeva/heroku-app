@@ -53,6 +53,7 @@ export class ErrorsComponent {
   private control: AbstractControlDirective | AbstractControl;
 
   shouldShowErrors(): boolean {
+    console.log(control)
     return this.control &&
       this.control.errors &&
       (this.control.invalid && this.control.touched);
