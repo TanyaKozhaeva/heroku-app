@@ -23,7 +23,7 @@
             #recipientAccount="ngModel"
             [(ngModel)]="transaction.destinationName"
             required>
-              <option value="undefined" disabled selected> Select the recipient</option>
+              <option value="undefined" disabled selected> Select a recipient</option>
               <option *ngFor="let a of accounts" [disabled]="a.blocked" value="{{ a.number }}" class="">
                 {{a.number}} {{a.amount}} {{a.currency}}
               </option>

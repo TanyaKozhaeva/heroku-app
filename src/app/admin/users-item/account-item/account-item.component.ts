@@ -23,8 +23,8 @@ import {
         opacity: '0',
         height: '0'
       })),
-      transition('false => true', animate('130ms ease-in')),
-      transition('true => false', animate('130ms ease-out'))
+      transition('false => true', animate('100ms ease-in')),
+      transition('true => false', animate('100ms ease-out'))
     ])
 ]
 })
@@ -32,7 +32,7 @@ export class AccountItemComponent implements OnInit {
 @Input() account;
 @Input() index;
 @Output() deletingAccount = new EventEmitter();
-showActions = false;
+showActions=false;
 showSpinner;
 rechargeInput = false;
 
@@ -111,5 +111,9 @@ rechargeInput = false;
       this.alertService.error(error);
       this.getAccountItem()
     });
+  }
+  closeActionsList(){
+    console.log(this.showActions)
+    this.showActions = false;
   }
 }

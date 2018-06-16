@@ -1,48 +1,72 @@
-    <td class="table__cell">{{account.number}}</td>
-    <td *ngIf="!rechargeInput" class="table__cell">{{account.amount}}  {{account.currency}}</td>
-    <td colspan="2" *ngIf="rechargeInput" class="table__cell">
-      <div class="table__input-box recharge-account">
-          <input class="recharge-account__input" type="number"
-          name="accountAmount"
-          [(ngModel)]="account.amount"
-          #accountAmount="ngModel"
-          amountValidator
-          minlength="0"
-          required/>
-          <span class="recharge-account__currency">{{account.currency}}</span>
-          <button type="button" *ngIf="!showSpinner" [disabled]="account.amount < 0" class="recharge-account__btn" (click)="rechargeAccount()">
-            <span class="hidden">Recharge an account</span>
-            <svg class="icon recharge-account__icon recharge-account__icon_success">
-                <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
-            </svg>
-          </button>
-      </div>
+<td class="table__cell">{{account.number}}</td>
+<td *ngIf="!rechargeInput" class="table__cell">{{account.amount}}  {{account.currency}}</td>
+<td colspan="2" *ngIf="rechargeInput" class="table__cell">
+  <div class="table__input-box recharge-account">
+      <input class="recharge-account__input" type="number"
+      name="accountAmount"
+      [(ngModel)]="account.amount"
+      #accountAmount="ngModel"
+      amountValidator
+      minlength="0"
+      required/>
+      <span class="recharge-account__currency">{{account.currency}}</span>
+      <button type="button" *ngIf="!showSpinner" [disabled]="account.amount < 0" class="recharge-account__btn" (click)="rechargeAccount()">
+        <span class="hidden">Recharge an account</span>
+        <svg class="icon recharge-account__icon recharge-account__icon_success">
+            <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
+        </svg>
+      </button>
+  </div>
 
-    </td>
-    <td *ngIf="!rechargeInput"
-    (click)="showingActions()"
-    class="table__cell table__cell_color_main table__cell_actions">
-      Select action
-      <app-spinner
-      [showSpinner]="showSpinner"></app-spinner>
-      <ul class="actions-list"
-      *ngIf="showActions"
-      [@showActions]="showActions">
+</td>
+<td *ngIf="!rechargeInput"
+class="table__cell table__cell_color_main table__cell_actions">
+  <button counting class="action-btn" (click)="showingActions()">Select action</button>
+  <app-spinner
+  [showSpinner]="showSpinner"></app-spinner>
+  <div class="table__actions"
+  [@showActions]="showActions"
+  >
+
+    <!-- <button *ngIf="showActions" class="close-btn" (click)="showingActions()">
+      <span class="hidden">Close actions list</span>
+    </button> -->
+    <ul  *ngIf="showActions" class="actions-list actions-list_scroll-behavior">
+    <li class="actions-list__item">
+        <button (click)="showRechargeInput()" class="action-btn">Recharge an account</button>
+    </li>
       <li class="actions-list__item">
-          <button (click)="showRechargeInput()" class="action-btn">Recharge an account</button>
+        <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn">Show cards</a>
       </li>
-        <li class="actions-list__item">
-          <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn">Show cards</a>
+      <li class="actions-list__item">
+        <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+    </li>
+      <li class="actions-list__item">
+        <button (click)="deleteAccount()" class="action-btn action-btn_color_danger">Delete</button>
+      </li>
+      <li class="actions-list__item">
+          <button *ngIf="!account.blocked" (click)="disableAccount()" class="action-btn action-btn_color_danger">Block</button>
+          <button *ngIf="account.blocked" (click)="disableAccount()" class="action-btn">Unlock</button>
         </li>
+
         <li class="actions-list__item">
           <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
       </li>
-        <li class="actions-list__item">
-          <button (click)="deleteAccount()" class="action-btn action-btn_color_danger">Delete</button>
-        </li>
-        <li class="actions-list__item">
-            <button *ngIf="!account.blocked" (click)="disableAccount()" class="action-btn action-btn_color_danger">Block</button>
-            <button *ngIf="account.blocked" (click)="disableAccount()" class="action-btn">Unlock</button>
-          </li>
-      </ul>
-    </td>
+      <li class="actions-list__item">
+        <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+    </li>
+    <li class="actions-list__item">
+      <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+  </li>
+  <li class="actions-list__item">
+    <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+</li>
+<li class="actions-list__item">
+  <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+</li>
+<li class="actions-list__item">
+  <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+</li>
+    </ul>
+  </div>
+</td>

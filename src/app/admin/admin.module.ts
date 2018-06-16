@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { AlertModule } from '../alert/alert.module';
 import { HeaderModule } from '../header/header.module';
 import { BackBtnModule } from '../back-btn/back-btn.module';
