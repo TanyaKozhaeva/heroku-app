@@ -112,8 +112,4 @@ rechargeInput = false;
       this.getAccountItem()
     });
   }
-  closeActionsList(){
-    console.log(this.showActions)
-    this.showActions = false;
-  }
 }

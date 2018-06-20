@@ -8,7 +8,7 @@ import { LoaderService } from '../../loader/loader.service';
   styleUrls: ['./dash.component.sass']
 })
 export class DashComponent implements OnInit {
-products;
+products: any[]=[];
 accounts: any[]=[];
 currentUser;
 userId;
@@ -17,14 +17,14 @@ userId;
   constructor(
     private loaderService: LoaderService,
     private accountsService: AccountsService
-  ) { 
+  ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
  this.userId = this.currentUser.userInfo.userId;
   }
 
   ngOnInit() {
     this.loaderService.executeAction(true);
-    this.getProducts(); 
+    this.getProducts();
 this.getAccounts();
 
   }
@@ -32,7 +32,13 @@ this.getAccounts();
   private getProducts() {
     this.accountsService.getProducts()
     .subscribe(res => {
-      this.products = res;
+      for(var i=0; i<res.length; i++){
+        if(res[i].currency=="UAH") {
+          continue;
+        } else{
+          this.products.push(res[i])
+        }
+      }
     });
   }
   private getAccounts() {

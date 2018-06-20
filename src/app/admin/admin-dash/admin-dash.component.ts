@@ -44,15 +44,15 @@ showSpinner;
   }
 
   deleteUser(i, id) {
-    this.showSpinner = true;
+    //this.showSpinner = true;
     this.userService.deleteUser(id)
     .subscribe(res => {
-      this.showSpinner = false;
+      //this.showSpinner = false;
       this.users.splice(i, 1);
       this.alertService.success('User deleted');
     },
     error => {
-      this.showSpinner = false;
+      //this.showSpinner = false;
       this.alertService.error('Something went wrong. Please try again later');
     });
   }

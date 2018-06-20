@@ -117,7 +117,7 @@ body
           box-shadow: 0 4px 2px -3px $fontColor
   &__errors
     position: absolute
-    top: -30%
+    bottom: 100%
     right: -8%
   &__switch-box
     margin-bottom: $offset-one-side
@@ -132,6 +132,32 @@ body
   &__controls
     margin-top: 3rem
 
+.recharge-account
+    display: flex
+    align-items: center
+    &__wrap
+      flex: 3
+      position: relative
+      width: 60%
+    &__input
+        width: 100%
+        height: 80%
+        border: 1px solid $mainColor
+        border-radius: 5px
+        padding: 2% .5em
+        box-sizing: border-box
+    &__errors
+      @extend .form__errors
+    &__currency
+        flex: 1
+    &__btn
+        flex: 2
+        height: 100%
+    &__icon
+        width: 18px
+        height: 18px
+        &_success
+            fill: $successColor
 
 // LINKS/BUTTONS
 .link-box
@@ -182,7 +208,17 @@ body
       color: $fontColor
       &:disabled
         background-color: lighten($bgColor, 10%)
-
+.clear-btn
+    display: inline-block
+    font-size: 1em
+    font-weight: 300
+    padding: .1em .6em
+    border: 1px solid $mainColorLight
+    border-radius: 15px
+    color: $mainColorLight
+    transition: .2s ease-in
+    &:hover
+      border-radius: 5px
 .action-btn
   font-size: 1em
   font-family: $mainFont

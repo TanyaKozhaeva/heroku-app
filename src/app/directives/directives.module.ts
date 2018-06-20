@@ -9,7 +9,6 @@ import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
 import { AmountvalidatorDirective } from './amountvalidator.directive';
 import { OutsideClickDirective } from './outsideclick.directive';
 
-
 @NgModule({
   imports: [
     CommonModule

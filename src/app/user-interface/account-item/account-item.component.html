@@ -1,19 +1,12 @@
 <div *ngIf="accountItem" class="account-item vh-without-header">
-  <div class="wrapper-ui">
-    <div *ngIf="accountItem.blocked" class="account-item__block-box">
-      <p class="account-item__block-text title title_color_main">
-        <span>Your account {{accountItem.number}} is blocked.</span>
-        <span>Please call the number: </span>
-      </p>
-    </div>
-    <div *ngIf="!accountItem.blocked" class="account-item__active-box">
+  <div class="account-item__wrap wrapper-ui">
         <div *ngIf="accountItem" class="account-item__info">
             <span class="account-item__info-number">{{accountItem.number}}</span>
             <span class="account-item__info-sum">
               <span>{{accountItem.amount}}</span>
               <span>{{accountItem.currency}}</span>
             </span>
-                <a [routerLink]="['../../add-card', {id: accountId}]" routerLinkActive="active" class="account-item__info-btn">
+                <a [routerLink]="['../../add-card', {id: accountId}]" class="clear-btn account-item__info-btn">
                 Add a card
               </a>
           </div>
@@ -42,8 +35,6 @@
             </div>
 
     </div>
-
-  </div>
 <div class="account-item__cancel-controls">
   <app-back-btn></app-back-btn>
 </div>

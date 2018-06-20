@@ -1,5 +1,6 @@
 <div *ngIf="message"
 @message
+(clickOutside)="message=false"
 class="modal">
 <p class="modal__text">{{message.text}}</p>
   <svg class="icon modal__icon modal__icon_success" *ngIf="message.type === 'success'">

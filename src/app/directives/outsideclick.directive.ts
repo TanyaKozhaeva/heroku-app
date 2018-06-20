@@ -1,12 +1,17 @@
-import {Directive, ElementRef, Renderer2, HostListener} from '@angular/core';
-
-@Directive({selector: 'button[counting]'})
-export class OutsideClickDirective{
-
-    numberOfClicks = 0;
-
-    @HostListener('click', ['$event.target'])
-    onClick(btn) {
-      console.log('button', btn, 'number of clicks:', this.numberOfClicks++);
+import { Directive, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
+@Directive({
+    selector: '[clickOutside]'
+})
+export class OutsideClickDirective {
+  @Output() public clickOutside = new EventEmitter();
+    constructor(private el: ElementRef) {
     }
-   }
+
+    @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(!this.el.nativeElement.contains(event.target)) {
+      event.stopPropagation();
+      this.clickOutside.emit(true);
+    }
+  }
+}

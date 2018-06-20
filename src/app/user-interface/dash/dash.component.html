@@ -20,17 +20,20 @@
         </tbody>
       </table>
       <h3 class="dash__title subtitle">Your Accounts</h3>
-      <p *ngIf="accounts.length !== 0" class="dash__text text">Select an account to see details</p>
       <table class="dash__accounts tableLight">
           <tbody>
             <tr *ngFor="let a of accounts"
-            class="tableLight__row tableLight__row_clickable"
+            class="tableLight__row"
             [class.tableLight__row_disable]="a.blocked"
-            [routerLink]="['./account-item', a.id]"
             >
               <td class="tableLight__cell">{{a.number}}</td>
-              <td class="tableLight__cell">{{a.amount}}</td>
-              <td class="tableLight__cell">{{a.currency}}</td>
+              <td class="tableLight__cell">{{a.amount}} {{a.currency}}</td>
+              <td *ngIf="!a.blocked" class="tableLight__cell">
+                <a [routerLink]="['./account-item', a.id]" class="clear-btn">Details</a>
+              </td>
+              <td *ngIf="a.blocked" class="tableLight__cell">
+                Blocked
+              </td>
             </tr>
             <tr *ngIf="accounts.length === 0"
             class="tableLight__row"

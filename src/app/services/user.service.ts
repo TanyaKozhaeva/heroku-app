@@ -23,6 +23,6 @@ export class UserService {
 
   }
   getUserDetails(userId) {
-    return this.http.get('https://apihonestbank.herokuapp.com/admin/users/' + userId);
+    return this.http.get('https://apihonestbank.herokuapp.com/users/' + userId);
   }
 }

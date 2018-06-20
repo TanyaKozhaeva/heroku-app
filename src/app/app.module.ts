@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminModule } from '../app/admin/admin.module';
+//import { AdminModule } from '../app/admin/admin.module';
 import { UserInterfaceModule } from './user-interface/user-interface.module';
 import { LoaderModule } from './loader/loader.module';
 import { DirectivesModule } from '../app/directives/directives.module';
@@ -47,7 +47,7 @@ import { UserService } from './services/user.service';
     HeaderModule,
     ConfirmWindowModule,
     AlertModule,
-    AdminModule,
+    //AdminModule,
     UserInterfaceModule,
     TextMaskModule,
     AppRoutingModule

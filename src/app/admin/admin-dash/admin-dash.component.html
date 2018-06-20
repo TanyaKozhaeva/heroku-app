@@ -16,8 +16,8 @@
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.profile.firstName}} {{u.profile.lastName}}</td>
             <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.phone}}</td>
             <td class="table__cell">
-                <app-spinner
-                [showSpinner]="showSpinner"></app-spinner>
+                <!-- <app-spinner
+                [showSpinner]="showSpinner"></app-spinner> -->
               <button *ngIf="!showSpinner"(click)="deleteUser(i, u.id)" class="action-btn action-btn_color_danger">Delete</button>
             </td>
           </tr>

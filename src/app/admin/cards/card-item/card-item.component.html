@@ -1,6 +1,6 @@
         <td class="table__cell">{{card.number}}</td>
         <td class="table__cell">{{card.expiration}}</td>
-        <td class="table__cell table__cell_color_main table__cell_actions">
+        <td (clickOutside)="showActions=false" class="table__cell table__cell_color_main table__cell_actions">
         <button class="action-btn" (click)="showingActions()">Select action</button>
       <app-spinner
       [showSpinner]="showSpinner"></app-spinner>

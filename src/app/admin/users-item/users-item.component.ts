@@ -30,6 +30,7 @@ showActions = false;
 
   ngOnInit() {
     this.loaderService.executeAction(true);
+  //  this.getUserDetails();
     this.getAccounts();
   }
   getUserDetails() {

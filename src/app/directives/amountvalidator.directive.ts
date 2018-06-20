@@ -10,13 +10,14 @@ export class AmountvalidatorDirective implements Validator {
 
   validate(c: FormControl): ValidationErrors {
     //const isValidCardNumber = /^\d{4,4}-\d{4,4}-\d{4,4}-\d{4,4}$/.test(c.value);
-    let amount = c.value
-    console.log(amount)
+    const amount = c.value
     const message = {
       'amountValidator': {
         'message': 'Amount must be valid'
       }
     };
-    return (amount) ? null : message;
+    console.log(amount)
+    console.log(message)
+    return (amount >= 0) ? null : message;
   }
 }
