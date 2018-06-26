@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+  'Accept': 'application/json'
+  })
+  };
 @Injectable()
 export class UserService {
   constructor( private http: HttpClient) { }

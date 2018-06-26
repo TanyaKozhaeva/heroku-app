@@ -20,7 +20,7 @@ const appRoutes: Routes = [
     ],
   },
   //{ path: 'admin', loadChildren: '././app/admin/admin.module#AdminModule'}
-  { path: 'admin', loadChildren: 'admin.module.chunk.js'}
+  //{ path: 'admin', loadChildren: 'admin.module.chunk.js'}
 ];
   @NgModule({
     imports: [
