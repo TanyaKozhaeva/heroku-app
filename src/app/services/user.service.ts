@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
-  'Accept': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': "Token eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrMzgwOTkgOTk5LTk5LTk5IiwidXNlcklkIjoiMSIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUzMDUzNTA2MH0.d4tA4Qfn8IGwT5zsRJgYdPrNp2H9OWJGuchzdcAAjfI"
   })
   };
 @Injectable()
 export class UserService {
   constructor( private http: HttpClient) { }
+  getUserDetails(userId) {
+    console.log(httpOptions)
+    return this.http.get('https://apihonestbank.herokuapp.com/users/' + userId, httpOptions);
+  }
 
   create(model) {
     return this.http.post('https://apihonestbank.herokuapp.com/registration', model);
@@ -20,13 +25,11 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get('https://apihonestbank.herokuapp.com/users');
+    return this.http.get('https://apihonestbank.herokuapp.com/users', httpOptions);
   }
   getProfiles() {
-    return this.http.get('https://apihonestbank.herokuapp.com/admin/users');
+    return this.http.get('https://apihonestbank.herokuapp.com/admin/users', httpOptions);
 
   }
-  getUserDetails(userId) {
-    return this.http.get('https://apihonestbank.herokuapp.com/users/' + userId);
-  }
+
 }
