@@ -1,9 +1,7 @@
 import { Component, OnInit, DoCheck, Input} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import { CardsService } from '../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { AccountsService } from '../services/accounts.service';
-//import { NativeDateAdapter, DateAdapter, MD_DATE_FORMATS } from "@angular/material";
+
 
 @Component({
   selector: 'transactions',
@@ -13,27 +11,30 @@ import { AccountsService } from '../services/accounts.service';
 export class TransactionsComponent implements OnInit, DoCheck{
   @Input() accountId;
   showSpinner = false;
-  transactions;
+  transactions:any[] = [];
  currentDate = new Date();
- //date = new Date();
- //currentDate = this.date.toLocaleString("ru")
   dateFrom = this.currentDate;
   minDate;
   maxDate;
   dateTo = this.currentDate;
 
+
   constructor(
     private accountsService: AccountsService,
-    private route: ActivatedRoute
-  ) {
+    private route: ActivatedRoute) {
     this.accountId = this.route.snapshot.paramMap.get('id');
   }
 
-
+get isMobile(){
+let windWidth = (window.innerWidth);
+if(windWidth < 900){
+  return true;
+} else {
+  return false;
+}
+}
   ngOnInit() {
   }
-
-
 
   ngDoCheck(){
     this.minDate = this.dateFrom;
@@ -43,16 +44,28 @@ export class TransactionsComponent implements OnInit, DoCheck{
 
   filter() {
     const data = {
-      from: this.dateFrom,
-      to: this.dateTo
+      from: this.formatDate(this.dateFrom),
+      to: this.formatDate(this.dateTo)
     };
     this.showSpinner = true;
     this.accountsService.transactionsFilter(data, this.accountId)
     .subscribe (res => {
-      console.log(res) 
+      console.log(res)
       this.transactions = res;
       this.showSpinner = false;
     });
+  }
+
+  formatDate(date){
+    let dd = date.getDate();
+    if(dd<10) { dd = '0' + dd};
+
+    let mm = date.getMonth() + 1;
+    if(mm<10) { mm = '0' + mm};
+
+    let yyyy = date.getFullYear();
+
+    return dd + '-' + mm + '-' + yyyy;
   }
 
 

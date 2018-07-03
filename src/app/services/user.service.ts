@@ -12,8 +12,8 @@ const httpOptions = {
 export class UserService {
   constructor( private http: HttpClient) { }
   getUserDetails(userId) {
-    console.log(httpOptions)
-    return this.http.get('https://apihonestbank.herokuapp.com/users/' + userId, httpOptions);
+    //console.log(httpOptions)
+    return this.http.get('https://apihonestbank.herokuapp.com/users/' + userId);
   }
 
   create(model) {
@@ -25,10 +25,10 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get('https://apihonestbank.herokuapp.com/users', httpOptions);
+    return this.http.get('https://apihonestbank.herokuapp.com/users');
   }
   getProfiles() {
-    return this.http.get('https://apihonestbank.herokuapp.com/admin/users', httpOptions);
+    return this.http.get('https://apihonestbank.herokuapp.com/admin/users');
 
   }
 

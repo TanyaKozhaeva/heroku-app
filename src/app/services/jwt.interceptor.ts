@@ -11,11 +11,11 @@ export class JwtInterceptor implements HttpInterceptor {
               /*  setHeaders: {
                    Authorization: `Token ${currentUser.token}`
                 }*/
-              // headers: new HttpHeaders({
-              //    'Content-Type': 'application/json',
-              //    'Authorization': `Token ${currentUser.token}`
-              //  })
-              headers: new HttpHeaders().set('Authorization', `Token ${currentUser.token}`)
+               headers: new HttpHeaders({
+                  'Content-Type': 'application/json'
+                  //'Authorization': `Token ${currentUser.token}`
+                })
+            //  headers: new HttpHeaders().set('Authorization', `Token ${currentUser.token}`)
             });
         }
         console.log(request)

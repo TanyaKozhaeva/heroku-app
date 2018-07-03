@@ -37,7 +37,7 @@ export class AccountsService {
 
   transactionsFilter(data, accountId){
     //return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/account/' + accountId, data)
-    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/search/19-06-2018/21-06-2018')
+    return this.http.get<any[]>('https://apihonestbank.herokuapp.com/transactions/search/' + data.from + '/' + data.to)
   }
 
   makePayment(transaction){

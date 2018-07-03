@@ -54,11 +54,11 @@ import { UserService } from './services/user.service';
 
   ],
   providers: [
-  /*{
+  {
       provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptor,
       multi: true
-  },*/
+  },
  {
     provide: HTTP_INTERCEPTORS,
   useClass: HttpErrorInterceptor,
