@@ -1,11 +1,12 @@
-<div class="cards admin-main-screen__item vh-without-header">
+<div class="admin-main-screen__item ">
+  <div class="admin-page vh-without-header">
   <div class="wrapper-admin">
-    <h2 class="cards__title title title_color_main">Cards</h2>
-    <p *ngIf="currentAccount" class="cards__text text text_color_main">For account:
+    <h2 class="admin-page__title title title_color_main">Cards</h2>
+    <p *ngIf="currentAccount" class="admin-page__text text text_color_main">For account:
       {{currentAccount.number}}
       {{currentAccount.amount}}
       {{currentAccount.currency}}</p>
-    <div *ngIf="currentAccount" class="cards__item table-wrapper">
+    <div *ngIf="currentAccount" class="admin-page__table table-wrapper">
       <table class="table">
         <thead class="table__head">
           <tr class="table__row">
@@ -37,7 +38,8 @@
 
   </div>
 
-  <div class="cards__controls">
+  <div class="admin-page__controls">
     <app-back-btn></app-back-btn>
+  </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import * as saveAs from 'file-saver';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import * as svg4everybody from 'svg4everybody/dist/svg4everybody';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,10 @@ import * as saveAs from 'file-saver';
   styleUrls: ['./app.component.sass'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor() { }
+
+  ngOnInit(){
+      svg4everybody();
+  }
 }

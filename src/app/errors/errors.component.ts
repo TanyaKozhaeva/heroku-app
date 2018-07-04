@@ -48,6 +48,7 @@ export class ErrorsComponent {
     'expiredValidator': (params) => params.message,
     'dateValidator': (params) => params.message,
     'amountValidator': (params) => params.message,
+    'requiredValidator': (params) => params.message,
 
   };
 
@@ -61,8 +62,10 @@ export class ErrorsComponent {
   }
 
   listOfErrors(): string[] {
+    //let name = this.control.name;
     return Object.keys(this.control.errors)
-      .map(field => this.getMessage(field, this.control.errors[field]));
+      .map(field =>
+        this.getMessage(field, this.control.errors[field]));
   }
 
   private getMessage(type: string, params: any) {

@@ -47,6 +47,7 @@ export class AlertComponent implements OnInit {
     .subscribe(message => {
       this.message = message;
     })
+
   }
 
   close(){

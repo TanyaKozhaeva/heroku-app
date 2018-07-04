@@ -18,8 +18,8 @@ body
   width: 100%
   max-width: 1280px
   margin: 0 auto
-  display: flex
-  flex-direction: column
+  // display: flex
+  // flex-direction: column
 
 
 //LOGO
@@ -77,7 +77,7 @@ body
 //FORMS
 
 .form
-  padding: $offset_one_side
+  padding: 0 $offset_one_side
   color: $mainColorLight
   text-align: left
   &__title
@@ -256,7 +256,7 @@ body
     &_clickable
       cursor: pointer
       &:hover
-        box-shadow: $blocksShadow
+        background-color: $bgColor
     &_disable
       color: lighten($fontColor, 40%)
       background-color: $bgColor
@@ -333,9 +333,7 @@ body
     padding: 1em 5%
     border-bottom: 1px solid $bgColor
     overflow: hidden
-  &_scroll-behavior
-    max-height: 16.18em
-    overflow: auto
+
 
 
 

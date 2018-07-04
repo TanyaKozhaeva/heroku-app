@@ -5,55 +5,46 @@ class="add-card-form add-card__form"
 #addCardForm="ngForm"
 id="addCardForm"
 novalidate>
+
 <div class="add-card-form__input-wrap">
-  <div class="add-card-form__input-name">
-    <label class="add-card-form__label" for="cardName"> Name:</label>
-    <input type="text"
-    name="cardName"
-    id="cardName"
-    [(ngModel)]="cardModel.name" #cardName="ngModel"
-    required
+    <label class="add-card-form__label" for="name"> Name:</label>
+    <input class="add-card-form__input-name"
+    type="text"
+    name="Name"
+    id="name"
+    [(ngModel)]="cardModel.name" #Name="ngModel"
+    requiredValidator
     maxlength="15">
-    <div class="form__errors">
-        <app-errors [control]="cardName"></app-errors>
-    </div>
 
-
-  </div>
-
-<div class="add-card-form__input-num">
-<label class="add-card-form__label" for="cardNumber">Number:</label>
-  <input type="tel"
-  name="cardNumber"
-  id="cardNumber"
+<label class="add-card-form__label" for="number">Number:</label>
+  <input class="add-card-form__input-num"
+  type="tel"
+  name="Number"
+  id="number"
   [(ngModel)]="cardModel.number"
-  #cardNumber="ngModel"
+  #Number="ngModel"
   ngModel
   cardValidator
   [textMask]="{mask: numberMask}"
-  required>
-  <div class="form__errors">
-    <app-errors [control]="cardNumber"></app-errors>
-  </div>
+  requiredValidator>
 
-
-
-</div>
-
-<div class="add-card-form__input-exp">
-<label class="add-card-form__label" for="cardExpiration">Expires end:</label>
-  <input type="tel"
-  name="cardExpiration"
-  id="cardExpiration"
+<label class="add-card-form__label" for="expiration">Expires end:</label>
+  <input class="add-card-form__input-exp"
+  type="tel"
+  name="Expiration"
+  id="expiration"
   [(ngModel)]="cardModel.expiration"
-  #cardExpiration="ngModel"
+  #Expiration="ngModel"
   expiredValidator
   [textMask]="{mask: expiredMask}"
-  required>
-  <div class="form__errors">
-      <app-errors [control]="cardExpiration"></app-errors>
-  </div>
+  requiredValidator>
 </div>
+
+
+<div class="add-card__errors">
+      <app-errors [control]="Name"></app-errors>
+    <app-errors [control]="Number"></app-errors>
+      <app-errors [control]="Expiration"></app-errors>
 </div>
 
 

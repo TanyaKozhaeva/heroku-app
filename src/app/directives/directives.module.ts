@@ -8,6 +8,7 @@ import { ErrorsComponent } from '../errors/errors.component';
 import { ExpiredvalidatorDirective } from './expiredvalidator.directive';
 import { AmountvalidatorDirective } from './amountvalidator.directive';
 import { OutsideClickDirective } from './outsideclick.directive';
+import { RequiredvalidatorDirective } from './required-validator.directive'
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { OutsideClickDirective } from './outsideclick.directive';
     ErrorsComponent,
     ExpiredvalidatorDirective,
     AmountvalidatorDirective,
-    OutsideClickDirective
+    OutsideClickDirective,
+    RequiredvalidatorDirective
   ],
   exports: [
     PhonevalidatorDirective,
@@ -31,6 +33,7 @@ import { OutsideClickDirective } from './outsideclick.directive';
     ExpiredvalidatorDirective,
     AmountvalidatorDirective,
     OutsideClickDirective,
+    RequiredvalidatorDirective,
     ErrorsComponent
   ]
 })
