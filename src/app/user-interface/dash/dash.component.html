@@ -20,6 +20,22 @@
         </tbody>
       </table>
       <h3 class="dash__title subtitle">Your Accounts</h3>
+      <!-- <div *ngFor="let a of accounts">
+        <div class="dash__card card">
+          <div class="card__top-panel">
+            <span class="card__logo">AAA</span>
+            <span class="card__visa">VISA</span>
+          </div>
+
+          <div class="card__number">{{a.number}}</div>
+        </div>
+        <div class="dash__card-item-info">
+          <span>{{a.amount}} {{a.currency}}</span>
+          <span *ngIf="!a.blocked">Active</span>
+          <span *ngIf="a.blocked">Inctive</span>
+          <span>Details</span>
+        </div>
+      </div> -->
       <table class="dash__accounts tableLight">
           <tbody>
             <tr *ngFor="let a of accounts"

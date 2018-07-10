@@ -2,14 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': "Token eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrMzgwOTkgOTk5LTk5LTk5IiwidXNlcklkIjoiMSIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUzMDUzNTA2MH0.d4tA4Qfn8IGwT5zsRJgYdPrNp2H9OWJGuchzdcAAjfI"
-  })
-  };
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     'Authorization': "Token eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrMzgwOTkgOTk5LTk5LTk5IiwidXNlcklkIjoiMSIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUzMDUzNTA2MH0.d4tA4Qfn8IGwT5zsRJgYdPrNp2H9OWJGuchzdcAAjfI"
+//   })
+//   };
+
 @Injectable()
 export class UserService {
+/*  private headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': "Token eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrMzgwOTkgOTk5LTk5LTk5IiwidXNlcklkIjoiMSIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUzMDUzNTA2MH0.d4tA4Qfn8IGwT5zsRJgYdPrNp2H9OWJGuchzdcAAjfI"
+    });
+    {headers: this.headers}*/
+
   constructor( private http: HttpClient) { }
   getUserDetails(userId) {
     //console.log(httpOptions)
