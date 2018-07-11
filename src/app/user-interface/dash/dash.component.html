@@ -2,24 +2,12 @@
   <div class="wrapper-ui">
     <p class="dash__promo title">Welcome to MobiPay</p>
 
-
-    <table class="dash__prod tableLight">
-        <thead class="tableLight__head">
-          <tr class="">
-            <th class="tableLight__cell"></th>
-            <th class="tableLight__cell">Sell</th>
-            <th class="tableLight__cell">Buy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of products" class="">
-            <td class="tableLight__cell">{{p.currency}}</td>
-            <td class="tableLight__cell">{{p.sellCourse}}</td>
-            <td class="tableLight__cell">{{p.buyCourse}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 class="dash__title subtitle">Your Accounts</h3>
+<!-- <div class="dash__prod products">
+  <span *ngFor="let p of products" class="products__item">
+    {{p.currency}} {{p.sellCourse}}/{{p.buyCourse}}
+  </span>
+</div> -->
+      <!-- <h3 class="dash__title subtitle">Your Accounts</h3> -->
       <!-- <div *ngFor="let a of accounts">
         <div class="dash__card card">
           <div class="card__top-panel">
@@ -36,7 +24,9 @@
           <span>Details</span>
         </div>
       </div> -->
-      <table class="dash__accounts tableLight">
+
+
+      <!-- <table class="dash__accounts tableLight">
           <tbody>
             <tr *ngFor="let a of accounts"
             class="tableLight__row"
@@ -58,11 +48,38 @@
             </tr>
 
           </tbody>
-        </table>
+        </table> -->
+
+        <div class="dash__accounts accounts">
+          <div
+          class="accounts__item"
+          *ngFor="let a of accounts"
+          [routerLink]="['./account-item', a.id]"
+          >
+            <h4 class="accounts__item-num">
+              <span class="currency">
+                <span [attr.data-currency]="a.currency" class="currency__item">&#8381;</span>
+                <span data-currency="a.currency" *ngIf="a.currency == USD" class="currency__item">$</span>
+                <span data-currency="a.currency" *ngIf="a.currency == EUR" class="currency__item">&#8364;</span>
+                <span data-currency="a.currency" *ngIf="a.currency == UAH" class="currency__item">&#8372;</span>
+              </span>
+
+              {{a.number}}</h4>
+            <div class="accounts__item-bottom-panel">
+              <span class="accounts__item-amount">
+                {{a.amount}} {{a.currency}}
+              </span>
+              <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
+              <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
+            </div>
+          </div>
+        </div>
+
+
         <div *ngIf = "accounts.length !== 0"
         class="link-box">
           <a [routerLink]="['./transactions']" routerLinkActive=""
-          class="link-box__item link link_color_light" >
+          class="link-box__item link link_color_main" >
             Make a payment
           </a>
         </div>

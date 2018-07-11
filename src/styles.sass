@@ -210,15 +210,36 @@ body
         background-color: lighten($bgColor, 10%)
 .clear-btn
     display: inline-block
-    font-size: 1em
-    font-weight: 300
-    padding: .1em .6em
+    font-size: .8em
+    font-weight: 700
+    padding: .6em 3em
     border: 1px solid $mainColorLight
     border-radius: 15px
     color: $mainColorLight
-    transition: .2s ease-in
+    transition: color .3s ease-in
+    position: relative
+    z-index: 1
+    overflow: hidden
+    &::before
+      content: ""
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      z-index: -1
+      background-color: $mainColorLight
+      border-radius: inherit
+      transform: scale(0)
+      transform-origin: center
+      opacity: 0
+      transition: all .3s ease-in
     &:hover
-      border-radius: 5px
+      color: $mainColor
+      &::before
+        transform: scale(1)
+        opacity: 1
+
 .action-btn
   font-size: 1em
   font-family: $mainFont
@@ -226,6 +247,8 @@ body
   &_color
     &_danger
       color: $dangerColor
+    &_main
+      color: $mainColor
   &:hover,
   &:active
     text-decoration: underline
@@ -282,7 +305,7 @@ body
     height: 100%
   &__actions
     width: 505%
-    max-width: 648px
+    max-width: 348px
     position: absolute
     top: 100%
     right: 0
@@ -326,13 +349,13 @@ body
 
 .actions-list
   border: 1px solid $bgColor
-  color: $fontColor
   background-color: $mainColorLight
   box-shadow: $blocksShadow
   &__item
     padding: 1em 5%
     border-bottom: 1px solid $bgColor
-    overflow: hidden
+    color: $mainColor
+    //overflow: hidden
 
 
 

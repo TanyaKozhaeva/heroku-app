@@ -29,7 +29,7 @@
 <td *ngIf="!rechargeInput"
 (clickOutside)="showActions=false"
 class="table__cell table__cell_color_main table__cell_actions">
-  <button class="action-btn" (click)="showingActions()">Select action</button>
+  <button class="action-btn action-btn_color_main" (click)="showingActions()">Select action</button>
   <app-spinner
   [showSpinner]="showSpinner"></app-spinner>
   <div class="table__actions"
@@ -37,20 +37,20 @@ class="table__cell table__cell_color_main table__cell_actions">
   >
       <ul *ngIf="showActions" class="actions-list">
       <li class="actions-list__item">
-          <button (click)="showRechargeInput()" class="action-btn">Recharge an account</button>
+          <button (click)="showRechargeInput()" class="action-btn action-btn_color_main">Recharge an account</button>
       </li>
         <li class="actions-list__item">
-          <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn">Show cards</a>
+          <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn action-btn_color_main">Show cards</a>
         </li>
         <li class="actions-list__item">
-          <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn">Show transactions</a>
+          <a [routerLink]="['../../transactions', account.id]" routerLinkActive="" class="action-btn action-btn_color_main">Show transactions</a>
       </li>
         <li class="actions-list__item">
           <button (click)="deleteAccount()" class="action-btn action-btn_color_danger">Delete</button>
         </li>
         <li class="actions-list__item">
             <button *ngIf="!account.blocked" (click)="disableAccount()" class="action-btn action-btn_color_danger">Block</button>
-            <button *ngIf="account.blocked" (click)="disableAccount()" class="action-btn">Unlock</button>
+            <button *ngIf="account.blocked" (click)="disableAccount()" class="action-btn action-btn_color_danger">Unlock</button>
           </li>
       </ul>
   </div>

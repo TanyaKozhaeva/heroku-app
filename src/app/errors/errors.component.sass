@@ -1,13 +1,27 @@
 @import "../../sass/vars.sass"
 .errors
+  display: flex
+  flex-direction: column
+  justify-content: center
+  min-height: 4em
   padding: .8em 1.2em
-  font-size: .6em
+  font-size: .68em
   font-weight: 700
-  text-align: center
-  color: red
-  background-color: $mainColorLight
-  box-shadow: $blocksShadow
+  margin-bottom: 1.5rem
   border-radius: 10px
+  text-align: center
+  color: $fontColor
+  box-shadow: 0px 5px 26px 2px rgba(0, 0, 0, 0.13)
+  overflow: hidden
+  position: relative
+  &__icon
+    position: absolute
+    top: -6px
+    right: -25px
+    width: 35%
+    height: 130%
+    opacity: .5
+    fill: $dangerColor
   &__item
     margin-bottom: .3em
   &::before

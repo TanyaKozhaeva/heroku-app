@@ -9,20 +9,12 @@ export class JwtInterceptor implements HttpInterceptor {
         if (currentUser) {
             request = request.clone(
               {
-              /*  setHeaders: {
-                   Authorization: `Token ${currentUser.token}`
-                }*/
                headers: new HttpHeaders({
                   'Content-Type': 'application/json',
                   'Authorization': `Token ${currentUser.token}`
                 })
-              //headers: new HttpHeaders().set('Authorization', `Token ${currentUser.token}`)
-            //   headers:
-            //   new HttpHeaders()
-            //   .append('Authorization', `Token ${currentUser.token}`)
              });
         }
-        console.log(request)
        return next.handle(request);
     }
 }

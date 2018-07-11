@@ -5,5 +5,10 @@
         </svg>
         Mobipay
       </span>
-  <button class="header__logout-link" (click)="logout()">Logout</button>
+  <button class="header__logout-link" (click)="logout()">
+    <svg class="icon header__logout-img">
+      <use xlink:href="assets/svg/symbol/sprite.svg#logout"></use>
+    </svg>
+    <span>Logout</span>
+  </button>
 </header>

@@ -5,16 +5,20 @@ class="add-card-form add-card__form"
 #addCardForm="ngForm"
 id="addCardForm"
 novalidate>
-<div class="wrappp"> 
-<div class="add-card-form__input-wrap">
+<div class="add-card-form__wrapper">
     <label class="add-card-form__label" for="name"> Name:</label>
+    <span class="add-card-form__input-wrap1">
+    <span class="add-card-form__input-wrap2">
     <input class="add-card-form__input-name"
     type="text"
     name="Name"
     id="name"
     [(ngModel)]="cardModel.name" #Name="ngModel"
     requiredValidator
+    minlength="4"
     maxlength="15">
+  </span>
+</span>
 
 <label class="add-card-form__label" for="number">Number:</label>
   <input class="add-card-form__input-num"
@@ -39,13 +43,12 @@ novalidate>
   [textMask]="{mask: expiredMask}"
   requiredValidator>
 </div>
-</div>
 
 
-<div class="add-card__errors">
-      <app-errors [control]="Name"></app-errors>
+<div class="add-card-form__errors">
+    <app-errors [control]="Name"></app-errors>
     <app-errors [control]="Number"></app-errors>
-      <app-errors [control]="Expiration"></app-errors>
+    <app-errors [control]="Expiration"></app-errors>
 </div>
 
 

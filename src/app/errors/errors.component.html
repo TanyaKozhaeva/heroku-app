@@ -1,3 +1,8 @@
-<ul class="errors" *ngIf="shouldShowErrors()">
+<ul class="errors"
+@showErrors
+*ngIf="shouldShowErrors()">
+<svg class="icon errors__icon">
+  <use xlink:href="assets/svg/symbol/sprite.svg#warning"></use>
+</svg>
     <li class="errors__item" *ngFor="let error of listOfErrors()">{{error}}</li>
   </ul>

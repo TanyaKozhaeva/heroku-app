@@ -5,7 +5,8 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  keyframes
 } from '@angular/animations';
 
 @Component({
@@ -13,24 +14,23 @@ import {
   templateUrl: './errors.component.html',
   styleUrls: ['./errors.component.sass'],
   animations: [
-    trigger('showWindow', [
-      transition(':enter', [
-        style({
-          opacity: 0
-        }),
-        animate(".3s ease-in-out", style({
-          opacity: 1
-        }))
-      ]),
-      transition(':leave', [
-        style({
-          opacity: 1
-        }),
-        animate(".3s ease-in-out", style({
-          opacity: 0
-        }))
-      ])
-    ])
+    trigger('showErrors', [
+      state('in', style({transform: 'scaleX(0)'})),
+transition('void => *', [
+  animate('1s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
+    style({transform: 'scaleX(0)', offset: 0}),
+    style({transform: 'scaleX(1.1)', offset: 0.7}),
+    style({transform: 'scaleX(1)', offset: 1.0})
+  ]))
+]),
+transition('* => void', [
+  animate('.3s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
+    style({transform: 'scaleX(1)', offset: 0}),
+    style({transform: 'scaleX(1.1)', offset: 0.3}),
+    style({transform: 'scaleX(0)', offset: 1.0})
+  ]))
+])
+])
   ]
 })
 export class ErrorsComponent {
@@ -54,6 +54,7 @@ export class ErrorsComponent {
 
   @Input()
   private control: AbstractControlDirective | AbstractControl;
+  showErrors;
 
   shouldShowErrors(): boolean {
     return this.control &&
@@ -62,13 +63,13 @@ export class ErrorsComponent {
   }
 
   listOfErrors(): string[] {
-    //let name = this.control.name;
     return Object.keys(this.control.errors)
       .map(field =>
         this.getMessage(field, this.control.errors[field]));
   }
 
   private getMessage(type: string, params: any) {
+    this.showErrors = true;
     return ErrorsComponent.errorMessages[type](params);
   }
 }

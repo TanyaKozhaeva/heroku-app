@@ -10,6 +10,8 @@
     font-size: .9rem
     width: 300px
     margin: 0 auto 4.7rem
+    display: flex
+    justify-content: space-between
   &__title
     margin-bottom: .75rem
   &__text
@@ -24,3 +26,53 @@
 .card
   width: 18em
   height: 11.81em
+.accounts
+  &__item
+    padding: 1em
+    margin-bottom: $offset-one-side
+    border-radius: 5px
+    border: 1px solid $mainColorLight
+    text-align: left
+    background-color: transparent
+    box-shadow: $blocksShadow
+    color: $mainColorLight
+    &-num
+      font-size: 1.3em
+      font-weight: 700
+      margin-bottom: .7em
+      //color: $fontColor
+    &-bottom-panel
+      display: flex
+      justify-content: space-between
+    &-amount
+      flex: 1
+      font-size: 1.5em
+      //color: $mainColor
+      position: relative
+      &::after
+        content: ""
+        display: inline-block
+        width: 1px
+        height: 100%
+        position: absolute
+        right: 0
+        background-color: $mainColorLight
+    &-status
+      flex: 1
+      font-size: .8em
+      padding-left: 1em
+      //color: $mainColor
+.currency
+  &__item
+    display: inline-block
+    padding: .5em
+    line-height: .7
+    border-radius: 50%
+    &[data-currency="RUB"]
+      background-color: red
+    &[data-currency="USD"]
+      background-color: green
+    &[data-currency="EUR"]
+      background-color: darkblue
+    &[data-currency="UAH"]
+      background-color: orange
