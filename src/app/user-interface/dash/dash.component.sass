@@ -1,31 +1,21 @@
 @import "../../../sass/vars.sass"
 .dash
-  padding: 4.7rem $offset-one-side $offset
+  padding: 5.7rem $offset-one-side $offset
   text-align: center
-  background-image: $mainGradient
-  color: $mainColorLight
+  //background-color: $mainColorLight
+  background: url(./../../../assets/svg/balloon3.svg)
+  background-size: 53%
+  background-position: 109% -3%
+  background-repeat: no-repeat
   &__promo
-    margin-bottom: 3.7rem
-  &__prod
-    font-size: .9rem
-    width: 300px
-    margin: 0 auto 4.7rem
-    display: flex
-    justify-content: space-between
-  &__title
-    margin-bottom: .75rem
-  &__text
-    margin-bottom: $offset-one-side
+    color: $mainColor
+    margin-bottom: 4.7rem
   &__accounts
     width: 100%
     font-size: .8rem
     margin-bottom: $offset
     @media screen and (min-width: $break_xs)
       font-size: 1rem
-
-.card
-  width: 18em
-  height: 11.81em
 .accounts
   &__item
     padding: 1em
@@ -33,9 +23,11 @@
     border-radius: 5px
     border: 1px solid $mainColorLight
     text-align: left
-    background-color: transparent
+    background-color: $mainColor
     box-shadow: $blocksShadow
     color: $mainColorLight
+    position: relative
+    overflow: hidden
     &-num
       font-size: 1.3em
       font-weight: 700
@@ -61,18 +53,11 @@
       flex: 1
       font-size: .8em
       padding-left: 1em
-      //color: $mainColor
-.currency
-  &__item
-    display: inline-block
-    padding: .5em
-    line-height: .7
-    border-radius: 50%
-    &[data-currency="RUB"]
-      background-color: red
-    &[data-currency="USD"]
-      background-color: green
-    &[data-currency="EUR"]
-      background-color: darkblue
-    &[data-currency="UAH"]
-      background-color: orange
+    &-icon
+      position: absolute
+      right: -8%
+      top: -16%
+      width: 30%
+      height: 100%
+      transform: rotate(337deg)
+      fill: $mainColorLight

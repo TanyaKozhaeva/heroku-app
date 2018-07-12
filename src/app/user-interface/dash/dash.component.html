@@ -1,6 +1,9 @@
 <div class="dash vh-without-header">
   <div class="wrapper-ui">
     <p class="dash__promo title">Welcome to MobiPay</p>
+    <svg class="icon dash__icon">
+      <use xlink:href="assets/svg/symbol/sprite.svg#balloon3"></use>
+    </svg>
 
 <!-- <div class="dash__prod products">
   <span *ngFor="let p of products" class="products__item">
@@ -57,14 +60,8 @@
           [routerLink]="['./account-item', a.id]"
           >
             <h4 class="accounts__item-num">
-              <span class="currency">
-                <span [attr.data-currency]="a.currency" class="currency__item">&#8381;</span>
-                <span data-currency="a.currency" *ngIf="a.currency == USD" class="currency__item">$</span>
-                <span data-currency="a.currency" *ngIf="a.currency == EUR" class="currency__item">&#8364;</span>
-                <span data-currency="a.currency" *ngIf="a.currency == UAH" class="currency__item">&#8372;</span>
-              </span>
-
-              {{a.number}}</h4>
+              {{a.number}}
+            </h4>
             <div class="accounts__item-bottom-panel">
               <span class="accounts__item-amount">
                 {{a.amount}} {{a.currency}}
@@ -72,6 +69,23 @@
               <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
               <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
             </div>
+              <svg *ngIf="a.currency=='USD'"
+              class="icon accounts__item-icon">
+                <use xlink:href="assets/svg/symbol/sprite.svg#usd"></use>
+              </svg>
+              <svg *ngIf="a.currency=='EUR'"
+              class="icon accounts__item-icon">
+                <use xlink:href="assets/svg/symbol/sprite.svg#euro"></use>
+              </svg>
+              <svg *ngIf="a.currency=='UAH'"
+              class="icon accounts__item-icon">
+                <use xlink:href="assets/svg/symbol/sprite.svg#uah"></use>
+              </svg>
+              <svg *ngIf="a.currency=='RUB'"
+              class="icon accounts__item-icon">
+                <use xlink:href="assets/svg/symbol/sprite.svg#rub"></use>
+              </svg>
+
           </div>
         </div>
 
