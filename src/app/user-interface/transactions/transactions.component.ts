@@ -68,16 +68,17 @@ inputField = false;
 
 
  makePayment(){
-   this.loaderService.executeAction(true);
+   this.alertService.waitingResponse(true);
+  // this.loaderService.executeAction(true);
     this.accountsService.makePayment(this.transaction)
     .subscribe (res =>{
       this.alertService.success("Payment was sent", false);
       this.addCardForm.reset();
       this.getAccounts();
-      this.loaderService.executeAction(false);
+    //  this.loaderService.executeAction(false);
     },
     error => {
-      this.loaderService.executeAction(false);
+    //  this.loaderService.executeAction(false);
       this.alertService.error(error);
     })
   }

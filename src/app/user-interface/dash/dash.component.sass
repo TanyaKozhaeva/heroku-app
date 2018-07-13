@@ -2,61 +2,79 @@
 .dash
   padding: 5.7rem $offset-one-side $offset
   text-align: center
-  //background-color: $mainColorLight
+  position: relative
   background: url(./../../../assets/svg/balloon3.svg)
   background-size: 53%
   background-position: 109% -3%
   background-repeat: no-repeat
+  @media screen and (min-width: $break_md)
+    background-size: 28%
+    background-position: 76% -3%
+
   &__promo
     color: $mainColor
     margin-bottom: 4.7rem
   &__accounts
     width: 100%
-    font-size: .8rem
     margin-bottom: $offset
+    font-size: .8rem
     @media screen and (min-width: $break_xs)
       font-size: 1rem
+    @media screen and (min-width: $break_sm)
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+
+
 .accounts
   &__item
-    padding: 1em
+    flex: 1
+    flex-basis: 320px
+    padding: 1.3em 1em
+    box-sizing: border-box
     margin-bottom: $offset-one-side
     border-radius: 5px
-    border: 1px solid $mainColorLight
     text-align: left
     background-color: $mainColor
-    box-shadow: $blocksShadow
+    box-shadow: $blocksShadowSmall
     color: $mainColorLight
     position: relative
     overflow: hidden
+    max-width: 320px
+    @media screen and (max-width: #{$break_sm}-1)
+      max-width: 320px
+      margin: 0 auto $offset-one-side
+    @media screen and (min-width: $break_sm)
+      &:nth-child(odd)
+        margin-right: $offset-one-side
+    &-top-panel
+      width: 76%
+      display: flex
+      align-items: center
+      margin-bottom: .7em
     &-num
+      flex: 1
       font-size: 1.3em
       font-weight: 700
-      margin-bottom: .7em
-      //color: $fontColor
-    &-bottom-panel
-      display: flex
-      justify-content: space-between
-    &-amount
-      flex: 1
-      font-size: 1.5em
-      //color: $mainColor
-      position: relative
-      &::after
-        content: ""
-        display: inline-block
-        width: 1px
-        height: 100%
-        position: absolute
-        right: 0
-        background-color: $mainColorLight
     &-status
       flex: 1
-      font-size: .8em
-      padding-left: 1em
+      font-size: 1em
+      text-align: right
+    &-bottom-panel
+      width: 76%
+      padding: 1em .4em
+      box-sizing: border-box
+      border-radius: 5px
+      border: 1px solid $mainColorLight
+    &-amount
+      font-size: 1.5em
+      font-weight: 700
+    &-currency
+      font-weight: 300
     &-icon
       position: absolute
-      right: -8%
-      top: -16%
+      right: -1.3em
+      top: -2.2em
       width: 30%
       height: 100%
       transform: rotate(337deg)

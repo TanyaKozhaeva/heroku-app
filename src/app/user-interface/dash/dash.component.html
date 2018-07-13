@@ -1,73 +1,26 @@
 <div class="dash vh-without-header">
   <div class="wrapper-ui">
     <p class="dash__promo title">Welcome to MobiPay</p>
-    <svg class="icon dash__icon">
-      <use xlink:href="assets/svg/symbol/sprite.svg#balloon3"></use>
-    </svg>
-
-<!-- <div class="dash__prod products">
-  <span *ngFor="let p of products" class="products__item">
-    {{p.currency}} {{p.sellCourse}}/{{p.buyCourse}}
-  </span>
-</div> -->
-      <!-- <h3 class="dash__title subtitle">Your Accounts</h3> -->
-      <!-- <div *ngFor="let a of accounts">
-        <div class="dash__card card">
-          <div class="card__top-panel">
-            <span class="card__logo">AAA</span>
-            <span class="card__visa">VISA</span>
-          </div>
-
-          <div class="card__number">{{a.number}}</div>
-        </div>
-        <div class="dash__card-item-info">
-          <span>{{a.amount}} {{a.currency}}</span>
-          <span *ngIf="!a.blocked">Active</span>
-          <span *ngIf="a.blocked">Inctive</span>
-          <span>Details</span>
-        </div>
-      </div> -->
-
-
-      <!-- <table class="dash__accounts tableLight">
-          <tbody>
-            <tr *ngFor="let a of accounts"
-            class="tableLight__row"
-            [class.tableLight__row_disable]="a.blocked"
-            >
-              <td class="tableLight__cell">{{a.number}}</td>
-              <td class="tableLight__cell">{{a.amount}} {{a.currency}}</td>
-              <td *ngIf="!a.blocked" class="tableLight__cell">
-                <a [routerLink]="['./account-item', a.id]" class="clear-btn">Details</a>
-              </td>
-              <td *ngIf="a.blocked" class="tableLight__cell">
-                Blocked
-              </td>
-            </tr>
-            <tr *ngIf="accounts.length === 0"
-            class="tableLight__row"
-            >
-            <td class="tableLight__cell text" colspan="3">You have no accounts</td>
-            </tr>
-
-          </tbody>
-        </table> -->
-
-        <div class="dash__accounts accounts">
-          <div
-          class="accounts__item"
+        <div class="dash__accounts accounts"
+        [@showAccounts]='accounts.length'>
+          <div  class="accounts__item"
           *ngFor="let a of accounts"
           [routerLink]="['./account-item', a.id]"
           >
+          <div class="accounts__item-top-panel">
             <h4 class="accounts__item-num">
               {{a.number}}
             </h4>
+            <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
+            <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
+          </div>
             <div class="accounts__item-bottom-panel">
               <span class="accounts__item-amount">
-                {{a.amount}} {{a.currency}}
+                {{a.amount}}
               </span>
-              <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
-              <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
+              <span class="accounts__item-currency">
+                {{a.currency}}
+              </span>
             </div>
               <svg *ngIf="a.currency=='USD'"
               class="icon accounts__item-icon">
@@ -91,6 +44,7 @@
 
 
         <div *ngIf = "accounts.length !== 0"
+        @showBtn
         class="link-box">
           <a [routerLink]="['./transactions']" routerLinkActive=""
           class="link-box__item link link_color_main" >

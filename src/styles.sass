@@ -186,7 +186,7 @@ body
   padding: 1.1em
   box-sizing: border-box
   font-weight: 700
-  border-radius: 15px
+  border-radius: 8px
   text-align: center
   color: $mainColorLight
   transition: background-color .6s
@@ -195,14 +195,14 @@ body
       box-shadow: $blocksShadow
   &_color
     &_main
-      background-color: $btnColor
+      background-color: #34aa54
       &:disabled
-        background-color: lighten($fontColor, 30%)
+        background-color: lighten(#34aa54, 30%)
     &_accent
-      background-color: $mainColor
+      background-color: $btnColor
       color: $mainColorLight
       &:disabled
-        background-color: lighten($mainColor, 30%)
+        background-color: lighten($fontColor, 30%)
     &_light
       background-color: $bgColor
       color: $fontColor
