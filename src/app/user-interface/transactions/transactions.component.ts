@@ -6,11 +6,60 @@ import { AlertService } from '../../alert/alert.service';
 import { NgForm } from '@angular/forms';
 import { LoaderService } from '../../loader/loader.service';
 import { AccountsService } from '../../services/accounts.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  stagger,
+  query
+} from '@angular/animations';
 
 
 @Component({
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.sass']
+  styleUrls: ['./transactions.component.sass'],
+  animations: [
+    trigger('sourceAccountsDisplay', [
+      transition(':enter', [
+        style({
+          transform: 'scaleY(0)'
+        }),
+        animate(".3s .6s ease-in-out", style({
+          opacity: 1,
+          transform: 'scaleY(1)'
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          transform: 'scaleY(1)'
+        }),
+        animate(".1s ease-in-out", style({
+          transform: 'scaleY(0)'
+        }))
+      ])
+    ]),
+    trigger('destAccountsDisplay', [
+      transition(':enter', [
+        style({
+          transform: 'scaleY(0)'
+        }),
+        animate(".3s .6s ease-in-out", style({
+          opacity: 1,
+          transform: 'scaleY(1)'
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          transform: 'scaleY(1)'
+        }),
+        animate(".1s ease-in-out", style({
+          transform: 'scaleY(0)'
+        }))
+      ])
+    ])
+  ]
 })
 export class TransactionsComponent implements OnInit, DoCheck {
 @ViewChild('paymentForm') public addCardForm: NgForm;
@@ -21,6 +70,12 @@ accounts:any[] = [];
 transactions:any[] = [];
 transaction = new Transaction();
 inputField = false;
+sourceAccount;
+destinationAccount;
+transactionSum = 0;
+btnDisable = true;
+sourceAccountsDisplay = false;
+destinationAccountsDisplay = false;
 
 
 
@@ -42,6 +97,9 @@ inputField = false;
 
   ngDoCheck(){
     this.getCurrency();
+    if(this.sourceAccount && this.destinationAccount && this.transactionSum > 0){
+      this.btnDisable = false;
+    }
   }
 
   private getAccounts(){
@@ -50,12 +108,20 @@ inputField = false;
       this.accounts = res;
       this.transaction.sourceName = this.accounts[0].number;
       this.loaderService.executeAction(false);
+      this.sourceAccount = this.accounts[0];
     })
   }
 
   enteringRecipientNumber(){
     this.transaction.destinationName = undefined;
     this.inputField ? this.inputField = false : this.inputField = true;
+  }
+
+  showSourceAccountList(){
+    this.sourceAccountsDisplay ? this.sourceAccountsDisplay = false : this.sourceAccountsDisplay = true;
+  }
+  showDestAccountList(){
+    this.destinationAccountsDisplay ? this.destinationAccountsDisplay = false : this.destinationAccountsDisplay = true;
   }
 
   private getCurrency() {

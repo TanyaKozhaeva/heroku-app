@@ -1,6 +1,107 @@
 <div class="payments-block vh-without-header">
   <div class="wrapper-ui">
-    <form class="form payments-block__form"
+    <span class="transfer-form__label">From:</span>
+    <div *ngIf="sourceAccount"
+    tabindex="0"
+    (click)="showSourceAccountList()"
+    class="transfer-form__field">
+      <div class="transfer-form__field-select"
+      *ngIf="!sourceAccountsDisplay">
+      <div class="transfer-form__field-panel-top">
+        <span class="transfer-form__field-number">
+          {{sourceAccount.number}}
+        </span>
+      </div>
+        <div class="transfer-form__field-panel-bottom">
+          <p class="transfer-form__field-text">You pay from</p>
+          <span class="transfer-form__field-amount">{{sourceAccount.amount}} {{sourceAccount.currency}}</span>
+      </div>
+    </div>
+    <div *ngIf="sourceAccountsDisplay"
+    @sourceAccountsDisplay
+    class="transfer-form__accounts">
+      <div class="transfer-form__accounts-item"
+      *ngFor="let a of accounts"
+      (click)="sourceAccount=a">
+      <span class="transfer-form__field-number">{{a.number}}</span>
+      <span class="transfer-form__field-amount">
+        {{a.amount}} {{a.currency}}
+      </span>
+    </div>
+    </div>
+    </div>
+
+<span class="transfer-form__label">To:</span>
+    <div class="transfer-form__field"
+    (click)="showDestAccountList()"
+    tabindex="0">
+    <div *ngIf="!destinationAccount" class="transfer-form__field-start">
+      <div class="transfer-form__field-panel-top">
+        Payee account
+      </div>
+      <p class="transfer-form__field-text">You transfer money to</p>
+    </div>
+      <div *ngIf="!destinationAccountsDisplay"
+      attr.tabindex="1"
+      class="transfer-form__field-select">
+      <div *ngIf="destinationAccount"
+      class="transfer-form__field-panel-top">
+        <span class="transfer-form__field-number">
+          {{destinationAccount.number}}
+        </span>
+      </div>
+        <div *ngIf="destinationAccount" class="transfer-form__field-panel-bottom">
+          <p class="transfer-form__field-text">You transfer money to</p>
+          <span class="transfer-form__field-amount">
+            {{destinationAccount.amount}} {{destinationAccount.currency}}
+          </span>
+      </div>
+    </div>
+    <div *ngIf="destinationAccountsDisplay"
+    @destAccountsDisplay
+    class="transfer-form__accounts">
+    <div class="">
+      <input type="text" class=""
+        name="recipientManualInput"
+        #recipientManualInput="ngModel"
+        placeholder="Input the recipient"
+        [(ngModel)]="transaction.destinationName"
+        required
+        cardValidator
+        [textMask]="{mask: numberMask}"
+        autofocus>
+        <div class="form__errors">
+            <app-errors [control]="recipientManualInput"></app-errors>
+        </div>
+    </div>
+      <div class="transfer-form__accounts-item"
+      *ngFor="let a of accounts"
+      (click)="destinationAccount=a">
+      <span class="transfer-form__field-number">{{a.number}}</span>
+      <span class="transfer-form__field-amount">{{a.amount}} {{a.currency}}</span>
+    </div>
+    </div>
+    </div>
+
+    <div class="transfer-form__field">
+        <label class="transfer-form__field-text transfer-form__field-label" for="transactionAmount">Transfer amount</label>
+            <input type="number"
+            class="transfer-form__field-input"
+            name="transactionAmount"
+            [(ngModel)]="transactionSum"
+            #transactionAmount="ngModel"
+            id="transactionAmount"
+            required>
+            <span *ngIf="sourceAccount">{{sourceAccount.currency}}</span>
+            <div class="transfer-form__field-background"></div>
+    </div>
+
+
+    <app-errors [control]="transactionAmount"></app-errors>
+    <button type="button"
+    *ngIf="!btnDisable"
+    class="link-box__item link link_color_main">Transfer</button>
+    <!-- <form class="form payments-block__form"
     name="paymentForm"
     (ngSubmit)="paymentForm.valid && makePayment()"
     #paymentForm="ngForm" novalidate>
@@ -11,7 +112,7 @@
         [(ngModel)]="transaction.sourceName"
         #sourceName="ngModel"
         id="sourceName">
-        <option *ngFor="let a of accounts" [disabled]="a.blocked || a.amount == 0" value="{{ a.number }}" class="">
+        <option *ngFor="let a of accounts"  [disabled]="a.blocked || a.amount == 0" value="{{ a.number }}" class="">
           {{a.number}} {{a.amount}} {{a.currency}}
         </option>
       </select>
@@ -83,7 +184,7 @@
   [disabled]="!paymentForm.valid"
   class="link-box__item link link_color_main">Transfer</button>
 </div>
-    </form>
+    </form> -->
 
     <!-- <select class="form__input form__input_color_dark"
       name="recipientAccount"

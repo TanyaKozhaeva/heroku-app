@@ -22,3 +22,72 @@
     font-size: 1.1rem
     font-weight: 700
     color: $fontColor
+.transfer-form
+  &__field
+    max-width: 320px
+    padding: 1.3em 1em
+    box-sizing: border-box
+    border-radius: 5px
+    text-align: left
+    background-color: $bgColor
+    box-shadow: $blocksShadowSmall
+    color: $fontColor
+    transition: .3s ease-in-out
+    position: relative
+    &:focus
+      background-color: $mainColor
+      color: $mainColorLight
+
+    &-panel-top
+      font-size: 1.3em
+      font-weight: 700
+      margin-bottom: .2em
+    &-panel-bottom
+      display: flex
+      justify-content: space-between
+    &-text
+      font-weight: 300
+      font-size: .8em
+    &-amount
+      font-weight: 600
+      font-size: .8em
+    &-label
+      display: inline-block
+      margin-bottom: .5em
+      position: relative
+      z-index: 2
+    &-input
+      width: 100%
+      padding: .8em
+      box-sizing: border-box
+      background-color: inherit
+      border: 1px solid $fontColor
+      border-radius: 3px
+      color: inherit
+      font-weight: 700
+      position: relative
+      z-index: 2
+      transition: .3s ease-in-out
+      &:focus
+        background-color: $mainColor
+        color: $mainColorLight
+        border-color: $mainColorLight
+        & ~ .transfer-form__field-background
+          background-color: $mainColor
+    &-background
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      border-radius: 5px
+      background-color: $bgColor
+      transition: .3s ease-in-out
+
+  &__accounts-item
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: .3em 0
+    &:not(:last-child)
+      border-bottom: 1px solid $mainColorLight

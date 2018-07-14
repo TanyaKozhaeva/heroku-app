@@ -15,7 +15,7 @@ const userRoutes: Routes = [
       path: 'user',
       //path: '',
       component: UserInterfaceComponent,
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard], 
       //canLoad: [AuthGuard],
       children: [
      { path: '', component: DashComponent },
