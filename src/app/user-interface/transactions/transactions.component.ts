@@ -71,11 +71,12 @@ transactions:any[] = [];
 transaction = new Transaction();
 inputField = false;
 sourceAccount;
-destinationAccount;
+//destinationAccount;
 transactionSum = 0;
 btnDisable = true;
 sourceAccountsDisplay = false;
 destinationAccountsDisplay = false;
+inputVisible = false;
 
 
 
@@ -122,6 +123,16 @@ destinationAccountsDisplay = false;
   }
   showDestAccountList(){
     this.destinationAccountsDisplay ? this.destinationAccountsDisplay = false : this.destinationAccountsDisplay = true;
+    console.log(this.inputVisible)
+    console.log(this.destinationAccountsDisplay)
+  }
+  showInput(){
+    if(!this.inputVisible && this.transaction.destinationName){
+      this.transaction.destinationName = null;
+    }
+    this.inputVisible ? this.inputVisible = false : this.inputVisible = true;
+console.log(this.inputVisible)
+console.log(this.destinationAccountsDisplay)
   }
 
   private getCurrency() {

@@ -56,6 +56,7 @@
       margin-bottom: .5em
       position: relative
       z-index: 2
+      color: $bgColor
     &-input
       width: 100%
       padding: .8em
@@ -83,7 +84,27 @@
       border-radius: 5px
       background-color: $bgColor
       transition: .3s ease-in-out
-
+  &__accounts
+    background-color: $mainColor
+    &-input
+      width: 85%
+      padding: .8em
+      box-sizing: border-box
+      margin-right: 4%
+      background-color: inherit
+      border: 1px solid $mainColorLight
+      border-radius: 3px
+      color: $mainColorLight
+      font-weight: 700
+      &::placeholder
+        color: inherit
+        font-weight: 300
+    &-btn
+      vertical-align: middle
+    &-icon
+      width: 2em
+      height: 2em
+      fill: $mainColorLight
   &__accounts-item
     display: flex
     justify-content: space-between
