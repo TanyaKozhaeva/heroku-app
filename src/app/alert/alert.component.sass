@@ -3,21 +3,23 @@
   position: fixed
   top: 0
   left: 0
-  width: 100%
-  height: 100%
+  width: 100vw
+  height: 100vh
   background-color: $mainColorLight
   z-index: 5000
   &__marker
     width: 112px
     height: 112px
     border-radius: 50%
-    position: absolute
-    top: 30%
+    position: fixed
+    top: 35vh
     left: 50%
-    transform: translateX(-50%)
+    margin-top: -56px
+    margin-left: -56px
     z-index: 5001
     background-color: $mainColor
     box-shadow: $blocksShadow
+    overflow: hidden
   &__icon
     width: 64px
     height: 64px
@@ -27,15 +29,18 @@
     margin-top: -32px
     margin-left: -32px
     fill: $mainColorLight
+    &_danger
+      fill: $dangerColor
     &_dots
       animation: shake .7s ease-in-out infinite
   &__text
-    position: absolute
-    top: 50%
+    position: fixed
+    top: 55vh
     width: 100%
     text-align: center
     font-weight: 700
     color: $fontColor
+    z-index: 5000
 
 
 @keyframes shake

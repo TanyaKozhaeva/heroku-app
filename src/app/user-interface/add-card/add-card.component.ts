@@ -42,15 +42,14 @@ cardModel = new Card();
 
 
    addCard(){
-    this.loaderService.executeAction(true);
+    this.alertService.waitingResponse(true);
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
+      this.alertService.success("Card " + this.cardModel.name + " successfully added!", true);
       this.addCardForm.reset();
-      this.loaderService.executeAction(false);
-      this.alertService.success("Card successfully added!", true);
+
      },
      error => {
-      this.loaderService.executeAction(false);
       this.alertService.error("Something went wrong. Please try again later");
     })
      }

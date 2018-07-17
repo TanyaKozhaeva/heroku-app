@@ -3,35 +3,23 @@
   padding: $offset $offset-one-side
   display: flex
   flex-direction: column
-  &__controls
-    margin-top: auto
 
   &__form
-    max-width: 580px
-    color: $fontColor
+    max-width: 320px
     margin: 0 auto $offset
-  input[name="transactionAmount"]
-    width: 70%
-  input[name="transactionCurrency"]
-    width: 25%
-    text-align: center
-    background-color: $bgColor
-    border: none
-  &__form-label
-    display: block
-    font-size: 1.1rem
-    font-weight: 700
-    color: $fontColor
 .transfer-form
   &__field
     max-width: 320px
     padding: 1.3em 1em
     box-sizing: border-box
+    margin-bottom: 1.5em
     border-radius: 5px
     text-align: left
     background-color: $bgColor
     box-shadow: $blocksShadowSmall
     color: $fontColor
+    outline: none
+    cursor: pointer
     transition: .3s ease-in-out
     position: relative
     &:focus
@@ -48,18 +36,18 @@
     &-text
       font-weight: 300
       font-size: .8em
+    &-switcher
+      font-size: 1em
+      font-weight: 300
+      color: $mainColorLight
+      text-decoration: underline
+
     &-amount
       font-weight: 600
       font-size: .8em
-    &-label
-      display: inline-block
-      margin-bottom: .5em
-      position: relative
-      z-index: 2
-      color: $bgColor
     &-input
       width: 100%
-      padding: .8em
+      padding: .8em 3em .8em .8em
       box-sizing: border-box
       background-color: inherit
       border: 1px solid $fontColor
@@ -75,6 +63,17 @@
         border-color: $mainColorLight
         & ~ .transfer-form__field-background
           background-color: $mainColor
+        & ~ .transfer-form__field-currency
+          color: $mainColorLight
+        &::placeholder
+          color: $mainColorLight
+
+    &-currency
+      position: absolute
+      top: 50%
+      right: 1.6em
+      transform: translateY(-50%)
+      z-index: 20
     &-background
       position: absolute
       top: 0
@@ -84,31 +83,46 @@
       border-radius: 5px
       background-color: $bgColor
       transition: .3s ease-in-out
-  &__accounts
-    background-color: $mainColor
-    &-input
-      width: 85%
-      padding: .8em
-      box-sizing: border-box
-      margin-right: 4%
-      background-color: inherit
-      border: 1px solid $mainColorLight
-      border-radius: 3px
-      color: $mainColorLight
-      font-weight: 700
-      &::placeholder
-        color: inherit
-        font-weight: 300
-    &-btn
-      vertical-align: middle
-    &-icon
-      width: 2em
-      height: 2em
-      fill: $mainColorLight
-  &__accounts-item
+  &__label
+    display: inline-block
+    font-size: .8em
+    padding-left: 1.2em
+    margin-bottom: .5em
+    font-weight: 300
+    position: relative
+    z-index: 2
+    color: $fontColor
+  &__btn
+    margin-top: 3em
+.transfer-accounts
+  background-color: $mainColor
+  color: $mainColorLight
+  text-align: center
+  &__input
+    width: 85%
+    padding: .8em
+    box-sizing: border-box
+    margin-right: 4%
+    margin-bottom: 1em
+    background-color: inherit
+    border: 1px solid $mainColorLight
+    border-radius: 3px
+    color: $mainColorLight
+    font-weight: 700
+    &::placeholder
+      color: inherit
+      font-weight: 300
+  &__btn
+    vertical-align: middle
+  &__icon
+    width: 1.8em
+    height: 1.8em
+    fill: $mainColorLight
+  &__item
     display: flex
     justify-content: space-between
     align-items: center
     padding: .3em 0
+    cursor: pointer
     &:not(:last-child)
       border-bottom: 1px solid $mainColorLight

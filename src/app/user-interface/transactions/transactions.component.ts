@@ -71,12 +71,12 @@ transactions:any[] = [];
 transaction = new Transaction();
 inputField = false;
 sourceAccount;
-//destinationAccount;
-transactionSum = 0;
-btnDisable = true;
+destinationAccount;
+transactionSum;
 sourceAccountsDisplay = false;
 destinationAccountsDisplay = false;
 inputVisible = false;
+
 
 
 
@@ -98,9 +98,6 @@ inputVisible = false;
 
   ngDoCheck(){
     this.getCurrency();
-    if(this.sourceAccount && this.destinationAccount && this.transactionSum > 0){
-      this.btnDisable = false;
-    }
   }
 
   private getAccounts(){
@@ -123,16 +120,12 @@ inputVisible = false;
   }
   showDestAccountList(){
     this.destinationAccountsDisplay ? this.destinationAccountsDisplay = false : this.destinationAccountsDisplay = true;
-    console.log(this.inputVisible)
-    console.log(this.destinationAccountsDisplay)
   }
   showInput(){
-    if(!this.inputVisible && this.transaction.destinationName){
-      this.transaction.destinationName = null;
+    if(!this.inputVisible && this.destinationAccount){
+      this.destinationAccount = null;
     }
     this.inputVisible ? this.inputVisible = false : this.inputVisible = true;
-console.log(this.inputVisible)
-console.log(this.destinationAccountsDisplay)
   }
 
   private getCurrency() {
@@ -146,16 +139,17 @@ console.log(this.destinationAccountsDisplay)
 
  makePayment(){
    this.alertService.waitingResponse(true);
-  // this.loaderService.executeAction(true);
+   this.transaction.sourceName = this.sourceAccount.number;
+   this.transaction.destinationName = this.destinationAccount;
+   this.transaction.sum = this.transactionSum;
+   this.transaction.currency = this.sourceAccount.currency;
     this.accountsService.makePayment(this.transaction)
     .subscribe (res =>{
-      this.alertService.success("Payment was sent", false);
+      this.alertService.success(this.transaction.sum + " " + this.transaction.currency + " " + "transfered", false);
       this.addCardForm.reset();
       this.getAccounts();
-    //  this.loaderService.executeAction(false);
     },
     error => {
-    //  this.loaderService.executeAction(false);
       this.alertService.error(error);
     })
   }

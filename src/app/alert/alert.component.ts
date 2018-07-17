@@ -19,7 +19,7 @@ import {
         style({
           opacity: 0
         }),
-        animate(".8s 3s ease-in-out", style({
+        animate(".5s ease-in-out", style({
           opacity: 1
         }))
       ]),
@@ -32,47 +32,56 @@ import {
         }))
       ])
     ]),
-    trigger('showMarker', [
-      state('in', style({transform: 'translateX(-1500px)'})),
-transition('void => *', [
-  animate('2s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
-    style({transform: 'translateX(-1500px) skewX(30deg) scaleX(1.3)' , offset: 0}),
-    style({transform: 'translateX(30px) skewX(0) scaleX(.9)', offset: 0.7}),
-    style({transform: 'translateX(0) skewX(0) scaleX(1)', offset: 1.0})
-  ]))
-]),
-transition('* => void', [
-  animate('1s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
-    style({transform: 'translateX(0) skewX(0) scaleX(1)', offset: 0}),
-    style({transform: 'translateX(-30px) skewX(-5deg) scaleX(.9)', offset: 0.3}),
-    style({transform: 'translateX(-1500px) skewX(30deg) scaleX(1.3)', offset: 1.0})
-  ]))
-])
-]),
-trigger('showIcon', [
-  state('in', style({transform: 'translateX(-1500px)'})),
-transition('void => *', [
-animate('2s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
-style({transform: 'translateX(-1500px) skewX(30deg) scaleX(1.3)' , offset: 0}),
-style({transform: 'translateX(30px) skewX(0) scaleX(.9)', offset: 0.7}),
-style({transform: 'translateX(0) skewX(0) scaleX(1)', offset: 1.0})
-]))
-]),
-transition('* => void', [
-animate('1s cubic-bezier(0.165, 0.840, 0.440, 1.000)', keyframes([
-style({transform: 'translateX(0) skewX(0) scaleX(1)', offset: 0}),
-style({transform: 'translateX(-30px) skewX(-5deg) scaleX(.9)', offset: 0.3}),
-style({transform: 'translateX(-1500px) skewX(30deg) scaleX(1.3)', offset: 1.0})
-]))
-])
-]),
+trigger('showMarker', [
+    transition(':enter', [
+      style({
+        opacity: 0,
+        transform: 'scale(0.005)'
+      }),
+      animate("1s .8s ease-in-out", style({
+        opacity: 1,
+        transform: 'scale(1)'
+      }))
+    ]),
+    transition(':leave', [
+      style({
+        opacity: 1,
+        transform: 'scale(1)'
+      }),
+      animate("1s ease-in-out", style({
+        opacity: 0,
+        transform: 'scale(0.005)'
+      }))
+    ])
+  ]),
+  trigger('showIcon', [
+      transition(':enter', [
+        style({
+          transform: 'translateX(-1500px)'
+        }),
+        animate("1s .8s ease-in-out", style({
+          transform: 'translateX(0)'
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1,
+          transform: 'translateX(0)'
+        }),
+        animate("1s ease-in-out", style({
+          opacity: 0,
+          transform: 'translateX(-1500px)'
+        }))
+      ])
+    ]),
+
 trigger('showMessage', [
     transition(':enter', [
       style({
         opacity: 0,
-        transform: 'translateY(-1000px)'
+        transform: 'translateY(1000px)'
       }),
-      animate("1s ease-in-out", style({
+      animate("1s 1s ease-in-out", style({
         opacity: 1,
         transform: 'translateY(0)'
       }))
@@ -84,31 +93,10 @@ trigger('showMessage', [
       }),
       animate("1s ease-in-out", style({
         opacity: 0,
-        transform: 'translateY(-1000px)'
+        transform: 'translateY(1000px)'
       }))
     ])
   ])
-    // trigger('showMarker', [
-    //   transition(':enter', [
-    //     style({
-    //       opacity: 0,
-    //       transform: 'scale(5)'
-    //     }),
-    //     animate("5s 2s ease-in-out", style({
-    //       opacity: 0,
-    //       background: 'red',
-    //       transform: 'scale(1)'
-    //     }))
-    //   ]),
-    //   transition(':leave', [
-    //     style({
-    //       opacity: 1
-    //     }),
-    //     animate(".5s ease-in-out", style({
-    //       opacity: 0
-    //     }))
-    //   ])
-    // ])
   ]
   // animations: [
   //   trigger('message', [
@@ -166,7 +154,8 @@ export class AlertComponent implements OnInit {
   ngOnInit() {
     this.alertService.getMessage()
     .subscribe(message => {
-      if(message.type == "waitingResponse"){
+      console.log(message)
+      if(message && message.type == "waitingResponse"){
         this.showWrapper = true;
         this.showMarker = true;
         this.showIcon = true;
@@ -178,7 +167,10 @@ export class AlertComponent implements OnInit {
   }
 
   close(){
-    this.message = false;
+    this.showWrapper = false;
+    this.showMarker = false;
+    this.showIcon = false;
+    this.showMessage = false;
   }
 
 }
