@@ -23,7 +23,7 @@ class="message__marker">
 </div>
 <p @showMessage
 (click)="close()"
-*ngIf="showMessage && message"
+*ngIf="showMessage && message && message.text"
 class="message__text">{{message.text}}</p>
 
 

@@ -1,0 +1,51 @@
+@import "../../../sass/vars.sass"
+.recharge-account
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 5000
+  background-color: rgba(0, 0, 0, .8)
+
+  &__wrap
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  &__input-wrap
+    width: 300px
+    padding: 1.3em 1em
+    box-sizing: border-box
+    border-radius: 5px
+    background-color: $mainColor
+    box-shadow: $blocksShadowSmall
+    color: $mainColorLight
+    outline: none
+    position: relative
+  &__input
+    width: 84%
+    padding: .8em 2.5em .8em .8em
+    box-sizing: border-box
+    margin-right: 4%
+    font-size: 19px
+    background-color: inherit
+    border: 1px solid $mainColorLight
+    border-radius: 3px
+    color: inherit
+    font-weight: 700
+  &__currency
+    position: absolute
+    top: 50%
+    right: 22%
+    transform: translateY(-50%)
+    z-index: 20
+    font-weight: 300
+  &__btn
+    vertical-align: middle
+  &__icon
+    width: 1.8em
+    height: 1.8em
+    fill: $mainColorLight
+  &__errors
+    margin-top: 1.5em

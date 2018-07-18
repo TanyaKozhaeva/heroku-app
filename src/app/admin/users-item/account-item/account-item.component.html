@@ -1,43 +1,20 @@
 <td class="table__cell">{{account.number}}</td>
-<td *ngIf="!rechargeInput" class="table__cell">{{account.amount}}  {{account.currency}}</td>
-<td colspan="2" *ngIf="rechargeInput" class="table__cell">
-  <div class="table__input-box recharge-account">
-    <div class="recharge-account__wrap">
-      <input class="recharge-account__input" type="number"
-      name="accountAmount"
-      [(ngModel)]="account.amount"
-      #accountAmount="ngModel"
-      amountValidator
-      minlength="0"
-      required/>
-      <div class="recharge-account__errors">
-        <app-errors [control]="accountAmount"></app-errors>
-      </div>
-    </div>
-      <span class="recharge-account__currency">{{account.currency}}</span>
+<td class="table__cell">{{account.amount}}  {{account.currency}}</td>
 
-
-      <button type="button" *ngIf="!showSpinner" [disabled]="!accountAmount.valid" class="recharge-account__btn" (click)="rechargeAccount()">
-        <span class="hidden">Recharge an account</span>
-        <svg class="icon recharge-account__icon recharge-account__icon_success">
-            <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
-        </svg>
-      </button>
-  </div>
-
-</td>
-<td *ngIf="!rechargeInput"
+<td
 (clickOutside)="showActions=false"
 class="table__cell table__cell_color_main table__cell_actions">
-  <button class="action-btn action-btn_color_main" (click)="showingActions()">Select action</button>
+  <button class="action-btn action-btn_color_main"
+  (click)="showingActions()">Select action</button>
   <app-spinner
   [showSpinner]="showSpinner"></app-spinner>
   <div class="table__actions"
+  *ngIf="!rechargeInput"
   [@showActions]="showActions"
   >
       <ul *ngIf="showActions" class="actions-list">
       <li class="actions-list__item">
-          <button (click)="showRechargeInput()" class="action-btn action-btn_color_main">Recharge an account</button>
+          <button (click)="rechargeAccount()" class="action-btn action-btn_color_main">Recharge an account</button>
       </li>
         <li class="actions-list__item">
           <a [routerLink]="['../../cards', account.id]" routerLinkActive="" class="action-btn action-btn_color_main">Show cards</a>

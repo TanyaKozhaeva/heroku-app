@@ -42,10 +42,10 @@ cardModel = new Card();
 
 
    addCard(){
-    this.alertService.waitingResponse(true);
+    this.alertService.waitingResponse();
      this.cardsService.addCard(this.cardModel, this.accountId)
      .subscribe(res => {
-      this.alertService.success("Card " + this.cardModel.name + " successfully added!", true);
+      this.alertService.success("Card " + '"' + this.cardModel.name + '"' + " successfully added!");
       this.addCardForm.reset();
 
      },

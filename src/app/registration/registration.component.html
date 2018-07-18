@@ -14,7 +14,7 @@ novalidate class="form registration__form">
 <div class="form__errors">
   <app-errors [control]="firstName"></app-errors>
 </div>
-  
+
 </div>
 
 
@@ -29,7 +29,7 @@ novalidate class="form registration__form">
 <div class="form__errors">
   <app-errors [control]="lastName"></app-errors>
 </div>
-  
+
 </div>
 
 
@@ -46,7 +46,7 @@ novalidate class="form registration__form">
   <div class="form__errors">
     <app-errors [control]="userPhone"></app-errors>
   </div>
-  
+
 </div>
 
 
@@ -62,7 +62,7 @@ novalidate class="form registration__form">
   <div class="form__errors">
     <app-errors [control]="userEmail"></app-errors>
   </div>
-  
+
 </div>
 
 
@@ -84,7 +84,7 @@ novalidate class="form registration__form">
           <div class="form__errors">
             <app-errors [control]="userPassword"></app-errors>
           </div>
-          
+
         </div>
 
 <div class="form__input-wrap">
@@ -97,12 +97,12 @@ novalidate class="form registration__form">
   <div class="form__errors">
     <app-errors [control]="passwordGroup"></app-errors>
   </div>
-  
+
 </div>
 
         </fieldset>
 <div class="link-box form__controls">
-        <button class="link-box__item link link_color_main" [disabled]="!registerForm.valid">Register</button>
+        <button class="link-box__item link link_color_accent" [disabled]="!registerForm.valid">Register</button>
         <a [routerLink]="['/login']" class="link-box__item link link_color_light">Cancel</a>
       </div>
 </form>

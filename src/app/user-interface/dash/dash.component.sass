@@ -40,13 +40,16 @@
     color: $mainColorLight
     position: relative
     overflow: hidden
-    max-width: 320px
+    cursor: pointer
+    outline: none
     @media screen and (max-width: #{$break_sm}-1)
       max-width: 320px
       margin: 0 auto $offset-one-side
     @media screen and (min-width: $break_sm)
       &:nth-child(odd)
         margin-right: $offset-one-side
+    &_blocked
+      background-color: lighten($mainColor, 20%)
     &-top-panel
       width: 76%
       display: flex

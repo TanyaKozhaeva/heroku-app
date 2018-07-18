@@ -56,7 +56,6 @@ import {
   ]
 })
 export class DashComponent implements OnInit {
-products: any[]=[];
 accounts: any[]=[];
 showBtn = false;
 showAccounts = false;
@@ -74,23 +73,10 @@ userId;
 
   ngOnInit() {
     this.loaderService.executeAction(true);
-    this.getProducts();
-this.getAccounts();
+    this.getAccounts();
 
   }
 
-  private getProducts() {
-    this.accountsService.getProducts()
-    .subscribe(res => {
-      for(var i=0; i<res.length; i++){
-        if(res[i].currency=="UAH") {
-          continue;
-        } else{
-          this.products.push(res[i])
-        }
-      }
-    });
-  }
   private getAccounts() {
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {

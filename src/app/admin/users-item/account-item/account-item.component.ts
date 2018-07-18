@@ -32,6 +32,7 @@ export class AccountItemComponent implements OnInit {
 @Input() account;
 @Input() index;
 @Output() deletingAccount = new EventEmitter();
+@Output() rechargingAccount = new EventEmitter();
 showActions=false;
 showSpinner;
 rechargeInput = false;
@@ -53,27 +54,35 @@ rechargeInput = false;
     this.rechargeInput ? this.rechargeInput = false : this.rechargeInput = true;
   }
 
+  // rechargeAccount() {
+  //   this.alertService.waitingResponse();
+  //   this.showActions = false;
+  //   let data = {
+  //     id: this.account.id,
+  //     amount: this.account.amount,
+  //     blocked: this.account.blocked
+  //   }
+  //   this.accountsService.rechargeAccount(data)
+  //   .subscribe(res => {
+  //     this.alertService.success('Payment was sent');
+  //     this.rechargeInput = false;
+  //   },
+  //   error => {
+  //     this.alertService.error("Error");
+  //     this.getAccountItem();
+  //     this.rechargeInput = false;
+  //   }
+  //    );
+  // }
+
   rechargeAccount() {
-    this.loaderService.executeAction(true);
     this.showActions = false;
     let data = {
       id: this.account.id,
       amount: this.account.amount,
       blocked: this.account.blocked
     }
-    this.accountsService.rechargeAccount(data)
-    .subscribe(res => {
-      this.alertService.success('Success');
-      this.rechargeInput = false;
-      this.loaderService.executeAction(false);
-    },
-    error => {
-      this.alertService.error("Error");
-      this.getAccountItem();
-      this.rechargeInput = false;
-      this.loaderService.executeAction(false);
-    }
-     );
+    this.rechargingAccount.emit(data);
   }
 
   getAccountItem(){

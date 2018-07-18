@@ -4,6 +4,7 @@
         <div class="dash__accounts accounts"
         [@showAccounts]='accounts.length'>
           <div  class="accounts__item"
+          [class.accounts__item_blocked]="a.blocked"
           *ngFor="let a of accounts"
           [routerLink]="['./account-item', a.id]"
           >

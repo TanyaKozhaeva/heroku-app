@@ -6,7 +6,9 @@
               <span>{{accountItem.amount}}</span>
               <span>{{accountItem.currency}}</span>
             </span>
-                <a [routerLink]="['../../add-card', {id: accountId}]" class="clear-btn account-item__info-btn">
+                <a [routerLink]="['../../add-card', {id: accountId}]"
+                class="clear-btn account-item__info-btn"
+                *ngIf="!accountItem.blocked">
                 Add a card
               </a>
           </div>
@@ -18,18 +20,23 @@
                     </li>
                   </ul>
   <div class="account-item__controls link-box">
-    <a [routerLink]="['../../transactions']" routerLinkActive="" class="link-box__item link link_color_accent">
+    <a [routerLink]="['../../transactions']" routerLinkActive=""
+    @showBtn
+    class="link-box__item link link_color_accent">
       Make a payment
     </a>
     <button class="link-box__item link link_color_light"
     (click)="showingTransactions()"
+    @showBtn
     >
     <span *ngIf="!showTransactions">Show transactions</span>
     <span *ngIf="showTransactions">Hide transactions</span>
   </button>
   </div>
 
-      <div class="account-item__transactions" *ngIf="showTransactions">
+      <div class="account-item__transactions"
+      *ngIf="showTransactions"
+      @showTransactions>
         <transactions
         [accountId]="accountId"></transactions>
             </div>

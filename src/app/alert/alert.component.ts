@@ -59,7 +59,7 @@ trigger('showMarker', [
         style({
           transform: 'translateX(-1500px)'
         }),
-        animate("1s .8s ease-in-out", style({
+        animate(".8s .4s ease-in-out", style({
           transform: 'translateX(0)'
         }))
       ]),
@@ -154,14 +154,14 @@ export class AlertComponent implements OnInit {
   ngOnInit() {
     this.alertService.getMessage()
     .subscribe(message => {
-      console.log(message)
-      if(message && message.type == "waitingResponse"){
+      this.message = message;
+      if(this.message && this.message.type == "waitingResponse"){
         this.showWrapper = true;
         this.showMarker = true;
+      } else {
         this.showIcon = true;
+        this.showMessage = true;
       }
-      this.message = message;
-      this.showMessage = true;
     })
 
   }

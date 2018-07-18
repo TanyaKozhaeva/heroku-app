@@ -24,6 +24,7 @@ import {
     trigger('sourceAccountsDisplay', [
       transition(':enter', [
         style({
+          opacity: 0,
           transform: 'scaleY(0)'
         }),
         animate(".3s .6s ease-in-out", style({
@@ -33,9 +34,11 @@ import {
       ]),
       transition(':leave', [
         style({
+          opacity: 1,
           transform: 'scaleY(1)'
         }),
         animate(".1s ease-in-out", style({
+          opacity: 0,
           transform: 'scaleY(0)'
         }))
       ])
@@ -138,14 +141,14 @@ inputVisible = false;
 
 
  makePayment(){
-   this.alertService.waitingResponse(true);
+   this.alertService.waitingResponse();
    this.transaction.sourceName = this.sourceAccount.number;
    this.transaction.destinationName = this.destinationAccount;
    this.transaction.sum = this.transactionSum;
    this.transaction.currency = this.sourceAccount.currency;
     this.accountsService.makePayment(this.transaction)
     .subscribe (res =>{
-      this.alertService.success(this.transaction.sum + " " + this.transaction.currency + " " + "transfered", false);
+      this.alertService.success(this.transaction.sum + " " + this.transaction.currency + " " + "transferred", false);
       this.addCardForm.reset();
       this.getAccounts();
     },

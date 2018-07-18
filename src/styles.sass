@@ -132,33 +132,6 @@ body
   &__controls
     margin-top: 3rem
 
-.recharge-account
-    display: flex
-    align-items: center
-    &__wrap
-      flex: 3
-      position: relative
-      width: 60%
-    &__input
-        width: 100%
-        height: 80%
-        border: 1px solid $mainColor
-        border-radius: 5px
-        padding: 2% .5em
-        box-sizing: border-box
-    &__errors
-      @extend .form__errors
-    &__currency
-        flex: 1
-    &__btn
-        flex: 2
-        height: 100%
-    &__icon
-        width: 18px
-        height: 18px
-        &_success
-            fill: $successColor
-
 // LINKS/BUTTONS
 .link-box
   display: flex
@@ -189,25 +162,41 @@ body
   border-radius: 8px
   text-align: center
   color: $mainColorLight
-  transition: background-color .6s
+  transition: .6s
+  position: relative
+  z-index: 1
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: -1
+    border-radius: 8px
+    transform: scaleX(1)
+    transform-origin: center
+    transition: .6s ease-in-out
+  &:disabled
+    background-color: transparent
+    color: $fontColor
+    border: 2px solid $fontColor
+    &::before
+      transform: scaleX(0)
   &:hover
     &:not(:disabled)
       box-shadow: $blocksShadow
   &_color
     &_main
-      background-color: #34aa54
-      &:disabled
-        background-color: lighten(#34aa54, 30%)
+      &::before
+        background-color: #34aa54
     &_accent
-      background-color: $btnColor
-      color: $mainColorLight
-      &:disabled
-        background-color: lighten($fontColor, 30%)
+      &::before
+        background-color: $btnColor
     &_light
-      background-color: $bgColor
       color: $fontColor
-      &:disabled
-        background-color: lighten($bgColor, 10%)
+      &::before
+        background-color: $bgColor
 .clear-btn
     display: inline-block
     font-size: .8em
@@ -297,12 +286,6 @@ body
     &_width
       &_small
         width: 14%
-  &__input-box
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
   &__actions
     width: 505%
     max-width: 348px

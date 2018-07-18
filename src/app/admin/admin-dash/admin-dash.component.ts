@@ -44,15 +44,13 @@ showSpinner;
   }
 
   deleteUser(i, id) {
-    //this.showSpinner = true;
+    this.alertService.waitingResponse();
     this.userService.deleteUser(id)
     .subscribe(res => {
-      //this.showSpinner = false;
+        this.alertService.success('User ' + '"' + this.users[i].profile.firstName + ' ' + this.users[i].profile.lastName + '"' + ' deleted');
       this.users.splice(i, 1);
-      this.alertService.success('User deleted');
     },
     error => {
-      //this.showSpinner = false;
       this.alertService.error('Something went wrong. Please try again later');
     });
   }

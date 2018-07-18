@@ -34,8 +34,8 @@ export class AlertService {
     this.subscription.next({type: 'error', text: message})
   }
 
-  waitingResponse(message: string){
-    this.subscription.next({type: 'waitingResponse', text: message})
+  waitingResponse(){
+    this.subscription.next({type: 'waitingResponse'})
   }
 
   getMessage(){

@@ -29,8 +29,9 @@
     <div *ngIf="sourceAccountsDisplay"
     @sourceAccountsDisplay
     class="transfer-accounts transfer-form__field">
+    <div *ngFor="let a of accounts">
       <div class="transfer-accounts__item"
-      *ngFor="let a of accounts"
+      *ngIf="!a.blocked"
       (click)="showSourceAccountList()"
       (click)="sourceAccount=a">
       <span class="transfer-form__field-number">{{a.number}}</span>
@@ -38,6 +39,7 @@
         {{a.amount}} {{a.currency}}
       </span>
     </div>
+  </div>
     </div>
 </div>
 
@@ -102,14 +104,16 @@
     <div class="transfer-form__field transfer-accounts"
     @destAccountsDisplay
     *ngIf="destinationAccountsDisplay">
+    <div *ngFor="let a of accounts">
       <div class="transfer-accounts__item"
       (click)="showDestAccountList()"
       (click)="showInput()"
-      *ngFor="let a of accounts"
+      *ngIf="!a.blocked"
       (click)="destinationAccount=a.number">
       <span class="transfer-form__field-number">{{a.number}}</span>
       <span class="transfer-form__field-amount">{{a.amount}} {{a.currency}}</span>
     </div>
+  </div>
     </div>
 </div>
 
@@ -134,7 +138,7 @@
     [disabled]="!paymentForm.valid || !sourceAccount || !destinationAccount"
     class="transfer-form__btn link-box__item link link_color_main">Transfer</button>
 </form>
-
+</div>
 <div class="payments-block__controls">
   <app-back-btn></app-back-btn>
 </div>

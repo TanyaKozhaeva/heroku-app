@@ -6,7 +6,8 @@
           For user: {{user.profile.firstName}}  {{user.profile.lastName}}
         </p>
       <div class="admin-page__table table-wrapper">
-        <table class="table">
+        <table
+        class="table">
           <thead class="table__head">
             <tr class="table__row">
               <th class="table__cell">Number</th>
@@ -19,6 +20,7 @@
               [class.table__row_disable]="a.blocked"
                   [account] = "a"
                   [index] = "i"
+                  (rechargingAccount)="showInput($event)"
                   (deletingAccount)="deleteAccount($event)"
                  >
             </tr>
@@ -31,7 +33,32 @@
         </table>
       </div>
     </div>
-
+    <div *ngIf="rechargeWrap"
+    @rechargeWrap
+    class="recharge-account">
+      <div class="recharge-account__wrap">
+        <div class="recharge-account__input-wrap">
+          <input class="recharge-account__input" type="number"
+          name="accountAmount"
+          [(ngModel)]="currentAccount.amount"
+          #accountAmount="ngModel"
+          amountValidator
+          minlength="0"
+          required/>
+          <span class="recharge-account__currency">{{currentAccount.currency}}</span>
+          <button type="button" *ngIf="!showSpinner" [disabled]="!accountAmount.valid" class="recharge-account__btn"
+          (click)="rechargeAccount()">
+            <span class="hidden">Recharge an account</span>
+            <svg class="icon recharge-account__icon recharge-account__icon_success">
+                <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="recharge-account__errors">
+        <app-errors [control]="accountAmount"></app-errors>
+      </div>
+      </div>
+    </div>
     <div class="admin-page__controls">
       <app-back-btn></app-back-btn>
     </div>
