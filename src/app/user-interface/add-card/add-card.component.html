@@ -7,8 +7,6 @@ id="addCardForm"
 novalidate>
 <div class="add-card-form__wrapper">
     <label class="add-card-form__label" for="name"> Name:</label>
-    <span class="add-card-form__input-wrap1">
-    <span class="add-card-form__input-wrap2">
     <input class="add-card-form__input-name"
     type="text"
     name="Name"
@@ -16,8 +14,6 @@ novalidate>
     [(ngModel)]="cardModel.name" #Name="ngModel"
     requiredValidator
     maxlength="15">
-  </span>
-</span>
 
 <label class="add-card-form__label" for="number">Number:</label>
   <input class="add-card-form__input-num"
@@ -45,13 +41,19 @@ novalidate>
 
 
 <div class="add-card-form__errors">
+  <div *ngIf="!Name.valid" class="add-card-form__errors-item">
     <app-errors [control]="Name"></app-errors>
+  </div>
+  <div *ngIf="!Number.valid" class="add-card-form__errors-item">
     <app-errors [control]="Number"></app-errors>
+  </div>
+  <div *ngIf="!Expiration.valid" class="add-card-form__errors-item">
     <app-errors [control]="Expiration"></app-errors>
+  </div>
 </div>
 
 
-<div class="add-card__controls link-box">
+<div class="add-card-form__controls link-box">
   <button
       type="submit"
       class="link-box__item link link_color_main add-card-form__btn"

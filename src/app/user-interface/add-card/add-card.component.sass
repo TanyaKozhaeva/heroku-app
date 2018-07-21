@@ -9,12 +9,12 @@
       font-size: 1.5rem
     @media screen and (min-width: $break_sm)
       font-size: 1.8rem
-  &__controls
-    width: 80%
-    margin: 0 auto
+
 
 
 .add-card-form
+  width: 18em
+  margin: 0 auto
   &__wrapper
     height: 11.81em
     display: flex
@@ -22,14 +22,14 @@
     justify-content: space-between
     padding: 1.2em 1.3em
     box-sizing: border-box
+    margin-bottom: 3rem
     border-radius: 10px
-    //border: 1px solid $fontColor
     box-shadow: $blocksShadow
     background-color: #4285f5
-  &__wrapper,
   &__errors
-    width: 18em
-    margin: 0 auto 3rem
+    margin-bottom: 3rem
+    &-item
+      margin-bottom: $offset-one-side
   &__label
     display: block
     font-size: .7em
@@ -65,3 +65,4 @@
       outline: 2px solid $mainColorLight
     &.ng-touched.ng-invalid
       border-color: $dangerColor
+      outline-color: $dangerColor

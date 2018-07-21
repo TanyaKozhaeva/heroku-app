@@ -9,6 +9,7 @@ import { UserInterfaceModule } from './user-interface/user-interface.module';
 import { LoaderModule } from './loader/loader.module';
 import { DirectivesModule } from '../app/directives/directives.module';
 import { AlertModule } from './alert/alert.module';
+import { ErrorPopUpModule } from './error-pop-up/error-pop-up.module';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HeaderModule } from './header/header.module';
 import { ConfirmWindowModule } from './confirm-window/confirm-window.module';
@@ -47,6 +48,7 @@ import { UserService } from './services/user.service';
     HeaderModule,
     ConfirmWindowModule,
     AlertModule,
+    ErrorPopUpModule,
     AdminModule,
     UserInterfaceModule,
     TextMaskModule,

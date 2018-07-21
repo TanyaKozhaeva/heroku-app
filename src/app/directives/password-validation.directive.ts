@@ -12,14 +12,12 @@ export class PasswordValidationDirective implements Validator {
     const hasNumber = /[0-9]/.test(c.value);
     const hasLetter = /[A-z]/.test(c.value);
     const passwordValid = hasNumber && hasLetter;
- 
+
     const message = {
       'passwordValidation': {
-        'message': 'The password must contain letters and numeric characters'
+        'message': 'The password must contain latin letters and numeric characters'
       }
     };
     return passwordValid ? null : message;
   }
 }
-
-

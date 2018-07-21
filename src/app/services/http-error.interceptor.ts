@@ -12,12 +12,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         return next.handle(request)
         .catch((error: HttpErrorResponse) => {
           let mess;
-          console.log(error)
           if(error.error.message){
             mess = error.error.message;
           } else {
             const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
             mess = parsedError.error.message;
+          }
+          if(error.status == 500){
+            mess = 'Something went wrong. Please try again later'
           }
             return new ErrorObservable(mess);
         })

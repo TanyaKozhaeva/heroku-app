@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../alert/alert.service';
 import { LoaderService } from '../../loader/loader.service';
+import { ErrorPopUpService } from '../../error-pop-up/error-pop-up.service';
 import {
   trigger,
   state,
@@ -24,7 +25,8 @@ showSpinner;
   constructor(
     private userService: UserService,
     private loaderService: LoaderService,
-    private alertService: AlertService ) { }
+    private alertService: AlertService,
+    private errorPopUpService: ErrorPopUpService ) { }
 
 
   ngOnInit() {
@@ -40,7 +42,11 @@ showSpinner;
     .subscribe(res => {
       this.users = res;
       this.loaderService.executeAction(false);
-    });
+    },
+  error => {
+    this.errorPopUpService.error(error);
+    this.loaderService.executeAction(false);
+  });
   }
 
   deleteUser(i, id) {

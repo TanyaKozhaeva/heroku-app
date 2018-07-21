@@ -25,20 +25,3 @@ class="message__marker">
 (click)="close()"
 *ngIf="showMessage && message && message.text"
 class="message__text">{{message.text}}</p>
-
-
-  <!-- <div *ngIf="message"
-  @message
-  (clickOutside)="message=false"
-  class="modal">
-  <p class="modal__text">{{message.text}}</p>
-    <svg class="icon modal__icon modal__icon_success" *ngIf="message.type === 'success'">
-      <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
-    </svg>
-    <svg class="icon modal__icon modal__icon_danger" *ngIf="message.type === 'error'">
-      <use xlink:href="assets/svg/symbol/sprite.svg#danger"></use>
-    </svg>
-  <button class="close-btn" (click)="close()">
-    <span class="hidden">Close the window</span>
-  </button>
-  </div> -->

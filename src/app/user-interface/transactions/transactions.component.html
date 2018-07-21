@@ -67,15 +67,15 @@
        @destAccountsDisplay
       class="transfer-form__field transfer-accounts">
 
-      <input type="tel" class="transfer-accounts__input"
+      <input type="number" class="transfer-accounts__input"
         name="recipientManualInput"
         placeholder="Input payee account"
         #recipientManualInput="ngModel"
         (ngModel)="destinationAccount"
         required
         id="recipientManualInput"
-        cardValidator
-        [textMask]="{mask: numberMask}">
+        maxlength="16"
+        minlength="10">
 
 
         <button type="button"
@@ -97,7 +97,7 @@
     Or select from list
   </button>
 </div>
-  <app-errors [control]="recipientManualInput"></app-errors>
+  <!-- <app-errors [control]="recipientManualInput"></app-errors> -->
 
 
 

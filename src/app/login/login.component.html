@@ -12,12 +12,9 @@
                                           id="phone"
                                           [textMask]="{mask: mask}"
                                           required/>
-                                          <div class="form__errors">
-                                        <app-errors [control]="userPhone"></app-errors>
-                                          </div>
-
 <label class="form__label" for="phone">Phone</label>
                 </div>
+  <app-errors [control]="userPhone"></app-errors>
 <div class="form__input-wrap">
 
                           <input type="password" class="form__input" name="userPassword"
@@ -27,12 +24,9 @@
                           id="password"
                           passwordValidation
                           required/>
-                          <div class="form__errors">
-                                <app-errors [control]="userPassword"></app-errors>
-                          </div>
-
 <label class="form__label" for="password">Password</label>
 </div>
+<app-errors [control]="userPassword"></app-errors>
 
                 <div class="link-box form__controls">
                   <button class="link-box__item link link_color_accent" [disabled]="!loginForm.valid">Login</button>

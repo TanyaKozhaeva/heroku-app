@@ -96,7 +96,7 @@ body
 
   &__input
     width: 100%
-    padding: 1.2em $offset-one-side 1.02em
+    padding: 1.9em $offset-one-side 1.02em
     box-sizing: border-box
     margin-bottom: $offset-one-side
     border-bottom: 1px solid $mainColorLight
@@ -106,31 +106,14 @@ body
     background-color: transparent
     &:focus ~ .form__label,
     &.ng-dirty ~ .form__label
-      top: 0
+      top: 11%
+      transform: translateY(0)
       font-size: .85em
-
-    &_color
-      &_dark
-        border-bottom: 2px solid $fontColor
-        color: $fontColor
-        &:focus
-          box-shadow: 0 4px 2px -3px $fontColor
-  &__errors
-    position: absolute
-    bottom: 100%
-    right: -8%
-  &__switch-box
-    margin-bottom: $offset-one-side
-    text-align: center
-  &__switch-input-btn
-    padding: .2em .5em
-    border-radius: 6px
-    color: $mainColorLight
-    background-color: $fontColor
-    &:hover
-      box-shadow: $blocksShadow
   &__controls
     margin-top: 3rem
+
+input::-ms-clear
+  display: none
 
 // LINKS/BUTTONS
 .link-box
@@ -144,9 +127,11 @@ body
   &__item
     max-width: 320px
     @media screen and (max-width: #{$break_xs}-1)
+      width: 100%
       &:not(:last-child)
         margin-bottom: $offset
     @media screen and (min-width: $break_xs)
+      flex: 1
       width: 50%
       &:not(:last-child)
         margin-right: $offset
@@ -154,7 +139,6 @@ body
 .link
   display: block
   min-width: 6.61rem
-  width: 100%
   font-size: 1.1rem
   padding: 1.1em
   box-sizing: border-box
@@ -162,7 +146,8 @@ body
   border-radius: 8px
   text-align: center
   color: $mainColorLight
-  transition: .6s
+  transition: box-shadow 0.9s .1s, color .6s
+  //border: 2px solid transparent
   position: relative
   z-index: 1
   &::before
@@ -180,9 +165,12 @@ body
   &:disabled
     background-color: transparent
     color: $fontColor
-    border: 2px solid $fontColor
+    box-shadow: 0 0 0 2px $fontColor
+    //border-color: $fontColor
+    transition: 0s
     &::before
       transform: scaleX(0)
+      transition: 0s
   &:hover
     &:not(:disabled)
       box-shadow: $blocksShadow
@@ -197,6 +185,9 @@ body
       color: $fontColor
       &::before
         background-color: $bgColor
+    &_danger
+      &::before
+        background-color: $dangerColor
 .clear-btn
     display: inline-block
     font-size: .8em
@@ -293,42 +284,6 @@ body
     top: 100%
     right: 0
     z-index: 1000
-    // @media screen and (max-width: $break_xs)
-    //   position: fixed
-    //   top: 50%
-    //   left: 50%
-    //   transform: translate(-50%, -50%)
-    //   width: 90%
-    // &__actions-close
-    //   display: none
-    // @media screen and (min-width: $break_xs)
-      width: 500%
-      position: absolute
-      top: 100%
-      left: 0
-      right: 0
-      transform: translate(0, 0)
-
-
-
-
-
-.tableLight
-  &__row
-    border-bottom: 1px solid $mainColorLight
-    &_clickable
-      cursor: pointer
-      transition: box-shadow .3s
-      &:hover
-        box-shadow: 0 5px 3px -3px $mainColorLight
-    &_disable
-      color: $fontColor
-      border-bottom: 1px solid $fontColor
-  &__cell
-    padding: .8em $offset-one-side
-    text-align: center
-
-
 
 .actions-list
   border: 1px solid $bgColor
@@ -338,31 +293,33 @@ body
     padding: 1em 5%
     border-bottom: 1px solid $bgColor
     color: $mainColor
-    //overflow: hidden
 
 
 
 
 //MODAL WINDOW
 .modal
-  width: 296px
-  height: 198px
+  width: 18.1rem
+  height: 11rem
+  padding: 2em $offset-one-side 1em
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   position: absolute
   top: 50%
   left: 50%
-  margin-left: -148px
-  margin-top: -99px
-  //transform: translateY(-50%)
+  margin-left: -9.5rem
+  margin-top: -5.5rem
   z-index: 3000
-  padding: 2em $offset-one-side
+  padding: 2.5rem $offset-one-side 1rem
   box-sizing: border-box
-  border: 1px solid $bgColor
+  border-radius: 8px
   text-align: center
-  background-color: $mainColorLight
+  background-color: $bgColor
   box-shadow: $blocksShadow
   &__text
     font-size: 1.1rem
-    font-weight: 300
+    font-weight: 700
     margin-bottom: 1.3em
     color: $fontColor
     text-align: center

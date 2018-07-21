@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../registration/user';
 import { AuthService } from '../services/auth.service';
-import { AlertService } from '../alert/alert.service';
+import { ErrorPopUpService } from '../error-pop-up/error-pop-up.service';
 import { LoaderService } from '../loader/loader.service';
 
 @Component({
@@ -23,7 +23,7 @@ model = new User();
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private alertService: AlertService
+    private errorPopUpService: ErrorPopUpService
   ) { }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ model = new User();
 
     },
     error => {
-      this.alertService.error(error);
+      this.errorPopUpService.error(error);
       this.loaderService.executeAction(false);
     }
     );
