@@ -1,9 +1,9 @@
 <div *ngIf="message"
-@message
-(clickOutside)="message=false"
-class="modal">
-<p class="modal__text">{{message.text}}</p>
-<button class="modal__button link link_color_accent" (click)="close()">
-  Close
-</button>
+	@message
+	(clickOutside)="message=false"
+	class="modal">
+	<p class="modal__text">{{message.text}}</p>
+	<button class="modal__button link link_color_accent" (click)="close()">
+	Close
+	</button>
 </div>

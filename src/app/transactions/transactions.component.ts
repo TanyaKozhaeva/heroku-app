@@ -11,6 +11,7 @@ import { AccountsService } from '../services/accounts.service';
 export class TransactionsComponent implements OnInit, DoCheck{
   @Input() accountId;
   showSpinner = false;
+  message;
   transactions:any[] = [];
  currentDate = new Date();
   dateFrom = this.currentDate;
@@ -43,15 +44,17 @@ if(windWidth < 900){
 
 
   filter() {
-    const data = {
+    let data = {
       from: this.formatDate(this.dateFrom),
       to: this.formatDate(this.dateTo)
     };
     this.showSpinner = true;
     this.accountsService.transactionsFilter(data, this.accountId)
     .subscribe (res => {
-      console.log(res)
       this.transactions = res;
+      if(this.transactions.length === 0){
+        this.message = "You have no transactions for this period"
+      }
       this.showSpinner = false;
     });
   }

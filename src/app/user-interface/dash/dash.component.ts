@@ -39,15 +39,15 @@ import {
       transition('* => *', [
         query(':leave', [
           stagger(100, [
-            animate('0.5s', style({opacity: 0, transform: 'translateX(-1000px)'}))
+            animate('0.5s', style({opacity: 0, transform: 'scaleX(0.005)'}))
           ])
         ], {optional: true}),
         query(':enter', [
-          style({opacity: 0, transform: 'translateX(-1000px)'}),
+          style({opacity: 0, transform: 'scaleX(0.005)', transformOrigin: 'left'}),
           stagger(100, [
             animate('0.5s ease-in-out', style({
-              opacity: 1,
-             transform: 'translateX(0)'
+            opacity: 1,
+             transform: 'scaleX(1)'
             }))
           ])
         ], {optional: true})

@@ -11,6 +11,7 @@ import {
   state,
   style,
   animate,
+  keyframes,
   transition,
   stagger,
   query
@@ -21,35 +22,34 @@ import {
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.sass'],
   animations: [
-    trigger('sourceAccountsDisplay', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'scaleY(0)'
-        }),
-        animate(".3s .6s ease-in-out", style({
-          opacity: 1,
-          transform: 'scaleY(1)'
-        }))
-      ]),
-      transition(':leave', [
-        style({
-          opacity: 1,
-          transform: 'scaleY(1)'
-        }),
-        animate(".1s ease-in-out", style({
-          opacity: 0,
-          transform: 'scaleY(0)'
-        }))
-      ])
+trigger('sourceAccountsDisplay', [
+    transition(':enter', [
+      style({
+        opacity: 0,
+        transform: 'scaleY(0)'
+      }),
+      animate(".8s ease-in-out", style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      }))
     ]),
+    transition(':leave', [
+      style({
+        opacity: 1,
+        transform: 'scaleY(1)'
+      }),
+      animate(".8s ease-in-out", style({
+        opacity: 0,
+        transform: 'scaleY(0) '
+      }))
+    ])
+  ]),
     trigger('destAccountsDisplay', [
       transition(':enter', [
         style({
           transform: 'scaleY(0)'
         }),
-        animate(".3s .6s ease-in-out", style({
-          opacity: 1,
+        animate(".5s 1s ease-in-out", style({
           transform: 'scaleY(1)'
         }))
       ]),
@@ -57,7 +57,29 @@ import {
         style({
           transform: 'scaleY(1)'
         }),
-        animate(".1s ease-in-out", style({
+        animate(".5s ease-in-out", style({
+          transform: 'scaleY(0)'
+        }))
+      ])
+    ]),
+    trigger('inputVisible', [
+      transition(':enter', [
+        style({
+          transform: 'scaleY(0)'
+        }),
+        animate(".8s ease-in-out", style({
+          transform: 'scaleY(1)'
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1,
+          transform: 'scaleY(1) '
+        }),
+        animate(".3s ease-in-out", style({
+          opacity: 0
+        })),
+        animate(".3s ease-in-out", style({
           transform: 'scaleY(0)'
         }))
       ])
@@ -79,6 +101,7 @@ transactionSum;
 sourceAccountsDisplay = false;
 destinationAccountsDisplay = false;
 inputVisible = false;
+
 
 
 

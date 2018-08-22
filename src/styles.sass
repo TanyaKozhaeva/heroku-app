@@ -18,8 +18,7 @@ body
   width: 100%
   max-width: 1280px
   margin: 0 auto
-  // display: flex
-  // flex-direction: column
+
 
 
 //LOGO
@@ -104,11 +103,16 @@ body
     font-weight: 300
     color: $mainColorLight
     background-color: transparent
+    position: relative
+    transition: .3s
     &:focus ~ .form__label,
     &.ng-dirty ~ .form__label
       top: 11%
       transform: translateY(0)
       font-size: .85em
+    &.ng-touched.ng-invalid
+      border-color: $dangerColor
+      box-shadow: 0px -1px 0px 0px $dangerColor inset
   &__controls
     margin-top: 3rem
 
@@ -131,7 +135,6 @@ input::-ms-clear
       &:not(:last-child)
         margin-bottom: $offset
     @media screen and (min-width: $break_xs)
-      flex: 1
       width: 50%
       &:not(:last-child)
         margin-right: $offset
@@ -147,7 +150,6 @@ input::-ms-clear
   text-align: center
   color: $mainColorLight
   transition: box-shadow 0.9s .1s, color .6s
-  //border: 2px solid transparent
   position: relative
   z-index: 1
   &::before
@@ -196,29 +198,14 @@ input::-ms-clear
     border: 1px solid $mainColorLight
     border-radius: 15px
     color: $mainColorLight
-    transition: color .3s ease-in
+    transition: all .3s ease-in
     position: relative
     z-index: 1
     overflow: hidden
-    &::before
-      content: ""
-      width: 100%
-      height: 100%
-      position: absolute
-      top: 0
-      left: 0
-      z-index: -1
-      background-color: $mainColorLight
-      border-radius: inherit
-      transform: scale(0)
-      transform-origin: center
-      opacity: 0
-      transition: all .3s ease-in
     &:hover
+      background-color: $mainColorLight
       color: $mainColor
-      &::before
-        transform: scale(1)
-        opacity: 1
+
 
 .action-btn
   font-size: 1em
@@ -308,7 +295,7 @@ input::-ms-clear
   position: absolute
   top: 50%
   left: 50%
-  margin-left: -9.5rem
+  margin-left: -9.05rem
   margin-top: -5.5rem
   z-index: 3000
   padding: 2.5rem $offset-one-side 1rem

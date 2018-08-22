@@ -1,30 +1,28 @@
 <div class="admin-main-screen__item" >
   <div class="admin-page vh-without-header">
-  <div class="wrapper-admin">
-    <h2 class="admin-page__title title title_color_main">Dashboard</h2>
-    <p class="admin-page__text text text_color_main">Select a user to see details</p>
-  <div *ngIf="users" class="admin-page__table table-wrapper">
-    <table class="table">
-        <thead class="table__head">
-          <tr class="table__head-row">
-            <th class="table__cell">Name</th>
-            <th class="table__cell">Phone</th>
-            <th class="table__cell table__cell_actions">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let u of users; let i='index'" class="table__row table__row_clickable" >
-            <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.profile.firstName}} {{u.profile.lastName}}</td>
-            <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.phone}}</td>
-            <td class="table__cell">
-                <!-- <app-spinner
-                [showSpinner]="showSpinner"></app-spinner> -->
-              <button *ngIf="!showSpinner"(click)="deleteUser(i, u.id)" class="action-btn action-btn_color_danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="wrapper-admin">
+      <h2 class="admin-page__title title title_color_main">Dashboard</h2>
+      <p class="admin-page__text text text_color_main">Select a user to see details</p>
+      <div *ngIf="users" class="admin-page__table table-wrapper">
+        <table class="table">
+          <thead class="table__head">
+            <tr class="table__head-row">
+              <th class="table__cell">Name</th>
+              <th class="table__cell">Phone</th>
+              <th class="table__cell table__cell_actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of users; let i='index'" class="table__row table__row_clickable" >
+              <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.profile.firstName}} {{u.profile.lastName}}</td>
+              <td class="table__cell" [routerLink]="['./users-item', u.id]">{{u.phone}}</td>
+              <td class="table__cell">
+                <button *ngIf="!showSpinner"(click)="deleteUser(i, u.id)" class="action-btn action-btn_color_danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AccountsService } from '../../../services/accounts.service';
 import { AlertService } from '../../../alert/alert.service';
 import { LoaderService } from '../../../loader/loader.service';
+import { ErrorPopUpService } from '../../../error-pop-up/error-pop-up.service';
 import {
   trigger,
   state,
@@ -40,7 +41,8 @@ rechargeInput = false;
   constructor(
       private loaderService: LoaderService,
     private accountsService: AccountsService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private errorPopUpService: ErrorPopUpService
   ) { }
 
   ngOnInit() {
@@ -54,26 +56,6 @@ rechargeInput = false;
     this.rechargeInput ? this.rechargeInput = false : this.rechargeInput = true;
   }
 
-  // rechargeAccount() {
-  //   this.alertService.waitingResponse();
-  //   this.showActions = false;
-  //   let data = {
-  //     id: this.account.id,
-  //     amount: this.account.amount,
-  //     blocked: this.account.blocked
-  //   }
-  //   this.accountsService.rechargeAccount(data)
-  //   .subscribe(res => {
-  //     this.alertService.success('Payment was sent');
-  //     this.rechargeInput = false;
-  //   },
-  //   error => {
-  //     this.alertService.error("Error");
-  //     this.getAccountItem();
-  //     this.rechargeInput = false;
-  //   }
-  //    );
-  // }
 
   rechargeAccount() {
     this.showActions = false;
@@ -97,15 +79,15 @@ rechargeInput = false;
     this.accountsService.deleteAccount(this.account.id)
     .subscribe(res => {
       this.deletingAccount.emit(this.index);
-      this.alertService.success('Account deleted', true);
     },
     error => {
-      this.alertService.error(error);
+      this.errorPopUpService.error(error);
     });
     this.showSpinner = false;
   }
 
   disableAccount(){
+    this.showSpinner = true;
     this.account.blocked ? this.account.blocked=false : this.account.blocked=true;
     let data = {
       id: this.account.id,
@@ -117,8 +99,9 @@ rechargeInput = false;
       return
     },
     error => {
-      this.alertService.error(error);
+      this.errorPopUpService.error(error);
       this.getAccountItem()
     });
+    this.showSpinner = false;
   }
 }

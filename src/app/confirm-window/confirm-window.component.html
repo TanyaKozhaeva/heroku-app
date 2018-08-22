@@ -1,12 +1,12 @@
 <div *ngIf="showWindow"
-class="modal-wrap">
-    <div
-    @showWindow
-    class="modal">
-      <p class="modal__text">{{message}}</p>
-      <div class="modal__controls">
-        <button class="modal__confirm-btn link link_color_main"(click)="choose(true)">Yes</button>
-        <button class="modal__confirm-btn link link_color_accent"(click)="choose(false)">No</button>
-      </div>
-    </div>
+	class="modal-wrap">
+	<div
+		@showWindow
+		class="modal">
+		<p class="modal__text">{{message}}</p>
+		<div class="modal__controls">
+			<button class="modal__confirm-btn link link_color_main"(click)="choose(true)">Yes</button>
+			<button class="modal__confirm-btn link link_color_accent"(click)="choose(false)">No</button>
+		</div>
+	</div>
 </div>

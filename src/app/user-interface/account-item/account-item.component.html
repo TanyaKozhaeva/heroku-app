@@ -1,48 +1,45 @@
 <div *ngIf="accountItem" class="account-item vh-without-header">
   <div class="account-item__wrap wrapper-ui">
-        <div *ngIf="accountItem" class="account-item__info">
-            <span class="account-item__info-number">{{accountItem.number}}</span>
-            <span class="account-item__info-sum">
-              <span>{{accountItem.amount}}</span>
-              <span>{{accountItem.currency}}</span>
-            </span>
-                <a [routerLink]="['../../add-card', {id: accountId}]"
-                class="clear-btn account-item__info-btn"
-                *ngIf="!accountItem.blocked">
-                Add a card
-              </a>
-          </div>
-
-                <ul class="cards-list account-item__cards-list">
-                    <li class="cards-list__item" *ngFor="let c of cards">
-                        <span class="cards-list__item-name">{{c.name}}</span>
-                        <span class="cards-list__item-num">{{c.number}}</span>
-                    </li>
-                  </ul>
-  <div class="account-item__controls link-box">
-    <a [routerLink]="['../../transactions']" routerLinkActive=""
-    @showBtn
-    class="link-box__item link link_color_accent">
-      Make a payment
-    </a>
-    <button class="link-box__item link link_color_light"
-    (click)="showingTransactions()"
-    @showBtn
-    >
-    <span *ngIf="!showTransactions">Show transactions</span>
-    <span *ngIf="showTransactions">Hide transactions</span>
-  </button>
-  </div>
-
-      <div class="account-item__transactions"
+    <div *ngIf="accountItem" class="account-item__info">
+      <span class="account-item__info-number">{{accountItem.number}}</span>
+      <span class="account-item__info-sum">
+        <span>{{accountItem.amount}}</span>
+        <span>{{accountItem.currency}}</span>
+      </span>
+      <a [routerLink]="['../../add-card', {id: accountId}]"
+        class="clear-btn account-item__info-btn"
+        *ngIf="!accountItem.blocked">
+        Add a card
+      </a>
+    </div>
+    <ul class="cards-list account-item__cards-list">
+      <li class="cards-list__item" *ngFor="let c of cards">
+        <span class="cards-list__item-name">{{c.name}}</span>
+        <span class="cards-list__item-num">{{c.number}}</span>
+      </li>
+    </ul>
+    <div class="account-item__controls link-box">
+      <a [routerLink]="['../../transactions']" routerLinkActive=""
+        @showBtn
+        class="link-box__item link link_color_accent">
+        Make a payment
+      </a>
+      <button class="link-box__item link link_color_light"
+      (click)="showingTransactions()"
+      @showBtn
+      >
+      <span *ngIf="!showTransactions">Show transactions</span>
+      <span *ngIf="showTransactions">Hide transactions</span>
+      </button>
+    </div>
+    <div class="account-item__transactions"
       *ngIf="showTransactions"
       @showTransactions>
-        <transactions
-        [accountId]="accountId"></transactions>
-            </div>
-
+      <transactions
+      [accountId]="accountId"></transactions>
     </div>
-<div class="account-item__cancel-controls">
+  </div>
+  <div class="account-item__cancel-controls">
   <app-back-btn></app-back-btn>
 </div>
-    </div>
+</div>

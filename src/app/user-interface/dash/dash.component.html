@@ -1,56 +1,53 @@
 <div class="dash vh-without-header">
   <div class="wrapper-ui">
     <p class="dash__promo title">Welcome to MobiPay</p>
-        <div class="dash__accounts accounts"
-        [@showAccounts]='accounts.length'>
-          <div  class="accounts__item"
-          [class.accounts__item_blocked]="a.blocked"
-          *ngFor="let a of accounts"
-          [routerLink]="['./account-item', a.id]"
-          >
-          <div class="accounts__item-top-panel">
-            <h4 class="accounts__item-num">
-              {{a.number}}
-            </h4>
-            <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
-            <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
-          </div>
-            <div class="accounts__item-bottom-panel">
-              <span class="accounts__item-amount">
-                {{a.amount}}
-              </span>
-              <span class="accounts__item-currency">
-                {{a.currency}}
-              </span>
-            </div>
-              <svg *ngIf="a.currency=='USD'"
-              class="icon accounts__item-icon">
-                <use xlink:href="assets/svg/symbol/sprite.svg#usd"></use>
-              </svg>
-              <svg *ngIf="a.currency=='EUR'"
-              class="icon accounts__item-icon">
-                <use xlink:href="assets/svg/symbol/sprite.svg#euro"></use>
-              </svg>
-              <svg *ngIf="a.currency=='UAH'"
-              class="icon accounts__item-icon">
-                <use xlink:href="assets/svg/symbol/sprite.svg#uah"></use>
-              </svg>
-              <svg *ngIf="a.currency=='RUB'"
-              class="icon accounts__item-icon">
-                <use xlink:href="assets/svg/symbol/sprite.svg#rub"></use>
-              </svg>
-
-          </div>
+    <div class="dash__accounts accounts"
+      [@showAccounts]='accounts.length'>
+      <div  class="accounts__item"
+        [class.accounts__item_blocked]="a.blocked"
+        *ngFor="let a of accounts"
+        [routerLink]="['./account-item', a.id]"
+        >
+        <div class="accounts__item-top-panel">
+          <h4 class="accounts__item-num">
+          {{a.number}}
+          </h4>
+          <span *ngIf="!a.blocked" class="accounts__item-status">Active</span>
+          <span *ngIf="a.blocked" class="accounts__item-status">Inactive</span>
         </div>
-
-
-        <div *ngIf = "accounts.length !== 0"
-        @showBtn
-        class="link-box">
-          <a [routerLink]="['./transactions']" routerLinkActive=""
-          class="link-box__item link link_color_main" >
-            Make a payment
-          </a>
+        <div class="accounts__item-bottom-panel">
+          <span class="accounts__item-amount">
+            {{a.amount}}
+          </span>
+          <span class="accounts__item-currency">
+            {{a.currency}}
+          </span>
         </div>
+        <svg *ngIf="a.currency=='USD'"
+          class="icon accounts__item-icon">
+          <use xlink:href="assets/svg/symbol/sprite.svg#usd"></use>
+        </svg>
+        <svg *ngIf="a.currency=='EUR'"
+          class="icon accounts__item-icon">
+          <use xlink:href="assets/svg/symbol/sprite.svg#euro"></use>
+        </svg>
+        <svg *ngIf="a.currency=='UAH'"
+          class="icon accounts__item-icon">
+          <use xlink:href="assets/svg/symbol/sprite.svg#uah"></use>
+        </svg>
+        <svg *ngIf="a.currency=='RUB'"
+          class="icon accounts__item-icon">
+          <use xlink:href="assets/svg/symbol/sprite.svg#rub"></use>
+        </svg>
+      </div>
+    </div>
+    <div *ngIf = "accounts.length !== 0"
+      @showBtn
+      class="link-box">
+      <a [routerLink]="['./transactions']" routerLinkActive=""
+        class="link-box__item link link_color_main" >
+        Make a payment
+      </a>
     </div>
   </div>
+</div>

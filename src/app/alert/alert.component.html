@@ -1,16 +1,14 @@
-
-  <div class="message"
-*ngIf="showWrapper"
-(click)="close()"
-@showWrapper>
+<div class="message"
+  *ngIf="showWrapper"
+  (click)="close()"
+  @showWrapper>
 </div>
-
 <div
-@showMarker
-(clickOutside)="message=false"
-(click)="close()"
-*ngIf="showMarker"
-class="message__marker">
+  @showMarker
+  (clickOutside)="message=false"
+  (click)="close()"
+  *ngIf="showMarker"
+  class="message__marker">
   <svg @showIcon class="icon message__icon message__icon_success" *ngIf="message.type === 'success'">
     <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
   </svg>
@@ -22,6 +20,6 @@ class="message__marker">
   </svg>
 </div>
 <p @showMessage
-(click)="close()"
-*ngIf="showMessage && message && message.text"
+  (click)="close()"
+  *ngIf="showMessage && message && message.text"
 class="message__text">{{message.text}}</p>

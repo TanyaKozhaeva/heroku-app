@@ -107,6 +107,5 @@ export class AccountItemComponent implements OnInit {
 
   showingTransactions(){
     this.showTransactions ? this.showTransactions = false : this.showTransactions = true;
-
   }
 }

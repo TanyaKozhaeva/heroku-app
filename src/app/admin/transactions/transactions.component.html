@@ -1,17 +1,17 @@
-  <div class="admin-main-screen__item">
-    <div class="admin-page vh-without-header">
+<div class="admin-main-screen__item">
+  <div class="admin-page vh-without-header">
     <div class="wrapper-admin">
       <h2 class="admin-page__title title title_color_main">Transactions</h2>
       <p *ngIf="currentAccount" class="admin-page__text text text_color_main">For account:
         {{currentAccount.number}}
         {{currentAccount.amount}}
-        {{currentAccount.currency}}</p>
+      {{currentAccount.currency}}</p>
       <div class="admin-page__transactions">
-        <transactions></transactions>
-      </div>
-    </div>
-    <div class="admin-page__controls">
-      <app-back-btn></app-back-btn>
-    </div>
+      <transactions></transactions>
     </div>
   </div>
+  <div class="admin-page__controls">
+  <app-back-btn></app-back-btn>
+</div>
+</div>
+</div>

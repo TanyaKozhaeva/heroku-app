@@ -1,37 +1,33 @@
 <div class="main-screen__form-block login">
-        <form name="loginForm" (ngSubmit)="loginForm.valid && login()"
-        #loginForm="ngForm" novalidate
-        class="form login__form">
-                <h2 class="title form__title">Login to your Account</h2>
-                <div class="form__input-wrap">
-
-                                          <input type="tel" class="form__input" name="userPhone"
-                                          [(ngModel)]="model.phone"
-                                          #userPhone="ngModel"
-                                          ngModel
-                                          id="phone"
-                                          [textMask]="{mask: mask}"
-                                          required/>
-<label class="form__label" for="phone">Phone</label>
-                </div>
+  <form name="loginForm" (ngSubmit)="loginForm.valid && login()"
+    #loginForm="ngForm" novalidate
+    class="form login__form">
+    <h2 class="title form__title">Login to your Account</h2>
+    <div class="form__input-wrap">
+      <input type="tel" class="form__input" name="userPhone"
+      [(ngModel)]="model.phone"
+      #userPhone="ngModel"
+      ngModel
+      id="phone"
+      [textMask]="{mask: mask}"
+      required/>
+      <label class="form__label" for="phone">Phone</label>
+    </div>
   <app-errors [control]="userPhone"></app-errors>
-<div class="form__input-wrap">
-
-                          <input type="password" class="form__input" name="userPassword"
-                          [(ngModel)]="model.password"
-                          #userPassword="ngModel"
-                          ngModel
-                          id="password"
-                          passwordValidation
-                          required/>
-<label class="form__label" for="password">Password</label>
-</div>
+  <div class="form__input-wrap">
+    <input type="password" class="form__input" name="userPassword"
+    [(ngModel)]="model.password"
+    #userPassword="ngModel"
+    ngModel
+    id="password"
+    passwordValidation
+    required/>
+    <label class="form__label" for="password">Password</label>
+  </div>
 <app-errors [control]="userPassword"></app-errors>
-
-                <div class="link-box form__controls">
-                  <button class="link-box__item link link_color_accent" [disabled]="!loginForm.valid">Login</button>
-                  <a [routerLink]="['/register']" class="link-box__item link link_color_light">Register</a>
-                </div>
-
-        </form>
+<div class="link-box form__controls">
+  <button class="link-box__item link link_color_accent" [disabled]="!loginForm.valid">Login</button>
+  <a [routerLink]="['/register']" class="link-box__item link link_color_light">Register</a>
+</div>
+</form>
 </div>

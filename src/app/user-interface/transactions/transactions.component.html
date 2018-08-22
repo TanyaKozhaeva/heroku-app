@@ -1,146 +1,122 @@
 <div class="payments-block vh-without-header">
   <div class="wrapper-ui">
     <form class="payments-block__form transfer-form"
-    name="paymentForm"
-    (ngSubmit)="paymentForm.valid && makePayment()"
-    #paymentForm="ngForm" novalidate>
-
-    <div class="transfer-form__field-wrap">
-    <span class="transfer-form__label">From:</span>
-    <div *ngIf="sourceAccount && !sourceAccountsDisplay"
-    tabindex="0"
-    (click)="showSourceAccountList()"
-    class="transfer-form__field">
-      <div class="transfer-form__field-select"
-      *ngIf="!sourceAccountsDisplay">
-      <div class="transfer-form__field-panel-top">
-        <span class="transfer-form__field-number">
-          {{sourceAccount.number}}
-        </span>
+      name="paymentForm"
+      (ngSubmit)="paymentForm.valid && makePayment()"
+      #paymentForm="ngForm" novalidate>
+      <span class="transfer-form__label">From:</span>
+      <div *ngIf="sourceAccount"
+        (click)="showSourceAccountList()"
+        class="transfer-form__field">
+        <div class="transfer-form__field-select">
+          <div class="transfer-form__field-panel-top">
+            <span class="transfer-form__field-number">
+              {{sourceAccount.number}}
+            </span>
+          </div>
+          <div class="transfer-form__field-panel-bottom">
+            <p class="transfer-form__field-text">You pay from</p>
+            <span class="transfer-form__field-amount">{{sourceAccount.amount}} {{sourceAccount.currency}}</span>
+          </div>
+        </div>
       </div>
-        <div class="transfer-form__field-panel-bottom">
-          <p class="transfer-form__field-text">You pay from</p>
-          <span class="transfer-form__field-amount">{{sourceAccount.amount}} {{sourceAccount.currency}}</span>
+      <div *ngIf="sourceAccountsDisplay"
+        class="transfer-form__field-wrap">
+        <ul
+          @sourceAccountsDisplay
+          class="transfer-accounts transfer-form__field">
+          <li *ngFor="let a of accounts">
+            <span class="transfer-accounts__item"
+              *ngIf="!a.blocked"
+              (click)="showSourceAccountList()"
+              (click)="sourceAccount=a">
+              <span class="transfer-form__field-number">{{a.number}}</span>
+              <span class="transfer-form__field-amount">
+                {{a.amount}} {{a.currency}}
+              </span>
+            </span>
+          </li>
+        </ul>
       </div>
-    </div>
-    </div>
-
-
-    <div *ngIf="sourceAccountsDisplay"
-    @sourceAccountsDisplay
-    class="transfer-accounts transfer-form__field">
-    <div *ngFor="let a of accounts">
-      <div class="transfer-accounts__item"
-      *ngIf="!a.blocked"
-      (click)="showSourceAccountList()"
-      (click)="sourceAccount=a">
-      <span class="transfer-form__field-number">{{a.number}}</span>
-      <span class="transfer-form__field-amount">
-        {{a.amount}} {{a.currency}}
-      </span>
-    </div>
-  </div>
-    </div>
-</div>
-
-<div class="transfer-form__field-wrap">
-<span class="transfer-form__label">To:</span>
-    <div *ngIf="!destinationAccountsDisplay && !inputVisible"
-    (click)="showInput()"
-    tabindex="0"
-    class="transfer-form__field">
-      <div class="transfer-form__field-panel-top"
-      *ngIf="!destinationAccount">
-        Payee account
+      <span class="transfer-form__label">To:</span>
+      <div (click)="showInput()"
+        class="transfer-form__field">
+        <div class="transfer-form__field-panel-top"
+          *ngIf="!destinationAccount">
+          Payee account
+        </div>
+        <div class="transfer-form__field-panel-top"
+          *ngIf="destinationAccount">
+          <span class="transfer-form__field-number">
+            {{destinationAccount}}
+          </span>
+        </div>
+        <p class="transfer-form__field-text">You transfer money to</p>
       </div>
-      <div class="transfer-form__field-panel-top"
-      *ngIf="destinationAccount">
-        <span class="transfer-form__field-number">
-          {{destinationAccount}}
-        </span>
+      <div *ngIf="inputVisible || destinationAccountsDisplay"
+        class="transfer-form__field-wrap">
+        <div *ngIf="inputVisible && !destinationAccountsDisplay"
+          @inputVisible
+          class="transfer-form__field transfer-accounts">
+          <input type="tel" class="transfer-accounts__input"
+          name="recipientManualInput"
+          placeholder="Input payee account"
+          #recipientManualInput="ngModel"
+          (ngModel)="destinationAccount"
+          required
+          id="recipientManualInput"
+          >
+          <button type="button"
+          [disabled]="!recipientManualInput.valid"
+          class="transfer-accounts__btn"
+          (click)="showInput()"
+          (click)="destinationAccount=recipientManualInput.value">
+          <span class="hidden">OK</span>
+          <svg class="icon transfer-accounts__icon">
+            <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
+          </svg>
+          </button>
+          <button type="button"
+          *ngIf="!destinationAccountsDisplay"
+          (click)="showDestAccountList()"
+          class="transfer-form__field-switcher">
+          Or select from list
+          </button>
+        </div>
+        <ul class="transfer-form__field transfer-accounts"
+          @destAccountsDisplay
+          *ngIf="destinationAccountsDisplay">
+          <li *ngFor="let a of accounts">
+            <span class="transfer-accounts__item"
+              (click)="showDestAccountList()"
+              (click)="showInput()"
+              *ngIf="!a.blocked"
+              (click)="destinationAccount=a.number">
+              <span class="transfer-form__field-number">{{a.number}}</span>
+              <span class="transfer-form__field-amount">{{a.amount}} {{a.currency}}</span>
+            </span>
+          </li>
+        </ul>
       </div>
-      <p class="transfer-form__field-text">You transfer money to</p>
-    </div>
-
-
-      <div *ngIf="inputVisible && !destinationAccountsDisplay"
-       @destAccountsDisplay
-      class="transfer-form__field transfer-accounts">
-
-      <input type="number" class="transfer-accounts__input"
-        name="recipientManualInput"
-        placeholder="Input payee account"
-        #recipientManualInput="ngModel"
-        (ngModel)="destinationAccount"
-        required
-        id="recipientManualInput"
-        maxlength="16"
-        minlength="10">
-
-
-        <button type="button"
-        [disabled]="!recipientManualInput.valid"
-        class="transfer-accounts__btn"
-        (click)="showInput()"
-        (click)="destinationAccount=recipientManualInput.value">
-        <span class="hidden">OK</span>
-        <svg class="icon transfer-accounts__icon">
-          <use xlink:href="assets/svg/symbol/sprite.svg#success"></use>
-        </svg>
-      </button>
-
-
-    <button type="button"
-    *ngIf="!destinationAccountsDisplay"
-    (click)="showDestAccountList()"
-    class="transfer-form__field-switcher">
-    Or select from list
-  </button>
-</div>
-  <!-- <app-errors [control]="recipientManualInput"></app-errors> -->
-
-
-
-    <div class="transfer-form__field transfer-accounts"
-    @destAccountsDisplay
-    *ngIf="destinationAccountsDisplay">
-    <div *ngFor="let a of accounts">
-      <div class="transfer-accounts__item"
-      (click)="showDestAccountList()"
-      (click)="showInput()"
-      *ngIf="!a.blocked"
-      (click)="destinationAccount=a.number">
-      <span class="transfer-form__field-number">{{a.number}}</span>
-      <span class="transfer-form__field-amount">{{a.amount}} {{a.currency}}</span>
-    </div>
-  </div>
-    </div>
-</div>
-
-<div class="transfer-form__field-wrap">
-    <span class="transfer-form__label">Transfer amount:</span>
-    <div class="transfer-form__field">
-            <input type="number"
-            class="transfer-form__field-input"
-            name="transactionAmount"
-            [(ngModel)]="transactionSum"
-            #transactionAmount="ngModel"
-            placeholder="0"
-            required>
-            <span class="transfer-form__field-currency"*ngIf="sourceAccount">{{sourceAccount.currency}}</span>
-            <div class="transfer-form__field-background"></div>
-    </div>
-    </div>
+      <span class="transfer-form__label">Transfer amount:</span>
+      <div class="transfer-form__field">
+        <input type="number"
+        class="transfer-form__field-input"
+        name="transactionAmount"
+        [(ngModel)]="transactionSum"
+        #transactionAmount="ngModel"
+        placeholder="0"
+        required>
+        <span class="transfer-form__field-currency"*ngIf="sourceAccount">{{sourceAccount.currency}}</span>
+        <div class="transfer-form__field-background"></div>
+      </div>
     <app-errors [control]="transactionAmount"></app-errors>
-
-
     <button type="submit"
     [disabled]="!paymentForm.valid || !sourceAccount || !destinationAccount"
     class="transfer-form__btn link-box__item link link_color_main">Transfer</button>
-</form>
+  </form>
 </div>
 <div class="payments-block__controls">
-  <app-back-btn></app-back-btn>
+<app-back-btn></app-back-btn>
 </div>
-
 </div>

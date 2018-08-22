@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardsService } from '../../../services/cards.service';
+import { ErrorPopUpService } from '../../../error-pop-up/error-pop-up.service';
 import {
   trigger,
   state,
@@ -37,7 +38,8 @@ export class CardItemComponent implements OnInit {
   showSpinner;
 
 
-  constructor( private cardsService: CardsService) { }
+  constructor( private cardsService: CardsService,
+  private errorPopUpService: ErrorPopUpService) { }
 
   ngOnInit() {
   }
@@ -49,7 +51,11 @@ export class CardItemComponent implements OnInit {
     .subscribe(res =>{
       this.deletingCard.emit(this.index)
       this.showSpinner = false;
-    })
+    },
+  error => {
+    this.errorPopUpService.error('Something went wrong. Please try again later');
+    this.showSpinner = false;
+  })
   }
 
   disableCard() {

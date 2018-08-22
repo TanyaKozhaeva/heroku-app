@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
 import { AlertModule } from '../alert/alert.module';
+import { ErrorPopUpModule } from '../error-pop-up/error-pop-up.module';
 import { HeaderModule } from '../header/header.module';
 import { BackBtnModule } from '../back-btn/back-btn.module';
 import { TransactionsModule } from '../transactions/transactions.module';
@@ -27,6 +28,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
     LoaderModule,
     DirectivesModule,
     AlertModule,
+    ErrorPopUpModule,
     BackBtnModule,
     SpinnerModule,
     HeaderModule,

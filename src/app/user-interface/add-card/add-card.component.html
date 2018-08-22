@@ -1,77 +1,66 @@
 <div class="add-card">
-<div class="wrapper-ui">
-<form (ngSubmit)="addCardForm.form.valid && addCard()"
-class="add-card-form add-card__form"
-#addCardForm="ngForm"
-id="addCardForm"
-novalidate>
-<div class="add-card-form__wrapper">
-    <label class="add-card-form__label" for="name"> Name:</label>
-    <input class="add-card-form__input-name"
-    type="text"
-    name="Name"
-    id="name"
-    [(ngModel)]="cardModel.name" #Name="ngModel"
-    requiredValidator
-    maxlength="15">
-
-<label class="add-card-form__label" for="number">Number:</label>
-  <input class="add-card-form__input-num"
-  type="tel"
-  name="Number"
-  id="number"
-  [(ngModel)]="cardModel.number"
-  #Number="ngModel"
-  ngModel
-  cardValidator
-  [textMask]="{mask: numberMask}"
-  requiredValidator>
-
-<label class="add-card-form__label" for="expiration">Expires end:</label>
-  <input class="add-card-form__input-exp"
-  type="tel"
-  name="Expiration"
-  id="expiration"
-  [(ngModel)]="cardModel.expiration"
-  #Expiration="ngModel"
-  expiredValidator
-  [textMask]="{mask: expiredMask}"
-  requiredValidator>
-</div>
-
-
-<div class="add-card-form__errors">
-  <div *ngIf="!Name.valid" class="add-card-form__errors-item">
-    <app-errors [control]="Name"></app-errors>
-  </div>
-  <div *ngIf="!Number.valid" class="add-card-form__errors-item">
-    <app-errors [control]="Number"></app-errors>
-  </div>
-  <div *ngIf="!Expiration.valid" class="add-card-form__errors-item">
+  <div class="wrapper-ui">
+    <form (ngSubmit)="addCardForm.form.valid && addCard()"
+      class="add-card-form add-card__form"
+      #addCardForm="ngForm"
+      id="addCardForm"
+      novalidate>
+      <div class="add-card-form__wrapper">
+        <label class="add-card-form__label" for="name"> Name:</label>
+        <input class="add-card-form__input-name"
+        type="text"
+        name="Name"
+        id="name"
+        [(ngModel)]="cardModel.name" #Name="ngModel"
+        requiredValidator
+        maxlength="15">
+        <label class="add-card-form__label" for="number">Number:</label>
+        <input class="add-card-form__input-num"
+        type="tel"
+        name="Number"
+        id="number"
+        [(ngModel)]="cardModel.number"
+        #Number="ngModel"
+        ngModel
+        cardValidator
+        [textMask]="{mask: numberMask}"
+        requiredValidator>
+        <label class="add-card-form__label" for="expiration">Expires end:</label>
+        <input class="add-card-form__input-exp"
+        type="tel"
+        name="Expiration"
+        id="expiration"
+        [(ngModel)]="cardModel.expiration"
+        #Expiration="ngModel"
+        expiredValidator
+        [textMask]="{mask: expiredMask}"
+        requiredValidator>
+      </div>
+      <div class="add-card-form__errors">
+        <div *ngIf="!Name.valid" class="add-card-form__errors-item">
+        <app-errors [control]="Name"></app-errors>
+      </div>
+      <div *ngIf="!Number.valid" class="add-card-form__errors-item">
+      <app-errors [control]="Number"></app-errors>
+    </div>
+    <div *ngIf="!Expiration.valid" class="add-card-form__errors-item">
     <app-errors [control]="Expiration"></app-errors>
   </div>
 </div>
-
-
 <div class="add-card-form__controls link-box">
   <button
-      type="submit"
-      class="link-box__item link link_color_main add-card-form__btn"
-      [disabled]="!addCardForm.form.valid"
-      form="addCardForm"
-     >
-      Add
-      </button>
-      <button type="button" class="link-box__item link link_color_accent add-card-form__btn"
-      (click)="cansel()">
-      Cansel
-      </button>
+  type="submit"
+  class="link-box__item link link_color_main add-card-form__btn"
+  [disabled]="!addCardForm.form.valid"
+  form="addCardForm"
+  >
+  Add
+  </button>
+  <button type="button" class="link-box__item link link_color_accent add-card-form__btn"
+  (click)="cansel()">
+  Cansel
+  </button>
 </div>
 </form>
-
-
-
-
-  </div>
-
+</div>
 </div>
