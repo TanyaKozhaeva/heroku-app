@@ -18,9 +18,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             const parsedError = Object.assign({}, error, { error: JSON.parse(error.error) });
             mess = parsedError.error.message;
           }
-          if(error.status == 500 || 0){
-            mess = 'Something went wrong. Please try again later'
-          }
             return new ErrorObservable(mess);
         })
 }
