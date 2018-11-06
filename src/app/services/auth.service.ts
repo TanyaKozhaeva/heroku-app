@@ -11,7 +11,8 @@ constructor(private http: HttpClient){}
 
 login(model) {
   return this.http.post('https://apihonestbank.herokuapp.com/login', {phone: model.phone, password: model.password}, {responseType: 'text'})
-    .map(token => {
+  .map(token => {
+  console.log(token)
         const userInfo = this.getDecodedAccessToken(token)
         if (token && userInfo) {
               const currentUser = {token, userInfo};
@@ -19,7 +20,8 @@ login(model) {
           }
           return token;
       })
-    }
+    }  
+     
 
 getDecodedAccessToken(token): any {
   try{

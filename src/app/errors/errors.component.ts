@@ -59,7 +59,7 @@ export class ErrorsComponent {
   shouldShowErrors(): boolean {
     return this.control &&
       this.control.errors &&
-      (this.control.invalid && this.control.touched);
+      (this.control.dirty && this.control.touched);
   }
 
   listOfErrors(): string[] {
