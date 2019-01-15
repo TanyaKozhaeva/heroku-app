@@ -11,10 +11,16 @@ const httpOptions = {
 export class AccountsService {
 
   constructor( private http: HttpClient) { }
-
+/*
   getAccounts(userId){
      return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/user/' + userId, httpOptions)
    }
+   */
+
+   getAccounts(userId){
+     return this.http.get<any[]>('assets/accounts.json')
+   }
+
 
   getAccountDetails(accountId){
     return this.http.get<any[]>('https://apihonestbank.herokuapp.com/accounts/'+ accountId)
@@ -45,3 +51,5 @@ export class AccountsService {
   }
 
 }
+
+

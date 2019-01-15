@@ -80,6 +80,7 @@ userId;
   private getAccounts() {
     this.accountsService.getAccounts(this.userId)
     .subscribe(res => {
+    console.log(res)
       this.accounts = res;
       this.loaderService.executeAction(false);
       this.showAccounts = true;
